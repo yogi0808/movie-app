@@ -4,5 +4,5 @@
   --color-primary: #032541;
   --color-accent: #01c6ac;
   --background-image-gradient: linear-gradient(to bottom right, #b18bf5 0%, #efafbb 65%);
-  --background-image-gradient2: linear-gradient(to bottom right, #b18bf5 0%, #efafbb 65%);
+  --background-image-gradient2: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%)
 }

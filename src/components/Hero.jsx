@@ -1,16 +1,17 @@
 import { MdArrowRightAlt } from "react-icons/md"
+import GradientText from "./GradientText"
 
 const Hero = () => {
   return (
     <section>
       <div className="w-full bg-[url('/hero-banner.jpg')] max-w-325 mx-auto bg-no-repeat bg-cover h-112.5 bg-center text-white">
         <div className="bg-black/70 w-full h-full flex justify-center flex-col gap-5 px-10">
-          <div className="bg-gradient w-fit bg-clip-text">
+          <GradientText gradient="bg-gradient">
             <h1 className="font-bold text-6xl text-transparent">
               That's a<br />
               Wrap 2025
             </h1>
-          </div>
+          </GradientText>
           <p className="font-semibold text-lg">
             The best (and worst) of the year from TMDB.
           </p>
