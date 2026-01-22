@@ -1,9 +1,10 @@
+import Hero from "../components/Hero"
 import RootLayout from "../layouts/RootLayout"
 
 const HomeScreen = () => {
   return (
     <RootLayout>
-      <h1>Home Screen</h1>
+      <Hero />
     </RootLayout>
   )
 }
