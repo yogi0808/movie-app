@@ -11,7 +11,8 @@
   --color-accent: #01c6ac;
   --color-highlight: #01b4e4;
   --background-image-gradient: linear-gradient(to bottom right, #b18bf5 0%, #efafbb 65%);
-  --background-image-gradient2: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%)
+  --background-image-gradient2: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
+  --background-image-gradient3: linear-gradient(to right, rgba(255, 255, 255, 0)0, #fff 100%);
 }
 
 ::-webkit-scrollbar {
