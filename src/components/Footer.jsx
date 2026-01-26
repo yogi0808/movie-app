@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="w-32.5 h-23.5 absolute top-0 right-0">
             <Logo xl />
           </div>
-          <a className="text-highlight bg-white text-[18.72px] font-bold border-2 border-white rounded-[5px] px-4 py-2 relative top-37.5">
+          <a className="text-highlight bg-white wrap-break-word max-w-65 line-clamp-2 text-[18.72px] font-bold border-2 border-white rounded-[5px] px-4 py-2 relative top-35">
             Hi yogi0808!
           </a>
         </div>
