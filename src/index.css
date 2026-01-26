@@ -3,6 +3,7 @@
 
 * {
   font-family: "Source Sans 3", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 @theme {
