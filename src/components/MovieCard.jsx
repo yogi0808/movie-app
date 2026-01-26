@@ -8,7 +8,9 @@ const MovieCard = ({ src, name, date }) => {
         />
       </div>
       <div className="px-2 pt-6">
-        <a className="font-bold leading-6">{name}</a>
+        <a className="font-bold leading-6 hover:underline hover:text-highlight transition-all duration-300 ease-out">
+          {name}
+        </a>
         <p className="text-stone-500 leading-6">{date}</p>
       </div>
     </div>
