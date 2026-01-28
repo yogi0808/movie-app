@@ -1,16 +1,28 @@
+import { Activity, useState } from "react"
+
 const MovieCard = ({ data }) => {
+  const [isPopupActive, setIsPopupActive] = useState(false)
   const rating = Math.round((data.vote_average / 10) * 100)
   const ratingColor =
     rating >= 70 ? "#00c950" : rating >= 50 ? "#ffb86a" : "#fb2c36"
 
   return (
-    <div className="max-w-37.5 cursor-pointer flex flex-col content-stretch">
-      <div className="w-37.5 aspect-2/3 bg-stone-200/60 rounded-lg flex justify-center items-center shadow-[0_2px_8px] shadow-black/10">
+    <div className="max-w-37.5 relative flex flex-col content-stretch">
+      <div className="w-37.5 aspect-2/3 cursor-pointer bg-stone-200/60 rounded-lg relative flex justify-center items-center shadow-[0_2px_8px] shadow-black/10">
         <img
           src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
           className="rounded-lg w-full"
           loading="lazy"
         />
+        <button
+          className="absolute top-2 right-2 w-6.5 cursor-pointer aspect-square opacity-60"
+          onClick={() => setIsPopupActive((prev) => !prev)}
+        >
+          <img
+            src="/more.svg"
+            alt="more options"
+          />
+        </button>
       </div>
       <div className="px-2.5 pt-6.5 relative">
         <div className="w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full absolute -top-4.75 left-2.5">
@@ -27,7 +39,10 @@ const MovieCard = ({ data }) => {
             </span>
           </div>
         </div>
-        <a className="font-bold hover:underline hover:text-highlight leading-5 inline-block transition-all duration-300 ease-out">
+        <a
+          href="#"
+          className="font-bold hover:underline hover:text-highlight leading-5 inline-block transition-all duration-300 ease-out"
+        >
           {data.title || data.name}
         </a>
         <p className="text-stone-500 leading-5">
@@ -40,6 +55,9 @@ const MovieCard = ({ data }) => {
           })}
         </p>
       </div>
+      <Activity mode={isPopupActive ? "visible" : "hidden"}>
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-lg rounded" />
+      </Activity>
     </div>
   )
 }
