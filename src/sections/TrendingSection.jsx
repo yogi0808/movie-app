@@ -20,7 +20,7 @@ const TrendingSection = () => {
         />
         <div className="relative">
           <img
-            className="absolute left-0 -bottom-9 -z-1 w-full"
+            className="absolute left-0 -bottom-11.75 -z-1 w-full"
             src="line-bg.svg"
           />
           <div className="flex space-x-5 overflow-x-auto overflow-y-hidden pb-4 scrollbar-hide px-10">
