@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import trendingMovies from "./api/trendingMovies"
+import movies from "./api/movies"
 
 const store = configureStore({
   reducer: {
-    [trendingMovies.reducerPath]: trendingMovies.reducer
+    [movies.reducerPath]: movies.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(trendingMovies.middleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(movies.middleware),
 })
 
 export default store

@@ -4,28 +4,28 @@
 
 ### Trending
 
-- Day: `/trending/day`
-- Week: `/trending/week`
+- Day: `/trending/all/day`
+- Week: `/trending/all/week`
 
 ### Latest Trailers
 
-- Popular: `/discover/movie?sort_by=popularity.asc`
-- Streaming: `/discover/movie?with_watch_monetization_types=flatrate`
-- On Tv: `/discover/tv?sort_by=popularity.asc`
-- For Rent: `/discover/movie?with_watch_monetization_types=rent`
-- In Theaters: `/movie/now_playing`
+- Popular: `/movie/upcoming?language=en-US&region=US`
+- Streaming: `/discover/movie?with_watch_monetization_types=flatrate&watch_region=US&sort_by=primary_release_date.desc&primary_release_date.lte={TODAY_DATE}`
+- On Tv: `/tv/airing_today?language=en-US`
+- For Rent: `/discover/movie?with_watch_monetization_types=rent&watch_region=US&sort_by=primary_release_date.desc`
+- In Theaters: `movie/now_playing?region=US&language=en-US`
 
 ### What's Popular
 
-- Stream: `/discover/movie?with_watch_monetization_types=flatrate&sort_by=popularity.asc`
-- On TV: `/discover/tv?sort_by=popularity.asc`
-- For Rent: `/discover/movie?with_watch_monetization_types=rent&sort_by=popularity.asc`
-- In Theaters: `/movie/now_playing`
+- Stream: `discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc`
+- On TV: `tv/popular?include_adult=false&language=en-US`
+- For Rent: `discover/movie?include_adult=false&with_watch_monetization_types=rent&include_video=false&watch_region=US&sort_by=popularity.desc`
+- In Theaters: `movie/now_playing?region=US&language=en-US`
 
 ### Free to Watch
 
-- Movie: `/discover/movie?with_watch_monetization_types=free`
-- TV: `/discover/tv?with_watch_monetization_types=free`
+- Movie: `/discover/movie?with_watch_monetization_types=ads|free&watch_region=US&`
+- TV: `/discover/tv?with_watch_monetization_types=ads|free&watch_region=US&`
 
 1. React init
 2. tailwind css setup

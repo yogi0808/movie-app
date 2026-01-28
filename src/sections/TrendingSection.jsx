@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import MovieCard from "../components/cards/MovieCard"
 import TitleWithTabs from "../components/TitleWithTabs"
-import { useGetTrendingMoviesByDayQuery } from "../redux/api/trendingMovies"
+import { useGetTrendingMoviesQuery } from "../redux/api/movies"
 
 const TrendingSection = () => {
   const [activeTab, setActiveTab] = useState(0)
   const [param, setParam] = useState("day")
 
-  const { data = [], error, isLoading } = useGetTrendingMoviesByDayQuery(param)
+  const { data = [], error, isLoading } = useGetTrendingMoviesQuery(param)
 
   const changeTab = (idx) => {
     setActiveTab(idx)
