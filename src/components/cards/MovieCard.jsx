@@ -5,9 +5,9 @@ const MovieCard = ({ data }) => {
 
   return (
     <div className="max-w-37.5 cursor-pointer flex flex-col content-stretch">
-      <div className="w-37.5 aspect-2/3 bg-stone-200/60 rounded-lg flex justify-center items-center">
+      <div className="w-37.5 aspect-2/3 bg-stone-200/60 rounded-lg flex justify-center items-center shadow-[0_2px_8px] shadow-black/10">
         <img
-          src={`https://media.themoviedb.org/t/p/original${data.poster_path}`}
+          src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
           className="rounded-lg w-full"
           loading="lazy"
         />
@@ -27,11 +27,13 @@ const MovieCard = ({ data }) => {
             </span>
           </div>
         </div>
-        <a className="font-bold hover:underline hover:text-highlight transition-all duration-300 ease-out">
-          {data.title}
+        <a className="font-bold hover:underline hover:text-highlight leading-5 inline-block transition-all duration-300 ease-out">
+          {data.title || data.name}
         </a>
-        <p className="text-stone-500 leading-6">
-          {new Date(data.release_date).toLocaleDateString("en-US", {
+        <p className="text-stone-500 leading-5">
+          {new Date(
+            data.release_date || data.first_air_date,
+          ).toLocaleDateString("en-US", {
             month: "short",
             day: "2-digit",
             year: "numeric",

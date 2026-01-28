@@ -1,17 +1,34 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MovieCard from "../components/cards/MovieCard"
 import TitleWithTabs from "../components/TitleWithTabs"
+import { useGetTrendingMoviesByDayQuery } from "../redux/api/trendingMovies"
 
 const TrendingSection = () => {
   const [activeTab, setActiveTab] = useState(0)
+  const [param, setParam] = useState("day")
+
+  const { data = [], error, isLoading } = useGetTrendingMoviesByDayQuery(param)
 
   const changeTab = (idx) => {
     setActiveTab(idx)
   }
 
+  useEffect(() => {
+    switch (activeTab) {
+      case 0:
+        setParam("day")
+        break
+      case 1:
+        setParam("week")
+        break
+      default:
+        setParam("day")
+    }
+  }, [activeTab])
+
   return (
-    <section className="px-5 py-7.5 flex justify-center">
-      <div className="max-w-325 flex flex-col gap-5 w-full">
+    <section className="px-5 pt-7.5 flex justify-center">
+      <div className="max-w-325 flex flex-col w-full">
         <TitleWithTabs
           title="Trending"
           data={["Today", "This Week"]}
@@ -20,30 +37,20 @@ const TrendingSection = () => {
         />
         <div className="relative">
           <img
-            className="absolute left-0 -bottom-11.25 -z-1 w-full"
+            className="absolute left-0 top-35 -z-1 w-full"
             src="line-bg.svg"
           />
-          <div className="flex space-x-5 overflow-x-auto overflow-y-hidden pb-4 scrollbar-hide px-10">
-            <MovieCard
-              data={{
-                adult: false,
-                backdrop_path: "/swxhEJsAWms6X1fDZ4HdbvYBSf9.jpg",
-                id: 1234731,
-                title: "Anaconda",
-                original_title: "Anaconda",
-                overview:
-                  "A group of friends facing mid-life crises head to the rainforest with the intention of remaking their favorite movie from their youth, only to find themselves in a fight for their lives against natural disasters, giant snakes and violent criminals.",
-                poster_path: "/hBxN6dwrANN1ic3a4G9x6JZcR3C.jpg",
-                media_type: "movie",
-                original_language: "en",
-                genre_ids: [12, 35, 27],
-                popularity: 173.158,
-                release_date: "2025-12-24",
-                video: false,
-                vote_average: 6.0,
-                vote_count: 191,
-              }}
-            />
+          <div className="flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10">
+            {isLoading
+              ? "Loading..."
+              : error
+                ? error?.status_message
+                : data.map((movieData) => (
+                    <MovieCard
+                      data={movieData}
+                      key={movieData.id}
+                    />
+                  ))}
           </div>
           <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
         </div>
