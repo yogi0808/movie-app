@@ -5,7 +5,9 @@ import MovieCard from "../components/cards/MovieCard"
 
 const PopularSection = () => {
   const [activeTab, setActiveTab] = useState(0)
-  const [param, setParam] = useState("day")
+  const [param, setParam] = useState(
+    "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
+  )
 
   const { data = [], error, isLoading } = useGetMoviesQuery(param)
 
