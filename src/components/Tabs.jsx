@@ -22,7 +22,7 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
         className="bg-primary h-full rounded-full w-14 absolute top-0 left-0 transition-all duration-300 ease-out -z-1"
         style={{
           left: tabStyle.left,
-          width: tabStyle.width,
+          width: `${tabStyle.width}px`,
         }}
       />
       {data.map((item, idx) => (

@@ -12,7 +12,7 @@ const MovieCard = ({ data }) => {
           loading="lazy"
         />
       </div>
-      <div className="px-2 pt-6 relative">
+      <div className="px-2.5 pt-6.5 relative">
         <div className="w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full absolute -top-4.75 left-2.5">
           <div
             className="w-8 h-8 bg-green-500 absolute rounded-full"
@@ -27,7 +27,7 @@ const MovieCard = ({ data }) => {
             </span>
           </div>
         </div>
-        <a className="font-bold leading-6 hover:underline hover:text-highlight transition-all duration-300 ease-out">
+        <a className="font-bold hover:underline hover:text-highlight transition-all duration-300 ease-out">
           {data.title}
         </a>
         <p className="text-stone-500 leading-6">
