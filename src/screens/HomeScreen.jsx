@@ -1,5 +1,5 @@
 import SearchBar from "../components/header/SearchBar"
-import Hero from "../components/Hero"
+import Hero from "../sections/Hero"
 import RootLayout from "../layouts/RootLayout"
 import TrendingSection from "../sections/TrendingSection"
 

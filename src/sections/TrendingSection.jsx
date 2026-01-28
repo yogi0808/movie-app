@@ -1,5 +1,5 @@
 import { useState } from "react"
-import MovieCard from "../components/MovieCard"
+import MovieCard from "../components/cards/MovieCard"
 import TitleWithTabs from "../components/TitleWithTabs"
 
 const TrendingSection = () => {
