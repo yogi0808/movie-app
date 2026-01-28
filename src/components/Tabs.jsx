@@ -26,9 +26,11 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
         }}
       />
       {data.map((item, idx) => (
-        <GradientText gradient="bg-gradient2">
+        <GradientText
+          key={idx}
+          gradient="bg-gradient2"
+        >
           <p
-            key={idx}
             onClick={() => onTabChange(idx)}
             ref={(el) => (tabsRef.current[idx] = el)}
             className={`px-5 font-semibold py-0.5 cursor-pointer transition-colors ease-out duration-300 ${
