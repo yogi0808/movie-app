@@ -1,4 +1,4 @@
-import { FooterLinks } from "../../constants"
+import { FooterLinks } from "../../constants/index"
 import Logo from "../Logo"
 
 const Footer = () => {

@@ -1,6 +1,6 @@
 import Logo from "../Logo"
 import LinkWidthOptions from "./LinkWidthOptions"
-import { HeaderLinks } from "../../constants"
+import { HeaderLinks } from "../../constants/index"
 import { MdAdd, MdNotifications, MdOutlineSearch } from "react-icons/md"
 import useScroll from "../../hooks/useScroll"
 
