@@ -18,14 +18,14 @@ const Footer = () => {
             <h3 className="text-[20.16px] font-bold uppercase leading-[28.224px]">
               {link.title}
             </h3>
-            <ul className="flex flex-col gap-0.5">
+            <ul className="flex flex-col">
               {link.links.map((link) => (
                 <li
                   key={link.id}
-                  className="leading-[23.04px] max-w-65 whitespace-nowrap overflow-hidden text-ellipsis text-white"
+                  className="leading-[23.04px] text-[14.4px] max-w-65 whitespace-nowrap overflow-hidden text-ellipsis text-white"
                 >
                   <a
-                    className="text-[17.28px] hover:underline transition-all duration-300 ease-out"
+                    className="text-[17.28px]  hover:underline transition-all duration-300 ease-out"
                     href={link.link}
                   >
                     {link.text}

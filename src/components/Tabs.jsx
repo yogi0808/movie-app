@@ -18,13 +18,6 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
 
   return (
     <div className="flex border border-primary w-fit rounded-full relative justify-center items-center">
-      <div
-        className="bg-primary h-full rounded-full w-14 absolute top-0 left-0 transition-all duration-300 ease-out -z-1"
-        style={{
-          left: tabStyle.left,
-          width: `${tabStyle.width}px`,
-        }}
-      />
       {data.map((item, idx) => (
         <GradientText
           key={idx}
@@ -41,6 +34,13 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
           </p>
         </GradientText>
       ))}
+      <div
+        className="bg-primary h-full rounded-full w-14 absolute top-0 left-0 transition-all duration-300 ease-out -z-1"
+        style={{
+          left: tabStyle.left,
+          width: `${tabStyle.width}px`,
+        }}
+      />
     </div>
   )
 }
