@@ -9,7 +9,7 @@ const MovieCard = ({ data }) => {
   return (
     <div className="max-w-37.5 relative flex flex-col content-stretch">
       <div
-        className={`w-37.5 aspect-2/3 cursor-pointer bg-stone-200/60 ${data.poster_path ? "" : "animate-pulse"} rounded-lg relative flex justify-center items-center shadow-[0_2px_8px] shadow-black/10`}
+        className={`w-37.5 aspect-2/3 cursor-pointer bg-stone-200/60 rounded-lg relative flex justify-center items-center shadow-[0_2px_8px] shadow-black/10`}
       >
         <Activity mode={data.poster_path ? "visible" : "hidden"}>
           <img
@@ -49,7 +49,7 @@ const MovieCard = ({ data }) => {
         >
           {data.title || data.name}
         </a>
-        <p className="text-stone-500 leading-5">
+        <p className="text-stone-500">
           {new Date(
             data.release_date || data.first_air_date,
           ).toLocaleDateString("en-US", {
