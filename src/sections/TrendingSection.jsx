@@ -42,7 +42,12 @@ const TrendingSection = () => {
           />
           <div className="flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10">
             {isLoading
-              ? "Loading..."
+              ? [...Array(10)].map((_, idx) => (
+                  <MovieCard
+                    data={{}}
+                    key={idx}
+                  />
+                ))
               : error
                 ? error?.status_message
                 : data.map((movieData) => (

@@ -8,12 +8,16 @@ const MovieCard = ({ data }) => {
 
   return (
     <div className="max-w-37.5 relative flex flex-col content-stretch">
-      <div className="w-37.5 aspect-2/3 cursor-pointer bg-stone-200/60 rounded-lg relative flex justify-center items-center shadow-[0_2px_8px] shadow-black/10">
-        <img
-          src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
-          className="rounded-lg w-full"
-          loading="lazy"
-        />
+      <div
+        className={`w-37.5 aspect-2/3 cursor-pointer bg-stone-200/60 ${data.poster_path ? "" : "animate-pulse"} rounded-lg relative flex justify-center items-center shadow-[0_2px_8px] shadow-black/10`}
+      >
+        <Activity mode={data.poster_path ? "visible" : "hidden"}>
+          <img
+            src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
+            className="rounded-lg w-full"
+            loading="lazy"
+          />
+        </Activity>
         <button
           className="absolute top-2 right-2 w-6.5 cursor-pointer aspect-square opacity-60"
           onClick={() => setIsPopupActive((prev) => !prev)}
