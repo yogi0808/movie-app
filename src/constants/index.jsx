@@ -1,3 +1,6 @@
+import { FaBookmark, FaList } from "react-icons/fa6"
+import { IoIosStar, IoMdHeart } from "react-icons/io"
+
 export const HeaderLinks = [
   {
     id: 1,
@@ -142,5 +145,31 @@ export const FooterLinks = [
       },
     ],
   },
+]
 
+export const MoviePopupLinks = [
+  {
+    id: 1,
+    text: "Add to list",
+    icon: <FaList className="text-black" />,
+    link: "#",
+  },
+  {
+    id: 2,
+    text: "Favorite",
+    icon: <IoMdHeart className="text-black" />,
+    link: "#",
+  },
+  {
+    id: 3,
+    text: "Watchlist",
+    icon: <FaBookmark className="text-black" />,
+    link: "#",
+  },
+  {
+    id: 4,
+    text: "Your rating",
+    icon: <IoIosStar className="text-black" />,
+    link: "#",
+  },
 ]
