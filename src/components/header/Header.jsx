@@ -2,16 +2,21 @@ import Logo from "../Logo"
 import LinkWidthOptions from "./LinkWidthOptions"
 import { HeaderLinks } from "../../constants"
 import { MdAdd, MdNotifications, MdOutlineSearch } from "react-icons/md"
+import useScroll from "../../hooks/useScroll"
 
 const Header = () => {
+  const { scrollDirection } = useScroll()
+
   return (
-    <header className="w-full sticky top-0 bg-primary text-white h-16 z-99">
+    <header
+      className={`w-full sticky ${scrollDirection === "down" ? "top-0!" : "-top-16!"} transition-all duration-300 ease-out top-0 bg-primary text-white h-16 z-99`}
+    >
       <div className="max-w-325 h-full mx-auto px-10 flex justify-between">
         <div className="flex items-center">
           <div className="w-38.5 flex mr-4">
             <Logo />
           </div>
-          <nav className="flex gap-4 flex-wrap h-fit">
+          <nav className="flex gap-3.75 flex-wrap h-fit">
             {HeaderLinks.map((link) => (
               <LinkWidthOptions
                 key={link.id}
