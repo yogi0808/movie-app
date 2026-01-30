@@ -1,6 +1,11 @@
 import { FooterLinks } from "../../constants/index"
 import Logo from "../Logo"
 
+/**
+ * footer component with list links.
+ *
+ * @returns - jsx for footer
+ */
 const Footer = () => {
   return (
     <footer className="text-white flex items-center flex-col bg-primary">
