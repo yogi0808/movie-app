@@ -5,6 +5,7 @@ import MovieCard from "../components/cards/MovieCard"
 
 const PopularSection = () => {
   const [activeTab, setActiveTab] = useState(0)
+  const [isLoadingFac, setIsLoadingFac] = useState(true)
   const [param, setParam] = useState(
     "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
   )
@@ -44,6 +45,12 @@ const PopularSection = () => {
     }
   }, [activeTab])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingFac(false)
+    }, 2500)
+  }, [])
+
   return (
     <section className="px-5 pt-7.5 flex justify-center">
       <div className="max-w-325 flex flex-col w-full">
@@ -54,12 +61,12 @@ const PopularSection = () => {
           onTabChange={changeTab}
         />
         <div
-          className={`flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10 ${isLoading ? "opacity-40" : ""}`}
+          className={`flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10 ${isLoadingFac ? "animate-breath" : "animate-fade-in"}`}
         >
           {data.map((movieData) => (
             <MovieCard
               data={movieData}
-              isLoading={isLoading}
+              isLoading={isLoadingFac}
               key={movieData.id}
             />
           ))}

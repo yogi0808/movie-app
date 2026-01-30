@@ -50,7 +50,9 @@ const TrendingSection = () => {
             className="absolute left-0 top-35 -z-1 w-full"
             src="line-bg.svg"
           />
-          <div className="flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10">
+          <div
+            className={`flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10 ${isLoadingFac ? "animate-breath" : "animate-fade-in"}`}
+          >
             {data.map((movieData) => (
               <MovieCard
                 data={movieData}
