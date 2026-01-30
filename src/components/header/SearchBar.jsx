@@ -1,8 +1,13 @@
 import { MdOutlineSearch } from "react-icons/md"
 import useScroll from "../../hooks/useScroll"
 
+/**
+ * search bar component show in home page top under the header and it sticks to the top if the header is not visible and if header is visible it sticks to header bottom side.
+ *
+ * @returns - jsx for the search bar
+ */
 const SearchBar = () => {
-  const { scrollDirection } = useScroll()
+  const { scrollDirection } = useScroll() // to get the user scroll direction it is custom hook
 
   return (
     <section

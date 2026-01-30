@@ -2,18 +2,35 @@ import { Activity, useEffect, useRef, useState } from "react"
 import { MoviePopupLinks } from "../../constants/index"
 import RatingIndicator from "./RatingIndicator"
 
+/**
+ * movie card component for displaying movie image, title or name, date, and ratting also show the popup menu based on user action like click on more option.
+ *
+ * @param {object} param0 - with props data, isLoading
+ *  @param {object} data - movie Data
+ *  @param {boolean} isLoading - for loading indication
+ * @returns - jsx for the single movie data display
+ */
 const MovieCard = ({ data, isLoading }) => {
-  const [isPopupActive, setIsPopupActive] = useState(false)
-  const popupRef = useRef()
+  const [isPopupActive, setIsPopupActive] = useState(false) // using this state for popup activation and deactivation
+  const popupRef = useRef() // ref for popup menu
 
   useEffect(() => {
+    /**
+     * this function is for handling the click out side of the popup menu to close menu if click out side the menu
+     * @constructor
+     * @param {object} e - mousedown event object
+     */
     const handleClickOutside = (e) => {
       if (!popupRef?.current?.contains(e.target)) {
         setIsPopupActive(false)
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside) // adding an handleClickOutside to mouse click in dom
+
+    /**
+     * this return function is for removing the event listener from the dom
+     */
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [popupRef])
 

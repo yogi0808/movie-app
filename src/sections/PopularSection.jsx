@@ -4,40 +4,31 @@ import TitleWithTabs from "../components/TitleWithTabs"
 import MovieCard from "../components/cards/MovieCard"
 import { endpointsForPopularMovies } from "../constants/index"
 
+/**
+ * this component is responsible for getting and displaying popular movies data based on the user preference with tab.
+ *
+ * @returns - jsx for the popular section
+ */
 const PopularSection = () => {
-  const [activeTab, setActiveTab] = useState(0)
-  const [isLoadingFac, setIsLoadingFac] = useState(true)
-  const [param, setParam] = useState(endpointsForPopularMovies[0])
+  const [activeTab, setActiveTab] = useState(0) // to track the selected(active) tab
+  const [isLoadingFac, setIsLoadingFac] = useState(true) // fac loading to delay the data display
 
   const {
-    data = Array(10).fill({}),
+    data = { results: Array(10).fill({}) },
     error,
     isLoading,
-  } = useGetMoviesQuery(param)
+  } = useGetMoviesQuery(endpointsForPopularMovies[activeTab]) // redux query for data fetching returns the data, error, and loading state
 
+  /**
+   * change the activeTab state for change the status of the active tab
+   *
+   * @param {number} idx - index number of the tab which will selected next
+   */
   const changeTab = (idx) => {
     setActiveTab(idx)
   }
 
-  useEffect(() => {
-    switch (activeTab) {
-      case 0:
-        setParam(endpointsForPopularMovies[0])
-        break
-      case 1:
-        setParam(endpointsForPopularMovies[1])
-        break
-      case 2:
-        setParam(endpointsForPopularMovies[2])
-        break
-      case 3:
-        setParam(endpointsForPopularMovies[3])
-        break
-      default:
-        setParam(endpointsForPopularMovies[0])
-    }
-  }, [activeTab])
-
+  // this effect is for fac loading time
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingFac(false)
@@ -54,12 +45,12 @@ const PopularSection = () => {
           onTabChange={changeTab}
         />
         <div
-          className={`flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10 ${isLoadingFac ? "animate-breath" : "animate-fade-in"}`}
+          className={`flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10 ${isLoading ? "animate-breath" : "animate-fade-in"}`}
         >
-          {data.map((movieData) => (
+          {data.results.map((movieData) => (
             <MovieCard
               data={movieData}
-              isLoading={isLoadingFac}
+              isLoading={isLoading}
               key={movieData.id}
             />
           ))}

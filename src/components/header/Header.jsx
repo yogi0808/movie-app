@@ -4,8 +4,12 @@ import { HeaderLinks } from "../../constants/index"
 import { MdAdd, MdNotifications, MdOutlineSearch } from "react-icons/md"
 import useScroll from "../../hooks/useScroll"
 
+/**
+ * header component that displays the logo navigation lins and also hides when user is scrolls down and when user scrolls back up it appears again.
+ * @returns - jsx for the header component
+ */
 const Header = () => {
-  const { scrollDirection } = useScroll()
+  const { scrollDirection } = useScroll() // to get the user scroll direction it is custom hook
 
   return (
     <header

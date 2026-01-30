@@ -1,6 +1,11 @@
 import { MdArrowRightAlt } from "react-icons/md"
 import GradientText from "../components/GradientText"
 
+/**
+ * it displays the hero section with big gradient font and a CtA button.
+ *
+ * @returns - jsx for hero
+ */
 const Hero = () => {
   return (
     <section>
