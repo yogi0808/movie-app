@@ -9,7 +9,11 @@ const PopularSection = () => {
     "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
   )
 
-  const { data = [], error, isLoading } = useGetMoviesQuery(param)
+  const {
+    data = Array(10).fill({}),
+    error,
+    isLoading,
+  } = useGetMoviesQuery(param)
 
   const changeTab = (idx) => {
     setActiveTab(idx)
@@ -49,17 +53,16 @@ const PopularSection = () => {
           activeTab={activeTab}
           onTabChange={changeTab}
         />
-        <div className="flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10">
-          {isLoading
-            ? "Loading..."
-            : error
-              ? error?.status_message
-              : data.map((movieData) => (
-                  <MovieCard
-                    data={movieData}
-                    key={movieData.id}
-                  />
-                ))}
+        <div
+          className={`flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10 ${isLoading ? "opacity-40" : ""}`}
+        >
+          {data.map((movieData) => (
+            <MovieCard
+              data={movieData}
+              isLoading={isLoading}
+              key={movieData.id}
+            />
+          ))}
         </div>
         <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
       </div>

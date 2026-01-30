@@ -6,8 +6,12 @@ import { useGetTrendingMoviesQuery } from "../redux/api/movies"
 const TrendingSection = () => {
   const [activeTab, setActiveTab] = useState(0)
   const [param, setParam] = useState("day")
-
-  const { data = [], error, isLoading } = useGetTrendingMoviesQuery(param)
+  const [isLoadingFac, setIsLoadingFac] = useState(true)
+  const {
+    data = Array(10).fill({}),
+    error,
+    isLoading,
+  } = useGetTrendingMoviesQuery(param)
 
   const changeTab = (idx) => {
     setActiveTab(idx)
@@ -26,6 +30,12 @@ const TrendingSection = () => {
     }
   }, [activeTab])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingFac(false)
+    }, 2500)
+  }, [])
+
   return (
     <section className="px-5 pt-7.5 flex justify-center">
       <div className="max-w-325 flex flex-col w-full">
@@ -41,21 +51,13 @@ const TrendingSection = () => {
             src="line-bg.svg"
           />
           <div className="flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10">
-            {isLoading
-              ? [...Array(10)].map((_, idx) => (
-                  <MovieCard
-                    data={{}}
-                    key={idx}
-                  />
-                ))
-              : error
-                ? error?.status_message
-                : data.map((movieData) => (
-                    <MovieCard
-                      data={movieData}
-                      key={movieData.id}
-                    />
-                  ))}
+            {data.map((movieData) => (
+              <MovieCard
+                data={movieData}
+                isLoading={isLoadingFac}
+                key={movieData.id}
+              />
+            ))}
           </div>
           <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
         </div>

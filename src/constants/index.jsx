@@ -1,6 +1,12 @@
 import { FaBookmark, FaList } from "react-icons/fa6"
 import { IoIosStar, IoMdHeart } from "react-icons/io"
 
+export const statusColors = {
+  good: "#00c950",
+  normal: "#ffb86a",
+  notGood: "#fb2c36",
+}
+
 export const HeaderLinks = [
   {
     id: 1,
