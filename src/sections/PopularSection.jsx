@@ -2,13 +2,12 @@ import { useEffect, useState } from "react"
 import { useGetMoviesQuery } from "../redux/api/movies"
 import TitleWithTabs from "../components/TitleWithTabs"
 import MovieCard from "../components/cards/MovieCard"
+import { endpointsForPopularMovies } from "../constants/index"
 
 const PopularSection = () => {
   const [activeTab, setActiveTab] = useState(0)
   const [isLoadingFac, setIsLoadingFac] = useState(true)
-  const [param, setParam] = useState(
-    "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
-  )
+  const [param, setParam] = useState(endpointsForPopularMovies[0])
 
   const {
     data = Array(10).fill({}),
@@ -23,25 +22,19 @@ const PopularSection = () => {
   useEffect(() => {
     switch (activeTab) {
       case 0:
-        setParam(
-          "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
-        )
+        setParam(endpointsForPopularMovies[0])
         break
       case 1:
-        setParam("tv/popular?include_adult=false&language=en-US")
+        setParam(endpointsForPopularMovies[1])
         break
       case 2:
-        setParam(
-          "discover/movie?include_adult=false&with_watch_monetization_types=rent&include_video=false&watch_region=US&sort_by=popularity.desc",
-        )
+        setParam(endpointsForPopularMovies[2])
         break
       case 3:
-        setParam("movie/now_playing?region=US&language=en-US")
+        setParam(endpointsForPopularMovies[3])
         break
       default:
-        setParam(
-          "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
-        )
+        setParam(endpointsForPopularMovies[0])
     }
   }, [activeTab])
 

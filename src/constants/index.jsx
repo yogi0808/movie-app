@@ -179,3 +179,10 @@ export const MoviePopupLinks = [
     link: "#",
   },
 ]
+
+export const endpointsForPopularMovies = [
+  "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
+  "tv/popular?include_adult=false&language=en-US",
+  "discover/movie?include_adult=false&with_watch_monetization_types=rent&include_video=false&watch_region=US&sort_by=popularity.desc",
+  "movie/now_playing?region=US&language=en-US",
+]

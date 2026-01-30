@@ -1,17 +1,9 @@
 import { Activity, useEffect, useRef, useState } from "react"
-import { MoviePopupLinks, statusColors } from "../../constants/index"
-import { FaRegImage } from "react-icons/fa6"
+import { MoviePopupLinks } from "../../constants/index"
+import RatingIndicator from "./RatingIndicator"
 
 const MovieCard = ({ data, isLoading }) => {
   const [isPopupActive, setIsPopupActive] = useState(false)
-  const rating = Math.round((data.vote_average / 10) * 100)
-  const ratingColor =
-    rating >= 70
-      ? statusColors.good
-      : rating >= 50
-        ? statusColors.normal
-        : statusColors.notGood
-
   const popupRef = useRef()
 
   useEffect(() => {
@@ -63,25 +55,10 @@ const MovieCard = ({ data, isLoading }) => {
         </Activity>
       </div>
       <div className="px-2.5 pt-6.5 relative">
-        <div className="w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full absolute -top-4.75 left-2.5">
-          <Activity mode={isLoading ? "hidden" : "visible"}>
-            <div
-              className="w-8 h-8 bg-green-500 absolute rounded-full"
-              style={{
-                background: `conic-gradient( ${ratingColor} ${(360 * rating) / 100}deg, ${ratingColor}66 ${(360 * rating) / 100}deg)`,
-              }}
-            />
-            <div className="w-6.75 h-6.75 bg-black absolute rounded-full flex items-center justify-center">
-              <p className="text-white leading-3 text-sm font-bold">{rating}</p>
-              <span className="text-[6px] leading-6 text-white self-start">
-                %
-              </span>
-            </div>
-          </Activity>
-          <Activity mode={isLoading ? "visible" : "hidden"}>
-            <p className="absolute text-white font-extrabold">NR</p>
-          </Activity>
-        </div>
+        <RatingIndicator
+          voteAverage={isLoading ? null : data.vote_average}
+          className="absolute -top-4.75 left-2.5"
+        />
         <Activity mode={isLoading ? "hidden" : "visible"}>
           <a
             href="#"
