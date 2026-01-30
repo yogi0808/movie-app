@@ -28,6 +28,9 @@
   --color-primary: #032541;
   --color-accent: #01c6ac;
   --color-highlight: #01b4e4;
+  --color-card: #DADADA;
+  --animate-fade-in: fade-in 0.3s linear 0s alternate;
+  --animate-breath: breath 3s linear infinite;
   --background-image-gradient: linear-gradient(to bottom right, #b18bf5 0%, #efafbb 65%);
   --background-image-gradient2: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
   --background-image-gradient3: linear-gradient(to right, rgba(255, 255, 255, 0)0, #fff 100%);
@@ -45,4 +48,28 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background-color: rgba(219, 219, 219, 1);
+}
+
+@keyframes breath {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
