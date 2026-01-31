@@ -3,6 +3,7 @@ import Hero from "../sections/Hero"
 import RootLayout from "../layouts/RootLayout"
 import TrendingSection from "../sections/TrendingSection"
 import PopularSection from "../sections/PopularSection"
+import FreeToWatchSection from "../sections/FreeToWatchSection"
 
 /**
  * uses the root layout for home screen. this screen shown in the root route("/").
@@ -16,6 +17,7 @@ const HomeScreen = () => {
       <Hero />
       <TrendingSection />
       <PopularSection />
+      <FreeToWatchSection />
     </RootLayout>
   )
 }
