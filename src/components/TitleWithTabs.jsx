@@ -1,4 +1,4 @@
-import Tabs from "./Tabs"
+import Tabs from "./Tabs";
 
 /**
  * displays the tabs and the title title in left and the tabs is in the right
@@ -16,13 +16,9 @@ const TitleWithTabs = ({ data = [], title, activeTab, onTabChange }) => {
   return (
     <div className="flex items-center gap-5 px-10">
       <h2 className="text-2xl font-semibold leading-6">{title}</h2>
-      <Tabs
-        data={data}
-        activeTab={activeTab}
-        onTabChange={onTabChange}
-      />
+      <Tabs data={data} activeTab={activeTab} onTabChange={onTabChange} />
     </div>
-  )
-}
+  );
+};
 
-export default TitleWithTabs
+export default TitleWithTabs;

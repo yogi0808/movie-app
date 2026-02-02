@@ -1,9 +1,9 @@
-import SearchBar from "../components/header/SearchBar"
-import Hero from "../sections/Hero"
-import RootLayout from "../layouts/RootLayout"
-import TrendingSection from "../sections/TrendingSection"
-import PopularSection from "../sections/PopularSection"
-import FreeToWatchSection from "../sections/FreeToWatchSection"
+import SearchBar from "@components/header/SearchBar";
+import Hero from "@sections/Hero";
+import RootLayout from "@layouts/RootLayout";
+import TrendingSection from "@sections/TrendingSection";
+import PopularSection from "@sections/PopularSection";
+import FreeToWatchSection from "@sections/FreeToWatchSection";
 
 /**
  * uses the root layout for home screen. this screen shown in the root route("/").
@@ -19,7 +19,7 @@ const HomeScreen = () => {
       <PopularSection />
       <FreeToWatchSection />
     </RootLayout>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;

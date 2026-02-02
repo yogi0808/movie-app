@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 /**
  * this component is responsible for showing the options based on hover of particular header option and it'll provide the link for each options that will visible on the popup.
@@ -8,7 +8,7 @@ import { useState } from "react"
  * @returns - jsx for single link in header
  */
 const LinkWidthOptions = ({ link }) => {
-  const [isOpen, setIsOpen] = useState(false) // for popup activated and deactivated state
+  const [isOpen, setIsOpen] = useState(false); // for popup activated and deactivated state
   return (
     <button
       onMouseEnter={() => setIsOpen(true)}
@@ -32,7 +32,7 @@ const LinkWidthOptions = ({ link }) => {
         ))}
       </div>
     </button>
-  )
-}
+  );
+};
 
-export default LinkWidthOptions
+export default LinkWidthOptions;

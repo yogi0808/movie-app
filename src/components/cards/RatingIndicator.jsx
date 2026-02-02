@@ -1,5 +1,5 @@
-import { Activity } from "react"
-import { statusColors } from "../../constants/index"
+import { Activity } from "react";
+import { statusColors } from "@constants/index";
 
 /**
  * rating indicator component it displays rating circle indicator based on the average votes of the movie used gradient to create and ring progress.
@@ -10,14 +10,14 @@ import { statusColors } from "../../constants/index"
  * @returns - jsx for the rating indicator
  */
 const RatingIndicator = ({ voteAverage, className }) => {
-  const rating = Math.round((voteAverage / 10) * 100) // calculating the rating using average vote
+  const rating = Math.round((voteAverage / 10) * 100); // calculating the rating using average vote
   // deciding the color based on the rating percentage
   const ratingColor =
     rating >= 70
       ? statusColors.good
       : rating >= 50
         ? statusColors.normal
-        : statusColors.notGood
+        : statusColors.notGood;
 
   return (
     <div
@@ -39,7 +39,7 @@ const RatingIndicator = ({ voteAverage, className }) => {
         <p className="absolute text-white font-extrabold">NR</p>
       </Activity>
     </div>
-  )
-}
+  );
+};
 
-export default RatingIndicator
+export default RatingIndicator;

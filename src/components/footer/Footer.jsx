@@ -1,5 +1,5 @@
-import { FooterLinks } from "../../constants/index"
-import Logo from "../Logo"
+import { FooterLinks } from "@constants/index";
+import Logo from "../Logo";
 
 /**
  * footer component with list links.
@@ -45,7 +45,7 @@ const Footer = () => {
         Build 722ea34 (9678)
       </section>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

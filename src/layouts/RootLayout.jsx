@@ -1,5 +1,5 @@
-import Header from "../components/header/Header"
-import Footer from "../components/footer/Footer"
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 /**
  * this layout is used with header and footer all the content goes between header and footer displays header in top and footer in bottom.
@@ -15,7 +15,7 @@ const RootLayout = ({ children }) => {
       {children}
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default RootLayout
+export default RootLayout;

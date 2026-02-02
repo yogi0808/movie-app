@@ -1,11 +1,11 @@
-import { FaBookmark, FaList } from "react-icons/fa6"
-import { IoIosStar, IoMdHeart } from "react-icons/io"
+import { FaBookmark, FaList } from "react-icons/fa6";
+import { IoIosStar, IoMdHeart } from "react-icons/io";
 
 export const statusColors = {
   good: "#00c950",
   normal: "#ffb86a",
   notGood: "#fb2c36",
-}
+};
 
 export const HeaderLinks = [
   {
@@ -44,7 +44,7 @@ export const HeaderLinks = [
       { id: 5, text: "API for Business", link: "#" },
     ],
   },
-]
+];
 
 export const FooterLinks = [
   {
@@ -151,7 +151,7 @@ export const FooterLinks = [
       },
     ],
   },
-]
+];
 
 export const MoviePopupLinks = [
   {
@@ -178,16 +178,16 @@ export const MoviePopupLinks = [
     icon: <IoIosStar className="text-black" />,
     link: "#",
   },
-]
+];
 
 export const endpointsForPopularMovies = [
   "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
   "tv/popular?include_adult=false&language=en-US",
   "discover/movie?include_adult=false&with_watch_monetization_types=rent&include_video=false&watch_region=US&sort_by=popularity.desc",
   "movie/now_playing?region=US&language=en-US",
-]
+];
 
 export const endpointsForFreeToWatchMovies = [
   "/discover/movie?include_adult=false&with_watch_monetization_types=ads|free&watch_region=US&",
   "/discover/tv?include_adult=false&with_watch_monetization_types=ads|free&watch_region=US&",
-]
+];

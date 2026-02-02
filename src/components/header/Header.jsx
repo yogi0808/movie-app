@@ -1,15 +1,15 @@
-import Logo from "../Logo"
-import LinkWidthOptions from "./LinkWidthOptions"
-import { HeaderLinks } from "../../constants/index"
-import { MdAdd, MdNotifications, MdOutlineSearch } from "react-icons/md"
-import useScroll from "../../hooks/useScroll"
+import Logo from "../Logo";
+import LinkWidthOptions from "./LinkWidthOptions";
+import { HeaderLinks } from "@constants/index";
+import { MdAdd, MdNotifications, MdOutlineSearch } from "react-icons/md";
+import useScroll from "@hooks/useScroll";
 
 /**
  * header component that displays the logo navigation lins and also hides when user is scrolls down and when user scrolls back up it appears again.
  * @returns - jsx for the header component
  */
 const Header = () => {
-  const { scrollDirection } = useScroll() // to get the user scroll direction it is custom hook
+  const { scrollDirection } = useScroll(); // to get the user scroll direction it is custom hook
 
   return (
     <header
@@ -22,42 +22,30 @@ const Header = () => {
           </div>
           <nav className="flex gap-3.75 flex-wrap h-fit">
             {HeaderLinks.map((link) => (
-              <LinkWidthOptions
-                key={link.id}
-                link={link}
-              />
+              <LinkWidthOptions key={link.id} link={link} />
             ))}
           </nav>
         </div>
         <div className="flex gap-7.5 justify-center items-center h-full">
           <button>
-            <MdAdd
-              size={25}
-              className="text-white"
-            />
+            <MdAdd size={25} className="text-white" />
           </button>
           <button className="border border-white py-0.5 px-1 rounded font-semibold text-sm">
             EN
           </button>
           <button>
-            <MdNotifications
-              size={20}
-              className="text-white"
-            />
+            <MdNotifications size={20} className="text-white" />
           </button>
           <button className="bg-accent text-[14px] font-semibold h-8 rounded-full aspect-square">
             Y
           </button>
           <button>
-            <MdOutlineSearch
-              size={30}
-              className="text-highlight"
-            />
+            <MdOutlineSearch size={30} className="text-highlight" />
           </button>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

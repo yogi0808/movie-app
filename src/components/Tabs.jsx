@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import GradientText from "./GradientText"
+import { useEffect, useRef, useState } from "react";
+import GradientText from "./GradientText";
 
 /**
  * this is an tab component it performs the actin based on selected(active) tab.
@@ -13,27 +13,24 @@ import GradientText from "./GradientText"
  */
 
 const Tabs = ({ data = [], activeTab, onTabChange }) => {
-  const [tabStyle, setTabStyle] = useState({ left: 0, width: 0 })
+  const [tabStyle, setTabStyle] = useState({ left: 0, width: 0 });
 
-  const tabsRef = useRef([])
+  const tabsRef = useRef([]);
 
   useEffect(() => {
-    const currentTab = tabsRef.current[activeTab]
+    const currentTab = tabsRef.current[activeTab];
     if (currentTab) {
       setTabStyle({
         left: currentTab.offsetLeft,
         width: currentTab.offsetWidth,
-      })
+      });
     }
-  }, [activeTab])
+  }, [activeTab]);
 
   return (
     <div className="flex border border-primary w-fit rounded-full relative justify-center items-center">
       {data.map((item, idx) => (
-        <GradientText
-          key={idx}
-          gradient="bg-gradient2"
-        >
+        <GradientText key={idx} gradient="bg-gradient2">
           <p
             onClick={() => onTabChange(idx)}
             ref={(el) => (tabsRef.current[idx] = el)}
@@ -53,7 +50,7 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Tabs
+export default Tabs;
