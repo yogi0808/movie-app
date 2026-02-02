@@ -20,7 +20,7 @@ const Footer = () => {
         </div>
         {FooterLinks.map((link) => (
           <div key={link.id}>
-            <h3 className="text-[20.16px] font-bold uppercase leading-[28.224px]">
+            <h3 className="text-[1.26rem] font-bold uppercase leading-[28.224px]">
               {link.title}
             </h3>
             <ul className="flex flex-col">

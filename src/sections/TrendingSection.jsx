@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MovieCard from "@components/cards/MovieCard";
 import TitleWithTabs from "@components/TitleWithTabs";
 import { useGetTrendingMoviesQuery } from "@redux/api/movies";
+import Section from "./Section";
 
 /**
  * this component is responsible for getting and displaying trending movies data based on the user preference with tab.
@@ -33,34 +34,29 @@ const TrendingSection = () => {
   }, []);
 
   return (
-    <section className="px-5 pt-7.5 flex justify-center">
-      <div className="max-w-325 flex flex-col w-full">
-        <TitleWithTabs
-          title="Trending"
-          data={["Today", "This Week"]}
-          activeTab={activeTab}
-          onTabChange={changeTab}
-        />
-        <div className="relative">
-          <img
-            className="absolute left-0 top-35 -z-1 w-full"
-            src="line-bg.svg"
-          />
-          <div
-            className={`flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10 ${isLoading ? "animate-breath" : "animate-fade-in"}`}
-          >
-            {data.results.map((movieData) => (
-              <MovieCard
-                data={movieData}
-                isLoading={isLoading}
-                key={movieData.id}
-              />
-            ))}
-          </div>
-          <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
+    <Section>
+      <TitleWithTabs
+        title="Trending"
+        data={["Today", "This Week"]}
+        activeTab={activeTab}
+        onTabChange={changeTab}
+      />
+      <div className="relative">
+        <img className="absolute left-0 top-35 -z-1 w-full" src="line-bg.svg" />
+        <div
+          className={`flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10 ${isLoading ? "animate-breath" : "animate-fade-in"}`}
+        >
+          {data.results.map((movieData) => (
+            <MovieCard
+              data={movieData}
+              isLoading={isLoading}
+              key={movieData.id}
+            />
+          ))}
         </div>
+        <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
       </div>
-    </section>
+    </Section>
   );
 };
 
