@@ -17,7 +17,7 @@ const SearchBar = () => {
         <MdOutlineSearch className="text-black" size={20} />
         <input
           type="text"
-          className="w-full px-2.5 h-full focus:outline-none font-[Arial,sans-serif]! leading-6 mt-0.5 text-[16px] italic text-search-text placeholder-search-text"
+          className="w-full px-2.5 h-full focus:outline-none font-[Arial,sans-serif]! leading-6 mt-0.5 italic text-search-text placeholder-search-text"
           placeholder="Search for a movie, tv show, person..."
         />
       </div>

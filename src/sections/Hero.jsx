@@ -21,7 +21,7 @@ const Hero = () => {
           </h1>
         </GradientText>
         <div className="mt-2.5">
-          <p className="text-[20px] mb-5 leading-7.5">
+          <p className="text-[1.25rem] mb-5 leading-7.5">
             The best (and worst) of the year from TMDB.
           </p>
           <a className="flex hover:bg-gradient items-center gap-1 font-semibold w-fit border-2 rounded-full px-4 py-1">

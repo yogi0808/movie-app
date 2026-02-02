@@ -14,23 +14,23 @@ const Footer = () => {
           <div className="w-32.5 h-23.5 absolute top-0 right-0">
             <Logo xl />
           </div>
-          <a className="text-highlight bg-white wrap-break-word max-w-65 line-clamp-2 text-[18.72px] font-bold border-2 border-white rounded-[5px] px-4 py-2 relative top-35">
+          <a className="text-highlight bg-white wrap-break-word max-w-65 line-clamp-2 text-[1.17rem] font-bold border-2 border-white rounded-[0.3125rem] px-4 py-2 relative top-35">
             Hi yogi0808!
           </a>
         </div>
         {FooterLinks.map((link) => (
           <div key={link.id}>
-            <h3 className="text-[1.26rem] font-bold uppercase leading-[28.224px]">
+            <h3 className="text-[1.26rem] font-bold uppercase leading-[1.764rem]">
               {link.title}
             </h3>
             <ul className="flex flex-col">
               {link.links.map((link) => (
                 <li
                   key={link.id}
-                  className="leading-[23.04px] text-[14.4px] max-w-65 whitespace-nowrap overflow-hidden text-ellipsis text-white"
+                  className="leading-[1.44rem] text-[0.9rem] max-w-65 whitespace-nowrap overflow-hidden text-ellipsis text-white"
                 >
                   <a
-                    className="text-[17.28px]  hover:underline transition-all duration-300 ease-out"
+                    className="text-[1.08rem]  hover:underline transition-all duration-300 ease-out"
                     href={link.link}
                   >
                     {link.text}
@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <section className="text-[11.2px] text-white opacity-10">
+      <section className="text-[0.7rem] text-white opacity-10">
         Build 722ea34 (9678)
       </section>
     </footer>

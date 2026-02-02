@@ -38,7 +38,7 @@ const MovieCard = ({ data, isLoading }) => {
   return (
     <div className={`max-w-37.5 relative flex flex-col content-stretch`}>
       <div
-        className={`w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[80px] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card`}
+        className={`w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card`}
       >
         <Activity mode={isLoading ? "hidden" : "visible"}>
           <img
