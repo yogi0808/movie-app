@@ -9,7 +9,8 @@
       "@layouts/*": ["src/layouts/*"],
       "@redux/*": ["src/redux/*"],
       "@screens/*": ["src/screens/*"],
-      "@sections/*": ["src/sections/*"]
+      "@sections/*": ["src/sections/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }

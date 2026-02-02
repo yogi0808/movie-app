@@ -1,6 +1,7 @@
 import { Activity, useEffect, useRef, useState } from "react";
 import { MoviePopupLinks } from "@constants/index";
 import RatingIndicator from "./RatingIndicator";
+import { formateDate } from "@/utils/utils";
 
 /**
  * movie card component for displaying movie image, title or name, date, and ratting also show the popup menu based on user action like click on more option.
@@ -81,13 +82,7 @@ const MovieCard = ({ data, isLoading }) => {
             {data.title || data.name}
           </a>
           <p className="text-stone-500">
-            {new Date(
-              data.release_date || data.first_air_date,
-            ).toLocaleDateString("en-US", {
-              month: "short",
-              day: "2-digit",
-              year: "numeric",
-            })}
+            {formateDate(data.release_date || data.first_air_date)}
           </p>
         </Activity>
       </div>

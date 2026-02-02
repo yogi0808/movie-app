@@ -15,6 +15,7 @@ export default defineConfig({
       "@redux": "/src/redux/",
       "@screens": "/src/screens/",
       "@sections": "/src/sections/",
+      "@utils": "/src/utils/",
     },
   },
 });
