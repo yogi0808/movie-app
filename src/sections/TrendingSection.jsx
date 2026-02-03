@@ -63,8 +63,8 @@ const TrendingSection = () => {
               key={movieData.id}
             />
           ))}
-          <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
         </div>
+        <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
       </div>
     </Section>
   );
