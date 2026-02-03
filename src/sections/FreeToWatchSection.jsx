@@ -21,7 +21,7 @@ const FreeToWatchSection = () => {
   } = useGetMoviesQuery(endpointsForFreeToWatchMovies[activeTab]); // redux query for data fetching return the data, error, and loading state
 
   const wrapperClassNames = classNames(
-    "flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10",
+    "flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-5 lg:px-10 relative",
     {
       "animate-breath": isLoading,
       "animate-fade-in": !isLoading,
@@ -59,8 +59,8 @@ const FreeToWatchSection = () => {
             key={movieData.id}
           />
         ))}
+        <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
       </div>
-      <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
     </Section>
   );
 };

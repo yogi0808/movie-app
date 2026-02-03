@@ -46,6 +46,44 @@ export const HeaderLinks = [
   },
 ];
 
+export const mobileHeaderLinks = [
+  {
+    id: 1,
+    text: "Contribution Bible",
+    link: "#",
+  },
+  {
+    id: 2,
+    text: "Discussions",
+    link: "#",
+  },
+  {
+    id: 3,
+    text: "Leaderboard",
+    link: "#",
+  },
+  {
+    id: 4,
+    text: "API",
+    link: "#",
+  },
+  {
+    id: 5,
+    text: "Support",
+    link: "#",
+  },
+  {
+    id: 6,
+    text: "About",
+    link: "#",
+  },
+  {
+    id: 7,
+    text: "Logout",
+    link: "#",
+  },
+];
+
 export const FooterLinks = [
   {
     id: 1,

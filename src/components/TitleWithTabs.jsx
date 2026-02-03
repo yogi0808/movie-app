@@ -14,7 +14,7 @@ import Tabs from "./Tabs";
  */
 const TitleWithTabs = ({ data = [], title, activeTab, onTabChange }) => {
   return (
-    <div className="flex items-center gap-5 px-10">
+    <div className="flex lg:items-center gap-2 lg:gap-5 px-5 md:px-10 flex-wrap">
       <h2 className="text-2xl font-semibold leading-6">{title}</h2>
       <Tabs data={data} activeTab={activeTab} onTabChange={onTabChange} />
     </div>

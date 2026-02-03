@@ -8,13 +8,13 @@ import Logo from "../Logo";
  */
 const Footer = () => {
   return (
-    <footer className="text-white flex items-center flex-col bg-primary">
-      <div className="py-20 flex gap-10 flex-wrap">
-        <div className="relative -top-9">
-          <div className="w-32.5 h-23.5 absolute top-0 right-0">
+    <footer className="text-white flex lg:items-center flex-col bg-primary">
+      <div className="py-10 lg:py-20 max-lg:px-5 flex gap-10 w-fit flex-wrap max-lg:flex-col">
+        <div className="relative lg:-top-9">
+          <div className="w-32.5 h-23.5 absolute top-0 right-0 max-lg:hidden">
             <Logo xl />
           </div>
-          <a className="text-highlight bg-white wrap-break-word max-w-65 line-clamp-2 text-lg font-bold border-2 border-white rounded-sm px-4 py-2 relative top-35">
+          <a className="text-btn lg:text-highlight bg-white w-fit wrap-break-word max-w-65 line-clamp-2 text-lg font-bold border-2 border-white rounded-sm px-4 py-2 relative lg:top-35">
             Hi yogi0808!
           </a>
         </div>
@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <section className="text-xs text-white opacity-10">
+      <section className="text-xs text-white opacity-10 text-center">
         Build 722ea34 (9678)
       </section>
     </footer>

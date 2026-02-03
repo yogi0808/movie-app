@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import GradientText from "./GradientText";
+import classNames from "classnames";
 
 /**
  * this is an tab component it performs the actin based on selected(active) tab.
@@ -29,19 +30,25 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
 
   return (
     <div className="flex border border-primary w-fit rounded-full relative justify-center items-center">
-      {data.map((item, idx) => (
-        <GradientText key={idx} gradient="bg-gradient2">
-          <p
-            onClick={() => onTabChange(idx)}
-            ref={(el) => (tabsRef.current[idx] = el)}
-            className={`px-5 font-semibold py-0.5 cursor-pointer transition-colors ease-out duration-300 ${
-              activeTab === idx ? "text-transparent" : "text-black"
-            }`}
-          >
-            {item}
-          </p>
-        </GradientText>
-      ))}
+      {data.map((item, idx) => {
+        const linkClassNames = classNames(
+          "px-2.75 lg:px-5 max-lg:text-xs/10 max-lg:leading-6 font-semibold py-0.5 cursor-pointer transition-colors ease-out duration-300 text-black",
+          {
+            "text-transparent!": activeTab === idx,
+          },
+        );
+        return (
+          <GradientText key={idx} gradient="bg-gradient2">
+            <p
+              onClick={() => onTabChange(idx)}
+              ref={(el) => (tabsRef.current[idx] = el)}
+              className={linkClassNames}
+            >
+              {item}
+            </p>
+          </GradientText>
+        );
+      })}
       <div
         className="bg-primary h-full rounded-full w-14 absolute top-0 left-0 transition-all duration-300 ease-out -z-1"
         style={{

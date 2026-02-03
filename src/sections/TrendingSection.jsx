@@ -20,7 +20,7 @@ const TrendingSection = () => {
   } = useGetTrendingMoviesQuery(activeTab === 1 ? "week" : "day"); // redux query for data fetching return the data, error, and loading state
 
   const wrapperClassNames = classNames(
-    "flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-10",
+    "flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-5 lg:px-10 relative",
     {
       "animate-breath": isLoading,
       "animate-fade-in": !isLoading,
@@ -43,7 +43,7 @@ const TrendingSection = () => {
   }, []);
 
   return (
-    <Section>
+    <Section className="max-lg:bg-[url('/line-bg.svg')] bg-no-repeat bg-position-[50%_200px] bg-size-[1400px]">
       <TitleWithTabs
         title="Trending"
         data={["Today", "This Week"]}
@@ -51,7 +51,10 @@ const TrendingSection = () => {
         onTabChange={changeTab}
       />
       <div className="relative">
-        <img className="absolute left-0 top-35 -z-1 w-full" src="line-bg.svg" />
+        <img
+          className="absolute left-0 top-35 -z-1 w-full max-lg:hidden"
+          src="line-bg.svg"
+        />
         <div className={wrapperClassNames}>
           {data.results.map((movieData) => (
             <MovieCard
@@ -60,8 +63,8 @@ const TrendingSection = () => {
               key={movieData.id}
             />
           ))}
+          <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
         </div>
-        <div className="h-full w-15 bg-gradient3 absolute right-0 top-0"></div>
       </div>
     </Section>
   );

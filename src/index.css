@@ -27,8 +27,10 @@
 @theme {
   --color-primary: #032541;
   --color-accent: #01c6ac;
+  --color-btn: #235ea7;
   --color-highlight: #01b4e4;
   --color-card: #dadada;
+  --color-m-nav: #032541;
   --color-search-text: #acacac;
   --color-search-border: #e3e3e3;
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
