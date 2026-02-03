@@ -25,9 +25,7 @@ const RatingIndicator = ({ voteAverage, className }) => {
         />
         <div className="w-6.75 h-6.75 bg-black absolute rounded-full flex items-center justify-center">
           <p className="text-white leading-3 text-sm font-bold">{rating}</p>
-          <span className="text-[0.37rem] leading-6 text-white self-start">
-            %
-          </span>
+          <span className="text-[6px] leading-6 text-white self-start">%</span>
         </div>
       </Activity>
       <Activity mode={!voteAverage ? "visible" : "hidden"}>

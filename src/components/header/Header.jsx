@@ -44,7 +44,7 @@ const Header = () => {
           <button>
             <MdNotifications size={20} className="text-white" />
           </button>
-          <button className="bg-accent text-[0.875rem] font-semibold h-8 rounded-full aspect-square">
+          <button className="bg-accent text-sm font-semibold h-8 rounded-full aspect-square">
             Y
           </button>
           <button>
