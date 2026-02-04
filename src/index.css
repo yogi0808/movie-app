@@ -35,7 +35,7 @@
   --color-search-border: #e3e3e3;
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
   --background-size-md: 80px;
-  --animate-fade-in: fade-in 0.2s linear 0s alternate;
+  --animate-fade-in: fade-in 0.3s linear;
   --animate-breath: breath 3s linear infinite;
   --background-image-gradient: linear-gradient(
     to bottom right,

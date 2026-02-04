@@ -8,10 +8,9 @@ import { formateDate } from "@/utils/utils";
  *
  * @param {object} param0 - with props data, isLoading
  *  @param {object} data - movie Data
- *  @param {boolean} isLoading - for loading indication
  * @returns - jsx for the single movie data display
  */
-const MovieCard = ({ data, isLoading }) => {
+const MovieCard = ({ data }) => {
   const [isPopupActive, setIsPopupActive] = useState(false); // using this state for popup activation and deactivation
   const popupRef = useRef(); // ref for popup menu
 
@@ -36,16 +35,12 @@ const MovieCard = ({ data, isLoading }) => {
   }, [popupRef]);
 
   return (
-    <div className={`max-w-37.5 relative flex flex-col content-stretch`}>
-      <div
-        className={`w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card`}
-      >
-        <Activity mode={isLoading ? "hidden" : "visible"}>
-          <img
-            src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
-            className="rounded-lg w-full"
-          />
-        </Activity>
+    <div className="max-w-37.5 relative flex flex-col content-stretch animate-fade-in">
+      <div className="w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card">
+        <img
+          src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
+          className="rounded-lg w-full"
+        />
         <button
           className="absolute top-2 right-2 w-6.5 cursor-pointer aspect-square opacity-60"
           onClick={() => setIsPopupActive((prev) => !prev)}
@@ -71,20 +66,18 @@ const MovieCard = ({ data, isLoading }) => {
       </div>
       <div className="px-2.5 pt-6.5 relative">
         <RatingIndicator
-          voteAverage={isLoading ? null : data.vote_average}
+          voteAverage={data.vote_average}
           className="absolute -top-4.75 left-2.5"
         />
-        <Activity mode={isLoading ? "hidden" : "visible"}>
-          <a
-            href="#"
-            className="font-bold hover:underline hover:text-highlight leading-5 inline-block transition-all duration-300 ease-out"
-          >
-            {data.title || data.name}
-          </a>
-          <p className="text-stone-500">
-            {formateDate(data.release_date || data.first_air_date)}
-          </p>
-        </Activity>
+        <a
+          href="#"
+          className="font-bold hover:underline hover:text-highlight leading-5 inline-block transition-all duration-300 ease-out"
+        >
+          {data.title || data.name}
+        </a>
+        <p className="text-stone-500">
+          {formateDate(data.release_date || data.first_air_date)}
+        </p>
       </div>
       <Activity mode={isPopupActive ? "visible" : "hidden"}>
         <div className="absolute top-0 animate-fade-in left-0 right-0 bottom-0 bg-black/50 backdrop-blur-lg rounded-lg" />
