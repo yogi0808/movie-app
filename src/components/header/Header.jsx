@@ -22,7 +22,6 @@ const Header = () => {
   const headerClassNames = classNames(
     "w-full sticky transition-all duration-300 ease-out top-0 bg-primary text-white h-16 z-99",
     {
-      "top-0!": scrollDirection === "down",
       "-top-16!": scrollDirection !== "down",
     },
   );

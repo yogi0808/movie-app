@@ -1,5 +1,6 @@
 import { Activity } from "react";
 import { getRating } from "@/utils/utils";
+import classNames from "classnames";
 
 /**
  * rating indicator component it displays rating circle indicator based on the average votes of the movie used gradient to create and ring progress.
@@ -12,10 +13,15 @@ import { getRating } from "@/utils/utils";
 const RatingIndicator = ({ voteAverage, className }) => {
   const { rating, ratingGradient } = getRating(voteAverage);
 
+  const wrapperClassNames = classNames(
+    "w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full",
+    {
+      [className]: className,
+    },
+  );
+
   return (
-    <div
-      className={`w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full ${className}`}
-    >
+    <div className={wrapperClassNames}>
       <Activity mode={voteAverage ? "visible" : "hidden"}>
         <div
           className="w-8 h-8 bg-green-500 absolute rounded-full"

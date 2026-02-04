@@ -12,10 +12,9 @@ const SearchBar = () => {
 
   // getting dynamic class names based on the condition
   const searchBarClassNames = classNames(
-    "w-full border-b border-search-border sticky transition-all duration-300 ease-out bg-white h-11.5 z-98",
+    "w-full border-b border-search-border sticky transition-all duration-300 ease-out bg-white h-11.5 z-98 top-16",
     {
-      "top-16": scrollDirection === "down",
-      "top-0": scrollDirection !== "down",
+      "top-0!": scrollDirection !== "down",
     },
   );
 
@@ -25,7 +24,8 @@ const SearchBar = () => {
         <MdOutlineSearch className="text-black" size={20} />
         <input
           type="text"
-          className="w-full px-2.5 h-full focus:outline-none font-[Arial,sans-serif]! leading-6 mt-0.5 italic text-search-text placeholder-search-text"
+          name="search"
+          className="w-full px-2.5 h-full focus:outline-none font-arial! leading-6 mt-0.5 italic text-search-text placeholder-search-text"
           placeholder="Search for a movie, tv show, person..."
         />
       </div>

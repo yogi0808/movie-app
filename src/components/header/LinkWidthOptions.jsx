@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useState } from "react";
 
 /**
@@ -9,6 +10,14 @@ import { useState } from "react";
  */
 const LinkWidthOptions = ({ link }) => {
   const [isOpen, setIsOpen] = useState(false); // for popup activated and deactivated state
+
+  const popupListClassNames = classNames(
+    "bg-white min-w-35 border border-gray-300 text-black flex-col py-1.5 rounded absolute top-9 left-0 flex",
+    {
+      "hidden!": !isOpen,
+    },
+  );
+
   return (
     <button
       onMouseEnter={() => setIsOpen(true)}
@@ -16,11 +25,7 @@ const LinkWidthOptions = ({ link }) => {
       className="relative px-4 py-2"
     >
       <label className="font-semibold leading-6">{link.title}</label>
-      <div
-        className={`bg-white min-w-35 border border-gray-300 text-black ${
-          isOpen ? "flex" : "hidden"
-        } flex-col py-1.5 rounded absolute top-9 left-0`}
-      >
+      <div className={popupListClassNames}>
         {link.options.map((item) => (
           <a
             key={item.id}

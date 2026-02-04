@@ -33,6 +33,7 @@
   --color-m-nav: #032541;
   --color-search-text: #acacac;
   --color-search-border: #e3e3e3;
+  --font-arial: "Arial", sans-serif;
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
   --background-size-md: 80px;
   --animate-fade-in: fade-in 0.3s linear;
