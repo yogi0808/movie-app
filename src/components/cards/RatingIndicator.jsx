@@ -13,6 +13,7 @@ import classNames from "classnames";
 const RatingIndicator = ({ voteAverage, className }) => {
   const { rating, ratingGradient } = getRating(voteAverage);
 
+  // creating an class names string based on the prop class names
   const wrapperClassNames = classNames(
     "w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full",
     {

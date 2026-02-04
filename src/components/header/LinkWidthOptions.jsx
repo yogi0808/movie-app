@@ -11,6 +11,7 @@ import { useState } from "react";
 const LinkWidthOptions = ({ link }) => {
   const [isOpen, setIsOpen] = useState(false); // for popup activated and deactivated state
 
+  // creating an dynamic class name string based on the condition
   const popupListClassNames = classNames(
     "bg-white min-w-35 border border-gray-300 text-black flex-col py-1.5 rounded absolute top-9 left-0 flex",
     {

@@ -15,7 +15,7 @@ const FreeToWatchSection = () => {
   const [activeTab, setActiveTab] = useState(0); // to track the selected(active) tab
   const { data, isLoading } = useFetchMovies(
     endpointsForFreeToWatchMovies[activeTab],
-  ); // redux query for data fetching return the data, error, and loading state
+  ); // custom hook for data fetching return the data, error, and loading state
 
   /**
    * change the activeTab state for changing the state of the active tab

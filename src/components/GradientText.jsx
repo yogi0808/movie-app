@@ -10,6 +10,7 @@ import classNames from "classnames";
  * @returns - jsx for gradient text background with gradient
  */
 const GradientText = ({ gradient, className, children }) => {
+  // creating the class names string based on the prop class names and gradient class
   const gradientClassNames = classNames("w-fit bg-clip-text", {
     [gradient]: gradient,
     [className]: className,

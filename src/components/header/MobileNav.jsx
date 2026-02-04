@@ -12,6 +12,7 @@ import classNames from "classnames";
  * @returns - jsx for the mobile nav menu
  */
 const MobileNav = ({ isActive, navRef }) => {
+  // creating the class names string based on the conditional classes
   const wrapperClassNames = classNames(
     "w-4/5 p-5 fixed flex flex-col gap-2.5 top-16 text-white bg-m-nav/90 md:hidden backdrop-blur-xl h-full z-99 transition-all duration-200 ease-linear -left-full",
     {

@@ -14,10 +14,11 @@ import classNames from "classnames";
  */
 
 const Tabs = ({ data = [], activeTab, onTabChange }) => {
-  const [tabStyle, setTabStyle] = useState({ left: 0, width: 0 });
+  const [tabStyle, setTabStyle] = useState({ left: 0, width: 0 }); // will change the style of the background div(active indicator)
 
-  const tabsRef = useRef([]);
+  const tabsRef = useRef([]); // we have the list of the element all the tabs we have
 
+  // changes the active indicator size and position based on the use selection
   useEffect(() => {
     const currentTab = tabsRef.current[activeTab];
     if (currentTab) {

@@ -15,7 +15,7 @@ const PopularSection = () => {
   const [activeTab, setActiveTab] = useState(0); // to track the selected(active) tab
   const { data, isLoading } = useFetchMovies(
     endpointsForPopularMovies[activeTab],
-  );
+  ); // custom hook for data fetching return the data, error, and loading state
 
   /**
    * change the activeTab state for change the status of the active tab

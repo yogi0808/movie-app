@@ -15,7 +15,7 @@ const TrendingSection = () => {
   const [activeTab, setActiveTab] = useState(0); // to track the selected(active) tab
   const { data, isLoading } = useFetchMovies(
     endpointsForTrendingMovies[activeTab],
-  );
+  ); // custom hook for data fetching return the data, error, and loading state
 
   /**
    * change the activeTab state for changing the state of the active tab
