@@ -7,7 +7,7 @@ const Section = ({ children, className, outerSectionClassName }) => {
   });
 
   const innerDivClassNames = classNames("max-w-325 w-full mx-auto relative", {
-    [classNames]: className,
+    [className]: className,
   });
 
   return (
