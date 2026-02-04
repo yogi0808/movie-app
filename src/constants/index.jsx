@@ -218,6 +218,11 @@ export const MoviePopupLinks = [
   },
 ];
 
+export const endpointsForTrendingMovies = [
+  "trending/all/day",
+  "trending/all/week",
+];
+
 export const endpointsForPopularMovies = [
   "discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc",
   "tv/popular?include_adult=false&language=en-US",

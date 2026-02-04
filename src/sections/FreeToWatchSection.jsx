@@ -1,10 +1,10 @@
 import { useState } from "react";
 import MovieCard from "@components/cards/MovieCard";
 import TitleWithTabs from "@components/TitleWithTabs";
-import { useGetMoviesQuery } from "@redux/api/movies";
 import { endpointsForFreeToWatchMovies } from "@constants";
 import Section from "./Section";
 import MovieCardSkeleton from "@/components/cards/MovieCardSkeleton";
+import useFetchMovies from "@/hooks/useFetchMovies";
 
 /**
  * this component is responsible for getting and displaying free to watch movies data based on the user preference with tab.
@@ -13,7 +13,7 @@ import MovieCardSkeleton from "@/components/cards/MovieCardSkeleton";
  */
 const FreeToWatchSection = () => {
   const [activeTab, setActiveTab] = useState(0); // to track the selected(active) tab
-  const { data, isLoading } = useGetMoviesQuery(
+  const { data, isLoading } = useFetchMovies(
     endpointsForFreeToWatchMovies[activeTab],
   ); // redux query for data fetching return the data, error, and loading state
 

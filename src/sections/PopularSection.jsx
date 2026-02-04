@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useGetMoviesQuery } from "@redux/api/movies";
 import TitleWithTabs from "@components/TitleWithTabs";
 import MovieCard from "@components/cards/MovieCard";
 import { endpointsForPopularMovies } from "@constants/index";
 import Section from "./Section";
 import MovieCardSkeleton from "@/components/cards/MovieCardSkeleton";
+import useFetchMovies from "@/hooks/useFetchMovies";
 
 /**
  * this component is responsible for getting and displaying popular movies data based on the user preference with tab.
@@ -13,9 +13,9 @@ import MovieCardSkeleton from "@/components/cards/MovieCardSkeleton";
  */
 const PopularSection = () => {
   const [activeTab, setActiveTab] = useState(0); // to track the selected(active) tab
-  const { data, isLoading } = useGetMoviesQuery(
+  const { data, isLoading } = useFetchMovies(
     endpointsForPopularMovies[activeTab],
-  ); // redux query for data fetching returns the data, error, and loading state
+  );
 
   /**
    * change the activeTab state for change the status of the active tab

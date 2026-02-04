@@ -1,9 +1,10 @@
 import { useState } from "react";
 import MovieCard from "@components/cards/MovieCard";
 import TitleWithTabs from "@components/TitleWithTabs";
-import { useGetTrendingMoviesQuery } from "@redux/api/movies";
 import Section from "./Section";
 import MovieCardSkeleton from "@/components/cards/MovieCardSkeleton";
+import useFetchMovies from "@/hooks/useFetchMovies";
+import { endpointsForTrendingMovies } from "@/constants";
 
 /**
  * this component is responsible for getting and displaying trending movies data based on the user preference with tab.
@@ -12,9 +13,9 @@ import MovieCardSkeleton from "@/components/cards/MovieCardSkeleton";
  */
 const TrendingSection = () => {
   const [activeTab, setActiveTab] = useState(0); // to track the selected(active) tab
-  const { data, isLoading } = useGetTrendingMoviesQuery(
-    activeTab === 1 ? "week" : "day",
-  ); // redux query for data fetching return the data, error, and loading state
+  const { data, isLoading } = useFetchMovies(
+    endpointsForTrendingMovies[activeTab],
+  );
 
   /**
    * change the activeTab state for changing the state of the active tab
