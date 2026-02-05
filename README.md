@@ -1,37 +1,45 @@
-## origin
+# Movie Screen
 
-- `https://api.themoviedb.org/3/`
+- left section
+- right section
+- collapsible div
+- drop down with optional search option
+- checkbox
+- radiobutton
+- filter section
+- providers
+- genres
+- search button with position change based on the button visibility and filter selections
+- range selector
 
-### Trending
+## sort endpoints
 
-- Day: `/trending/all/day`
-- Week: `/trending/all/week`
+### sorting
 
-### Latest Trailers
+- Popularity Descending - `sort_by=popularity.desc`
+- Popularity Ascending - `sort_by=popularity.asc`
+- Rating Descending - `sort_by=vote_average.desc`
+- Rating Ascending - `sort_by=vote_average.asc`
+- Release Date Descending - `sort_by=primary_release_date.desc`
+- Release Date Ascending - `sort_by=primary_release_date.asc`
+- Title (A - Z) - `sort_by=title.desc`
+- Title (Z - A) - `sort_by=title.asc`
 
-- Popular: `/movie/upcoming?language=en-US&region=US`
-- Streaming: `/discover/movie?with_watch_monetization_types=flatrate&watch_region=US&sort_by=primary_release_date.desc&primary_release_date.lte={TODAY_DATE}`
-- On Tv: `/tv/airing_today?language=en-US`
-- For Rent: `/discover/movie?with_watch_monetization_types=rent&watch_region=US&sort_by=primary_release_date.desc`
-- In Theaters: `movie/now_playing?region=US&language=en-US`
+---
 
-### What's Popular
+- for Countries - `configuration/countries?language=en-US`
+- for languages - `configuration/languages`
+- search for keyword - `search/keyword?query=<Search_Query>&page=1`
+- providers - `watch/providers/movie`
+- genres - `genre/movie/list`
 
-- Stream: `discover/movie?include_adult=false&with_watch_monetization_types=flatrate&include_video=false&watch_region=US&sort_by=popularity.desc`
-- On TV: `tv/popular?include_adult=false&language=en-US`
-- For Rent: `discover/movie?include_adult=false&with_watch_monetization_types=rent&include_video=false&watch_region=US&sort_by=popularity.desc`
-- In Theaters: `movie/now_playing?region=US&language=en-US`
+---
 
-### Free to Watch
+- language - `language=<language_iso>`
+- genres - `with_genres=<genre_number>`
+- certification - `certification=<name_of_certification>`
+- adult content - `include_adult=<true or false>`
+- keyword - `with_keywords=<keywords>`
 
-- Movie: `/discover/movie?with_watch_monetization_types=ads|free&watch_region=US&`
-- TV: `/discover/tv?with_watch_monetization_types=ads|free&watch_region=US&`
-
-1. React init
-2. tailwind css setup
-3. router setup
-4. root layout
-5. header
-6. footer
-7. hero
-8. Trending section
+- Release Date from - `release_date.gte=<date>`
+- Release Date to - `release_date.lte=<date>`
