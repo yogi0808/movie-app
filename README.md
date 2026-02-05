@@ -3,6 +3,7 @@
 - left section
 - right section
 - collapsible div
+- box with divider
 - drop down with optional search option
 - checkbox
 - radiobutton
