@@ -21,6 +21,7 @@ const MoviesScreen = () => {
                 label="Sort Results By"
                 selected={sort}
                 handleSelect={setSort}
+                search
                 list={[
                   {
                     option: "Popularity Descending",

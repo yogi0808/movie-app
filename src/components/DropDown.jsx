@@ -1,6 +1,6 @@
 import useHandleClickOutside from "@/hooks/useHandleClickOutside"
 import classNames from "classnames"
-import React, { Activity, useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { IoMdArrowDropdown } from "react-icons/io"
 
 const DropDown = ({
@@ -14,7 +14,17 @@ const DropDown = ({
   const [options, setOptions] = useState(list)
 
   const popupRef = useRef() // ref for popup menu
+  const selectedRef = useRef() // ref for selected option
   useHandleClickOutside(popupRef, setIsActive)
+
+  useEffect(() => {
+    if (isActive && selectedRef.current) {
+      selectedRef.current.scrollIntoView({
+        block: "nearest",
+        behavior: "smooth",
+      })
+    }
+  }, [isActive])
 
   return (
     <div>
@@ -26,13 +36,13 @@ const DropDown = ({
       >
         <p className="flex-1 ">{selected.option}</p>
         <IoMdArrowDropdown className="text-xl" />
-        <Activity mode={isActive ? "visible" : "hidden"}>
+        {isActive && (
           <div
             onClick={(e) => e.stopPropagation()}
             className="border w-full border-search-border max-w-full absolute left-0 bg-white top-[110%] shadow-card rounded-lg max-h-50 overflow-y-scroll"
           >
-            <Activity mode={search ? "visible" : "hidden"}>
-              <div className="px-3 py-2">
+            {search && (
+              <div className="px-3 py-2 sticky bg-white top-0 left-0">
                 <input
                   className="w-full px-2 py-1 border border-highlight rounded-lg"
                   placeholder="Search..."
@@ -49,18 +59,20 @@ const DropDown = ({
                   autoFocus={true}
                 />
               </div>
-            </Activity>
+            )}
             {options.map((item, idx) => {
+              const isSelected = selected.value === item.value
               const optionsClassNames = classNames(
                 "px-4 py-1.5 font-semibold",
                 {
-                  "bg-highlight text-white": selected.value === item.value,
-                  "hover:bg-gray-100": selected.value !== item.value,
+                  "bg-highlight text-white": isSelected,
+                  "hover:bg-gray-100": !isSelected,
                 },
               )
               return (
                 <p
                   key={idx}
+                  ref={isSelected ? selectedRef : null}
                   className={optionsClassNames}
                   onClick={() => {
                     handleSelect(item)
@@ -72,7 +84,7 @@ const DropDown = ({
               )
             })}
           </div>
-        </Activity>
+        )}
       </div>
     </div>
   )
