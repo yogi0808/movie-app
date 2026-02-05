@@ -75,6 +75,9 @@ const DropDown = ({
                   ref={isSelected ? selectedRef : null}
                   className={optionsClassNames}
                   onClick={() => {
+                    if (search) {
+                      setOptions(list)
+                    }
                     handleSelect(item)
                     setIsActive(false)
                   }}
