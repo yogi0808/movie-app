@@ -3,6 +3,12 @@
 
 @font-face {
   font-family: "Source Sans Pro";
+  src: url("/fonts/source-sans-pro-300.otf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
   src: url("/fonts/source-sans-pro-regular.woff2");
   font-weight: 400;
 }
@@ -38,21 +44,15 @@
   --background-size-md: 80px;
   --animate-fade-in: fade-in 0.5s linear;
   --animate-breath: breath 3s linear infinite;
-  --background-image-gradient: linear-gradient(
-    to bottom right,
-    #b18bf5 0%,
-    #efafbb 65%
-  );
-  --background-image-gradient2: linear-gradient(
-    to right,
-    #c0fecf 0,
-    #1ed5a9 100%
-  );
-  --background-image-gradient3: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0,
-    #fff 100%
-  );
+  --background-image-gradient: linear-gradient(to bottom right,
+      #b18bf5 0%,
+      #efafbb 65%);
+  --background-image-gradient2: linear-gradient(to right,
+      #c0fecf 0,
+      #1ed5a9 100%);
+  --background-image-gradient3: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0,
+      #fff 100%);
 }
 
 ::-webkit-scrollbar {
