@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi"
 import useScroll from "@hooks/useScroll"
 import classNames from "classnames"
 import MobileNav from "./MobileNav"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import useHandleClickOutside from "@/hooks/useHandleClickOutside"
 
 /**

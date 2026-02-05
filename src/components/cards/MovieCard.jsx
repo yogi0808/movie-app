@@ -1,4 +1,4 @@
-import { Activity, useEffect, useRef, useState } from "react"
+import { Activity, useRef, useState } from "react"
 import { MoviePopupLinks } from "@constants/index"
 import RatingIndicator from "./RatingIndicator"
 import { formateDate } from "@/utils/utils"
