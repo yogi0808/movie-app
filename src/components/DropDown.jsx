@@ -1,3 +1,4 @@
+import useHandleClickOutside from "@/hooks/useHandleClickOutside"
 import classNames from "classnames"
 import React, { Activity, useEffect, useRef, useState } from "react"
 import { IoMdArrowDropdown } from "react-icons/io"
@@ -13,26 +14,7 @@ const DropDown = ({
   const [options, setOptions] = useState(list)
 
   const popupRef = useRef() // ref for popup menu
-
-  useEffect(() => {
-    /**
-     * this function is for handling the click out side of the popup menu to close menu if click out side the menu
-     * @constructor
-     * @param {object} e - mousedown event object
-     */
-    const handleClickOutside = (e) => {
-      if (!popupRef?.current?.contains(e.target)) {
-        setIsActive(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside) // adding an handleClickOutside to mouse click in dom
-
-    /**
-     * this return function is for removing the event listener from the dom
-     */
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [popupRef])
+  useHandleClickOutside(popupRef, setIsActive)
 
   return (
     <div>

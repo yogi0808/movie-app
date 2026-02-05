@@ -1,7 +1,8 @@
-import { Activity, useEffect, useRef, useState } from "react";
-import { MoviePopupLinks } from "@constants/index";
-import RatingIndicator from "./RatingIndicator";
-import { formateDate } from "@/utils/utils";
+import { Activity, useEffect, useRef, useState } from "react"
+import { MoviePopupLinks } from "@constants/index"
+import RatingIndicator from "./RatingIndicator"
+import { formateDate } from "@/utils/utils"
+import useHandleClickOutside from "@/hooks/useHandleClickOutside"
 
 /**
  * movie card component for displaying movie image, title or name, date, and ratting also show the popup menu based on user action like click on more option.
@@ -11,28 +12,10 @@ import { formateDate } from "@/utils/utils";
  * @returns - jsx for the single movie data display
  */
 const MovieCard = ({ data }) => {
-  const [isPopupActive, setIsPopupActive] = useState(false); // using this state for popup activation and deactivation
-  const popupRef = useRef(); // ref for popup menu
+  const [isPopupActive, setIsPopupActive] = useState(false) // using this state for popup activation and deactivation
+  const popupRef = useRef() // ref for popup menu
 
-  useEffect(() => {
-    /**
-     * this function is for handling the click out side of the popup menu to close menu if click out side the menu
-     * @constructor
-     * @param {object} e - mousedown event object
-     */
-    const handleClickOutside = (e) => {
-      if (!popupRef?.current?.contains(e.target)) {
-        setIsPopupActive(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside); // adding an handleClickOutside to mouse click in dom
-
-    /**
-     * this return function is for removing the event listener from the dom
-     */
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [popupRef]);
+  useHandleClickOutside(popupRef, setIsPopupActive)
 
   return (
     <div className="max-w-37.5 relative flex flex-col content-stretch">
@@ -45,7 +28,10 @@ const MovieCard = ({ data }) => {
           className="absolute top-2 right-2 w-6.5 cursor-pointer aspect-square opacity-60"
           onClick={() => setIsPopupActive((prev) => !prev)}
         >
-          <img src="/more.svg" alt="more options" />
+          <img
+            src="/more.svg"
+            alt="more options"
+          />
         </button>
         <Activity mode={isPopupActive ? "visible" : "hidden"}>
           <div
@@ -83,7 +69,7 @@ const MovieCard = ({ data }) => {
         <div className="absolute top-0 animate-fade-in left-0 right-0 bottom-0 bg-black/50 backdrop-blur-lg rounded-lg" />
       </Activity>
     </div>
-  );
-};
+  )
+}
 
-export default MovieCard;
+export default MovieCard
