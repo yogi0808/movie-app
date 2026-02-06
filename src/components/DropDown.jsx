@@ -39,7 +39,7 @@ const DropDown = ({
         {isActive && (
           <div
             onClick={(e) => e.stopPropagation()}
-            className="border w-full border-search-border max-w-full absolute left-0 bg-white top-[110%] shadow-card rounded-lg max-h-50 overflow-y-scroll"
+            className="border w-full border-search-border max-w-full absolute left-0 bg-white top-[110%] shadow-card rounded-lg max-h-50 overflow-y-auto"
           >
             {search && (
               <div className="px-3 py-2 sticky bg-white top-0 left-0">
