@@ -2,8 +2,8 @@ import classNames from "classnames"
 import React, { Activity, useState } from "react"
 import { MdKeyboardArrowRight } from "react-icons/md"
 
-const CollapsibleCard = ({ title, children }) => {
-  const [isActive, setIsActive] = useState(false)
+const CollapsibleCard = ({ title, children, open }) => {
+  const [isActive, setIsActive] = useState(open ? true : false)
 
   const iconsClassNames = classNames("text-xl origin-center", {
     "rotate-90": isActive,

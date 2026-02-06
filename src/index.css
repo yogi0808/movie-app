@@ -55,6 +55,16 @@
       #fff 100%);
 }
 
+@layer utilities {
+  .radio {
+    @apply appearance-none w-4 h-4 border border-search-border rounded-full flex justify-center items-center checked:bg-highlight before:bg-white before:rounded-full before:absolute before:w-1.25 before:h-1.25;
+  }
+
+  .checkbox {
+    @apply appearance-none w-4 h-4 border border-search-border rounded flex justify-center items-center checked:bg-highlight before:text-white before:font-bold before:content-['✓'] before:absolute before:text-xs;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

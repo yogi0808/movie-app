@@ -1,22 +1,16 @@
 import BoxWithDivider from "@/components/BoxWithDivider"
 import DropDown from "@/components/DropDown"
 import CollapsibleCard from "@/components/filters/CollapsibleCard"
+import DummyOptions from "@/components/filters/DummyOptions"
 import ProviderCard from "@/components/filters/ProviderCard"
-import { adultContent, sortOptions } from "@/constants"
+import { sortOptions } from "@/constants"
 import { useFilterContext } from "@/contexts/FilterContext"
 import countries from "@constants/countries.json"
 import React from "react"
 
 const FilterSection = () => {
-  const {
-    country,
-    providers,
-    includeAdult,
-    setIncludeAdult,
-    selectCountry,
-    sortBy,
-    setSortBy,
-  } = useFilterContext()
+  const { selectedCountry, providers, selectCountry, sortBy, setSortBy } =
+    useFilterContext()
 
   return (
     <div className="md:w-65 flex flex-col gap-3">
@@ -34,7 +28,7 @@ const FilterSection = () => {
         <BoxWithDivider className="flex flex-col gap-2">
           <DropDown
             label="Country"
-            selected={country}
+            selected={selectedCountry}
             handleSelect={selectCountry}
             list={countries}
             search
@@ -48,6 +42,12 @@ const FilterSection = () => {
             ))}
           </div>
         </BoxWithDivider>
+      </CollapsibleCard>
+      <CollapsibleCard
+        title="Filters"
+        open
+      >
+        <DummyOptions />
       </CollapsibleCard>
     </div>
   )

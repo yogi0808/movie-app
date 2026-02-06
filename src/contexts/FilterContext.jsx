@@ -5,14 +5,14 @@ import { sortOptions } from "@/constants"
 const filterContext = createContext(null)
 
 const FilterContextProvider = ({ children }) => {
-  const [country, setCountry] = useState(countries[101])
+  const [selectedCountry, setSelectedCountry] = useState(countries[101])
   const [sortBy, setSortBy] = useState(sortOptions[0])
   const [providers, setProviders] = useState([])
   const [selectedProviders, setSelectedProviders] = useState([])
 
   const fetchProviders = async () => {
     const res = await fetch(
-      `${import.meta.env.VITE_BASE_URL}watch/providers/movie?watch_region=${country.value}`,
+      `${import.meta.env.VITE_BASE_URL}watch/providers/movie?watch_region=${selectedCountry.value}`,
       {
         method: "GET",
         headers: {
@@ -32,16 +32,16 @@ const FilterContextProvider = ({ children }) => {
   }
 
   const selectCountry = (cunt) => {
-    setCountry(cunt)
+    setSelectedCountry(cunt)
   }
 
   useEffect(() => {
     fetchProviders()
-  }, [country])
+  }, [selectedCountry])
   return (
     <filterContext.Provider
       value={{
-        country,
+        selectedCountry,
         providers,
         selectedProviders,
         selectCountry,
