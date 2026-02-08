@@ -7,7 +7,7 @@ const MoviesScreen = () => {
   return (
     <FilterContextProvider>
       <RootLayout>
-        <section className="max-w-325 mx-auto px-5 md:px-10 py-4 md:py-7.5">
+        <section className="max-w-350 mx-auto px-5 md:px-10 py-4 md:py-7.5">
           <h2 className="font-semibold text-2xl mb-5">Popular Movies</h2>
           <FilterSection />
           <div></div>

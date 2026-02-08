@@ -5,8 +5,8 @@ import { sortOptions } from "@/constants"
 const filterContext = createContext(null)
 
 const FilterContextProvider = ({ children }) => {
+  const [selectedSortBy, setSelectedSortBy] = useState(sortOptions[0])
   const [selectedCountry, setSelectedCountry] = useState(countries[101])
-  const [sortBy, setSortBy] = useState(sortOptions[0])
   const [providers, setProviders] = useState([])
   const [selectedProviders, setSelectedProviders] = useState([])
 
@@ -27,27 +27,36 @@ const FilterContextProvider = ({ children }) => {
     }
   }
 
-  const selectProvider = (pvd) => {
-    setSelectedProviders((priv) => [...priv, pvd])
+  const selectSortBy = (val, opt) => {
+    setSelectedSortBy({ value: val, option: opt })
   }
 
-  const selectCountry = (cunt) => {
-    setSelectedCountry(cunt)
+  const selectProvider = (val) => {
+    if (selectedProviders.includes(val)) {
+      setSelectedProviders((priv) => priv.filter((a) => a !== val))
+    } else {
+      setSelectedProviders((priv) => [...priv, val])
+    }
+  }
+
+  const selectCountry = (val, opt) => {
+    setSelectedCountry({ value: val, option: opt })
   }
 
   useEffect(() => {
     fetchProviders()
   }, [selectedCountry])
+
   return (
     <filterContext.Provider
       value={{
-        selectedCountry,
+        selectedSortBy,
+        selectSortBy,
         providers,
         selectedProviders,
-        selectCountry,
-        sortBy,
-        setSortBy,
         selectProvider,
+        selectedCountry,
+        selectCountry,
       }}
     >
       {children}

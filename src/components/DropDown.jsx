@@ -9,12 +9,15 @@ const DropDown = ({
   list = [],
   handleSelect,
   search = false,
+  valueKey,
+  optionKey,
 }) => {
   const [isActive, setIsActive] = useState(false)
   const [options, setOptions] = useState(list)
 
   const popupRef = useRef() // ref for popup menu
   const selectedRef = useRef() // ref for selected option
+
   useHandleClickOutside(popupRef, setIsActive)
 
   useEffect(() => {
@@ -34,7 +37,7 @@ const DropDown = ({
         ref={popupRef}
         className="flex items-center pl-3 pr-1.5 py-1.5 rounded-lg border border-search-border hover:bg-gray-50 cursor-pointer relative z-9"
       >
-        <p className="flex-1 ">{selected.option}</p>
+        <p className="flex-1">{selected.option}</p>
         <IoMdArrowDropdown className="text-xl" />
         {isActive && (
           <div
@@ -61,7 +64,7 @@ const DropDown = ({
               </div>
             )}
             {options.map((item, idx) => {
-              const isSelected = selected.value === item.value
+              const isSelected = selected.value === item[valueKey]
               const optionsClassNames = classNames(
                 "px-4 py-1.5 font-semibold",
                 {
@@ -78,11 +81,11 @@ const DropDown = ({
                     if (search) {
                       setOptions(list)
                     }
-                    handleSelect(item)
+                    handleSelect(item[valueKey], item[optionKey])
                     setIsActive(false)
                   }}
                 >
-                  {item.option}
+                  {item[optionKey]}
                 </p>
               )
             })}

@@ -9,8 +9,13 @@ import countries from "@constants/countries.json"
 import React from "react"
 
 const FilterSection = () => {
-  const { selectedCountry, providers, selectCountry, sortBy, setSortBy } =
-    useFilterContext()
+  const {
+    providers,
+    selectedSortBy,
+    selectSortBy,
+    selectedCountry,
+    selectCountry,
+  } = useFilterContext()
 
   return (
     <div className="md:w-65 flex flex-col gap-3">
@@ -18,19 +23,26 @@ const FilterSection = () => {
         <BoxWithDivider>
           <DropDown
             label="Sort Results By"
-            selected={sortBy}
-            handleSelect={setSortBy}
+            selected={selectedSortBy}
+            handleSelect={selectSortBy}
             list={sortOptions}
+            valueKey="value"
+            optionKey="option"
           />
         </BoxWithDivider>
       </CollapsibleCard>
-      <CollapsibleCard title="Where To Watch">
+      <CollapsibleCard
+        title="Where To Watch"
+        count={providers.length}
+      >
         <BoxWithDivider className="flex flex-col gap-2">
           <DropDown
             label="Country"
             selected={selectedCountry}
             handleSelect={selectCountry}
             list={countries}
+            valueKey="value"
+            optionKey="option"
             search
           />
           <div className="flex flex-wrap gap-x-1.5 gap-y-2.5">
