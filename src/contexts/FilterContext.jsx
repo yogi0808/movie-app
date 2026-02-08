@@ -14,6 +14,9 @@ const FilterContextProvider = ({ children }) => {
   const [selectedAdultOpt, setSelectedAdultOpt] = useState(
     includeAdultOptions[0],
   )
+  const [genres, setGenres] = useState([])
+  const [selectedGenres, setSelectedGenres] = useState([])
+  const [selectedCertifications, setSelectedCertifications] = useState([])
 
   const fetchProviders = async () => {
     const res = await fetch(
@@ -32,8 +35,41 @@ const FilterContextProvider = ({ children }) => {
     }
   }
 
+  const fetchGenres = async () => {
+    const res = await fetch(
+      `${import.meta.env.VITE_BASE_URL}genre/movie/list`,
+      {
+        method: "GET",
+        headers: {
+          authorization: import.meta.env.VITE_TOKEN,
+        },
+      },
+    )
+
+    if (res.ok) {
+      const data = await res.json()
+      setGenres(data.genres)
+    }
+  }
+
   const selectSortBy = (val, opt) => {
     setSelectedSortBy({ value: val, option: opt })
+  }
+
+  const selectGenre = (val) => {
+    if (selectedGenres.includes(val)) {
+      setSelectedGenres((priv) => priv.filter((a) => a !== val))
+    } else {
+      setSelectedGenres((priv) => [...priv, val])
+    }
+  }
+
+  const selectCertification = (val) => {
+    if (selectedCertifications.includes(val)) {
+      setSelectedCertifications((priv) => priv.filter((a) => a !== val))
+    } else {
+      setSelectedCertifications((priv) => [...priv, val])
+    }
   }
 
   const selectProvider = (val) => {
@@ -60,6 +96,10 @@ const FilterContextProvider = ({ children }) => {
     fetchProviders()
   }, [selectedCountry])
 
+  useEffect(() => {
+    fetchGenres()
+  }, [])
+
   return (
     <filterContext.Provider
       value={{
@@ -74,6 +114,11 @@ const FilterContextProvider = ({ children }) => {
         selectLanguage,
         selectedAdultOpt,
         selectAdultOpt,
+        genres,
+        selectedGenres,
+        selectGenre,
+        selectedCertifications,
+        selectCertification,
       }}
     >
       {children}

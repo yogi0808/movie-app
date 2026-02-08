@@ -274,3 +274,5 @@ export const includeAdultOptions = [
     value: true,
   },
 ]
+
+export const certifications = ["U", "UA", "A"]
