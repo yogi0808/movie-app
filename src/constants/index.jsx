@@ -263,3 +263,14 @@ export const sortOptions = [
   { option: "Title (A - Z)", value: "title.desc" },
   { option: "Title (Z - A)", value: "title.asc" },
 ]
+
+export const includeAdultOptions = [
+  {
+    option: "Exclude Adult",
+    value: false,
+  },
+  {
+    option: "Include Adult",
+    value: true,
+  },
+]

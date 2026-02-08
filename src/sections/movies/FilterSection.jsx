@@ -3,9 +3,10 @@ import DropDown from "@/components/DropDown"
 import CollapsibleCard from "@/components/filters/CollapsibleCard"
 import DummyOptions from "@/components/filters/DummyOptions"
 import ProviderCard from "@/components/filters/ProviderCard"
-import { sortOptions } from "@/constants"
+import { includeAdultOptions, sortOptions } from "@/constants"
 import { useFilterContext } from "@/contexts/FilterContext"
 import countries from "@constants/countries.json"
+import languages from "@constants/languages.json"
 import React from "react"
 
 const FilterSection = () => {
@@ -15,6 +16,10 @@ const FilterSection = () => {
     selectSortBy,
     selectedCountry,
     selectCountry,
+    selectedLanguage,
+    selectLanguage,
+    selectedAdultOpt,
+    selectAdultOpt,
   } = useFilterContext()
 
   return (
@@ -60,6 +65,27 @@ const FilterSection = () => {
         open
       >
         <DummyOptions />
+        <BoxWithDivider>
+          <DropDown
+            label="Adult Content"
+            selected={selectedAdultOpt}
+            handleSelect={selectAdultOpt}
+            list={includeAdultOptions}
+            valueKey="value"
+            optionKey="option"
+          />
+        </BoxWithDivider>
+        <BoxWithDivider>
+          <DropDown
+            label="Language"
+            selected={selectedLanguage}
+            handleSelect={selectLanguage}
+            list={languages}
+            valueKey="value"
+            optionKey="option"
+            search
+          />
+        </BoxWithDivider>
       </CollapsibleCard>
     </div>
   )

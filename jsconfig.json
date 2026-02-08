@@ -12,5 +12,6 @@
       "@sections/*": ["src/sections/*"],
       "@utils/*": ["src/utils/*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "dist", "build"]
 }

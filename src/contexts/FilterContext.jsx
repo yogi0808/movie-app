@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import countries from "@constants/countries.json"
-import { sortOptions } from "@/constants"
+import languages from "@constants/languages.json"
+import { includeAdultOptions, sortOptions } from "@/constants"
 
 const filterContext = createContext(null)
 
@@ -9,6 +10,10 @@ const FilterContextProvider = ({ children }) => {
   const [selectedCountry, setSelectedCountry] = useState(countries[101])
   const [providers, setProviders] = useState([])
   const [selectedProviders, setSelectedProviders] = useState([])
+  const [selectedLanguage, setSelectedLanguage] = useState(languages[0])
+  const [selectedAdultOpt, setSelectedAdultOpt] = useState(
+    includeAdultOptions[0],
+  )
 
   const fetchProviders = async () => {
     const res = await fetch(
@@ -43,6 +48,14 @@ const FilterContextProvider = ({ children }) => {
     setSelectedCountry({ value: val, option: opt })
   }
 
+  const selectLanguage = (val, opt) => {
+    setSelectedLanguage({ value: val, option: opt })
+  }
+
+  const selectAdultOpt = (val, opt) => {
+    setSelectedAdultOpt({ value: val, option: opt })
+  }
+
   useEffect(() => {
     fetchProviders()
   }, [selectedCountry])
@@ -57,6 +70,10 @@ const FilterContextProvider = ({ children }) => {
         selectProvider,
         selectedCountry,
         selectCountry,
+        selectedLanguage,
+        selectLanguage,
+        selectedAdultOpt,
+        selectAdultOpt,
       }}
     >
       {children}

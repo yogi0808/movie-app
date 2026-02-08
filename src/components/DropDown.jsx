@@ -35,14 +35,14 @@ const DropDown = ({
       <div
         onClick={() => setIsActive((prev) => !prev)}
         ref={popupRef}
-        className="flex items-center pl-3 pr-1.5 py-1.5 rounded-lg border border-search-border hover:bg-gray-50 cursor-pointer relative z-9"
+        className="flex items-center pl-3 pr-1.5 py-1.5 rounded-lg border border-search-border hover:bg-gray-50 cursor-pointer relative"
       >
         <p className="flex-1">{selected.option}</p>
         <IoMdArrowDropdown className="text-xl" />
         {isActive && (
           <div
             onClick={(e) => e.stopPropagation()}
-            className="border w-full border-search-border max-w-full absolute left-0 bg-white top-[110%] shadow-card rounded-lg max-h-50 overflow-y-auto"
+            className="border w-full border-search-border max-w-full absolute left-0 bg-white top-[110%] shadow-card rounded-lg max-h-50 overflow-y-auto z-9"
           >
             {search && (
               <div className="px-3 py-2 sticky bg-white top-0 left-0">
