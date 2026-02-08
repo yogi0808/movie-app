@@ -73,6 +73,15 @@ const Filters = () => {
           search
         />
       </BoxWithDivider>
+      <BoxWithDivider>
+        <h3 className="mb-2.5 font-light">Keywords</h3>
+        <input
+          name="keyword"
+          className="input"
+          type="text"
+          placeholder="Filter by keywords..."
+        />
+      </BoxWithDivider>
     </CollapsibleCard>
   )
 }

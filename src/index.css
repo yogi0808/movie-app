@@ -64,6 +64,10 @@
   .checkbox {
     @apply appearance-none w-4 h-4 border border-search-border rounded flex justify-center items-center checked:bg-highlight before:text-white before:font-bold before:content-['✓'] before:absolute before:text-xs;
   }
+
+  .input {
+    @apply w-full px-3 py-1.5 placeholder:text-black bg-white border border-search-border focus:border-highlight rounded-lg focus:outline-none;
+  }
 }
 
 ::-webkit-scrollbar {

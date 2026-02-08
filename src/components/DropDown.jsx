@@ -47,7 +47,7 @@ const DropDown = ({
             {search && (
               <div className="px-3 py-2 sticky bg-white top-0 left-0">
                 <input
-                  className="w-full px-2 py-1 border border-highlight rounded-lg"
+                  className="w-full px-2 py-1 border focus:border-highlight rounded-lg outline-none"
                   placeholder="Search..."
                   type="text"
                   onChange={(e) => {
