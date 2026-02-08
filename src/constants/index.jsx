@@ -238,28 +238,28 @@ export const endpointsForFreeToWatchMovies = [
 export const sortOptions = [
   {
     option: "Popularity Descending",
-    value: "sort_by=popularity.desc",
+    value: "popularity.desc",
   },
   {
     option: "Popularity Ascending",
-    value: "sort_by=popularity.asc",
+    value: "popularity.asc",
   },
   {
     option: "Rating Descending",
-    value: "sort_by=vote_average.desc",
+    value: "vote_average.desc",
   },
   {
     option: "Rating Ascending",
-    value: "sort_by=vote_average.asc",
+    value: "vote_average.asc",
   },
   {
     option: "Release Date Descending",
-    value: "sort_by=primary_release_date.desc",
+    value: "primary_release_date.desc",
   },
   {
     option: "Release Date Ascending",
-    value: "sort_by=primary_release_date.asc",
+    value: "primary_release_date.asc",
   },
-  { option: "Title (A - Z)", value: "sort_by=title.desc" },
-  { option: "Title (Z - A)", value: "sort_by=title.asc" },
+  { option: "Title (A - Z)", value: "title.desc" },
+  { option: "Title (Z - A)", value: "title.asc" },
 ]
