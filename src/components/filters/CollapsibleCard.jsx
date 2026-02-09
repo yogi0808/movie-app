@@ -10,7 +10,7 @@ const CollapsibleCard = ({ title, count, children, open }) => {
   })
 
   return (
-    <div className="max-w-65 shadow-card border border-search-border rounded-lg flex flex-col">
+    <div className="min-w-65 shadow-card border border-search-border rounded-lg flex flex-col">
       <div
         className="flex justify-between px-4 py-3.5 cursor-pointer items-center"
         onClick={() => setIsActive((prev) => !prev)}

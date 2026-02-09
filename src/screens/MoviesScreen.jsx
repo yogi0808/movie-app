@@ -1,5 +1,6 @@
 import FilterContextProvider from "@/contexts/FilterContext"
 import RootLayout from "@/layouts/RootLayout"
+import FilteredMoviesSection from "@/sections/movies/FilteredMoviesSection"
 import FilterSection from "@/sections/movies/FilterSection"
 import React from "react"
 
@@ -9,8 +10,10 @@ const MoviesScreen = () => {
       <RootLayout>
         <section className="max-w-350 mx-auto px-5 md:px-10 py-4 md:py-7.5">
           <h2 className="font-semibold text-2xl mb-5">Popular Movies</h2>
-          <FilterSection />
-          <div></div>
+          <div className="w-full flex max-sm:flex-wrap gap-7.5">
+            <FilterSection />
+            <FilteredMoviesSection />
+          </div>
         </section>
       </RootLayout>
     </FilterContextProvider>

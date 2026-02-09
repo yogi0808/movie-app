@@ -6,6 +6,7 @@ import { includeAdultOptions, sortOptions } from "@/constants"
 const filterContext = createContext(null)
 
 const FilterContextProvider = ({ children }) => {
+  const [filteredMovies, setFilteredMovies] = useState(null)
   const [selectedSortBy, setSelectedSortBy] = useState(sortOptions[0])
   const [selectedCountry, setSelectedCountry] = useState(countries[101])
   const [providers, setProviders] = useState([])
@@ -49,6 +50,38 @@ const FilterContextProvider = ({ children }) => {
     if (res.ok) {
       const data = await res.json()
       setGenres(data.genres)
+    }
+  }
+
+  const fetchFilteredMovies = async (page) => {
+    let query = "discover/movie?"
+
+    if (selectedSortBy.value) {
+      query += `&sort_by=${selectedSortBy.value}`
+    } else if (selectedProviders.length > 0) {
+      query += `&with_watch_providers=${selectedProviders.join(",")}`
+    } else if (selectedGenres.length > 0) {
+      query += `&with_genres=${selectedGenres.join(",")}`
+    } else if (selectedCertifications.length > 0) {
+      query += `&certification=${selectedCertifications.join(",")}`
+    } else if (selectedAdultOpt) {
+      query += `&include_adult=${selectedAdultOpt.value}`
+    } else if (selectedLanguage.value) {
+      query += `&language=${selectedLanguage.value}`
+    } else if (page) {
+      query += `$page=${page}`
+    }
+
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}${query}`, {
+      method: "GET",
+      headers: {
+        authorization: import.meta.env.VITE_TOKEN,
+      },
+    })
+
+    if (res.ok) {
+      const data = await res.json()
+      setFilteredMovies(data)
     }
   }
 
@@ -98,6 +131,7 @@ const FilterContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchGenres()
+    fetchFilteredMovies()
   }, [])
 
   return (
@@ -119,6 +153,7 @@ const FilterContextProvider = ({ children }) => {
         selectGenre,
         selectedCertifications,
         selectCertification,
+        filteredMovies,
       }}
     >
       {children}

@@ -18,8 +18,8 @@ const MovieCard = ({ data }) => {
   useHandleClickOutside(popupRef, setIsPopupActive)
 
   return (
-    <div className="max-w-37.5 relative flex flex-col content-stretch">
-      <div className="w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card">
+    <div className="min-w-37.5 relative flex flex-col content-stretch">
+      <div className="min-w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card">
         <img
           src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
           className="rounded-lg w-full"
