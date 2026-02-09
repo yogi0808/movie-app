@@ -6,7 +6,7 @@ import { includeAdultOptions, sortOptions } from "@/constants"
 const filterContext = createContext(null)
 
 const FilterContextProvider = ({ children }) => {
-  const [filteredMovies, setFilteredMovies] = useState(null)
+  const [filteredMovies, setFilteredMovies] = useState([])
   const [selectedSortBy, setSelectedSortBy] = useState(sortOptions[0])
   const [selectedCountry, setSelectedCountry] = useState(countries[101])
   const [providers, setProviders] = useState([])
@@ -20,6 +20,7 @@ const FilterContextProvider = ({ children }) => {
   const [selectedCertifications, setSelectedCertifications] = useState([])
   const [runtime, setRuntime] = useState([0, 400])
   const [userVotes, setUserVotes] = useState([0])
+  const [nextPage, setNextPage] = useState(1)
 
   const fetchProviders = async () => {
     const res = await fetch(
@@ -55,8 +56,9 @@ const FilterContextProvider = ({ children }) => {
     }
   }
 
-  const fetchFilteredMovies = async (page) => {
-    let query = "discover/movie?"
+  const fetchFilteredMovies = async () => {
+    let query = `discover/movie?page=${nextPage}`
+    console.log(nextPage)
 
     if (selectedSortBy.value) {
       query += `&sort_by=${selectedSortBy.value}`
@@ -70,8 +72,6 @@ const FilterContextProvider = ({ children }) => {
       query += `&include_adult=${selectedAdultOpt.value}`
     } else if (selectedLanguage.value) {
       query += `&language=${selectedLanguage.value}`
-    } else if (page) {
-      query += `$page=${page}`
     } else if (userVotes.length > 0) {
       query += `&vote_count.gte=${userVotes[0]}`
     } else if (runtime.length > 1) {
@@ -87,13 +87,11 @@ const FilterContextProvider = ({ children }) => {
 
     if (res.ok) {
       const data = await res.json()
+
       if (data.page <= 1) {
-        setFilteredMovies(data)
+        setFilteredMovies(data.results)
       } else {
-        setFilteredMovies((prev) => ({
-          ...data,
-          results: [...prev.results, ...data.results],
-        }))
+        setFilteredMovies((prev) => [...prev, ...data.results])
       }
     }
   }
@@ -152,8 +150,11 @@ const FilterContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchGenres()
-    fetchFilteredMovies()
   }, [])
+
+  useEffect(() => {
+    fetchFilteredMovies()
+  }, [nextPage])
 
   return (
     <filterContext.Provider
@@ -179,6 +180,7 @@ const FilterContextProvider = ({ children }) => {
         changeRuntime,
         userVotes,
         changeUserVotes,
+        setNextPage,
       }}
     >
       {children}
