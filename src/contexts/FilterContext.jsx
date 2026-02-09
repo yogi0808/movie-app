@@ -57,26 +57,9 @@ const FilterContextProvider = ({ children }) => {
   }
 
   const fetchFilteredMovies = async () => {
-    let query = `discover/movie?page=${nextPage}`
-    console.log(nextPage)
+    let query = `discover/movie?page=${nextPage}&include_adult=${selectedAdultOpt.value}&language=${selectedLanguage.value}&sort_by=${selectedSortBy.value}&with_watch_providers=${selectedProviders.join(",")}&with_genres=${selectedGenres.join(",")}&certification=${selectedCertifications.join(",")}&vote_count.gte=${userVotes[0]}&with_runtime.gte=${runtime[0]}&with_runtime.lte=${runtime[1]}`
 
-    if (selectedSortBy.value) {
-      query += `&sort_by=${selectedSortBy.value}`
-    } else if (selectedProviders.length > 0) {
-      query += `&with_watch_providers=${selectedProviders.join(",")}`
-    } else if (selectedGenres.length > 0) {
-      query += `&with_genres=${selectedGenres.join(",")}`
-    } else if (selectedCertifications.length > 0) {
-      query += `&certification=${selectedCertifications.join(",")}`
-    } else if (selectedAdultOpt) {
-      query += `&include_adult=${selectedAdultOpt.value}`
-    } else if (selectedLanguage.value) {
-      query += `&language=${selectedLanguage.value}`
-    } else if (userVotes.length > 0) {
-      query += `&vote_count.gte=${userVotes[0]}`
-    } else if (runtime.length > 1) {
-      query += `&with_runtime.gte=${runtime[0]}&with_runtime.lte=${runtime[1]}`
-    }
+    console.log(query)
 
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}${query}`, {
       method: "GET",
