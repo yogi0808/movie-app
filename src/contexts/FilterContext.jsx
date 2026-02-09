@@ -18,6 +18,8 @@ const FilterContextProvider = ({ children }) => {
   const [genres, setGenres] = useState([])
   const [selectedGenres, setSelectedGenres] = useState([])
   const [selectedCertifications, setSelectedCertifications] = useState([])
+  const [runtime, setRuntime] = useState([0, 400])
+  const [userVotes, setUserVotes] = useState([0])
 
   const fetchProviders = async () => {
     const res = await fetch(
@@ -70,6 +72,10 @@ const FilterContextProvider = ({ children }) => {
       query += `&language=${selectedLanguage.value}`
     } else if (page) {
       query += `$page=${page}`
+    } else if (userVotes.length > 0) {
+      query += `&vote_count.gte=${userVotes[0]}`
+    } else if (runtime.length > 1) {
+      query += `&with_runtime.gte=${runtime[0]}&with_runtime.lte=${runtime[1]}`
     }
 
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}${query}`, {
@@ -87,6 +93,14 @@ const FilterContextProvider = ({ children }) => {
 
   const selectSortBy = (val, opt) => {
     setSelectedSortBy({ value: val, option: opt })
+  }
+
+  const changeRuntime = (val) => {
+    setRuntime(val)
+  }
+
+  const changeUserVotes = (val) => {
+    setUserVotes(val)
   }
 
   const selectGenre = (val) => {
@@ -154,6 +168,10 @@ const FilterContextProvider = ({ children }) => {
         selectedCertifications,
         selectCertification,
         filteredMovies,
+        runtime,
+        changeRuntime,
+        userVotes,
+        changeUserVotes,
       }}
     >
       {children}

@@ -5,11 +5,13 @@ import {
   sliderTwoThumbsTrackColors,
 } from "@/constants"
 import CustomRange from "./CustomRange"
+import { useFilterContext } from "@/contexts/FilterContext"
 
 const Sliders = () => {
   const [userScore, setUserScore] = useState([0, 10])
-  const [userVotes, setUserVotes] = useState([0])
-  const [runtime, setRuntime] = useState([0, 400])
+  const { userVotes, changeUserVotes, runtime, changeRuntime } =
+    useFilterContext()
+
   return (
     <>
       <BoxWithDivider>
@@ -30,7 +32,7 @@ const Sliders = () => {
           max={500}
           step={50}
           values={userVotes}
-          onChange={(val) => setUserVotes(val)}
+          onChange={changeUserVotes}
           colors={sliderOneThumbsTrackColors}
         />
       </BoxWithDivider>
@@ -41,7 +43,7 @@ const Sliders = () => {
           max={400}
           step={15}
           values={runtime}
-          onChange={(val) => setRuntime(val)}
+          onChange={changeRuntime}
           colors={sliderTwoThumbsTrackColors}
         />
       </BoxWithDivider>
