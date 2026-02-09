@@ -72,8 +72,9 @@ const FilterContextProvider = ({ children }) => {
     if (res.ok) {
       const data = await res.json()
 
-      if (data.page <= 1) {
+      if (data.page <= 1 || searchAvailable) {
         setFilteredMovies(data.results)
+        setNextPage(1)
       } else {
         setFilteredMovies((prev) => [...prev, ...data.results])
       }
