@@ -43,7 +43,7 @@ const FilteredMoviesSection = () => {
   }, [loadInfinite])
 
   return (
-    <div className="flex w-full flex-wrap justify-between gap-7.5 max-w-263">
+    <div className="flex w-full h-fit flex-wrap justify-between gap-7.5 max-w-263">
       {filteredMovies
         ? filteredMovies.map((movieData) => (
             <div

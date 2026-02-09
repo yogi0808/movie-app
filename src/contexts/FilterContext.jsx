@@ -21,6 +21,7 @@ const FilterContextProvider = ({ children }) => {
   const [runtime, setRuntime] = useState([0, 400])
   const [userVotes, setUserVotes] = useState([0])
   const [nextPage, setNextPage] = useState(1)
+  const [searchAvailable, setSearchAvailable] = useState(false)
 
   const fetchProviders = async () => {
     const res = await fetch(
@@ -57,7 +58,7 @@ const FilterContextProvider = ({ children }) => {
   }
 
   const fetchFilteredMovies = async () => {
-    let query = `discover/movie?page=${nextPage}&include_adult=${selectedAdultOpt.value}&language=${selectedLanguage.value}&sort_by=${selectedSortBy.value}&with_watch_providers=${selectedProviders.join(",")}&with_genres=${selectedGenres.join(",")}&certification=${selectedCertifications.join(",")}&vote_count.gte=${userVotes[0]}&with_runtime.gte=${runtime[0]}&with_runtime.lte=${runtime[1]}`
+    let query = `discover/movie?page=${nextPage}&include_adult=${selectedAdultOpt.value}&with_original_language=${selectedLanguage.value === "none" ? "" : selectedLanguage.value}&sort_by=${selectedSortBy.value}&with_watch_monetization_types=${selectedProviders.join(",")}&with_ott_providers=${selectedProviders.join(",")}&with_genres=${selectedGenres.join(",")}&certification=${selectedCertifications.join(",")}&vote_count.gte=${userVotes[0]}&with_runtime.gte=${runtime[0]}&with_runtime.lte=${runtime[1]}`
 
     console.log(query)
 
@@ -76,19 +77,24 @@ const FilterContextProvider = ({ children }) => {
       } else {
         setFilteredMovies((prev) => [...prev, ...data.results])
       }
+
+      setSearchAvailable(false)
     }
   }
 
   const selectSortBy = (val, opt) => {
     setSelectedSortBy({ value: val, option: opt })
+    setSearchAvailable(true)
   }
 
   const changeRuntime = (val) => {
     setRuntime(val)
+    setSearchAvailable(true)
   }
 
   const changeUserVotes = (val) => {
     setUserVotes(val)
+    setSearchAvailable(true)
   }
 
   const selectGenre = (val) => {
@@ -97,6 +103,7 @@ const FilterContextProvider = ({ children }) => {
     } else {
       setSelectedGenres((priv) => [...priv, val])
     }
+    setSearchAvailable(true)
   }
 
   const selectCertification = (val) => {
@@ -105,6 +112,7 @@ const FilterContextProvider = ({ children }) => {
     } else {
       setSelectedCertifications((priv) => [...priv, val])
     }
+    setSearchAvailable(true)
   }
 
   const selectProvider = (val) => {
@@ -113,18 +121,22 @@ const FilterContextProvider = ({ children }) => {
     } else {
       setSelectedProviders((priv) => [...priv, val])
     }
+    setSearchAvailable(true)
   }
 
   const selectCountry = (val, opt) => {
     setSelectedCountry({ value: val, option: opt })
+    setSearchAvailable(true)
   }
 
   const selectLanguage = (val, opt) => {
     setSelectedLanguage({ value: val, option: opt })
+    setSearchAvailable(true)
   }
 
   const selectAdultOpt = (val, opt) => {
     setSelectedAdultOpt({ value: val, option: opt })
+    setSearchAvailable(true)
   }
 
   useEffect(() => {
@@ -164,6 +176,8 @@ const FilterContextProvider = ({ children }) => {
         userVotes,
         changeUserVotes,
         setNextPage,
+        searchAvailable,
+        fetchFilteredMovies,
       }}
     >
       {children}

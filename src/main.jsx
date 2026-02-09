@@ -7,7 +7,7 @@ import FilterContextProvider from "./contexts/FilterContext"
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <FilterContextProvider>
-      <App />,
+      <App />
     </FilterContextProvider>
   </StrictMode>,
 )
