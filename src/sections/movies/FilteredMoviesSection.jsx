@@ -10,7 +10,7 @@ const FilteredMoviesSection = () => {
         ? filteredMovies.results.map((movieData) => (
             <div
               key={movieData.id}
-              className="shadow-card flex-[1_1_17%] rounded-lg pb-3"
+              className="shadow-card flex-[1_1_15%] rounded-lg pb-3"
             >
               <MovieCard data={movieData} />
             </div>

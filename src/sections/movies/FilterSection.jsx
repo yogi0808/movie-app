@@ -5,7 +5,7 @@ import Filters from "./Filters"
 
 const FilterSection = () => {
   return (
-    <div className="md:min-w-65 w-full flex flex-col gap-3">
+    <div className="sm:min-w-65 sm:w-65 max-sm:w-full flex flex-col gap-3">
       <SortBy />
       <WhereToWatch />
       <Filters />
