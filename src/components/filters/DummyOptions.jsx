@@ -46,7 +46,7 @@ const DummyOptions = () => {
             type="checkbox"
             className="checkbox"
             onChange={() => setIsChecked((prev) => !prev)}
-            defaultChecked
+            checked={isChecked}
           />
           <span>Search all availabilities?</span>
         </label>

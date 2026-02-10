@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 import countries from "@constants/countries.json"
 import languages from "@constants/languages.json"
 import { includeAdultOptions, sortOptions } from "@/constants"
+import { formateDateForPicker } from "@/utils/utils"
 
 const filterContext = createContext(null)
 
@@ -22,6 +23,10 @@ const FilterContextProvider = ({ children }) => {
   const [userVotes, setUserVotes] = useState([0])
   const [nextPage, setNextPage] = useState(1)
   const [searchAvailable, setSearchAvailable] = useState(false)
+  const [releaseDates, setReleaseDates] = useState({
+    from: null,
+    to: formateDateForPicker(new Date()),
+  })
 
   const fetchProviders = async () => {
     const res = await fetch(
@@ -60,7 +65,13 @@ const FilterContextProvider = ({ children }) => {
   const fetchFilteredMovies = async () => {
     let query = `discover/movie?page=${nextPage}&include_adult=${selectedAdultOpt.value}&with_original_language=${selectedLanguage.value === "none" ? "" : selectedLanguage.value}&sort_by=${selectedSortBy.value}&with_watch_monetization_types=${selectedProviders.join(",")}&with_ott_providers=${selectedProviders.join(",")}&with_genres=${selectedGenres.join(",")}&certification=${selectedCertifications.join(",")}&vote_count.gte=${userVotes[0]}&with_runtime.gte=${runtime[0]}&with_runtime.lte=${runtime[1]}`
 
-    console.log(query)
+    if (releaseDates.from) {
+      query += `&release_date.gte=${releaseDates.from}`
+    }
+
+    if (releaseDates.to) {
+      query += `&release_date.lte=${releaseDates.to}`
+    }
 
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}${query}`, {
       method: "GET",
@@ -85,6 +96,11 @@ const FilterContextProvider = ({ children }) => {
 
   const selectSortBy = (val, opt) => {
     setSelectedSortBy({ value: val, option: opt })
+    setSearchAvailable(true)
+  }
+
+  const selectReleaseDate = (key, val) => {
+    setReleaseDates((prev) => ({ ...prev, [key]: formateDateForPicker(val) }))
     setSearchAvailable(true)
   }
 
@@ -179,6 +195,8 @@ const FilterContextProvider = ({ children }) => {
         setNextPage,
         searchAvailable,
         fetchFilteredMovies,
+        releaseDates,
+        selectReleaseDate,
       }}
     >
       {children}

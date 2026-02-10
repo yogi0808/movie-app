@@ -3,6 +3,7 @@ import Chip from "@/components/Chip"
 import DropDown from "@/components/DropDown"
 import CollapsibleCard from "@/components/filters/CollapsibleCard"
 import DummyOptions from "@/components/filters/DummyOptions"
+import ReleaseDates from "@/components/filters/ReleaseDates"
 import Sliders from "@/components/filters/Sliders"
 import { certifications, includeAdultOptions } from "@/constants"
 import { useFilterContext } from "@/contexts/FilterContext"
@@ -27,6 +28,7 @@ const Filters = () => {
       open
     >
       <DummyOptions />
+      <ReleaseDates />
       <BoxWithDivider>
         <h3 className="mb-2.5 font-light">Genres</h3>
         <div className="flex gap-y-2 gap-x-1.5 flex-wrap">
