@@ -23,6 +23,9 @@ const MovieCard = ({ data }) => {
         <img
           src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
           className="rounded-lg w-full"
+          onError={(e) => {
+            e.target.classList.add("hidden")
+          }}
         />
         <button
           className="absolute top-2 right-2 w-6.5 cursor-pointer aspect-square opacity-60"
