@@ -14,34 +14,37 @@ const Sliders = () => {
 
   return (
     <>
-      <BoxWithDivider>
+      <BoxWithDivider className="pb-8">
         <h3 className="mb-2.5 font-light">User Score</h3>
         <CustomRange
           min={0}
           max={10}
           step={1}
           values={userScore}
+          mainMarkDivider={5}
           onChange={(val) => setUserScore(val)}
           colors={sliderTwoThumbsTrackColors}
         />
       </BoxWithDivider>
-      <BoxWithDivider>
+      <BoxWithDivider className="pb-8">
         <h3 className="mb-2.5 font-light">Minimum User Votes</h3>
         <CustomRange
           min={0}
           max={500}
           step={50}
+          mainMarkDivider={100}
           values={userVotes}
           onChange={changeUserVotes}
           colors={sliderOneThumbsTrackColors}
         />
       </BoxWithDivider>
-      <BoxWithDivider>
+      <BoxWithDivider className="pb-8">
         <h3 className="mb-2.5 font-light">Runtime</h3>
         <CustomRange
           min={0}
           max={400}
           step={15}
+          mainMarkDivider={120}
           values={runtime}
           onChange={changeRuntime}
           colors={sliderTwoThumbsTrackColors}

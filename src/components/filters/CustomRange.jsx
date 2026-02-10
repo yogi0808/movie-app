@@ -2,7 +2,15 @@ import classNames from "classnames"
 import React from "react"
 import { getTrackBackground, Range } from "react-range"
 
-const CustomRange = ({ min, max, step, values, onChange, colors }) => {
+const CustomRange = ({
+  min,
+  max,
+  step,
+  values,
+  onChange,
+  colors,
+  mainMarkDivider,
+}) => {
   return (
     <Range
       min={min}
@@ -10,19 +18,27 @@ const CustomRange = ({ min, max, step, values, onChange, colors }) => {
       step={step}
       values={values}
       onChange={onChange}
-      renderMark={({ props }) => (
+      renderMark={({ props, index }) => (
         <div
           {...props}
           key={props.key}
           style={{ ...props.style }}
-          className="h-full w-px bg-slider-bg -z-1"
-        ></div>
+          className={`border-slider-bg -z-1 ${(index * step) % mainMarkDivider === 0 ? "h-full border" : "h-2/3 border-l"}`}
+        >
+          {(index * step) % mainMarkDivider === 0 ? (
+            <p className="absolute top-full left-1/2 -translate-x-1/2 text-slider-bg">
+              {index * step}
+            </p>
+          ) : (
+            ""
+          )}
+        </div>
       )}
       renderTrack={({ props, children }) => (
         <div
           onMouseDown={props.onMouseDown}
           onTouchStart={props.onTouchStart}
-          className="flex h-6 w-full"
+          className="flex h-7 w-full"
           style={{ ...props.style }}
         >
           <div
