@@ -3,19 +3,19 @@ import React from "react"
 
 const Chip = ({ data, isSelected, handleSelect }) => {
   const chipClasses = classNames(
-    "px-3 py-1 hover:underline hover:bg-highlight hover:text-white rounded-full border border-chip-border text-sm cursor-pointer",
+    "px-3 py-1.5 flex flex-col h-fit hover:bg-highlight hover:text-white rounded-full border border-chip-border text-sm cursor-pointer",
     {
       "bg-highlight text-white": isSelected,
     },
   )
 
   return (
-    <p
+    <div
       onClick={handleSelect}
       className={chipClasses}
     >
-      {data.option}
-    </p>
+      <p className="leading-4 border-b border-white">{data.option}</p>
+    </div>
   )
 }
 
