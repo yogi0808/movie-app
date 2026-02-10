@@ -86,11 +86,10 @@ const FilterContextProvider = ({ children }) => {
       if (data.page <= 1 || searchAvailable) {
         setFilteredMovies(data.results)
         setNextPage(1)
+        setSearchAvailable(false)
       } else {
         setFilteredMovies((prev) => [...prev, ...data.results])
       }
-
-      setSearchAvailable(false)
     }
   }
 

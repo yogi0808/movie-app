@@ -12,9 +12,11 @@ const FilterSection = () => {
 
   let observer
 
-  const cb = () => {
-    if (searchAvailable) {
-      setIsSearchFixed((prev) => !prev)
+  const cb = (entries) => {
+    if (!entries[0].isIntersecting && searchAvailable) {
+      setIsSearchFixed(true)
+    } else {
+      setIsSearchFixed(false)
     }
   }
 
