@@ -3,6 +3,7 @@ import Chip from "@/components/Chip"
 import DropDown from "@/components/DropDown"
 import CollapsibleCard from "@/components/filters/CollapsibleCard"
 import DummyOptions from "@/components/filters/DummyOptions"
+import KeywordSearch from "@/components/filters/KeywordSearch"
 import ReleaseDates from "@/components/filters/ReleaseDates"
 import Sliders from "@/components/filters/Sliders"
 import { certifications, includeAdultOptions } from "@/constants"
@@ -77,15 +78,7 @@ const Filters = () => {
         />
       </BoxWithDivider>
       <Sliders />
-      <BoxWithDivider>
-        <h3 className="mb-2.5 font-light">Keywords</h3>
-        <input
-          name="keyword"
-          className="input"
-          type="text"
-          placeholder="Filter by keywords..."
-        />
-      </BoxWithDivider>
+      <KeywordSearch />
     </CollapsibleCard>
   )
 }
