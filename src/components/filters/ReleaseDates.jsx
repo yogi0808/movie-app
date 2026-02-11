@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import BoxWithDivider from "../BoxWithDivider"
 import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
+import "./datepiker.css"
 import { IoMdCalendar } from "react-icons/io"
 import { useFilterContext } from "@/contexts/FilterContext"
 
