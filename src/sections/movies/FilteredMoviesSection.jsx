@@ -5,42 +5,35 @@ import React, { useEffect, useRef, useState } from "react"
 const FilteredMoviesSection = () => {
   const [loadInfinite, setLoadInfinite] = useState(false)
   const { filteredMovies, setNextPage } = useFilterContext()
-  const prevY = useRef(0)
 
-  const obsRef = useRef(null)
-
-  let observer
-
-  const cb = (entries) => {
-    const y = entries[0].boundingClientRect.y
-    if (prevY.current > y) {
-      setNextPage((prev) => prev + 1)
-    }
-
-    prevY.current = y
-  }
-
-  const options = {
-    root: null,
-    rootMargin: "200px",
-    threshold: 0.01,
-  }
-
-  const createObserver = () => {
-    if (observer) {
-      observer.disconnect()
-    }
-
-    observer = new IntersectionObserver(cb, options)
-
-    observer.observe(obsRef.current)
-  }
+  const targetRef = useRef(null)
+  const observerRef = useRef(null)
 
   useEffect(() => {
-    if (loadInfinite) {
-      createObserver()
+    if (!loadInfinite) return
+
+    if (observerRef.current) observerRef.current.disconnect()
+
+    const cb = (entries) => {
+      if (entries[0].isIntersecting) {
+        setNextPage((prev) => prev + 1)
+      }
     }
-  }, [loadInfinite])
+
+    observerRef.current = new IntersectionObserver(cb, {
+      root: null,
+      rootMargin: "200px",
+      threshold: 0.1,
+    })
+
+    if (targetRef.current) {
+      observerRef.current.observe(targetRef.current)
+    }
+
+    return () => {
+      if (observerRef.current) observerRef.current.disconnect()
+    }
+  }, [loadInfinite, setNextPage])
 
   return (
     <div className="flex w-full h-fit flex-wrap justify-between gap-7.5 max-w-263">
@@ -60,9 +53,9 @@ const FilteredMoviesSection = () => {
           setLoadInfinite(true)
           setNextPage((prev) => (prev === 1 ? 2 : prev))
         }}
-        ref={obsRef}
+        ref={targetRef}
       >
-        Load More
+        {loadInfinite ? "Loading more movies..." : "Load More"}
       </p>
     </div>
   )

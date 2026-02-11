@@ -10,21 +10,7 @@ const FilterSection = () => {
   const { searchAvailable, fetchFilteredMovies } = useFilterContext()
   const searchBtnRef = useRef()
 
-  let observer
-
-  const cb = (entries) => {
-    if (!entries[0].isIntersecting && searchAvailable) {
-      setIsSearchFixed(true)
-    } else {
-      setIsSearchFixed(false)
-    }
-  }
-
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1.0,
-  }
+  const observerRef = useRef(null)
 
   const searchClassNames = classNames(
     "rounded-full p-3 cursor-pointer disabled:bg-search-border w-full disabled:cursor-not-allowed disabled:text-slider-bg bg-highlight text-white text-xl font-semibold leading-5",
@@ -34,18 +20,34 @@ const FilterSection = () => {
     },
   )
 
-  const createObserver = () => {
-    if (observer) {
-      observer.disconnect()
+  useEffect(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect()
     }
 
-    observer = new IntersectionObserver(cb, options)
+    const cb = (entries) => {
+      if (!entries[0].isIntersecting && searchAvailable) {
+        setIsSearchFixed(true)
+      } else {
+        setIsSearchFixed(false)
+      }
+    }
 
-    observer.observe(searchBtnRef.current)
-  }
+    observerRef.current = new IntersectionObserver(cb, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0,
+    })
 
-  useEffect(() => {
-    createObserver()
+    if (searchBtnRef.current) {
+      observerRef.current.observe(searchBtnRef.current)
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+      }
+    }
   }, [searchAvailable])
 
   return (
@@ -53,15 +55,12 @@ const FilterSection = () => {
       <SortBy />
       <WhereToWatch />
       <Filters />
-      <div
-        ref={searchBtnRef}
-        className="w-full"
-      >
+      <div className="w-full">
+        <div ref={searchBtnRef}></div>
         <button
           disabled={!searchAvailable}
           onClick={() => {
             fetchFilteredMovies()
-            setIsSearchFixed(false)
           }}
           className={searchClassNames}
         >
