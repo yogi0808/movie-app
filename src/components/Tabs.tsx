@@ -2,6 +2,11 @@ import classNames from "classnames"
 import { useEffect, useRef, useState } from "react"
 
 import GradientText from "@components/GradientText"
+import type { TabsProps } from "@/utils/types"
+interface HighlighterStyleType {
+  left: number
+  width: number
+}
 
 /**
  * this is an tab component it performs the actin based on selected(active) tab.
@@ -14,10 +19,10 @@ import GradientText from "@components/GradientText"
  * @returns - jsx for tabs component
  */
 
-const Tabs = ({ data = [], activeTab, onTabChange }) => {
-  const [tabStyle, setTabStyle] = useState({ left: 0, width: 0 }) // will change the style of the background div(active indicator)
+const Tabs = ({ data, activeTab, onTabChange }: TabsProps) => {
+  const [tabStyle, setTabStyle] = useState<HighlighterStyleType>({ left: 0, width: 0 }) // will change the style of the background div(active indicator)
 
-  const tabsRef = useRef([]) // we have the list of the element all the tabs we have
+  const tabsRef = useRef<HTMLParagraphElement[]>([]) // we have the list of the element all the tabs we have
 
   // changes the active indicator size and position based on the use selection
   useEffect(() => {
@@ -46,7 +51,9 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
           >
             <p
               onClick={() => onTabChange(idx)}
-              ref={(el) => (tabsRef.current[idx] = el)}
+              ref={(el: HTMLParagraphElement) => {
+                tabsRef.current[idx] = el
+              }}
               className={linkClassNames}
             >
               {item}

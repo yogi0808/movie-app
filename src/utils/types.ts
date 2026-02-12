@@ -23,3 +23,9 @@ export interface DropDownProps {
   valueKey: string
   optionKey: string
 }
+
+export interface TabsProps {
+  data: string[]
+  activeTab: number
+  onTabChange(index: number): void
+}
