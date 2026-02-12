@@ -112,3 +112,9 @@ export interface ChipProps {
   isSelected: boolean
   handleSelect(): void
 }
+
+export interface CollapsibleCardProps extends PropsWithChildren {
+  title: string
+  count?: number
+  open?: boolean
+}

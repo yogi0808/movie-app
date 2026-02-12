@@ -1,6 +1,8 @@
 import classNames from "classnames"
-import React, { Activity, useState } from "react"
+import { Activity, useState } from "react"
 import { MdKeyboardArrowRight } from "react-icons/md"
+
+import type { CollapsibleCardProps } from "@utils/types"
 
 /**
  * this is a card with open and close state by clicking the title of arrow button we can open(expend) the card all the children are shown in the open(expended) state
@@ -12,8 +14,8 @@ import { MdKeyboardArrowRight } from "react-icons/md"
  *
  * @returns - jsx for the collapsible card
  */
-const CollapsibleCard = ({ title, count, children, open }) => {
-  const [isActive, setIsActive] = useState(open) // for tracking card is open and close state
+const CollapsibleCard = ({ title, count, children, open = false }: CollapsibleCardProps) => {
+  const [isActive, setIsActive] = useState<boolean>(open) // for tracking card is open and close state
 
   // classes for icon to rotate on open state
   const iconsClassNames = classNames("text-xl origin-center", {
