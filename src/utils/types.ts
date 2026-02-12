@@ -70,3 +70,8 @@ export interface MobileNavProps {
 export interface MobileNavLinkProp {
   link: HeaderLinkType
 }
+
+export interface SectionProps extends PropsWithChildren {
+  className: string
+  outerSectionClassName: string
+}

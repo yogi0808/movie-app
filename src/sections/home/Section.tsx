@@ -1,5 +1,6 @@
-import React from "react"
 import classNames from "classnames"
+
+import type { SectionProps } from "@utils/types"
 
 /**
  *
@@ -9,7 +10,7 @@ import classNames from "classnames"
  *
  * @returns
  */
-const Section = ({ children, className, outerSectionClassName }) => {
+const Section = ({ children, className, outerSectionClassName }: SectionProps) => {
   // adding the extended class names if provided
   const outerSectionClassNames = classNames("md:px-5 pt-7.5", {
     [outerSectionClassName]: outerSectionClassName,
