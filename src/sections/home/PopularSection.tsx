@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 import Section from "@sections/home/Section"
+import type { MovieType } from "@utils/types"
 import useFetchMovies from "@hooks/useFetchMovies"
 import MovieCard from "@components/cards/MovieCard"
 import TitleWithTabs from "@components/TitleWithTabs"
@@ -13,7 +14,7 @@ import MovieCardSkeleton from "@components/cards/MovieCardSkeleton"
  * @returns - jsx for the popular section
  */
 const PopularSection = () => {
-  const [activeTab, setActiveTab] = useState(0) // to track the selected(active) tab
+  const [activeTab, setActiveTab] = useState<number>(0) // to track the selected(active) tab
   const { data, isLoading } = useFetchMovies(
     endpointsForPopularMovies[activeTab],
   ) // custom hook for data fetching return the data, error, and loading state
@@ -23,7 +24,7 @@ const PopularSection = () => {
    *
    * @param {number} idx - index number of the tab which will selected next
    */
-  const changeTab = (idx) => {
+  const changeTab = (idx: number) => {
     setActiveTab(idx)
   }
 
@@ -43,7 +44,7 @@ const PopularSection = () => {
         </div>
       ) : (
         <div className="flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-5 lg:px-10 relative animate-fade-in">
-          {data.results.map((movieData) => (
+          {data.results.map((movieData: MovieType) => (
             <MovieCard
               data={movieData}
               key={movieData.id}

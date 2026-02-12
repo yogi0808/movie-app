@@ -13,12 +13,12 @@ import type { SectionProps } from "@utils/types"
 const Section = ({ children, className, outerSectionClassName }: SectionProps) => {
   // adding the extended class names if provided
   const outerSectionClassNames = classNames("md:px-5 pt-7.5", {
-    [outerSectionClassName]: outerSectionClassName,
+    outerSectionClassName,
   })
 
   // adding the extended class names if provided
   const innerDivClassNames = classNames("max-w-325 w-full mx-auto relative", {
-    [className]: className,
+    className,
   })
 
   return (

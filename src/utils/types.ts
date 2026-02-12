@@ -72,11 +72,28 @@ export interface MobileNavLinkProp {
 }
 
 export interface SectionProps extends PropsWithChildren {
-  className: string
-  outerSectionClassName: string
+  className?: string
+  outerSectionClassName?: string
 }
 
 export interface RatingIndicatorProps {
   voteAverage: number | null
   className: string
+}
+
+export interface MovieType {
+  adult: boolean
+  backdrop_path: string
+  genre_ids: number[]
+  id: number
+  original_language: string
+  original_title: string
+  overview: string
+  popularity: number
+  poster_path: string
+  release_date: string
+  title: string
+  video: boolean
+  vote_average: number
+  vote_count: number
 }
