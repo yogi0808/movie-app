@@ -31,22 +31,30 @@ const CustomRange = ({
       step={step}
       values={values}
       onChange={onChange}
-      renderMark={({ props, index }) => (
-        <div
-          {...props}
-          key={props.key}
-          style={{ ...props.style }}
-          className={`border-slider-bg -z-1 ${(index * step) % mainMarkDivider === 0 ? "h-full border" : "h-2/3 border-l"}`}
-        >
-          {(index * step) % mainMarkDivider === 0 ? (
-            <p className="absolute top-full left-1/2 -translate-x-1/2 text-slider-bg">
-              {index * step}
-            </p>
-          ) : (
-            ""
-          )}
-        </div>
-      )}
+      renderMark={({ props, index }) => {
+        const isMarkerIsBig = (index * step) % mainMarkDivider === 0
+
+        const markerClassNames = classNames("border-slider-bg -z-1", {
+          "h-full border": isMarkerIsBig,
+          "h-2/3 border-l": !isMarkerIsBig,
+        })
+        return (
+          <div
+            {...props}
+            key={props.key}
+            style={{ ...props.style }}
+            className={markerClassNames}
+          >
+            {isMarkerIsBig ? (
+              <p className="absolute top-full left-1/2 -translate-x-1/2 text-slider-bg">
+                {index * step}
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+        )
+      }}
       renderTrack={({ props, children }) => (
         <div
           onMouseDown={props.onMouseDown}

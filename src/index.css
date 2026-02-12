@@ -45,6 +45,7 @@
   --color-keyword-bg: #e9ecef;
   --color-date-picker: #dee2e6;
   --font-arial: "Arial", sans-serif;
+  --font-barlow: "Barlow", sans-serif;
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
   --background-size-md: 80px;
   --animate-fade-in: fade-in 0.5s linear;
@@ -71,6 +72,10 @@
 
   .input {
     @apply w-full px-3 py-1.5 placeholder:text-black bg-white border border-search-border focus:border-highlight rounded-lg focus:outline-none;
+  }
+
+  .divider-box {
+    @apply p-4 pt-3.5 border-t border-search-border;
   }
 }
 

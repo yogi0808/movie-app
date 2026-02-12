@@ -1,4 +1,3 @@
-import BoxWithDivider from "@/components/BoxWithDivider"
 import Chip from "@/components/Chip"
 import DropDown from "@/components/DropDown"
 import CollapsibleCard from "@/components/filters/CollapsibleCard"
@@ -35,7 +34,7 @@ const Filters = () => {
     >
       <DummyOptions />
       <ReleaseDates />
-      <BoxWithDivider>
+      <div className="divider-box">
         <h3 className="mb-2.5 font-light">Genres</h3>
         <div className="flex gap-y-2 gap-x-1.5 flex-wrap">
           {genres.map((item) => (
@@ -47,8 +46,8 @@ const Filters = () => {
             />
           ))}
         </div>
-      </BoxWithDivider>
-      <BoxWithDivider>
+      </div>
+      <div className="divider-box">
         <h3 className="mb-2.5 font-light">Certification</h3>
         <div className="flex gap-y-2 gap-x-1.5 flex-wrap">
           {certifications.map((item) => (
@@ -60,8 +59,8 @@ const Filters = () => {
             />
           ))}
         </div>
-      </BoxWithDivider>
-      <BoxWithDivider>
+      </div>
+      <div className="divider-box">
         <DropDown
           label="Adult Content"
           selected={selectedAdultOpt}
@@ -70,8 +69,8 @@ const Filters = () => {
           valueKey="value"
           optionKey="option"
         />
-      </BoxWithDivider>
-      <BoxWithDivider>
+      </div>
+      <div className="divider-box">
         <DropDown
           label="Language"
           selected={selectedLanguage}
@@ -81,7 +80,7 @@ const Filters = () => {
           optionKey="option"
           search
         />
-      </BoxWithDivider>
+      </div>
       <Sliders />
       <KeywordSearch />
     </CollapsibleCard>

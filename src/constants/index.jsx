@@ -279,3 +279,14 @@ export const certifications = ["U", "UA", "A"]
 
 export const sliderTwoThumbsTrackColors = ["#b3b5b6", "#01b4e4", "#b3b5b6"]
 export const sliderOneThumbsTrackColors = ["#01b4e4", "#b3b5b6"]
+
+export const dummyAvailableSearch = ["Steam", "Free", "Ads", "Rent", "Buy"]
+
+export const releaseDateSearch = [
+  "Theatrical (limited)",
+  "Theatrical",
+  "Premiere",
+  "Digital",
+  "Physical",
+  "TV",
+]

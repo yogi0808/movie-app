@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import BoxWithDivider from "../BoxWithDivider"
 import {
   sliderOneThumbsTrackColors,
   sliderTwoThumbsTrackColors,
@@ -19,7 +18,7 @@ const Sliders = () => {
 
   return (
     <>
-      <BoxWithDivider className="pb-8">
+      <div className="divider-box pb-8!">
         <h3 className="mb-2.5 font-light">User Score</h3>
         <CustomRange
           min={0}
@@ -30,8 +29,8 @@ const Sliders = () => {
           onChange={(val) => setUserScore(val)}
           colors={sliderTwoThumbsTrackColors}
         />
-      </BoxWithDivider>
-      <BoxWithDivider className="pb-8">
+      </div>
+      <div className="divider-box pb-8!">
         <h3 className="mb-2.5 font-light">Minimum User Votes</h3>
         <CustomRange
           min={0}
@@ -42,8 +41,8 @@ const Sliders = () => {
           onChange={changeUserVotes}
           colors={sliderOneThumbsTrackColors}
         />
-      </BoxWithDivider>
-      <BoxWithDivider className="pb-8">
+      </div>
+      <div className="divider-box pb-8!">
         <h3 className="mb-2.5 font-light">Runtime</h3>
         <CustomRange
           min={0}
@@ -54,7 +53,7 @@ const Sliders = () => {
           onChange={changeRuntime}
           colors={sliderTwoThumbsTrackColors}
         />
-      </BoxWithDivider>
+      </div>
     </>
   )
 }

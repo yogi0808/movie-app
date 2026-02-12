@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import BoxWithDivider from "../BoxWithDivider"
+import { dummyAvailableSearch } from "@/constants"
 
 /**
  * sows the dummy options in the filter section
@@ -11,7 +11,7 @@ const DummyOptions = () => {
 
   return (
     <>
-      <BoxWithDivider>
+      <div className="divider-box">
         <h3 className="mb-2.5 font-light">Show Me</h3>
         <div>
           <label className="flex items-center gap-2 cursor-pointer">
@@ -43,8 +43,8 @@ const DummyOptions = () => {
             <span>Movies I Have Seen</span>
           </label>
         </div>
-      </BoxWithDivider>
-      <BoxWithDivider>
+      </div>
+      <div className="divider-box">
         <h3 className="mb-2.5 font-light">Availabilities</h3>
         <label className="flex items-center gap-2 cursor-pointer">
           <input
@@ -55,53 +55,26 @@ const DummyOptions = () => {
           />
           <span>Search all availabilities?</span>
         </label>
-        {isChecked ? (
-          ""
-        ) : (
+        {!isChecked ? (
           <div className="mt-1.5">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                className="checkbox"
-                defaultChecked
-              />
-              <span>Steam</span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                className="checkbox"
-                defaultChecked
-              />
-              <span>Free</span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                className="checkbox"
-                defaultChecked
-              />
-              <span>Ads</span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                className="checkbox"
-                defaultChecked
-              />
-              <span>Rent</span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                className="checkbox"
-                defaultChecked
-              />
-              <span>Buy</span>
-            </label>
+            {dummyAvailableSearch.map((item, idx) => (
+              <label
+                key={idx}
+                className="flex items-center gap-2 cursor-pointer"
+              >
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  defaultChecked
+                />
+                <span>{item}</span>
+              </label>
+            ))}
           </div>
+        ) : (
+          ""
         )}
-      </BoxWithDivider>
+      </div>
     </>
   )
 }

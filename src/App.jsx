@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router"
 import HomeScreen from "@screens/HomeScreen"
-import MoviesScreen from "./screens/MoviesScreen"
+import MoviesScreen from "@screens/MoviesScreen"
 
 /**
  * this is a root component of the application hear i created and and setup the routers

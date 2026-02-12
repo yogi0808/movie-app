@@ -1,4 +1,3 @@
-import BoxWithDivider from "@/components/BoxWithDivider"
 import DropDown from "@/components/DropDown"
 import CollapsibleCard from "@/components/filters/CollapsibleCard"
 import { sortOptions } from "@/constants"
@@ -15,7 +14,7 @@ const SortBy = () => {
 
   return (
     <CollapsibleCard title="Sort">
-      <BoxWithDivider>
+      <div className="divider-box">
         <DropDown
           label="Sort Results By"
           selected={selectedSortBy}
@@ -24,7 +23,7 @@ const SortBy = () => {
           valueKey="value"
           optionKey="option"
         />
-      </BoxWithDivider>
+      </div>
     </CollapsibleCard>
   )
 }

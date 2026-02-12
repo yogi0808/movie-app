@@ -1,6 +1,6 @@
-import { MdArrowRightAlt } from "react-icons/md";
-import GradientText from "@components/GradientText";
-import Section from "./Section";
+import { MdArrowRightAlt } from "react-icons/md"
+import GradientText from "@components/GradientText"
+import Section from "./Section"
 
 /**
  * it displays the hero section with big gradient font and a CtA button.
@@ -14,8 +14,11 @@ const Hero = () => {
       outerSectionClassName="pt-0!"
     >
       <div className="bg-black/50 w-full h-full flex justify-center flex-col px-10">
-        <GradientText gradient="bg-gradient" className="h-30 overflow-hidden">
-          <h1 className="font-bold text-6xl text-transparent font-[Barlow]!">
+        <GradientText
+          gradient="bg-gradient"
+          className="h-30 overflow-hidden"
+        >
+          <h1 className="font-bold text-6xl text-transparent font-barlow">
             That's a<br />
             Wrap 2025
           </h1>
@@ -30,7 +33,7 @@ const Hero = () => {
         </div>
       </div>
     </Section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

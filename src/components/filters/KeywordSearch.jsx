@@ -1,5 +1,4 @@
 import { useState } from "react"
-import BoxWithDivider from "../BoxWithDivider"
 import { IoClose, IoCloseCircle } from "react-icons/io5"
 
 /**
@@ -26,7 +25,7 @@ const KeywordSearch = () => {
   }
 
   return (
-    <BoxWithDivider>
+    <div className="divider-box">
       <h3 className="mb-2.5 font-light">Keywords</h3>
       <label className="w-full flex items-center rounded-lg p-0.75 border border-search-border focus-within:border-highlight">
         <div className="flex flex-wrap gap-1">
@@ -63,7 +62,7 @@ const KeywordSearch = () => {
           ""
         )}
       </label>
-    </BoxWithDivider>
+    </div>
   )
 }
 

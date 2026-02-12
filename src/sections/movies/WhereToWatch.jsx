@@ -1,4 +1,3 @@
-import BoxWithDivider from "@/components/BoxWithDivider"
 import DropDown from "@/components/DropDown"
 import CollapsibleCard from "@/components/filters/CollapsibleCard"
 import ProviderCard from "@/components/filters/ProviderCard"
@@ -18,7 +17,7 @@ const WhereToWatch = () => {
       title="Where To Watch"
       count={providers.length}
     >
-      <BoxWithDivider className="flex flex-col gap-2">
+      <div className="divider-box flex flex-col gap-2">
         <DropDown
           label="Country"
           selected={selectedCountry}
@@ -36,7 +35,7 @@ const WhereToWatch = () => {
             />
           ))}
         </div>
-      </BoxWithDivider>
+      </div>
     </CollapsibleCard>
   )
 }

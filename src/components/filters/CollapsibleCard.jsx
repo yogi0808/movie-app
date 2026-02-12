@@ -13,7 +13,7 @@ import { MdKeyboardArrowRight } from "react-icons/md"
  * @returns - jsx for the collapsible card
  */
 const CollapsibleCard = ({ title, count, children, open }) => {
-  const [isActive, setIsActive] = useState(open ? true : false) // for tracking card is open and close state
+  const [isActive, setIsActive] = useState(open) // for tracking card is open and close state
 
   // classes for icon to rotate on open state
   const iconsClassNames = classNames("text-xl origin-center", {
