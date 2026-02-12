@@ -9,16 +9,16 @@ export interface GradientTextProps extends PropsWithChildren {
   className?: string
 }
 
-export interface OptionType {
+export interface OptionType<T = string> {
   option: string
-  value: string | number
+  value: T
 }
 
 export interface DropDownProps {
   label: string
-  selected: OptionType
+  selected: OptionType<string> | OptionType<boolean>
   list: any[]
-  handleSelect(val: string, opt: string): void
+  handleSelect(val: string | boolean, opt: string): void
   search?: boolean
   valueKey: string
   optionKey: string
@@ -108,7 +108,7 @@ export interface MoviePopupLinkType {
 }
 
 export interface ChipProps {
-  data: OptionType
+  data: OptionType<number> | OptionType<string>
   isSelected: boolean
   handleSelect(): void
 }
@@ -140,4 +140,38 @@ export interface ProviderType {
 export interface GenreType {
   id: number
   name: string
+}
+
+export interface ReleaseDatesType {
+  from: Date | null
+  to: Date | null
+}
+
+export interface FilterContextType {
+  selectedSortBy: OptionType<string>
+  selectSortBy(val: string, opt: string): void
+  providers: ProviderType[]
+  selectedProviders: number[]
+  selectProvider(val: number): void
+  selectedCountry: OptionType<string>
+  selectCountry(val: string, opt: string): void
+  selectedLanguage: OptionType<string>
+  selectLanguage(val: string, opt: string): void
+  selectedAdultOpt: OptionType<boolean>
+  selectAdultOpt(val: boolean, opt: string): void
+  genres: GenreType[]
+  selectedGenres: number[]
+  selectGenre(val: number): void
+  selectedCertifications: string[]
+  selectCertification(val: string): void
+  filteredMovies: MovieType[]
+  runtime: number[]
+  changeRuntime(val: number[]): void
+  userVotes: number[]
+  changeUserVotes(val: number[]): void
+  setNextPage: React.Dispatch<React.SetStateAction<number>>
+  searchAvailable: boolean
+  fetchFilteredMovies(): Promise<void>
+  releaseDates: ReleaseDatesType
+  selectReleaseDate(key: "from" | "to", val: Date | null): void
 }

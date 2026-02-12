@@ -49,7 +49,7 @@ export function formateDate(date: string): string {
  * 
  * @returns {string} - formatted date
  */
-export function formateDateForPicker(date: string): string {
+export function formateDateForPicker(date: Date | string): string {
   const newDate: Date = new Date(date)
 
   const year = newDate.getFullYear();
