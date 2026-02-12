@@ -106,3 +106,9 @@ export interface MoviePopupLinkType {
   icon: ReactNode
   text: string
 }
+
+export interface ChipProps {
+  data: OptionType
+  isSelected: boolean
+  handleSelect(): void
+}

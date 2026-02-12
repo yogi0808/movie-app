@@ -1,4 +1,4 @@
-import React from "react"
+import type { ChipProps } from "@utils/types"
 import classNames from "classnames"
 
 /**
@@ -8,7 +8,7 @@ import classNames from "classnames"
  *
  * @returns
  */
-const Chip = ({ data, isSelected, handleSelect }) => {
+const Chip = ({ data, isSelected, handleSelect }: ChipProps) => {
   // class names for chip. changing based on the selected state
   const chipClasses = classNames(
     "px-3 py-1.5 flex flex-col h-fit hover:bg-highlight hover:text-white rounded-full border border-chip-border text-sm cursor-pointer",

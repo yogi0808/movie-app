@@ -1,6 +1,4 @@
-import React from "react"
-
-import { sortOptions } from "@constants"
+import { sortOptions } from "@constants/index"
 import DropDown from "@components/DropDown"
 import { useFilterContext } from "@contexts/FilterContext"
 import CollapsibleCard from "@components/filters/CollapsibleCard"
