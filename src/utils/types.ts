@@ -11,7 +11,7 @@ export interface GradientTextProps extends PropsWithChildren {
 
 export interface OptionType {
   option: string
-  value: string
+  value: string | number
 }
 
 export interface DropDownProps {
@@ -135,4 +135,9 @@ export interface ProviderType {
   logo_path: string
   provider_name: string
   provider_id: number
+}
+
+export interface GenreType {
+  id: number
+  name: string
 }

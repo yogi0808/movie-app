@@ -1,5 +1,5 @@
 import classNames from "classnames"
-import React, { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import SortBy from "@sections/movies/SortBy"
 import Filters from "@sections/movies/Filters"
@@ -12,11 +12,11 @@ import { useFilterContext } from "@contexts/FilterContext"
  * @returns - jsx for the filter section
  */
 const FilterSection = () => {
-  const [isSearchFixed, setIsSearchFixed] = useState(false) // tacking the search bar fixed or not
+  const [isSearchFixed, setIsSearchFixed] = useState<boolean>(false) // tacking the search bar fixed or not
   const { searchAvailable, fetchFilteredMovies } = useFilterContext() // getting the search available or not and fetch filtered movies function to fetch the movies form the filter context
-  const searchBtnRef = useRef() // ref of the search button
+  const searchBtnRef = useRef<HTMLDivElement | null>(null) // ref of the search button
 
-  const observerRef = useRef(null) // ref of the intersection observer
+  const observerRef = useRef<IntersectionObserver | null>(null) // ref of the intersection observer
 
   // class names of the search button based on the fixed position and search availability
   const searchClassNames = classNames(
@@ -39,7 +39,7 @@ const FilterSection = () => {
      *
      * @param {object[]} entries - list of the object which is targeted
      */
-    const cb = (entries) => {
+    const cb = (entries: IntersectionObserverEntry[]) => {
       if (!entries[0].isIntersecting && searchAvailable) {
         setIsSearchFixed(true)
       } else {

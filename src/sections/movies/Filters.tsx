@@ -5,9 +5,10 @@ import Sliders from "@components/filters/Sliders"
 import { useFilterContext } from "@contexts/FilterContext"
 import DummyOptions from "@components/filters/DummyOptions"
 import KeywordSearch from "@components/filters/KeywordSearch"
-import { certifications, includeAdultOptions } from "@constants"
+import { certifications, includeAdultOptions } from "@constants/index"
 import CollapsibleCard from "@components/filters/CollapsibleCard"
 import ReleaseDates from "@components/filters/datepiker/ReleaseDates"
+import type { GenreType } from "@utils/types"
 
 /**
  * displays the all filter option in filter section
@@ -37,7 +38,7 @@ const Filters = () => {
       <div className="divider-box">
         <h3 className="mb-2.5 font-light">Genres</h3>
         <div className="flex gap-y-2 gap-x-1.5 flex-wrap">
-          {genres.map((item) => (
+          {genres.map((item: GenreType) => (
             <Chip
               data={{ value: item.id, option: item.name }}
               isSelected={selectedGenres.includes(item.id)}

@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import MovieCard from "@components/cards/MovieCard"
 import { useFilterContext } from "@contexts/FilterContext"
+import type { MovieType } from "@utils/types"
 
 /**
  * displays all the filtered movies on the right side
@@ -9,11 +10,11 @@ import { useFilterContext } from "@contexts/FilterContext"
  * @returns - jsx for the filtered movies
  */
 const FilteredMoviesSection = () => {
-  const [loadInfinite, setLoadInfinite] = useState(false) // tracks if the infinite scroll is active or not
+  const [loadInfinite, setLoadInfinite] = useState<boolean>(false) // tracks if the infinite scroll is active or not
   const { filteredMovies, setNextPage } = useFilterContext() // getting the list of the filtered movies and the next page from the filter context
 
-  const targetRef = useRef(null) // ref of the bottom div for loading infinitely
-  const observerRef = useRef(null) // ref for the observer to survive the re-render
+  const targetRef = useRef<HTMLDivElement | null>(null) // ref of the bottom div for loading infinitely
+  const observerRef = useRef<IntersectionObserver | null>(null) // ref for the observer to survive the re-render
 
   // use effect for creating an intersection observer
   useEffect(() => {
@@ -27,7 +28,7 @@ const FilteredMoviesSection = () => {
      *
      * @param {object[]} entries - list of the object which is targeted
      */
-    const cb = (entries) => {
+    const cb = (entries: IntersectionObserverEntry[]) => {
       if (entries[0].isIntersecting) {
         setNextPage((prev) => prev + 1)
       }
@@ -54,14 +55,14 @@ const FilteredMoviesSection = () => {
   return (
     <div className="flex w-full h-fit flex-wrap justify-between gap-7.5 max-w-263">
       {filteredMovies
-        ? filteredMovies.map((movieData) => (
-            <div
-              key={movieData.id}
-              className="shadow-card flex-[1_1_15%] rounded-lg pb-3"
-            >
-              <MovieCard data={movieData} />
-            </div>
-          ))
+        ? filteredMovies.map((movieData: MovieType) => (
+          <div
+            key={movieData.id}
+            className="shadow-card flex-[1_1_15%] rounded-lg pb-3"
+          >
+            <MovieCard data={movieData} />
+          </div>
+        ))
         : ""}
       <p
         className="w-full font-bold h-fit text-white text-center p-2 text-2xl bg-highlight rounded-lg cursor-pointer"

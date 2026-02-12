@@ -1,4 +1,5 @@
 import DropDown from "@components/DropDown"
+import type { ProviderType } from "@utils/types"
 import countries from "@constants/countries.json"
 import { useFilterContext } from "@contexts/FilterContext"
 import ProviderCard from "@components/filters/ProviderCard"
@@ -28,7 +29,7 @@ const WhereToWatch = () => {
           search
         />
         <div className="flex flex-wrap gap-x-1.5 gap-y-2.5">
-          {providers.map((item) => (
+          {providers.map((item: ProviderType) => (
             <ProviderCard
               provider={item}
               key={item.provider_id}
