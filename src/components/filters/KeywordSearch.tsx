@@ -7,18 +7,19 @@ import { IoClose, IoCloseCircle } from "react-icons/io5"
  * @returns - jsx for keyword input
  */
 const KeywordSearch = () => {
-  const [selectedKeywords, setSelectedKeywords] = useState([]) // holds the list of selected keywords
+  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]) // holds the list of selected keywords
 
   /**
    * performs the task based on the enter and backspace on enter add the key word in selected keyword list and on backspace remove the value from the selected keyword list(if input is empty)
    *
    * @param {eventObject} e - event object of the input based on key down
    */
-  const handleKeyDown = (e) => {
-    const value = e.target.value
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value
+
     if (e.key === "Enter") {
       setSelectedKeywords((prev) => [...prev, value])
-      e.target.value = ""
+      e.currentTarget.value = ""
     } else if (e.key === "Backspace" && value === "") {
       setSelectedKeywords((prev) => prev.slice(0, -1))
     }
@@ -29,7 +30,7 @@ const KeywordSearch = () => {
       <h3 className="mb-2.5 font-light">Keywords</h3>
       <label className="w-full flex items-center rounded-lg p-0.75 border border-search-border focus-within:border-highlight">
         <div className="flex flex-wrap gap-1">
-          {selectedKeywords.map((item, idx) => (
+          {selectedKeywords.map((item: string, idx: number) => (
             <span
               key={idx}
               className="text-sm flex justify-center items-center gap-1 rounded-lg bg-keyword-bg px-2 py-1"
