@@ -8,7 +8,7 @@ import MoviesScreen from "@screens/MoviesScreen"
  *
  * @returns - created routers
  */
-function App() {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>

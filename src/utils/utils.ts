@@ -1,4 +1,8 @@
 import { statusColors } from "@/constants";
+type Rating = {
+  rating: number
+  ratingGradient: string
+}
 
 /**
  * calculates the rating based ont eh vote average and return the gradient and the rating
@@ -7,7 +11,7 @@ import { statusColors } from "@/constants";
  * 
  * @returns {object} - with rating and the gradient for rating indicator
  */
-export function getRating(voteAverage) {
+export function getRating(voteAverage: number): Rating {
   const rating = Math.round((voteAverage / 10) * 100); // calculating the rating using average vote
 
   const ratingColor =
@@ -26,11 +30,11 @@ export function getRating(voteAverage) {
 /**
  * formats the date in Jan 01, 2026
  * 
- * @param {date} date - date to format
+ * @param {string} date - date to format
  * 
  * @returns {string} - formatted date
  */
-export function formateDate(date) {
+export function formateDate(date: string): string {
   return new Date(date).toLocaleDateString("en-US", {
     month: "short",
     day: "2-digit",
@@ -41,16 +45,33 @@ export function formateDate(date) {
 /**
  * formats the date in 2026-02-12
  * 
- * @param {date} date - date to format
+ * @param {string} date - date to format
  * 
  * @returns {string} - formatted date
  */
-export function formateDateForPicker(date) {
-  date = new Date(date)
+export function formateDateForPicker(date: string): string {
+  const newDate: Date = new Date(date)
 
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0")
-  const day = String(date.getDate()).padStart(2, "0")
+  const year = newDate.getFullYear();
+  const month = String(newDate.getMonth() + 1).padStart(2, "0")
+  const day = String(newDate.getDate()).padStart(2, "0")
 
   return `${year}-${month}-${day}`
+}
+
+/**
+ * this is utility function for fetching data from the api 
+ * 
+ * @param endpoint - for fetch the api data 
+ * @returns - response data in json
+ */
+export async function apiFetch(endpoint: string) {
+  const res: Response = await fetch(`${import.meta.env.VITE_BASE_URL}${endpoint}`, {
+    method: "GET",
+    headers: {
+      authorization: import.meta.env.VITE_TOKEN
+    }
+  })
+
+  if (res.ok) return res.json()
 }
