@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 
 import countries from "@constants/countries.json"
 import languages from "@constants/languages.json"
-import { formateDateForPicker } from "@/utils/utils"
+import { apiFetch, formateDateForPicker } from "@/utils/utils"
 import { includeAdultOptions, sortOptions } from "@/constants"
 
 const filterContext = createContext(null) // filter context
@@ -33,73 +33,50 @@ const FilterContextProvider = ({ children }) => {
    * for fetching the data for the provider based on the selected country
    */
   const fetchProviders = async () => {
-    const res = await fetch(
-      `${import.meta.env.VITE_BASE_URL}watch/providers/movie?watch_region=${selectedCountry.value}`,
-      {
-        method: "GET",
-        headers: {
-          authorization: import.meta.env.VITE_TOKEN,
-        },
-      },
+    const data = await apiFetch(
+      `watch/providers/movie?watch_region=${selectedCountry.value}`,
     )
-
-    if (res.ok) {
-      const data = await res.json()
-      setProviders(data.results)
-    }
+    setProviders(data.results)
   }
 
   /**
    * for fetching the list of the genres
    */
   const fetchGenres = async () => {
-    const res = await fetch(
-      `${import.meta.env.VITE_BASE_URL}genre/movie/list`,
-      {
-        method: "GET",
-        headers: {
-          authorization: import.meta.env.VITE_TOKEN,
-        },
-      },
-    )
-
-    if (res.ok) {
-      const data = await res.json()
-      setGenres(data.genres)
-    }
+    const data = await apiFetch("genre/movie/list")
+    setGenres(data.genres)
   }
 
   /**
    * to fetch the moves list based on the search options
    */
   const fetchFilteredMovies = async () => {
-    let query = `discover/movie?page=${nextPage}&include_adult=${selectedAdultOpt.value}&with_original_language=${selectedLanguage.value === "none" ? "" : selectedLanguage.value}&sort_by=${selectedSortBy.value}&with_watch_monetization_types=${selectedProviders.join(",")}&with_ott_providers=${selectedProviders.join(",")}&with_genres=${selectedGenres.join(",")}&certification=${selectedCertifications.join(",")}&vote_count.gte=${userVotes[0]}&with_runtime.gte=${runtime[0]}&with_runtime.lte=${runtime[1]}`
-
-    if (releaseDates.from) {
-      query += `&release_date.gte=${releaseDates.from}`
-    }
-
-    if (releaseDates.to) {
-      query += `&release_date.lte=${releaseDates.to}`
-    }
-
-    const res = await fetch(`${import.meta.env.VITE_BASE_URL}${query}`, {
-      method: "GET",
-      headers: {
-        authorization: import.meta.env.VITE_TOKEN,
-      },
+    const params = new URLSearchParams({
+      page: nextPage,
+      include_adult: selectedAdultOpt.value,
+      with_original_language:
+        selectedLanguage.value === "none" ? "" : selectedLanguage.value,
+      sort_by: selectedSortBy.value,
+      with_watch_monetization_types: selectedProviders.join(","),
+      with_ott_providers: selectedProviders.join(","),
+      with_genres: selectedGenres.join(","),
+      certification: selectedCertifications.join(","),
+      "vote_count.gte": userVotes[0],
+      "with_runtime.gte": runtime[0],
+      "with_runtime.lte": runtime[1],
     })
 
-    if (res.ok) {
-      const data = await res.json()
+    if (releaseDates.from) params.append("release_date.gte", releaseDates.from)
+    if (releaseDates.to) params.append("release_date.lte", releaseDates.to)
 
-      if (data.page <= 1 || searchAvailable) {
-        setFilteredMovies(data.results)
-        setNextPage(1)
-        setSearchAvailable(false)
-      } else {
-        setFilteredMovies((prev) => [...prev, ...data.results])
-      }
+    const data = await apiFetch(`discover/movie?${params}`)
+
+    if (data.page <= 1 || searchAvailable) {
+      setFilteredMovies(data.results)
+      setNextPage(1)
+      setSearchAvailable(false)
+    } else {
+      setFilteredMovies((prev) => [...prev, ...data.results])
     }
   }
 
@@ -195,7 +172,6 @@ const FilterContextProvider = ({ children }) => {
    */
   const selectCountry = (val, opt) => {
     setSelectedCountry({ value: val, option: opt })
-    setSearchAvailable(true)
   }
 
   /**
@@ -223,7 +199,7 @@ const FilterContextProvider = ({ children }) => {
   // runs the fetch provider function on component mount and selected country change
   useEffect(() => {
     fetchProviders()
-  }, [selectedCountry])
+  }, [selectedCountry.value])
 
   // runs the fetch genres function on component mount
   useEffect(() => {
