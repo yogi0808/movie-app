@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import { GiCheckMark } from "react-icons/gi"
 
+import type { ProviderType } from "@utils/types"
 import { useFilterContext } from "@contexts/FilterContext"
 
 /**
@@ -10,7 +11,7 @@ import { useFilterContext } from "@contexts/FilterContext"
  *
  * @returns - jsx for the provider
  */
-const ProviderCard = ({ provider }) => {
+const ProviderCard = ({ provider }: { provider: ProviderType }) => {
   const { selectedProviders, selectProvider } = useFilterContext() // getting the selected providers(list of the provider id) and the select provider(function to select the provider) from the filter context
   const isActive = selectedProviders.includes(provider.provider_id) // for tracking the selected state of the provider
 
