@@ -1,8 +1,9 @@
 import classNames from "classnames"
 import { IoMdArrowDropdown } from "react-icons/io"
-import React, { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import useHandleClickOutside from "@/hooks/useHandleClickOutside"
+import type { DropDownProps } from "@/utils/types"
 
 /**
  * custom drop down with the search option for user to search in list
@@ -25,12 +26,12 @@ const DropDown = ({
   search = false,
   valueKey,
   optionKey,
-}) => {
-  const [isActive, setIsActive] = useState(false) // for tracking the state of the dropdown is open or close
-  const [options, setOptions] = useState(list) // copy of the list data
+}: DropDownProps) => {
+  const [isActive, setIsActive] = useState<boolean>(false) // for tracking the state of the dropdown is open or close
+  const [options, setOptions] = useState<any[]>(list) // copy of the list data
 
-  const popupRef = useRef() // ref for popup menu
-  const selectedRef = useRef() // ref for selected option
+  const popupRef = useRef<HTMLDivElement | null>(null) // ref for popup menu
+  const selectedRef = useRef<HTMLParagraphElement | null>(null) // ref for selected option
 
   useHandleClickOutside(popupRef, setIsActive) // custom hook to handle the click out side of the popup(list)
 
@@ -56,7 +57,7 @@ const DropDown = ({
         <IoMdArrowDropdown className="text-xl" />
         {isActive && (
           <div
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
             className="border w-full border-search-border max-w-full absolute left-0 bg-white top-[110%] shadow-card rounded-lg max-h-50 overflow-y-auto z-9"
           >
             {search && (
@@ -65,7 +66,7 @@ const DropDown = ({
                   className="w-full px-2 py-1 border focus:border-highlight rounded-lg outline-none"
                   placeholder="Search..."
                   type="text"
-                  onChange={(e) => {
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setOptions(
                       list.filter((a) =>
                         a.option
