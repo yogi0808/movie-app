@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import { useState } from "react"
 
-import { dummyAvailableSearch } from "@constants"
+import { dummyAvailableSearch } from "@constants/index"
 
 /**
  * sows the dummy options in the filter section
@@ -8,7 +8,7 @@ import { dummyAvailableSearch } from "@constants"
  * @returns - jsx for the dummy options
  */
 const DummyOptions = () => {
-  const [isChecked, setIsChecked] = useState(true) // for tracking the open and close state for search available
+  const [isChecked, setIsChecked] = useState<boolean>(true) // for tracking the open and close state for search available
 
   return (
     <>
@@ -58,7 +58,7 @@ const DummyOptions = () => {
         </label>
         {!isChecked ? (
           <div className="mt-1.5">
-            {dummyAvailableSearch.map((item, idx) => (
+            {dummyAvailableSearch.map((item: string, idx: number) => (
               <label
                 key={idx}
                 className="flex items-center gap-2 cursor-pointer"
