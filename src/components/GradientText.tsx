@@ -1,5 +1,6 @@
-import type { GradientTextProps } from "@/utils/types"
 import classNames from "classnames"
+
+import type { GradientTextProps } from "@utils/types"
 
 /**
  * gradient text component creates the div with gradient and clip the background to text for creating text wise gradient effect.

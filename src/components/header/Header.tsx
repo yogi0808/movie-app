@@ -6,9 +6,9 @@ import Logo from "@components/Logo"
 import classNames from "classnames"
 import useScroll from "@hooks/useScroll"
 import { HeaderLinks } from "@constants/index"
-import type { HeaderLinkType } from "@/utils/types"
-import MobileNav from "@/components/header/MobileNav"
-import useHandleClickOutside from "@/hooks/useHandleClickOutside"
+import type { HeaderLinkType } from "@utils/types"
+import MobileNav from "@components/header/MobileNav"
+import useHandleClickOutside from "@hooks/useHandleClickOutside"
 import LinkWithOptions from "@components/header/LinkWithOptions"
 
 /**

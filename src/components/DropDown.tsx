@@ -2,8 +2,8 @@ import classNames from "classnames"
 import { IoMdArrowDropdown } from "react-icons/io"
 import { useEffect, useRef, useState } from "react"
 
-import useHandleClickOutside from "@/hooks/useHandleClickOutside"
-import type { DropDownProps } from "@/utils/types"
+import type { DropDownProps } from "@utils/types"
+import useHandleClickOutside from "@hooks/useHandleClickOutside"
 
 /**
  * custom drop down with the search option for user to search in list

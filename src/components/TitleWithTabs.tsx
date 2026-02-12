@@ -1,5 +1,5 @@
 import Tabs from "@components/Tabs"
-import type { TitleWithTabsProps } from "@/utils/types"
+import type { TitleWithTabsProps } from "@utils/types"
 
 /**
  * displays the tabs and the title title in left and the tabs is in the right

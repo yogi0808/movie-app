@@ -6,7 +6,7 @@ import { useEffect } from "react"
  * @param {refObject} ref 
  * @param {function} setState 
  */
-function useHandleClickOutside(ref, setState) {
+function useHandleClickOutside(ref: React.RefObject<HTMLDivElement | null>, setState: (val: boolean) => void) {
 
   useEffect(() => {
     /**
@@ -14,8 +14,8 @@ function useHandleClickOutside(ref, setState) {
      * @constructor
      * @param {object} e - mousedown event object
      */
-    const handleClickOutside = (e) => {
-      if (!ref?.current?.contains(e.target)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
         setState(false)
       }
     }
@@ -26,7 +26,7 @@ function useHandleClickOutside(ref, setState) {
      * this return function is for removing the event listener from the dom
      */
     return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [ref])
+  }, [ref, setState])
 
 }
 

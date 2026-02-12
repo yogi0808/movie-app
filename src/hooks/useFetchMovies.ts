@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 
+interface returnType {
+  data: any
+  isLoading: boolean
+  error: string | null
+}
+
 /**
  *
  * @param {string} endpoint - endpoint to fetch the data from
  * @returns - an object with data loading state and the error is accurse
  */
-function useFetchMovies(endpoint) {
-  const [data, setData] = useState(null); // data that comes from the api request
-  const [isLoading, setIsLoading] = useState(true); // loading state for data fetch wait
-  const [error, setError] = useState(null);
+function useFetchMovies(endpoint: string): returnType {
+  const [data, setData] = useState<any>(null); // data that comes from the api request
+  const [isLoading, setIsLoading] = useState<boolean>(true); // loading state for data fetch wait
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -17,7 +23,7 @@ function useFetchMovies(endpoint) {
      */
     const fetchData = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_BASE_URL}${endpoint}`, {
+        const res: Response = await fetch(`${import.meta.env.VITE_BASE_URL}${endpoint}`, {
           method: "GET",
           headers: {
             authorization: import.meta.env.VITE_TOKEN,
@@ -29,7 +35,11 @@ function useFetchMovies(endpoint) {
           setData(data);
         }
       } catch (e) {
-        setError(e);
+        if (e instanceof Error) {
+          setError(e.message);
+        } else {
+          setError("Unknown error.")
+        }
       } finally {
         setIsLoading(false);
       }

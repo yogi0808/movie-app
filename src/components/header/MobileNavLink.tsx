@@ -1,7 +1,7 @@
 import { useState } from "react"
 import classNames from "classnames"
 
-import type { LinkOptionsType, MobileNavLinkProp } from "@/utils/types"
+import type { LinkOptionsType, MobileNavLinkProp } from "@utils/types"
 
 /**
  *

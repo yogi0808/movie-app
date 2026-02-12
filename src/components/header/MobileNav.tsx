@@ -1,8 +1,8 @@
 import classNames from "classnames"
 
-import { HeaderLinks, mobileHeaderLinks } from "@/constants"
-import MobileNavLink from "@/components/header/MobileNavLink"
-import type { HeaderLinkType, LinkOptionsType, MobileNavProps } from "@/utils/types"
+import { HeaderLinks, mobileHeaderLinks } from "@constants/index"
+import MobileNavLink from "@components/header/MobileNavLink"
+import type { HeaderLinkType, LinkOptionsType, MobileNavProps } from "@utils/types"
 
 /**
  * this is mobile nav menu for responsiveness it displays the links in columns

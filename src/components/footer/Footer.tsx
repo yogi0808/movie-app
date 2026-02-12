@@ -1,6 +1,6 @@
-import type { FooterLinkItemType, FooterLinkType } from "@/utils/types"
 import Logo from "@components/Logo"
 import { FooterLinks } from "@constants/index"
+import type { FooterLinkItemType, FooterLinkType } from "@utils/types"
 
 /**
  * footer component with list links.

@@ -2,7 +2,7 @@ import { useState } from "react"
 import classNames from "classnames"
 import { Link } from "react-router"
 
-import type { LinkOptionsType, LinkWithOptionsProp } from "@/utils/types"
+import type { LinkOptionsType, LinkWithOptionsProp } from "@utils/types"
 
 /**
  * this component is responsible for showing the options based on hover of particular header option and it'll provide the link for each options that will visible on the popup.

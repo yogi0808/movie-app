@@ -1,4 +1,4 @@
-import type { LogoProps } from "@/utils/types"
+import type { LogoProps } from "@utils/types"
 
 /**
  * logo component it returns the logo based on user choice like small of big by default the logo is small if user specifies the size with xl it returns the logo based ont that.

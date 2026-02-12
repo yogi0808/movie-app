@@ -1,8 +1,9 @@
 import classNames from "classnames"
 import { useEffect, useRef, useState } from "react"
 
+import type { TabsProps } from "@utils/types"
 import GradientText from "@components/GradientText"
-import type { TabsProps } from "@/utils/types"
+
 interface HighlighterStyleType {
   left: number
   width: number
