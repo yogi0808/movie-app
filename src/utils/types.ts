@@ -45,3 +45,28 @@ export interface FooterLinkItemType {
   title: string
   links: FooterLinkType[]
 }
+
+export interface LinkOptionsType {
+  id: number
+  text: string
+  link: string
+}
+
+export interface HeaderLinkType {
+  id: number
+  title: string
+  options: LinkOptionsType[]
+}
+
+export interface LinkWithOptionsProp {
+  link: HeaderLinkType
+}
+
+export interface MobileNavProps {
+  isActive: boolean
+  navRef: React.Ref<HTMLDivElement>
+}
+
+export interface MobileNavLinkProp {
+  link: HeaderLinkType
+}

@@ -6,9 +6,10 @@ import Logo from "@components/Logo"
 import classNames from "classnames"
 import useScroll from "@hooks/useScroll"
 import { HeaderLinks } from "@constants/index"
-import MobileNav from "@components/header/MobileNav"
+import type { HeaderLinkType } from "@/utils/types"
+import MobileNav from "@/components/header/MobileNav"
 import useHandleClickOutside from "@/hooks/useHandleClickOutside"
-import LinkWidthOptions from "@components/header/LinkWidthOptions"
+import LinkWithOptions from "@components/header/LinkWithOptions"
 
 /**
  * header component that displays the logo navigation lins and also hides when user is scrolls down and when user scrolls back up it appears again.
@@ -16,9 +17,9 @@ import LinkWidthOptions from "@components/header/LinkWidthOptions"
  */
 const Header = () => {
   const { scrollDirection } = useScroll() // to get the user scroll direction it is custom hook
-  const [isMobileNavActive, setIsMobileNavActive] = useState(false) // track the open and close status of the mobile navigation popup
+  const [isMobileNavActive, setIsMobileNavActive] = useState<boolean>(false) // track the open and close status of the mobile navigation popup
 
-  const mobileNavRef = useRef() // ref of the mobile navigation popup
+  const mobileNavRef = useRef<HTMLDivElement | null>(null) // ref of the mobile navigation popup
 
   // getting dynamic class names based on the condition
   const headerClassNames = classNames(
@@ -51,8 +52,8 @@ const Header = () => {
               <Logo xl />
             </div>
             <nav className="hidden gap-3.75 h-fit lg:flex">
-              {HeaderLinks.map((link) => (
-                <LinkWidthOptions
+              {HeaderLinks.map((link: HeaderLinkType) => (
+                <LinkWithOptions
                   key={link.id}
                   link={link}
                 />

@@ -1,12 +1,14 @@
+import { useState } from "react"
 import classNames from "classnames"
-import React, { useState } from "react"
+
+import type { LinkOptionsType, MobileNavLinkProp } from "@/utils/types"
 
 /**
  *
  * @param {object} link - it is for single link data has the main link title and the object of the sublinks.
  * @returns - jsx for the links
  */
-const MobileNavLink = ({ link }) => {
+const MobileNavLink = ({ link }: MobileNavLinkProp) => {
   const [isActive, setIsActive] = useState(false) // track the active state of the link options
 
   // will return the class names based on the conditions
@@ -24,7 +26,7 @@ const MobileNavLink = ({ link }) => {
         {link.title}
       </h1>
       <div className={linksClassNames}>
-        {link.options.map((link) => (
+        {link.options.map((link: LinkOptionsType) => (
           <a
             href={link.link}
             key={link.id}

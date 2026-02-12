@@ -2,6 +2,8 @@ import { useState } from "react"
 import classNames from "classnames"
 import { Link } from "react-router"
 
+import type { LinkOptionsType, LinkWithOptionsProp } from "@/utils/types"
+
 /**
  * this component is responsible for showing the options based on hover of particular header option and it'll provide the link for each options that will visible on the popup.
  *
@@ -9,8 +11,8 @@ import { Link } from "react-router"
  *  @param {object} link - object for data needed in link of it's popup menu
  * @returns - jsx for single link in header
  */
-const LinkWidthOptions = ({ link }) => {
-  const [isOpen, setIsOpen] = useState(false) // for popup activated and deactivated state
+const LinkWithOptions = ({ link }: LinkWithOptionsProp) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false) // for popup activated and deactivated state
 
   // creating an dynamic class name string based on the condition
   const popupListClassNames = classNames(
@@ -28,7 +30,7 @@ const LinkWidthOptions = ({ link }) => {
     >
       <label className="font-semibold leading-6">{link.title}</label>
       <div className={popupListClassNames}>
-        {link.options.map((item) => (
+        {link.options.map((item: LinkOptionsType) => (
           <Link
             key={item.id}
             to={item.link}
@@ -42,4 +44,4 @@ const LinkWidthOptions = ({ link }) => {
   )
 }
 
-export default LinkWidthOptions
+export default LinkWithOptions
