@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from "react"
+import type { PropsWithChildren, ReactNode } from "react"
 
 export interface LogoProps {
   xl?: boolean
@@ -91,9 +91,18 @@ export interface MovieType {
   overview: string
   popularity: number
   poster_path: string
-  release_date: string
-  title: string
-  video: boolean
   vote_average: number
   vote_count: number
+  release_date?: string
+  first_air_date?: string
+  title?: string
+  name?: string
+  video?: boolean
+}
+
+export interface MoviePopupLinkType {
+  id: number
+  link: string
+  icon: ReactNode
+  text: string
 }

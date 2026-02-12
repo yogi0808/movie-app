@@ -4,6 +4,7 @@ import { formateDate } from "@utils/utils"
 import { MoviePopupLinks } from "@constants/index"
 import RatingIndicator from "@components/cards/RatingIndicator"
 import useHandleClickOutside from "@hooks/useHandleClickOutside"
+import type { MoviePopupLinkType, MovieType } from "@utils/types"
 
 /**
  * movie card component for displaying movie image, title or name, date, and ratting also show the popup menu based on user action like click on more option.
@@ -12,9 +13,9 @@ import useHandleClickOutside from "@hooks/useHandleClickOutside"
  *  @param {object} data - movie Data
  * @returns - jsx for the single movie data display
  */
-const MovieCard = ({ data }) => {
-  const [isPopupActive, setIsPopupActive] = useState(false) // using this state for popup activation and deactivation
-  const popupRef = useRef() // ref for popup menu
+const MovieCard = ({ data }: { data: MovieType }) => {
+  const [isPopupActive, setIsPopupActive] = useState<boolean>(false) // using this state for popup activation and deactivation
+  const popupRef = useRef<HTMLDivElement | null>(null) // ref for popup menu
 
   useHandleClickOutside(popupRef, setIsPopupActive)
 
@@ -24,8 +25,8 @@ const MovieCard = ({ data }) => {
         <img
           src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
           className="rounded-lg w-full"
-          onError={(e) => {
-            e.target.classList.add("hidden")
+          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+            e.currentTarget.classList.add("hidden")
           }}
         />
         <button
@@ -42,8 +43,9 @@ const MovieCard = ({ data }) => {
             ref={popupRef}
             className="z-10 bg-white min-w-32 border animate-fade-in border-gray-300 text-black/60 flex flex-col rounded-lg absolute top-9 left-2/5 shadow overflow-hidden"
           >
-            {MoviePopupLinks.map((link) => (
+            {MoviePopupLinks.map((link: MoviePopupLinkType) => (
               <a
+                key={link.id}
                 href={link.link}
                 className="hover:bg-gray-200 font-semibold py-2.5 px-5 text-sm w-full flex items-center gap-1 text-start border-b border-inherit transition-all ease-in-out duration-200"
               >
@@ -66,7 +68,7 @@ const MovieCard = ({ data }) => {
           {data.title || data.name}
         </a>
         <p className="text-stone-500">
-          {formateDate(data.release_date || data.first_air_date)}
+          {formateDate(data.release_date || data.first_air_date || "")}
         </p>
       </div>
       <Activity mode={isPopupActive ? "visible" : "hidden"}>
