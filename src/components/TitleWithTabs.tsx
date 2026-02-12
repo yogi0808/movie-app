@@ -1,9 +1,9 @@
 import Tabs from "@components/Tabs"
+import type { TitleWithTabsProps } from "@/utils/types"
 
 /**
  * displays the tabs and the title title in left and the tabs is in the right
  *
- * @param {*} param0
  * @param {object} param0 - with prop data, activeTab, onTabChange
  *  @param {list} data - it is a list of string for tab title
  *  @param {string} title - the title of the section with tabs
@@ -12,7 +12,7 @@ import Tabs from "@components/Tabs"
  *
  * @returns - jsx for title and tabs
  */
-const TitleWithTabs = ({ data = [], title, activeTab, onTabChange }) => {
+const TitleWithTabs = ({ data, title, activeTab, onTabChange }: TitleWithTabsProps) => {
   return (
     <div className="flex lg:items-center gap-2 lg:gap-5 px-5 md:px-10 flex-wrap">
       <h2 className="text-2xl font-semibold leading-6">{title}</h2>

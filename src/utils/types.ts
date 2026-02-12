@@ -29,3 +29,7 @@ export interface TabsProps {
   activeTab: number
   onTabChange(index: number): void
 }
+
+export interface TitleWithTabsProps extends TabsProps {
+  title: string
+}
