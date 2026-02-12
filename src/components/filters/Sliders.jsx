@@ -7,10 +7,15 @@ import {
 import CustomRange from "./CustomRange"
 import { useFilterContext } from "@/contexts/FilterContext"
 
+/**
+ * displays the range sliders for user vote, user score, and runtime
+ *
+ * @returns - jsx for the sliders
+ */
 const Sliders = () => {
-  const [userScore, setUserScore] = useState([0, 10])
+  const [userScore, setUserScore] = useState([0, 10]) // current selected user score state for range slider
   const { userVotes, changeUserVotes, runtime, changeRuntime } =
-    useFilterContext()
+    useFilterContext() // getting selected user votes(array with selected value), runtime(array with selected values), change user votes(function to change selected values) and change runtime(function to change selected values) form the filter context
 
   return (
     <>

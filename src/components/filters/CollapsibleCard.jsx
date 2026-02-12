@@ -2,9 +2,20 @@ import classNames from "classnames"
 import React, { Activity, useState } from "react"
 import { MdKeyboardArrowRight } from "react-icons/md"
 
+/**
+ * this is a card with open and close state by clicking the title of arrow button we can open(expend) the card all the children are shown in the open(expended) state
+ *
+ * @param {string} title - title of the card
+ * @param {number} count - count is for sowing the count in top of this box (it is optional)
+ * @param {boolean} open - indicates by default this card is open or not
+ * @param {elements} children - sub elements to show in this card
+ *
+ * @returns - jsx for the collapsible card
+ */
 const CollapsibleCard = ({ title, count, children, open }) => {
-  const [isActive, setIsActive] = useState(open ? true : false)
+  const [isActive, setIsActive] = useState(open ? true : false) // for tracking card is open and close state
 
+  // classes for icon to rotate on open state
   const iconsClassNames = classNames("text-xl origin-center", {
     "rotate-90": isActive,
   })

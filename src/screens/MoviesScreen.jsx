@@ -4,6 +4,11 @@ import FilteredMoviesSection from "@/sections/movies/FilteredMoviesSection"
 import FilterSection from "@/sections/movies/FilterSection"
 import React from "react"
 
+/**
+ * uses the root layout for movies screen and also using the filter context provider for global state in this page. this screen shown in the movies route("/movies").
+ *
+ * @returns - jsx for the movies screen
+ */
 const MoviesScreen = () => {
   return (
     <FilterContextProvider>

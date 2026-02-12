@@ -1,5 +1,11 @@
 import { useEffect } from "react"
 
+/**
+ * custom hook to handle the click out side of the provided ref
+ * 
+ * @param {refObject} ref 
+ * @param {function} setState 
+ */
 function useHandleClickOutside(ref, setState) {
 
   useEffect(() => {

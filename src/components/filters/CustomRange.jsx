@@ -2,6 +2,19 @@ import classNames from "classnames"
 import React from "react"
 import { getTrackBackground, Range } from "react-range"
 
+/**
+ * this is a range slider for user to select the value from the range it can have 1 or more thumb based on the values array
+ *
+ * @param {number} min - minimum value of the range
+ * @param {number} max - maximum value of the range
+ * @param {number} step - step value for dragging
+ * @param {number[]} values - current selected value of the range
+ * @param {function} onChange - function to change the value based on the user action
+ * @param {string[]} colors - colors of the track
+ * @param {number} mainMarkDivider - number for making mark big based on the calculation
+ *
+ * @returns - jsx for the range slider
+ */
 const CustomRange = ({
   min,
   max,
@@ -58,6 +71,7 @@ const CustomRange = ({
         </div>
       )}
       renderThumb={({ index, props, isDragged }) => {
+        // class names for the thumb to change the colors based on the dragging
         const thumbClassNames = classNames(
           "h-3.5 w-3.5 rounded-full outline-none hover:bg-btn-hover bg-highlight ring-highlight/40 relative",
           {

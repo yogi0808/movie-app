@@ -2,34 +2,49 @@ import MovieCard from "@/components/cards/MovieCard"
 import { useFilterContext } from "@/contexts/FilterContext"
 import React, { useEffect, useRef, useState } from "react"
 
+/**
+ * displays all the filtered movies on the right side
+ *
+ * @returns - jsx for the filtered movies
+ */
 const FilteredMoviesSection = () => {
-  const [loadInfinite, setLoadInfinite] = useState(false)
-  const { filteredMovies, setNextPage } = useFilterContext()
+  const [loadInfinite, setLoadInfinite] = useState(false) // tracks if the infinite scroll is active or not
+  const { filteredMovies, setNextPage } = useFilterContext() // getting the list of the filtered movies and the next page from the filter context
 
-  const targetRef = useRef(null)
-  const observerRef = useRef(null)
+  const targetRef = useRef(null) // ref of the bottom div for loading infinitely
+  const observerRef = useRef(null) // ref for the observer to survive the re-render
 
+  // use effect for creating an intersection observer
   useEffect(() => {
     if (!loadInfinite) return
 
+    // disconnect observer if already have one
     if (observerRef.current) observerRef.current.disconnect()
 
+    /**
+     * callback function for the intersection observer to change the page number
+     *
+     * @param {object[]} entries - list of the object which is targeted
+     */
     const cb = (entries) => {
       if (entries[0].isIntersecting) {
         setNextPage((prev) => prev + 1)
       }
     }
 
+    // creating intersection observer and storing it in ref
     observerRef.current = new IntersectionObserver(cb, {
       root: null,
       rootMargin: "200px",
       threshold: 0.1,
     })
 
+    // attaching the target to observer
     if (targetRef.current) {
       observerRef.current.observe(targetRef.current)
     }
 
+    // cleaning the observer on unmount
     return () => {
       if (observerRef.current) observerRef.current.disconnect()
     }

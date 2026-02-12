@@ -1,5 +1,12 @@
 import { statusColors } from "@/constants";
 
+/**
+ * calculates the rating based ont eh vote average and return the gradient and the rating
+ * 
+ * @param {number} voteAverage - average of the vot
+ * 
+ * @returns {object} - with rating and the gradient for rating indicator
+ */
 export function getRating(voteAverage) {
   const rating = Math.round((voteAverage / 10) * 100); // calculating the rating using average vote
 
@@ -16,6 +23,13 @@ export function getRating(voteAverage) {
   };
 }
 
+/**
+ * formats the date in Jan 01, 2026
+ * 
+ * @param {date} date - date to format
+ * 
+ * @returns {string} - formatted date
+ */
 export function formateDate(date) {
   return new Date(date).toLocaleDateString("en-US", {
     month: "short",
@@ -24,6 +38,13 @@ export function formateDate(date) {
   });
 }
 
+/**
+ * formats the date in 2026-02-12
+ * 
+ * @param {date} date - date to format
+ * 
+ * @returns {string} - formatted date
+ */
 export function formateDateForPicker(date) {
   date = new Date(date)
 

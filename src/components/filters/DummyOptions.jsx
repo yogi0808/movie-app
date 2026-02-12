@@ -1,8 +1,13 @@
 import React, { useState } from "react"
 import BoxWithDivider from "../BoxWithDivider"
 
+/**
+ * sows the dummy options in the filter section
+ *
+ * @returns - jsx for the dummy options
+ */
 const DummyOptions = () => {
-  const [isChecked, setIsChecked] = useState(true)
+  const [isChecked, setIsChecked] = useState(true) // for tracking the open and close state for search available
 
   return (
     <>

@@ -1,7 +1,15 @@
 import classNames from "classnames"
 import React from "react"
 
+/**
+ * display the text in the capsule shape and user can select it
+ *
+ * @param {object} data - data needed for the chip
+ *
+ * @returns
+ */
 const Chip = ({ data, isSelected, handleSelect }) => {
+  // class names for chip. changing based on the selected state
   const chipClasses = classNames(
     "px-3 py-1.5 flex flex-col h-fit hover:bg-highlight hover:text-white rounded-full border border-chip-border text-sm cursor-pointer",
     {

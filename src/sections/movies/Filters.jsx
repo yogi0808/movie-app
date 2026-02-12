@@ -10,6 +10,11 @@ import { certifications, includeAdultOptions } from "@/constants"
 import { useFilterContext } from "@/contexts/FilterContext"
 import languages from "@constants/languages.json"
 
+/**
+ * displays the all filter option in filter section
+ *
+ * @returns - jsx for the filters
+ */
 const Filters = () => {
   const {
     genres,
@@ -21,7 +26,7 @@ const Filters = () => {
     selectAdultOpt,
     selectedLanguage,
     selectLanguage,
-  } = useFilterContext()
+  } = useFilterContext() // getting all the selected value for filters from the filter context
 
   return (
     <CollapsibleCard

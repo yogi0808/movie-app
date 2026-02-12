@@ -5,8 +5,13 @@ import ProviderCard from "@/components/filters/ProviderCard"
 import { useFilterContext } from "@/contexts/FilterContext"
 import countries from "@constants/countries.json"
 
+/**
+ * displays the where to watch options like all providers and country dorp down
+ *
+ * @returns - jsx for the where to watch
+ */
 const WhereToWatch = () => {
-  const { selectedCountry, selectCountry, providers } = useFilterContext()
+  const { selectedCountry, selectCountry, providers } = useFilterContext() // getting the selected country, providers list and function to select the country
 
   return (
     <CollapsibleCard
