@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import DatePicker from "react-datepicker"
 import { IoMdCalendar } from "react-icons/io"
 
-import { releaseDateSearch } from "@constants"
+import { releaseDateSearch } from "@constants/index"
 import "@components/filters/datepiker/datepiker.css"
 import { useFilterContext } from "@contexts/FilterContext"
 
@@ -12,7 +12,7 @@ import { useFilterContext } from "@contexts/FilterContext"
  * @returns - jsx for the release dates
  */
 const ReleaseDates = () => {
-  const [searchAll, setSearchAll] = useState(true) // for tracking the all search checkbox to sow search option based on selected state
+  const [searchAll, setSearchAll] = useState<boolean>(true) // for tracking the all search checkbox to sow search option based on selected state
   const { releaseDates, selectReleaseDate } = useFilterContext() // getting selected release dates(object with from and to dates) and select release date(function to select the date) from filter context
 
   return (
@@ -55,7 +55,7 @@ const ReleaseDates = () => {
               className="outline-none inline-block py-1.5 pl-3 md:max-w-30"
               selected={releaseDates.from}
               dateFormat="dd/MM/YYYY"
-              onChange={(date) => selectReleaseDate("from", date)}
+              onChange={(date: Date | null) => selectReleaseDate("from", date)}
             />
             <span className="bg-date-picker p-1.5 flex justify-center items-center">
               <IoMdCalendar className="text-xl text-black/70" />
@@ -70,7 +70,7 @@ const ReleaseDates = () => {
               className="outline-none inline-block py-1.5 pl-3 md:max-w-30"
               selected={releaseDates.to}
               dateFormat="dd/MM/YYYY"
-              onChange={(date) => selectReleaseDate("to", date)}
+              onChange={(date: Date | null) => selectReleaseDate("to", date)}
             />
             <span className="bg-date-picker p-1.5 flex justify-center items-center">
               <IoMdCalendar className="text-xl text-black/70" />
