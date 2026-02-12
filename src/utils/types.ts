@@ -75,3 +75,8 @@ export interface SectionProps extends PropsWithChildren {
   className: string
   outerSectionClassName: string
 }
+
+export interface RatingIndicatorProps {
+  voteAverage: number | null
+  className: string
+}

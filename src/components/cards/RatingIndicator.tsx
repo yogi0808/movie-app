@@ -2,6 +2,7 @@ import { Activity } from "react"
 import classNames from "classnames"
 
 import { getRating } from "@utils/utils"
+import type { RatingIndicatorProps } from "@utils/types"
 
 /**
  * rating indicator component it displays rating circle indicator based on the average votes of the movie used gradient to create and ring progress.
@@ -11,8 +12,8 @@ import { getRating } from "@utils/utils"
  *  @param {string} className - names of class for rating div
  * @returns - jsx for the rating indicator
  */
-const RatingIndicator = ({ voteAverage, className }) => {
-  const { rating, ratingGradient } = getRating(voteAverage)
+const RatingIndicator = ({ voteAverage, className }: RatingIndicatorProps) => {
+  const { rating, ratingGradient } = getRating(voteAverage || 0)
 
   // creating an class names string based on the prop class names
   const wrapperClassNames = classNames(
