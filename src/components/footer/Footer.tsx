@@ -1,3 +1,4 @@
+import type { FooterLinkItemType, FooterLinkType } from "@/utils/types"
 import Logo from "@components/Logo"
 import { FooterLinks } from "@constants/index"
 
@@ -18,13 +19,13 @@ const Footer = () => {
             Hi yogi0808!
           </a>
         </div>
-        {FooterLinks.map((link) => (
+        {FooterLinks.map((link: FooterLinkItemType) => (
           <div key={link.id}>
             <h3 className="text-xl font-bold uppercase leading-7">
               {link.title}
             </h3>
             <ul className="flex flex-col">
-              {link.links.map((link) => (
+              {link.links.map((link: FooterLinkType) => (
                 <li
                   key={link.id}
                   className=" text-sm max-w-65 whitespace-nowrap overflow-hidden text-ellipsis text-white"

@@ -33,3 +33,15 @@ export interface TabsProps {
 export interface TitleWithTabsProps extends TabsProps {
   title: string
 }
+
+export interface FooterLinkType {
+  id: number
+  text: string
+  link: string
+}
+
+export interface FooterLinkItemType {
+  id: number
+  title: string
+  links: FooterLinkType[]
+}
