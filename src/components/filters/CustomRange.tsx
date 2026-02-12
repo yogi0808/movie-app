@@ -1,6 +1,7 @@
-import React from "react"
 import classNames from "classnames"
 import { getTrackBackground, Range } from "react-range"
+
+import type { CustomRangeProps } from "@utils/types"
 
 /**
  * this is a range slider for user to select the value from the range it can have 1 or more thumb based on the values array
@@ -23,7 +24,7 @@ const CustomRange = ({
   onChange,
   colors,
   mainMarkDivider,
-}) => {
+}: CustomRangeProps) => {
   return (
     <Range
       min={min}

@@ -118,3 +118,13 @@ export interface CollapsibleCardProps extends PropsWithChildren {
   count?: number
   open?: boolean
 }
+
+export interface CustomRangeProps {
+  min: number
+  max: number
+  step: number
+  values: number[]
+  onChange(values: number[]): void
+  colors: string[]
+  mainMarkDivider: number
+}
