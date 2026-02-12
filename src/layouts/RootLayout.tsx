@@ -1,5 +1,6 @@
 import Header from "@components/header/Header";
 import Footer from "@components/footer/Footer";
+import type { PropsWithChildren } from "react";
 
 /**
  * this layout is used with header and footer all the content goes between header and footer displays header in top and footer in bottom.
@@ -8,7 +9,7 @@ import Footer from "@components/footer/Footer";
  *  @param {element} children - all the content in between header and footer
  * @returns - jsx for root layout
  */
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Header />
