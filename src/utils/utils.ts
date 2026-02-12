@@ -1,4 +1,4 @@
-import { statusColors } from "@/constants";
+import { statusColors } from "@constants";
 type Rating = {
   rating: number
   ratingGradient: string

@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 
 import CustomRange from "@components/filters/CustomRange"
-import { useFilterContext } from "@/contexts/FilterContext"
+import { useFilterContext } from "@contexts/FilterContext"
 import {
   sliderOneThumbsTrackColors,
   sliderTwoThumbsTrackColors,
-} from "@/constants"
+} from "@constants"
 
 /**
  * displays the range sliders for user vote, user score, and runtime

@@ -1,7 +1,7 @@
 import classNames from "classnames"
 import { GiCheckMark } from "react-icons/gi"
 
-import { useFilterContext } from "@/contexts/FilterContext"
+import { useFilterContext } from "@contexts/FilterContext"
 
 /**
  * displays the image of the provider and give ability to select the provider

@@ -1,11 +1,11 @@
 import { useState } from "react"
 
 import Section from "@sections/home/Section"
-import useFetchMovies from "@/hooks/useFetchMovies"
+import useFetchMovies from "@hooks/useFetchMovies"
 import MovieCard from "@components/cards/MovieCard"
 import TitleWithTabs from "@components/TitleWithTabs"
-import { endpointsForTrendingMovies } from "@/constants"
-import MovieCardSkeleton from "@/components/cards/MovieCardSkeleton"
+import { endpointsForTrendingMovies } from "@constants"
+import MovieCardSkeleton from "@components/cards/MovieCardSkeleton"
 
 /**
  * this component is responsible for getting and displaying trending movies data based on the user preference with tab.

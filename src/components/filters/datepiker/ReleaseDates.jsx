@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import DatePicker from "react-datepicker"
 import { IoMdCalendar } from "react-icons/io"
 
-import { releaseDateSearch } from "@/constants"
+import { releaseDateSearch } from "@constants"
 import "@components/filters/datepiker/datepiker.css"
-import { useFilterContext } from "@/contexts/FilterContext"
+import { useFilterContext } from "@contexts/FilterContext"
 
 /**
  * displays teh inputs for date and checkboxes for the search input and dates for the from and to

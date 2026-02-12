@@ -1,7 +1,7 @@
 import { Activity } from "react"
 import classNames from "classnames"
 
-import { getRating } from "@/utils/utils"
+import { getRating } from "@utils/utils"
 
 /**
  * rating indicator component it displays rating circle indicator based on the average votes of the movie used gradient to create and ring progress.

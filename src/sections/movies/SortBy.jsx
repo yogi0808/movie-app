@@ -1,9 +1,9 @@
 import React from "react"
 
-import { sortOptions } from "@/constants"
-import DropDown from "@/components/DropDown"
-import { useFilterContext } from "@/contexts/FilterContext"
-import CollapsibleCard from "@/components/filters/CollapsibleCard"
+import { sortOptions } from "@constants"
+import DropDown from "@components/DropDown"
+import { useFilterContext } from "@contexts/FilterContext"
+import CollapsibleCard from "@components/filters/CollapsibleCard"
 
 /**
  * displays the sort options in the filter section

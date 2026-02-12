@@ -1,13 +1,13 @@
-import Chip from "@/components/Chip"
-import DropDown from "@/components/DropDown"
+import Chip from "@components/Chip"
+import DropDown from "@components/DropDown"
 import languages from "@constants/languages.json"
-import Sliders from "@/components/filters/Sliders"
-import { useFilterContext } from "@/contexts/FilterContext"
-import DummyOptions from "@/components/filters/DummyOptions"
-import KeywordSearch from "@/components/filters/KeywordSearch"
-import { certifications, includeAdultOptions } from "@/constants"
-import CollapsibleCard from "@/components/filters/CollapsibleCard"
-import ReleaseDates from "@/components/filters/datepiker/ReleaseDates"
+import Sliders from "@components/filters/Sliders"
+import { useFilterContext } from "@contexts/FilterContext"
+import DummyOptions from "@components/filters/DummyOptions"
+import KeywordSearch from "@components/filters/KeywordSearch"
+import { certifications, includeAdultOptions } from "@constants"
+import CollapsibleCard from "@components/filters/CollapsibleCard"
+import ReleaseDates from "@components/filters/datepiker/ReleaseDates"
 
 /**
  * displays the all filter option in filter section

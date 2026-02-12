@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import { dummyAvailableSearch } from "@/constants"
+import { dummyAvailableSearch } from "@constants"
 
 /**
  * sows the dummy options in the filter section
