@@ -1,4 +1,4 @@
-import RatingIndicator from "./RatingIndicator";
+import RatingIndicator from "@components/cards/RatingIndicator"
 
 /**
  * movie card component for displaying movie image, title or name, date, and ratting also show the popup menu based on user action like click on more option.
@@ -16,7 +16,7 @@ const MovieCardSkeleton = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MovieCardSkeleton;
+export default MovieCardSkeleton

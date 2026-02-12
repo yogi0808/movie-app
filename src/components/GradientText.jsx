@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "classnames"
 
 /**
  * gradient text component creates the div with gradient and clip the background to text for creating text wise gradient effect.
@@ -14,9 +14,9 @@ const GradientText = ({ gradient, className, children }) => {
   const gradientClassNames = classNames("w-fit bg-clip-text", {
     [gradient]: gradient,
     [className]: className,
-  });
+  })
 
-  return <div className={gradientClassNames}>{children}</div>;
-};
+  return <div className={gradientClassNames}>{children}</div>
+}
 
-export default GradientText;
+export default GradientText

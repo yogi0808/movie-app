@@ -1,8 +1,8 @@
 import DropDown from "@/components/DropDown"
-import CollapsibleCard from "@/components/filters/CollapsibleCard"
-import ProviderCard from "@/components/filters/ProviderCard"
-import { useFilterContext } from "@/contexts/FilterContext"
 import countries from "@constants/countries.json"
+import { useFilterContext } from "@/contexts/FilterContext"
+import ProviderCard from "@/components/filters/ProviderCard"
+import CollapsibleCard from "@/components/filters/CollapsibleCard"
 
 /**
  * displays the where to watch options like all providers and country dorp down

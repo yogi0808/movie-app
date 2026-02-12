@@ -1,10 +1,11 @@
 import { useState } from "react"
+
+import Section from "@sections/home/Section"
+import useFetchMovies from "@/hooks/useFetchMovies"
 import MovieCard from "@components/cards/MovieCard"
 import TitleWithTabs from "@components/TitleWithTabs"
 import { endpointsForFreeToWatchMovies } from "@constants"
-import Section from "./Section"
 import MovieCardSkeleton from "@/components/cards/MovieCardSkeleton"
-import useFetchMovies from "@/hooks/useFetchMovies"
 
 /**
  * this component is responsible for getting and displaying free to watch movies data based on the user preference with tab.

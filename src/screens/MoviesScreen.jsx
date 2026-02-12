@@ -1,8 +1,9 @@
-import FilterContextProvider from "@/contexts/FilterContext"
-import RootLayout from "@/layouts/RootLayout"
-import FilteredMoviesSection from "@/sections/movies/FilteredMoviesSection"
-import FilterSection from "@/sections/movies/FilterSection"
 import React from "react"
+
+import RootLayout from "@/layouts/RootLayout"
+import FilterSection from "@/sections/movies/FilterSection"
+import FilterContextProvider from "@/contexts/FilterContext"
+import FilteredMoviesSection from "@/sections/movies/FilteredMoviesSection"
 
 /**
  * uses the root layout for movies screen and also using the filter context provider for global state in this page. this screen shown in the movies route("/movies").

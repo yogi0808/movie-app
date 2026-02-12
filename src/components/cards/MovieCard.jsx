@@ -1,7 +1,8 @@
 import { Activity, useRef, useState } from "react"
-import { MoviePopupLinks } from "@constants/index"
-import RatingIndicator from "./RatingIndicator"
+
 import { formateDate } from "@/utils/utils"
+import { MoviePopupLinks } from "@constants/index"
+import RatingIndicator from "@components/cards/RatingIndicator"
 import useHandleClickOutside from "@/hooks/useHandleClickOutside"
 
 /**

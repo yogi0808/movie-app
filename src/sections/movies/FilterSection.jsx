@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react"
-import SortBy from "./SortBy"
-import WhereToWatch from "./WhereToWatch"
-import Filters from "./Filters"
 import classNames from "classnames"
+import React, { useEffect, useRef, useState } from "react"
+
+import SortBy from "@sections/movies/SortBy"
+import Filters from "@sections/movies/Filters"
+import WhereToWatch from "@sections/movies/WhereToWatch"
 import { useFilterContext } from "@/contexts/FilterContext"
 
 /**

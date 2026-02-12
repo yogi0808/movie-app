@@ -1,13 +1,14 @@
-import Logo from "../Logo"
-import LinkWidthOptions from "./LinkWidthOptions"
-import { HeaderLinks } from "@constants/index"
-import { MdAdd, MdNotifications, MdOutlineSearch } from "react-icons/md"
-import { GiHamburgerMenu } from "react-icons/gi"
-import useScroll from "@hooks/useScroll"
-import classNames from "classnames"
-import MobileNav from "./MobileNav"
 import { useRef, useState } from "react"
+import { GiHamburgerMenu } from "react-icons/gi"
+import { MdAdd, MdNotifications, MdOutlineSearch } from "react-icons/md"
+
+import Logo from "@components/Logo"
+import classNames from "classnames"
+import useScroll from "@hooks/useScroll"
+import { HeaderLinks } from "@constants/index"
+import MobileNav from "@components/header/MobileNav"
 import useHandleClickOutside from "@/hooks/useHandleClickOutside"
+import LinkWidthOptions from "@components/header/LinkWidthOptions"
 
 /**
  * header component that displays the logo navigation lins and also hides when user is scrolls down and when user scrolls back up it appears again.

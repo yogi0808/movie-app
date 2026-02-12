@@ -1,6 +1,7 @@
-import { MdOutlineSearch } from "react-icons/md";
-import useScroll from "@hooks/useScroll";
-import classNames from "classnames";
+import classNames from "classnames"
+import { MdOutlineSearch } from "react-icons/md"
+
+import useScroll from "@hooks/useScroll"
 
 /**
  * search bar component show in home page top under the header and it sticks to the top if the header is not visible and if header is visible it sticks to header bottom side.
@@ -8,7 +9,7 @@ import classNames from "classnames";
  * @returns - jsx for the search bar
  */
 const SearchBar = () => {
-  const { scrollDirection } = useScroll(); // to get the user scroll direction it is custom hook
+  const { scrollDirection } = useScroll() // to get the user scroll direction it is custom hook
 
   // getting dynamic class names based on the condition
   const searchBarClassNames = classNames(
@@ -16,12 +17,15 @@ const SearchBar = () => {
     {
       "top-0!": scrollDirection !== "down",
     },
-  );
+  )
 
   return (
     <section className={searchBarClassNames}>
       <div className="max-w-325 h-full mx-auto pl-10 flex items-center">
-        <MdOutlineSearch className="text-black" size={20} />
+        <MdOutlineSearch
+          className="text-black"
+          size={20}
+        />
         <input
           type="text"
           name="search"
@@ -30,7 +34,7 @@ const SearchBar = () => {
         />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react"
+
 import countries from "@constants/countries.json"
 import languages from "@constants/languages.json"
-import { includeAdultOptions, sortOptions } from "@/constants"
 import { formateDateForPicker } from "@/utils/utils"
+import { includeAdultOptions, sortOptions } from "@/constants"
 
 const filterContext = createContext(null) // filter context
 

@@ -1,6 +1,7 @@
+import React, { useEffect, useRef, useState } from "react"
+
 import MovieCard from "@/components/cards/MovieCard"
 import { useFilterContext } from "@/contexts/FilterContext"
-import React, { useEffect, useRef, useState } from "react"
 
 /**
  * displays all the filtered movies on the right side

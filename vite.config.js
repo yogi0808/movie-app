@@ -10,6 +10,7 @@ export default defineConfig({
       "@": "/src/",
       "@components": "/src/components/",
       "@constants": "/src/constants/",
+      "@contexts": "/src/contexts/",
       "@hooks": "/src/hooks/",
       "@layouts": "/src/layouts/",
       "@redux": "/src/redux/",

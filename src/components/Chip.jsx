@@ -1,5 +1,5 @@
-import classNames from "classnames"
 import React from "react"
+import classNames from "classnames"
 
 /**
  * display the text in the capsule shape and user can select it

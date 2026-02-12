@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import GradientText from "./GradientText";
-import classNames from "classnames";
+import classNames from "classnames"
+import { useEffect, useRef, useState } from "react"
+
+import GradientText from "@components/GradientText"
 
 /**
  * this is an tab component it performs the actin based on selected(active) tab.
@@ -14,20 +15,20 @@ import classNames from "classnames";
  */
 
 const Tabs = ({ data = [], activeTab, onTabChange }) => {
-  const [tabStyle, setTabStyle] = useState({ left: 0, width: 0 }); // will change the style of the background div(active indicator)
+  const [tabStyle, setTabStyle] = useState({ left: 0, width: 0 }) // will change the style of the background div(active indicator)
 
-  const tabsRef = useRef([]); // we have the list of the element all the tabs we have
+  const tabsRef = useRef([]) // we have the list of the element all the tabs we have
 
   // changes the active indicator size and position based on the use selection
   useEffect(() => {
-    const currentTab = tabsRef.current[activeTab];
+    const currentTab = tabsRef.current[activeTab]
     if (currentTab) {
       setTabStyle({
         left: currentTab.offsetLeft,
         width: currentTab.offsetWidth,
-      });
+      })
     }
-  }, [activeTab]);
+  }, [activeTab])
 
   return (
     <div className="flex border border-primary w-fit rounded-full relative justify-center items-center">
@@ -37,9 +38,12 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
           {
             "text-transparent!": activeTab === idx,
           },
-        );
+        )
         return (
-          <GradientText key={idx} gradient="bg-gradient2">
+          <GradientText
+            key={idx}
+            gradient="bg-gradient2"
+          >
             <p
               onClick={() => onTabChange(idx)}
               ref={(el) => (tabsRef.current[idx] = el)}
@@ -48,7 +52,7 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
               {item}
             </p>
           </GradientText>
-        );
+        )
       })}
       <div
         className="bg-primary h-full rounded-full w-14 absolute top-0 left-0 transition-all duration-300 ease-out -z-1"
@@ -58,7 +62,7 @@ const Tabs = ({ data = [], activeTab, onTabChange }) => {
         }}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Tabs;
+export default Tabs

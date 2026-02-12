@@ -1,6 +1,7 @@
-import { Activity } from "react";
-import { getRating } from "@/utils/utils";
-import classNames from "classnames";
+import { Activity } from "react"
+import classNames from "classnames"
+
+import { getRating } from "@/utils/utils"
 
 /**
  * rating indicator component it displays rating circle indicator based on the average votes of the movie used gradient to create and ring progress.
@@ -11,7 +12,7 @@ import classNames from "classnames";
  * @returns - jsx for the rating indicator
  */
 const RatingIndicator = ({ voteAverage, className }) => {
-  const { rating, ratingGradient } = getRating(voteAverage);
+  const { rating, ratingGradient } = getRating(voteAverage)
 
   // creating an class names string based on the prop class names
   const wrapperClassNames = classNames(
@@ -19,7 +20,7 @@ const RatingIndicator = ({ voteAverage, className }) => {
     {
       [className]: className,
     },
-  );
+  )
 
   return (
     <div className={wrapperClassNames}>
@@ -39,7 +40,7 @@ const RatingIndicator = ({ voteAverage, className }) => {
         <p className="absolute text-white font-extrabold">NR</p>
       </Activity>
     </div>
-  );
-};
+  )
+}
 
-export default RatingIndicator;
+export default RatingIndicator

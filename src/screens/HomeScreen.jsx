@@ -1,8 +1,8 @@
-import SearchBar from "@components/header/SearchBar"
 import Hero from "@/sections/home/Hero"
 import RootLayout from "@layouts/RootLayout"
-import TrendingSection from "@/sections/home/TrendingSection"
+import SearchBar from "@components/header/SearchBar"
 import PopularSection from "@/sections/home/PopularSection"
+import TrendingSection from "@/sections/home/TrendingSection"
 import FreeToWatchSection from "@/sections/home/FreeToWatchSection"
 
 /**

@@ -1,6 +1,7 @@
 import { MdArrowRightAlt } from "react-icons/md"
+
+import Section from "@sections/home/Section"
 import GradientText from "@components/GradientText"
-import Section from "./Section"
 
 /**
  * it displays the hero section with big gradient font and a CtA button.
