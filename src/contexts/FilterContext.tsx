@@ -10,11 +10,11 @@ const filterContext = createContext<FilterContextType | undefined>(undefined) //
 
 const FilterContextProvider = ({ children }: PropsWithChildren) => {
   const [filteredMovies, setFilteredMovies] = useState<MovieType[]>([]) // move list of the filtered search
-  const [selectedSortBy, setSelectedSortBy] = useState<OptionType<string>>(sortOptions[0]) // selected search option
-  const [selectedCountry, setSelectedCountry] = useState<OptionType<string>>(countries[101]) // selected country
+  const [selectedSortBy, setSelectedSortBy] = useState<OptionType>(sortOptions[0]) // selected search option
+  const [selectedCountry, setSelectedCountry] = useState<OptionType>(countries[101]) // selected country
   const [providers, setProviders] = useState<ProviderType[]>([]) // all the providers to display based on the country
   const [selectedProviders, setSelectedProviders] = useState<number[]>([]) // list of the selected providers
-  const [selectedLanguage, setSelectedLanguage] = useState<OptionType<string>>(languages[0]) // selected language
+  const [selectedLanguage, setSelectedLanguage] = useState<OptionType>(languages[0]) // selected language
   const [selectedAdultOpt, setSelectedAdultOpt] = useState<OptionType<boolean>>(
     includeAdultOptions[0],
   ) // selected adult option include or exclude

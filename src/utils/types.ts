@@ -148,14 +148,14 @@ export interface ReleaseDatesType {
 }
 
 export interface FilterContextType {
-  selectedSortBy: OptionType<string>
+  selectedSortBy: OptionType
   selectSortBy(val: string, opt: string): void
   providers: ProviderType[]
   selectedProviders: number[]
   selectProvider(val: number): void
-  selectedCountry: OptionType<string>
+  selectedCountry: OptionType
   selectCountry(val: string, opt: string): void
-  selectedLanguage: OptionType<string>
+  selectedLanguage: OptionType
   selectLanguage(val: string, opt: string): void
   selectedAdultOpt: OptionType<boolean>
   selectAdultOpt(val: boolean, opt: string): void
