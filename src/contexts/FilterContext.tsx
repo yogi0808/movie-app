@@ -4,7 +4,7 @@ import countries from "@constants/countries.json"
 import languages from "@constants/languages.json"
 import { apiFetch, formateDateForPicker } from "@utils/utils"
 import { includeAdultOptions, sortOptions } from "@constants/index"
-import type { GenreType, ProviderType, ReleaseDatesType, FilterContextType, MovieType, OptionType } from "@utils/types"
+import type { GenreType, ProviderType, ReleaseDatesType, FilterContextType, MovieType, OptionType, GenresResponseDataType, MoviesResponseDataType, ProviderResponseDataType } from "@utils/types"
 
 const filterContext = createContext<FilterContextType | undefined>(undefined) // filter context
 
@@ -34,7 +34,7 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
    * for fetching the data for the provider based on the selected country
    */
   const fetchProviders = async () => {
-    const data = await apiFetch(
+    const data: ProviderResponseDataType = await apiFetch(
       `watch/providers/movie?watch_region=${selectedCountry.value}`,
     )
     setProviders(data.results)
@@ -44,7 +44,7 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
    * for fetching the list of the genres
    */
   const fetchGenres = async () => {
-    const data = await apiFetch("genre/movie/list")
+    const data: GenresResponseDataType = await apiFetch("genre/movie/list")
     setGenres(data.genres)
   }
 
@@ -70,7 +70,7 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
     if (releaseDates.from) params.append("release_date.gte", formateDateForPicker(releaseDates.from))
     if (releaseDates.to) params.append("release_date.lte", formateDateForPicker(releaseDates.to))
 
-    const data = await apiFetch(`discover/movie?${params}`)
+    const data: MoviesResponseDataType = await apiFetch(`discover/movie?${params}`)
 
     if (data.page <= 1 || searchAvailable) {
       setFilteredMovies(data.results)

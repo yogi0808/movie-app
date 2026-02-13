@@ -1,9 +1,10 @@
+import type { MoviesResponseDataType } from "@utils/types";
 import { useEffect, useState } from "react";
 
 interface returnType {
-  data: any
+  data: MoviesResponseDataType | undefined
   isLoading: boolean
-  error: string | null
+  error: string | undefined
 }
 
 /**
@@ -12,9 +13,9 @@ interface returnType {
  * @returns - an object with data loading state and the error is accurse
  */
 function useFetchMovies(endpoint: string): returnType {
-  const [data, setData] = useState<any>(null); // data that comes from the api request
+  const [data, setData] = useState<MoviesResponseDataType | undefined>(); // data that comes from the api request
   const [isLoading, setIsLoading] = useState<boolean>(true); // loading state for data fetch wait
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>();
 
   useEffect(() => {
     setIsLoading(true);

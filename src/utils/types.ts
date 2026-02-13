@@ -1,5 +1,52 @@
 import type { PropsWithChildren, ReactNode } from "react"
 
+export interface MovieType {
+  adult: boolean
+  backdrop_path: string
+  genre_ids: number[]
+  id: number
+  original_language: string
+  original_title: string
+  overview: string
+  popularity: number
+  poster_path: string
+  vote_average: number
+  vote_count: number
+  release_date?: string
+  first_air_date?: string
+  title?: string
+  name?: string
+  video?: boolean
+}
+
+export interface MoviesResponseDataType {
+  page: number
+  results: MovieType[] 
+  total_pages: number
+  total_results: number
+}
+
+export interface GenreType {
+  id: number
+  name: string
+}
+
+export interface GenresResponseDataType {
+  genres: GenreType[]
+}
+
+export interface ProviderType {
+  display_priorities: Record<string, number>
+  display_priority: number
+  logo_path: string
+  provider_name: string
+  provider_id: number
+}
+
+export interface ProviderResponseDataType {
+  results: ProviderType[]
+}
+
 export interface LogoProps {
   xl?: boolean
 }
@@ -81,25 +128,6 @@ export interface RatingIndicatorProps {
   className: string
 }
 
-export interface MovieType {
-  adult: boolean
-  backdrop_path: string
-  genre_ids: number[]
-  id: number
-  original_language: string
-  original_title: string
-  overview: string
-  popularity: number
-  poster_path: string
-  vote_average: number
-  vote_count: number
-  release_date?: string
-  first_air_date?: string
-  title?: string
-  name?: string
-  video?: boolean
-}
-
 export interface MoviePopupLinkType {
   id: number
   link: string
@@ -127,19 +155,6 @@ export interface CustomRangeProps {
   onChange(values: number[]): void
   colors: string[]
   mainMarkDivider: number
-}
-
-export interface ProviderType {
-  display_priorities: any
-  display_priority: number
-  logo_path: string
-  provider_name: string
-  provider_id: number
-}
-
-export interface GenreType {
-  id: number
-  name: string
 }
 
 export interface ReleaseDatesType {
