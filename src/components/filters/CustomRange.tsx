@@ -1,7 +1,7 @@
-import classNames from "classnames"
-import { getTrackBackground, Range } from "react-range"
+import classNames from 'classnames';
+import { getTrackBackground, Range } from 'react-range';
 
-import type { CustomRangeProps } from "@utils/types"
+import type { CustomRangeProps } from '@utils/types';
 
 /**
  * this is a range slider for user to select the value from the range it can have 1 or more thumb based on the values array
@@ -33,28 +33,23 @@ const CustomRange = ({
       values={values}
       onChange={onChange}
       renderMark={({ props, index }) => {
-        const isMarkerIsBig = (index * step) % mainMarkDivider === 0
+        const isMarkerIsBig = (index * step) % mainMarkDivider === 0;
 
-        const markerClassNames = classNames("border-slider-bg -z-1", {
-          "h-full border": isMarkerIsBig,
-          "h-2/3 border-l": !isMarkerIsBig,
-        })
+        const markerClassNames = classNames('border-slider-bg -z-1', {
+          'h-full border': isMarkerIsBig,
+          'h-2/3 border-l': !isMarkerIsBig,
+        });
         return (
-          <div
-            {...props}
-            key={props.key}
-            style={{ ...props.style }}
-            className={markerClassNames}
-          >
+          <div {...props} key={props.key} style={{ ...props.style }} className={markerClassNames}>
             {isMarkerIsBig ? (
               <p className="absolute top-full left-1/2 -translate-x-1/2 text-slider-bg">
                 {index * step}
               </p>
             ) : (
-              ""
+              ''
             )}
           </div>
-        )
+        );
       }}
       renderTrack={({ props, children }) => (
         <div
@@ -82,30 +77,25 @@ const CustomRange = ({
       renderThumb={({ index, props, isDragged }) => {
         // class names for the thumb to change the colors based on the dragging
         const thumbClassNames = classNames(
-          "h-3.5 w-3.5 rounded-full outline-none hover:bg-btn-hover bg-highlight ring-highlight/40 relative",
+          'h-3.5 w-3.5 rounded-full outline-none hover:bg-btn-hover bg-highlight ring-highlight/40 relative',
           {
-            "ring-4": isDragged,
+            'ring-4': isDragged,
           },
-        )
+        );
         return (
-          <div
-            {...props}
-            key={props.key}
-            className={thumbClassNames}
-            style={{ ...props.style }}
-          >
+          <div {...props} key={props.key} className={thumbClassNames} style={{ ...props.style }}>
             {isDragged ? (
               <div className="absolute -top-[250%] left-1/2 -translate-x-1/2 bg-black text-white px-3 py-1 rounded-lg">
                 {values[index].toFixed(0)}
               </div>
             ) : (
-              ""
+              ''
             )}
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default CustomRange
+export default CustomRange;

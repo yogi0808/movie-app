@@ -1,6 +1,6 @@
-import classNames from "classnames"
+import classNames from 'classnames';
 
-import type { SectionProps } from "@utils/types"
+import type { SectionProps } from '@utils/types';
 
 /**
  *
@@ -10,22 +10,22 @@ import type { SectionProps } from "@utils/types"
  *
  * @returns
  */
-const Section = ({ children, className = "", outerSectionClassName = "" }: SectionProps) => {
+const Section = ({ children, className = '', outerSectionClassName = '' }: SectionProps) => {
   // adding the extended class names if provided
-  const outerSectionClassNames = classNames("md:px-5 pt-7.5", {
-    [outerSectionClassName]: outerSectionClassName
-  })
+  const outerSectionClassNames = classNames('md:px-5 pt-7.5', {
+    [outerSectionClassName]: outerSectionClassName,
+  });
 
   // adding the extended class names if provided
-  const innerDivClassNames = classNames("max-w-325 w-full mx-auto relative", {
+  const innerDivClassNames = classNames('max-w-325 w-full mx-auto relative', {
     [className]: className,
-  })
+  });
 
   return (
     <section className={outerSectionClassNames}>
       <div className={innerDivClassNames}>{children}</div>
     </section>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;

@@ -1,6 +1,6 @@
-import classNames from "classnames"
+import classNames from 'classnames';
 
-import type { GradientTextProps } from "@utils/types"
+import type { GradientTextProps } from '@utils/types';
 
 /**
  * gradient text component creates the div with gradient and clip the background to text for creating text wise gradient effect.
@@ -11,14 +11,14 @@ import type { GradientTextProps } from "@utils/types"
  *  @param {element} children - expected childe element with text like p, h1... with text color transparent
  * @returns - jsx for gradient text background with gradient
  */
-const GradientText = ({ gradient, className = "", children }: GradientTextProps) => {
+const GradientText = ({ gradient, className = '', children }: GradientTextProps) => {
   // creating the class names string based on the prop class names and gradient class
-  const gradientClassNames = classNames("w-fit bg-clip-text", {
+  const gradientClassNames = classNames('w-fit bg-clip-text', {
     [gradient]: gradient,
     [className]: className,
-  })
+  });
 
-  return <div className={gradientClassNames}>{children}</div>
-}
+  return <div className={gradientClassNames}>{children}</div>;
+};
 
-export default GradientText
+export default GradientText;

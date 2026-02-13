@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState } from 'react';
 
-import { dummyAvailableSearch, showMeDummyCheckBox } from "@constants/index"
+import { dummyAvailableSearch, showMeDummyCheckBox } from '@constants/index';
 
 /**
  * sows the dummy options in the filter section
@@ -8,25 +8,24 @@ import { dummyAvailableSearch, showMeDummyCheckBox } from "@constants/index"
  * @returns - jsx for the dummy options
  */
 const DummyOptions = () => {
-  const [isChecked, setIsChecked] = useState<boolean>(true) // for tracking the open and close state for search available
+  const [isChecked, setIsChecked] = useState<boolean>(true); // for tracking the open and close state for search available
 
   return (
     <>
       <div className="divider-box">
         <h3 className="mb-2.5 font-light">Show Me</h3>
-        {
-          showMeDummyCheckBox.map((item: string, idx: number) => (
-            <label key={idx} className="flex items-center gap-2 cursor-pointer">
-              <input
-                name="me"
-                type="radio"
-                value="Everything"
-                className="radio"
-                defaultChecked={idx === 0}
-              />
-              <span>{item}</span>
-            </label>
-          ))}
+        {showMeDummyCheckBox.map((item: string, idx: number) => (
+          <label key={idx} className="flex items-center gap-2 cursor-pointer">
+            <input
+              name="me"
+              type="radio"
+              value="Everything"
+              className="radio"
+              defaultChecked={idx === 0}
+            />
+            <span>{item}</span>
+          </label>
+        ))}
       </div>
       <div className="divider-box">
         <h3 className="mb-2.5 font-light">Availabilities</h3>
@@ -42,25 +41,18 @@ const DummyOptions = () => {
         {!isChecked ? (
           <div className="mt-1.5">
             {dummyAvailableSearch.map((item: string, idx: number) => (
-              <label
-                key={idx}
-                className="flex items-center gap-2 cursor-pointer"
-              >
-                <input
-                  type="checkbox"
-                  className="checkbox"
-                  defaultChecked
-                />
+              <label key={idx} className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" className="checkbox" defaultChecked />
                 <span>{item}</span>
               </label>
             ))}
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default DummyOptions
+export default DummyOptions;

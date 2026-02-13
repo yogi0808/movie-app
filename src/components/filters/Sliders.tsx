@@ -1,11 +1,8 @@
-import { useState } from "react"
+import { useState } from 'react';
 
-import CustomRange from "@components/filters/CustomRange"
-import { useFilterContext } from "@hooks/useFilterContext"
-import {
-  sliderOneThumbsTrackColors,
-  sliderTwoThumbsTrackColors,
-} from "@constants/index"
+import CustomRange from '@components/filters/CustomRange';
+import { useFilterContext } from '@hooks/useFilterContext';
+import { sliderOneThumbsTrackColors, sliderTwoThumbsTrackColors } from '@constants/index';
 
 /**
  * displays the range sliders for user vote, user score, and runtime
@@ -13,9 +10,8 @@ import {
  * @returns - jsx for the sliders
  */
 const Sliders = () => {
-  const [userScore, setUserScore] = useState<number[]>([0, 10]) // current selected user score state for range slider
-  const { userVotes, changeUserVotes, runtime, changeRuntime } =
-    useFilterContext() // getting selected user votes(array with selected value), runtime(array with selected values), change user votes(function to change selected values) and change runtime(function to change selected values) form the filter context
+  const [userScore, setUserScore] = useState<number[]>([0, 10]); // current selected user score state for range slider
+  const { userVotes, changeUserVotes, runtime, changeRuntime } = useFilterContext(); // getting selected user votes(array with selected value), runtime(array with selected values), change user votes(function to change selected values) and change runtime(function to change selected values) form the filter context
 
   return (
     <>
@@ -56,7 +52,7 @@ const Sliders = () => {
         />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sliders
+export default Sliders;

@@ -1,14 +1,14 @@
-import Chip from "@components/Chip"
-import DropDown from "@components/DropDown"
-import languages from "@constants/languages.json"
-import Sliders from "@components/filters/Sliders"
-import { useFilterContext } from "@hooks/useFilterContext"
-import DummyOptions from "@components/filters/DummyOptions"
-import KeywordSearch from "@components/filters/KeywordSearch"
-import { certifications, includeAdultOptions } from "@constants/index"
-import CollapsibleCard from "@components/filters/CollapsibleCard"
-import ReleaseDates from "@components/filters/datepiker/ReleaseDates"
-import type { GenreType } from "@utils/types"
+import Chip from '@components/Chip';
+import DropDown from '@components/DropDown';
+import languages from '@constants/languages.json';
+import Sliders from '@components/filters/Sliders';
+import { useFilterContext } from '@hooks/useFilterContext';
+import DummyOptions from '@components/filters/DummyOptions';
+import KeywordSearch from '@components/filters/KeywordSearch';
+import { certifications, includeAdultOptions } from '@constants/index';
+import CollapsibleCard from '@components/filters/CollapsibleCard';
+import ReleaseDates from '@components/filters/datepiker/ReleaseDates';
+import type { GenreType } from '@utils/types';
 
 /**
  * displays the all filter option in filter section
@@ -26,13 +26,10 @@ const Filters = () => {
     selectAdultOpt,
     selectedLanguage,
     selectLanguage,
-  } = useFilterContext() // getting all the selected value for filters from the filter context
+  } = useFilterContext(); // getting all the selected value for filters from the filter context
 
   return (
-    <CollapsibleCard
-      title="Filters"
-      open
-    >
+    <CollapsibleCard title="Filters" open>
       <DummyOptions />
       <ReleaseDates />
       <div className="divider-box">
@@ -85,7 +82,7 @@ const Filters = () => {
       <Sliders />
       <KeywordSearch />
     </CollapsibleCard>
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;

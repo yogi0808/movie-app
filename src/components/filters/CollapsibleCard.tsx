@@ -1,8 +1,8 @@
-import classNames from "classnames"
-import { Activity, useState } from "react"
-import { MdKeyboardArrowRight } from "react-icons/md"
+import classNames from 'classnames';
+import { Activity, useState } from 'react';
+import { MdKeyboardArrowRight } from 'react-icons/md';
 
-import type { CollapsibleCardProps } from "@utils/types"
+import type { CollapsibleCardProps } from '@utils/types';
 
 /**
  * this is a card with open and close state by clicking the title of arrow button we can open(expend) the card all the children are shown in the open(expended) state
@@ -15,12 +15,12 @@ import type { CollapsibleCardProps } from "@utils/types"
  * @returns - jsx for the collapsible card
  */
 const CollapsibleCard = ({ title, count, children, open = false }: CollapsibleCardProps) => {
-  const [isActive, setIsActive] = useState<boolean>(open) // for tracking card is open and close state
+  const [isActive, setIsActive] = useState<boolean>(open); // for tracking card is open and close state
 
   // classes for icon to rotate on open state
-  const iconsClassNames = classNames("text-xl origin-center", {
-    "rotate-90": isActive,
-  })
+  const iconsClassNames = classNames('text-xl origin-center', {
+    'rotate-90': isActive,
+  });
 
   return (
     <div className="min-w-65 shadow-card border border-search-border rounded-lg flex flex-col">
@@ -31,18 +31,16 @@ const CollapsibleCard = ({ title, count, children, open = false }: CollapsibleCa
         <h2 className="text-lg font-semibold">{title}</h2>
         <div className="flex gap-2.5 justify-center items-center">
           {count ? (
-            <p className="px-3 py-0.5 rounded-lg bg-search-border font-light text-sm">
-              {count}
-            </p>
+            <p className="px-3 py-0.5 rounded-lg bg-search-border font-light text-sm">{count}</p>
           ) : (
-            ""
+            ''
           )}
           <MdKeyboardArrowRight className={iconsClassNames} />
         </div>
       </div>
-      <Activity mode={isActive ? "visible" : "hidden"}>{children}</Activity>
+      <Activity mode={isActive ? 'visible' : 'hidden'}>{children}</Activity>
     </div>
-  )
-}
+  );
+};
 
-export default CollapsibleCard
+export default CollapsibleCard;

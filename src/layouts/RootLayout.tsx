@@ -1,6 +1,6 @@
-import Header from "@components/header/Header";
-import Footer from "@components/footer/Footer";
-import type { PropsWithChildren } from "react";
+import Header from '@components/header/Header';
+import Footer from '@components/footer/Footer';
+import type { PropsWithChildren } from 'react';
 
 /**
  * this layout is used with header and footer all the content goes between header and footer displays header in top and footer in bottom.

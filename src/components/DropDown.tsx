@@ -1,9 +1,9 @@
-import classNames from "classnames"
-import { IoMdArrowDropdown } from "react-icons/io"
-import { useEffect, useRef, useState } from "react"
+import classNames from 'classnames';
+import { IoMdArrowDropdown } from 'react-icons/io';
+import { useEffect, useRef, useState } from 'react';
 
-import type { DropDownProps, OptionType } from "@utils/types"
-import useHandleClickOutside from "@hooks/useHandleClickOutside"
+import type { DropDownProps, OptionType } from '@utils/types';
+import useHandleClickOutside from '@hooks/useHandleClickOutside';
 
 /**
  * custom drop down with the search option for user to search in list
@@ -27,23 +27,23 @@ const DropDown = ({
   valueKey,
   optionKey,
 }: DropDownProps) => {
-  const [isActive, setIsActive] = useState<boolean>(false) // for tracking the state of the dropdown is open or close
-  const [options, setOptions] = useState<OptionType<string | boolean>[]>(list) // copy of the list data
+  const [isActive, setIsActive] = useState<boolean>(false); // for tracking the state of the dropdown is open or close
+  const [options, setOptions] = useState<OptionType<string | boolean>[]>(list); // copy of the list data
 
-  const popupRef = useRef<HTMLDivElement | null>(null) // ref for popup menu
-  const selectedRef = useRef<HTMLParagraphElement | null>(null) // ref for selected option
+  const popupRef = useRef<HTMLDivElement | null>(null); // ref for popup menu
+  const selectedRef = useRef<HTMLParagraphElement | null>(null); // ref for selected option
 
-  useHandleClickOutside(popupRef, setIsActive) // custom hook to handle the click out side of the popup(list)
+  useHandleClickOutside(popupRef, setIsActive); // custom hook to handle the click out side of the popup(list)
 
   // scroll's to the selected option when the list is open
   useEffect(() => {
     if (isActive && selectedRef.current) {
       selectedRef.current.scrollIntoView({
-        block: "nearest",
-        behavior: "smooth",
-      })
+        block: 'nearest',
+        behavior: 'smooth',
+      });
     }
-  }, [isActive])
+  }, [isActive]);
 
   return (
     <div>
@@ -57,9 +57,7 @@ const DropDown = ({
         <IoMdArrowDropdown className="text-xl" />
         {isActive && (
           <div
-            onClick={(e: React.MouseEvent<HTMLDivElement>) =>
-              e.stopPropagation()
-            }
+            onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
             className="border w-full border-search-border max-w-full absolute left-0 bg-white top-[110%] shadow-card rounded-lg max-h-50 overflow-y-auto z-9"
           >
             {search && (
@@ -71,25 +69,20 @@ const DropDown = ({
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setOptions(
                       list.filter((a) =>
-                        a.option
-                          .toLowerCase()
-                          .startsWith(e.target.value.toLowerCase()),
+                        a.option.toLowerCase().startsWith(e.target.value.toLowerCase()),
                       ),
-                    )
+                    );
                   }}
                   autoFocus={true}
                 />
               </div>
             )}
             {options.map((item, idx) => {
-              const isSelected = selected.value === item[valueKey]
-              const optionsClassNames = classNames(
-                "px-4 py-1.5 font-semibold",
-                {
-                  "bg-highlight text-white": isSelected,
-                  "hover:bg-gray-100": !isSelected,
-                },
-              )
+              const isSelected = selected.value === item[valueKey];
+              const optionsClassNames = classNames('px-4 py-1.5 font-semibold', {
+                'bg-highlight text-white': isSelected,
+                'hover:bg-gray-100': !isSelected,
+              });
               return (
                 <p
                   key={idx}
@@ -97,21 +90,21 @@ const DropDown = ({
                   className={optionsClassNames}
                   onClick={() => {
                     if (search) {
-                      setOptions(list)
+                      setOptions(list);
                     }
-                    handleSelect(item[valueKey], item[optionKey])
-                    setIsActive(false)
+                    handleSelect(item[valueKey], item[optionKey]);
+                    setIsActive(false);
                   }}
                 >
                   {item[optionKey]}
                 </p>
-              )
+              );
             })}
           </div>
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DropDown
+export default DropDown;

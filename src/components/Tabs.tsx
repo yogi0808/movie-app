@@ -1,12 +1,12 @@
-import classNames from "classnames"
-import { useEffect, useRef, useState } from "react"
+import classNames from 'classnames';
+import { useEffect, useRef, useState } from 'react';
 
-import type { TabsProps } from "@utils/types"
-import GradientText from "@components/GradientText"
+import type { TabsProps } from '@utils/types';
+import GradientText from '@components/GradientText';
 
 interface HighlighterStyleType {
-  left: number
-  width: number
+  left: number;
+  width: number;
 }
 
 /**
@@ -21,46 +21,43 @@ interface HighlighterStyleType {
  */
 
 const Tabs = ({ data, activeTab, onTabChange }: TabsProps) => {
-  const [tabStyle, setTabStyle] = useState<HighlighterStyleType>({ left: 0, width: 0 }) // will change the style of the background div(active indicator)
+  const [tabStyle, setTabStyle] = useState<HighlighterStyleType>({ left: 0, width: 0 }); // will change the style of the background div(active indicator)
 
-  const tabsRef = useRef<HTMLParagraphElement[]>([]) // we have the list of the element all the tabs we have
+  const tabsRef = useRef<HTMLParagraphElement[]>([]); // we have the list of the element all the tabs we have
 
   // changes the active indicator size and position based on the use selection
   useEffect(() => {
-    const currentTab = tabsRef.current[activeTab]
+    const currentTab = tabsRef.current[activeTab];
     if (currentTab) {
       setTabStyle({
         left: currentTab.offsetLeft,
         width: currentTab.offsetWidth,
-      })
+      });
     }
-  }, [activeTab])
+  }, [activeTab]);
 
   return (
     <div className="flex border border-primary w-fit rounded-full relative justify-center items-center">
       {data.map((item, idx) => {
         const linkClassNames = classNames(
-          "px-2.75 lg:px-5 max-lg:text-xs/10 max-lg:leading-6 font-semibold py-0.5 cursor-pointer transition-colors ease-out duration-300 text-black",
+          'px-2.75 lg:px-5 max-lg:text-xs/10 max-lg:leading-6 font-semibold py-0.5 cursor-pointer transition-colors ease-out duration-300 text-black',
           {
-            "text-transparent!": activeTab === idx,
+            'text-transparent!': activeTab === idx,
           },
-        )
+        );
         return (
-          <GradientText
-            key={idx}
-            gradient="bg-gradient2"
-          >
+          <GradientText key={idx} gradient="bg-gradient2">
             <p
               onClick={() => onTabChange(idx)}
               ref={(el: HTMLParagraphElement) => {
-                tabsRef.current[idx] = el
+                tabsRef.current[idx] = el;
               }}
               className={linkClassNames}
             >
               {item}
             </p>
           </GradientText>
-        )
+        );
       })}
       <div
         className="bg-primary h-full rounded-full w-14 absolute top-0 left-0 transition-all duration-300 ease-out -z-1"
@@ -70,7 +67,7 @@ const Tabs = ({ data, activeTab, onTabChange }: TabsProps) => {
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Tabs
+export default Tabs;

@@ -1,10 +1,10 @@
-import type { MoviesResponseDataType } from "@utils/types";
-import { useEffect, useState } from "react";
+import type { MoviesResponseDataType } from '@utils/types';
+import { useEffect, useState } from 'react';
 
 interface returnType {
-  data: MoviesResponseDataType | undefined
-  isLoading: boolean
-  error: string | undefined
+  data: MoviesResponseDataType | undefined;
+  isLoading: boolean;
+  error: string | undefined;
 }
 
 /**
@@ -25,7 +25,7 @@ function useFetchMovies(endpoint: string): returnType {
     const fetchData = async () => {
       try {
         const res: Response = await fetch(`${import.meta.env.VITE_BASE_URL}${endpoint}`, {
-          method: "GET",
+          method: 'GET',
           headers: {
             authorization: import.meta.env.VITE_TOKEN,
           },
@@ -39,7 +39,7 @@ function useFetchMovies(endpoint: string): returnType {
         if (e instanceof Error) {
           setError(e.message);
         } else {
-          setError("Unknown error.")
+          setError('Unknown error.');
         }
       } finally {
         setIsLoading(false);

@@ -1,7 +1,7 @@
-import { sortOptions } from "@constants/index"
-import DropDown from "@components/DropDown"
-import { useFilterContext } from "@hooks/useFilterContext"
-import CollapsibleCard from "@components/filters/CollapsibleCard"
+import { sortOptions } from '@constants/index';
+import DropDown from '@components/DropDown';
+import { useFilterContext } from '@hooks/useFilterContext';
+import CollapsibleCard from '@components/filters/CollapsibleCard';
 
 /**
  * displays the sort options in the filter section
@@ -9,7 +9,7 @@ import CollapsibleCard from "@components/filters/CollapsibleCard"
  * @returns - jsx for the sort options
  */
 const SortBy = () => {
-  const { selectedSortBy, selectSortBy } = useFilterContext() // getting the selected sort options and the function to select the sor options form the filter context
+  const { selectedSortBy, selectSortBy } = useFilterContext(); // getting the selected sort options and the function to select the sor options form the filter context
 
   return (
     <CollapsibleCard title="Sort">
@@ -24,7 +24,7 @@ const SortBy = () => {
         />
       </div>
     </CollapsibleCard>
-  )
-}
+  );
+};
 
-export default SortBy
+export default SortBy;

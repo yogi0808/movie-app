@@ -1,8 +1,8 @@
-import { Activity } from "react"
-import classNames from "classnames"
+import { Activity } from 'react';
+import classNames from 'classnames';
 
-import { getRating } from "@utils/utils"
-import type { RatingIndicatorProps } from "@utils/types"
+import { getRating } from '@utils/utils';
+import type { RatingIndicatorProps } from '@utils/types';
 
 /**
  * rating indicator component it displays rating circle indicator based on the average votes of the movie used gradient to create and ring progress.
@@ -13,19 +13,19 @@ import type { RatingIndicatorProps } from "@utils/types"
  * @returns - jsx for the rating indicator
  */
 const RatingIndicator = ({ voteAverage, className }: RatingIndicatorProps) => {
-  const { rating, ratingGradient } = getRating(voteAverage || 0)
+  const { rating, ratingGradient } = getRating(voteAverage || 0);
 
   // creating an class names string based on the prop class names
   const wrapperClassNames = classNames(
-    "w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full",
+    'w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full',
     {
       [className]: className,
     },
-  )
+  );
 
   return (
     <div className={wrapperClassNames}>
-      <Activity mode={voteAverage ? "visible" : "hidden"}>
+      <Activity mode={voteAverage ? 'visible' : 'hidden'}>
         <div
           className="w-8 h-8 bg-green-500 absolute rounded-full"
           style={{
@@ -37,11 +37,11 @@ const RatingIndicator = ({ voteAverage, className }: RatingIndicatorProps) => {
           <span className="text-[6px] leading-6 text-white self-start">%</span>
         </div>
       </Activity>
-      <Activity mode={!voteAverage ? "visible" : "hidden"}>
+      <Activity mode={!voteAverage ? 'visible' : 'hidden'}>
         <p className="absolute text-white font-extrabold">NR</p>
       </Activity>
     </div>
-  )
-}
+  );
+};
 
-export default RatingIndicator
+export default RatingIndicator;

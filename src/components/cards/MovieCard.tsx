@@ -1,10 +1,10 @@
-import { Activity, useRef, useState } from "react"
+import { Activity, useRef, useState } from 'react';
 
-import { formateDate } from "@utils/utils"
-import { MoviePopupLinks } from "@constants/index"
-import RatingIndicator from "@components/cards/RatingIndicator"
-import useHandleClickOutside from "@hooks/useHandleClickOutside"
-import type { MoviePopupLinkType, MovieType } from "@utils/types"
+import { formateDate } from '@utils/utils';
+import { MoviePopupLinks } from '@constants/index';
+import RatingIndicator from '@components/cards/RatingIndicator';
+import useHandleClickOutside from '@hooks/useHandleClickOutside';
+import type { MoviePopupLinkType, MovieType } from '@utils/types';
 
 /**
  * movie card component for displaying movie image, title or name, date, and ratting also show the popup menu based on user action like click on more option.
@@ -14,10 +14,10 @@ import type { MoviePopupLinkType, MovieType } from "@utils/types"
  * @returns - jsx for the single movie data display
  */
 const MovieCard = ({ data }: { data: MovieType }) => {
-  const [isPopupActive, setIsPopupActive] = useState<boolean>(false) // using this state for popup activation and deactivation
-  const popupRef = useRef<HTMLDivElement | null>(null) // ref for popup menu
+  const [isPopupActive, setIsPopupActive] = useState<boolean>(false); // using this state for popup activation and deactivation
+  const popupRef = useRef<HTMLDivElement | null>(null); // ref for popup menu
 
-  useHandleClickOutside(popupRef, setIsPopupActive)
+  useHandleClickOutside(popupRef, setIsPopupActive);
 
   return (
     <div className="min-w-37.5 relative flex flex-col content-stretch">
@@ -26,19 +26,16 @@ const MovieCard = ({ data }: { data: MovieType }) => {
           src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
           className="rounded-lg w-full"
           onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-            e.currentTarget.classList.add("hidden")
+            e.currentTarget.classList.add('hidden');
           }}
         />
         <button
           className="absolute top-2 right-2 w-6.5 cursor-pointer aspect-square opacity-60"
           onClick={() => setIsPopupActive((prev) => !prev)}
         >
-          <img
-            src="/more.svg"
-            alt="more options"
-          />
+          <img src="/more.svg" alt="more options" />
         </button>
-        <Activity mode={isPopupActive ? "visible" : "hidden"}>
+        <Activity mode={isPopupActive ? 'visible' : 'hidden'}>
           <div
             ref={popupRef}
             className="z-10 bg-white min-w-32 border animate-fade-in border-gray-300 text-black/60 flex flex-col rounded-lg absolute top-9 left-2/5 shadow overflow-hidden"
@@ -57,10 +54,7 @@ const MovieCard = ({ data }: { data: MovieType }) => {
         </Activity>
       </div>
       <div className="px-2.5 pt-6.5 relative">
-        <RatingIndicator
-          voteAverage={data.vote_average}
-          className="absolute -top-4.75 left-2.5"
-        />
+        <RatingIndicator voteAverage={data.vote_average} className="absolute -top-4.75 left-2.5" />
         <a
           href="#"
           className="font-bold hover:underline hover:text-highlight leading-5 inline-block transition-all duration-300 ease-out"
@@ -68,14 +62,14 @@ const MovieCard = ({ data }: { data: MovieType }) => {
           {data.title || data.name}
         </a>
         <p className="text-stone-500">
-          {formateDate(data.release_date || data.first_air_date || "")}
+          {formateDate(data.release_date || data.first_air_date || '')}
         </p>
       </div>
-      <Activity mode={isPopupActive ? "visible" : "hidden"}>
+      <Activity mode={isPopupActive ? 'visible' : 'hidden'}>
         <div className="absolute top-0 animate-fade-in left-0 right-0 bottom-0 bg-black/50 backdrop-blur-lg rounded-lg" />
       </Activity>
     </div>
-  )
-}
+  );
+};
 
-export default MovieCard
+export default MovieCard;

@@ -1,6 +1,6 @@
-import Logo from "@components/Logo"
-import { FooterLinks } from "@constants/index"
-import type { FooterLinkItemType, FooterLinkType } from "@utils/types"
+import Logo from '@components/Logo';
+import { FooterLinks } from '@constants/index';
+import type { FooterLinkItemType, FooterLinkType } from '@utils/types';
 
 /**
  * footer component with list links.
@@ -21,9 +21,7 @@ const Footer = () => {
         </div>
         {FooterLinks.map((link: FooterLinkItemType) => (
           <div key={link.id}>
-            <h3 className="text-xl font-bold uppercase leading-7">
-              {link.title}
-            </h3>
+            <h3 className="text-xl font-bold uppercase leading-7">{link.title}</h3>
             <ul className="flex flex-col">
               {link.links.map((link: FooterLinkType) => (
                 <li
@@ -42,11 +40,9 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <section className="text-xs text-white opacity-10 text-center">
-        Build 722ea34 (9678)
-      </section>
+      <section className="text-xs text-white opacity-10 text-center">Build 722ea34 (9678)</section>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

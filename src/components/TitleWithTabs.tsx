@@ -1,5 +1,5 @@
-import Tabs from "@components/Tabs"
-import type { TitleWithTabsProps } from "@utils/types"
+import Tabs from '@components/Tabs';
+import type { TitleWithTabsProps } from '@utils/types';
 
 /**
  * displays the tabs and the title title in left and the tabs is in the right
@@ -16,13 +16,9 @@ const TitleWithTabs = ({ data, title, activeTab, onTabChange }: TitleWithTabsPro
   return (
     <div className="flex lg:items-center gap-2 lg:gap-5 px-5 md:px-10 flex-wrap">
       <h2 className="text-2xl font-semibold leading-6">{title}</h2>
-      <Tabs
-        data={data}
-        activeTab={activeTab}
-        onTabChange={onTabChange}
-      />
+      <Tabs data={data} activeTab={activeTab} onTabChange={onTabChange} />
     </div>
-  )
-}
+  );
+};
 
-export default TitleWithTabs
+export default TitleWithTabs;

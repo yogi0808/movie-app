@@ -1,42 +1,39 @@
-import { useRef, useState } from "react"
-import { GiHamburgerMenu } from "react-icons/gi"
-import { MdAdd, MdNotifications, MdOutlineSearch } from "react-icons/md"
+import { useRef, useState } from 'react';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdAdd, MdNotifications, MdOutlineSearch } from 'react-icons/md';
 
-import Logo from "@components/Logo"
-import classNames from "classnames"
-import useScroll from "@hooks/useScroll"
-import { HeaderLinks } from "@constants/index"
-import type { HeaderLinkType } from "@utils/types"
-import MobileNav from "@components/header/MobileNav"
-import useHandleClickOutside from "@hooks/useHandleClickOutside"
-import LinkWithOptions from "@components/header/LinkWithOptions"
+import Logo from '@components/Logo';
+import classNames from 'classnames';
+import useScroll from '@hooks/useScroll';
+import { HeaderLinks } from '@constants/index';
+import type { HeaderLinkType } from '@utils/types';
+import MobileNav from '@components/header/MobileNav';
+import useHandleClickOutside from '@hooks/useHandleClickOutside';
+import LinkWithOptions from '@components/header/LinkWithOptions';
 
 /**
  * header component that displays the logo navigation lins and also hides when user is scrolls down and when user scrolls back up it appears again.
  * @returns - jsx for the header component
  */
 const Header = () => {
-  const { scrollDirection } = useScroll() // to get the user scroll direction it is custom hook
-  const [isMobileNavActive, setIsMobileNavActive] = useState<boolean>(false) // track the open and close status of the mobile navigation popup
+  const { scrollDirection } = useScroll(); // to get the user scroll direction it is custom hook
+  const [isMobileNavActive, setIsMobileNavActive] = useState<boolean>(false); // track the open and close status of the mobile navigation popup
 
-  const mobileNavRef = useRef<HTMLDivElement | null>(null) // ref of the mobile navigation popup
+  const mobileNavRef = useRef<HTMLDivElement | null>(null); // ref of the mobile navigation popup
 
   // getting dynamic class names based on the condition
   const headerClassNames = classNames(
-    "w-full sticky transition-all duration-300 ease-out top-0 bg-primary text-white h-16 z-99",
+    'w-full sticky transition-all duration-300 ease-out top-0 bg-primary text-white h-16 z-99',
     {
-      "-top-16!": scrollDirection !== "down",
+      '-top-16!': scrollDirection !== 'down',
     },
-  )
+  );
 
-  useHandleClickOutside(mobileNavRef, setIsMobileNavActive)
+  useHandleClickOutside(mobileNavRef, setIsMobileNavActive);
 
   return (
     <>
-      <MobileNav
-        isActive={isMobileNavActive}
-        navRef={mobileNavRef}
-      />
+      <MobileNav isActive={isMobileNavActive} navRef={mobileNavRef} />
       <header className={headerClassNames}>
         <div className="max-w-325 h-full mx-auto px-5 lg:px-10 flex justify-between">
           <div className="flex-1 flex justify-start items-center lg:hidden">
@@ -53,43 +50,31 @@ const Header = () => {
             </div>
             <nav className="hidden gap-3.75 h-fit lg:flex">
               {HeaderLinks.map((link: HeaderLinkType) => (
-                <LinkWithOptions
-                  key={link.id}
-                  link={link}
-                />
+                <LinkWithOptions key={link.id} link={link} />
               ))}
             </nav>
           </div>
           <div className="flex gap-3.5 lg:gap-7.5 justify-end lg:justify-center items-center h-full max-lg:flex-1">
             <button className="hidden lg:inline">
-              <MdAdd
-                size={25}
-                className="text-white"
-              />
+              <MdAdd size={25} className="text-white" />
             </button>
             <button className="border border-white py-0.5 px-1 rounded font-semibold text-sm hidden lg:inline">
               EN
             </button>
             <button>
-              <MdNotifications
-                size={20}
-                className="text-white"
-              />
+              <MdNotifications size={20} className="text-white" />
             </button>
             <button className="bg-accent text-sm font-semibold h-8 rounded-full aspect-square">
               Y
             </button>
             <button>
-              <MdOutlineSearch
-                size={30}
-                className="text-highlight"
-              />
+              <MdOutlineSearch size={30} className="text-highlight" />
             </button>
           </div>
         </div>
       </header>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
