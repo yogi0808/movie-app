@@ -11,11 +11,11 @@ import type { GradientTextProps } from "@utils/types"
  *  @param {element} children - expected childe element with text like p, h1... with text color transparent
  * @returns - jsx for gradient text background with gradient
  */
-const GradientText = ({ gradient, className, children }: GradientTextProps) => {
+const GradientText = ({ gradient, className = "", children }: GradientTextProps) => {
   // creating the class names string based on the prop class names and gradient class
   const gradientClassNames = classNames("w-fit bg-clip-text", {
-    gradient,
-    className,
+    [gradient]: gradient,
+    [className]: className,
   })
 
   return <div className={gradientClassNames}>{children}</div>

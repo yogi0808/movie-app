@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { dummyAvailableSearch } from "@constants/index"
+import { dummyAvailableSearch, showMeDummyCheckBox } from "@constants/index"
 
 /**
  * sows the dummy options in the filter section
@@ -14,36 +14,19 @@ const DummyOptions = () => {
     <>
       <div className="divider-box">
         <h3 className="mb-2.5 font-light">Show Me</h3>
-        <div>
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              name="me"
-              type="radio"
-              value="Everything"
-              className="radio"
-              defaultChecked
-            />
-            <span>Everything</span>
-          </label>
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              name="me"
-              type="radio"
-              value="Movies I Haven't Seen"
-              className="radio"
-            />
-            <span>Movies I Haven't Seen</span>
-          </label>
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              name="me"
-              type="radio"
-              value="Movies I Have Seen"
-              className="radio"
-            />
-            <span>Movies I Have Seen</span>
-          </label>
-        </div>
+        {
+          showMeDummyCheckBox.map((item: string, idx: number) => (
+            <label key={idx} className="flex items-center gap-2 cursor-pointer">
+              <input
+                name="me"
+                type="radio"
+                value="Everything"
+                className="radio"
+                defaultChecked={idx === 0}
+              />
+              <span>{item}</span>
+            </label>
+          ))}
       </div>
       <div className="divider-box">
         <h3 className="mb-2.5 font-light">Availabilities</h3>

@@ -290,3 +290,9 @@ export const releaseDateSearch = [
   "Physical",
   "TV",
 ]
+
+export const showMeDummyCheckBox = [
+  "Everything",
+  "Movies I Haven't Seen",
+  "Movies I Have Seen"
+]
