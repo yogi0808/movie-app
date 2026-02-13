@@ -1,6 +1,6 @@
 import { sortOptions } from "@constants/index"
 import DropDown from "@components/DropDown"
-import { useFilterContext } from "@contexts/FilterContext"
+import { useFilterContext } from "@hooks/useFilterContext"
 import CollapsibleCard from "@components/filters/CollapsibleCard"
 
 /**

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
 import MovieCard from "@components/cards/MovieCard"
-import { useFilterContext } from "@contexts/FilterContext"
+import { useFilterContext } from "@hooks/useFilterContext"
 import type { MovieType } from "@utils/types"
 
 /**
@@ -56,13 +56,13 @@ const FilteredMoviesSection = () => {
     <div className="flex w-full h-fit flex-wrap justify-between gap-7.5 max-w-263">
       {filteredMovies
         ? filteredMovies.map((movieData: MovieType) => (
-          <div
-            key={movieData.id}
-            className="shadow-card flex-[1_1_15%] rounded-lg pb-3"
-          >
-            <MovieCard data={movieData} />
-          </div>
-        ))
+            <div
+              key={movieData.id}
+              className="shadow-card flex-[1_1_15%] rounded-lg pb-3"
+            >
+              <MovieCard data={movieData} />
+            </div>
+          ))
         : ""}
       <p
         className="w-full font-bold h-fit text-white text-center p-2 text-2xl bg-highlight rounded-lg cursor-pointer"

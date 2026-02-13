@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import CustomRange from "@components/filters/CustomRange"
-import { useFilterContext } from "@contexts/FilterContext"
+import { useFilterContext } from "@hooks/useFilterContext"
 import {
   sliderOneThumbsTrackColors,
   sliderTwoThumbsTrackColors,

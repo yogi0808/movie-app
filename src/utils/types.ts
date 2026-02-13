@@ -21,7 +21,7 @@ export interface MovieType {
 
 export interface MoviesResponseDataType {
   page: number
-  results: MovieType[] 
+  results: MovieType[]
   total_pages: number
   total_results: number
 }
@@ -63,12 +63,12 @@ export interface OptionType<T = string> {
 
 export interface DropDownProps {
   label: string
-  selected: OptionType<string> | OptionType<boolean>
-  list: any[]
-  handleSelect(val: string | boolean, opt: string): void
+  selected: OptionType<string | boolean>
+  list: OptionType<string | boolean>[]
+  handleSelect(val: string | boolean, opt: string | boolean): void
   search?: boolean
-  valueKey: string
-  optionKey: string
+  valueKey: keyof OptionType<string | boolean>
+  optionKey: keyof OptionType<string>
 }
 
 export interface TabsProps {

@@ -1,26 +1,43 @@
-import { createContext, useContext, useEffect, useState, type PropsWithChildren } from "react"
+import { useEffect, useState, type PropsWithChildren } from "react"
 
 import countries from "@constants/countries.json"
 import languages from "@constants/languages.json"
 import { apiFetch, formateDateForPicker } from "@utils/utils"
 import { includeAdultOptions, sortOptions } from "@constants/index"
-import type { GenreType, ProviderType, ReleaseDatesType, FilterContextType, MovieType, OptionType, GenresResponseDataType, MoviesResponseDataType, ProviderResponseDataType } from "@utils/types"
+import type {
+  GenreType,
+  ProviderType,
+  ReleaseDatesType,
+  MovieType,
+  OptionType,
+  GenresResponseDataType,
+  MoviesResponseDataType,
+  ProviderResponseDataType,
+} from "@utils/types"
 
-const filterContext = createContext<FilterContextType | undefined>(undefined) // filter context
+import { filterContext } from "@hooks/useFilterContext"
 
 const FilterContextProvider = ({ children }: PropsWithChildren) => {
   const [filteredMovies, setFilteredMovies] = useState<MovieType[]>([]) // move list of the filtered search
-  const [selectedSortBy, setSelectedSortBy] = useState<OptionType>(sortOptions[0]) // selected search option
-  const [selectedCountry, setSelectedCountry] = useState<OptionType>(countries[101]) // selected country
+  const [selectedSortBy, setSelectedSortBy] = useState<OptionType>(
+    sortOptions[0],
+  ) // selected search option
+  const [selectedCountry, setSelectedCountry] = useState<OptionType>(
+    countries[101],
+  ) // selected country
   const [providers, setProviders] = useState<ProviderType[]>([]) // all the providers to display based on the country
   const [selectedProviders, setSelectedProviders] = useState<number[]>([]) // list of the selected providers
-  const [selectedLanguage, setSelectedLanguage] = useState<OptionType>(languages[0]) // selected language
+  const [selectedLanguage, setSelectedLanguage] = useState<OptionType>(
+    languages[0],
+  ) // selected language
   const [selectedAdultOpt, setSelectedAdultOpt] = useState<OptionType<boolean>>(
     includeAdultOptions[0],
   ) // selected adult option include or exclude
   const [genres, setGenres] = useState<GenreType[]>([]) // list of the all genres
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]) // list of the selected genres
-  const [selectedCertifications, setSelectedCertifications] = useState<string[]>([]) // list of the selected certifications
+  const [selectedCertifications, setSelectedCertifications] = useState<
+    string[]
+  >([]) // list of the selected certifications
   const [runtime, setRuntime] = useState<number[]>([0, 400]) // selected value of the runtime
   const [userVotes, setUserVotes] = useState<number[]>([0]) //  selected value of the user votes
   const [nextPage, setNextPage] = useState<number>(1) // page number for fetch data next time
@@ -29,24 +46,6 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
     from: null,
     to: new Date(),
   }) // selected release dates
-
-  /**
-   * for fetching the data for the provider based on the selected country
-   */
-  const fetchProviders = async () => {
-    const data: ProviderResponseDataType = await apiFetch(
-      `watch/providers/movie?watch_region=${selectedCountry.value}`,
-    )
-    setProviders(data.results)
-  }
-
-  /**
-   * for fetching the list of the genres
-   */
-  const fetchGenres = async () => {
-    const data: GenresResponseDataType = await apiFetch("genre/movie/list")
-    setGenres(data.genres)
-  }
 
   /**
    * to fetch the moves list based on the search options
@@ -67,10 +66,14 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
       "with_runtime.lte": String(runtime[1]),
     })
 
-    if (releaseDates.from) params.append("release_date.gte", formateDateForPicker(releaseDates.from))
-    if (releaseDates.to) params.append("release_date.lte", formateDateForPicker(releaseDates.to))
+    if (releaseDates.from)
+      params.append("release_date.gte", formateDateForPicker(releaseDates.from))
+    if (releaseDates.to)
+      params.append("release_date.lte", formateDateForPicker(releaseDates.to))
 
-    const data: MoviesResponseDataType = await apiFetch(`discover/movie?${params}`)
+    const data: MoviesResponseDataType = await apiFetch(
+      `discover/movie?${params}`,
+    )
 
     if (data.page <= 1 || searchAvailable) {
       setFilteredMovies(data.results)
@@ -199,17 +202,39 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
 
   // runs the fetch provider function on component mount and selected country change
   useEffect(() => {
+    /**
+     * for fetching the data for the provider based on the selected country
+     */
+    const fetchProviders = async () => {
+      const data: ProviderResponseDataType = await apiFetch(
+        `watch/providers/movie?watch_region=${selectedCountry.value}`,
+      )
+      setProviders(data.results)
+    }
+
     fetchProviders()
   }, [selectedCountry.value])
 
   // runs the fetch genres function on component mount
   useEffect(() => {
+    /**
+     * for fetching the list of the genres
+     */
+    const fetchGenres = async () => {
+      const data: GenresResponseDataType = await apiFetch("genre/movie/list")
+      setGenres(data.genres)
+    }
+
     fetchGenres()
   }, [])
 
   // runs the fetch movies function on component mount and when the next page value changes
   useEffect(() => {
-    fetchFilteredMovies()
+    const loadMovies = async () => {
+      await fetchFilteredMovies()
+    }
+
+    loadMovies()
   }, [nextPage])
 
   return (
@@ -249,18 +274,3 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
 }
 
 export default FilterContextProvider
-
-/**
- * hook to easily ues the filter context
- *
- * @returns - filter context
- */
-export function useFilterContext(): FilterContextType {
-  const context = useContext(filterContext)
-
-  if (!context) {
-    throw new Error("Error in Context")
-  }
-
-  return context
-}

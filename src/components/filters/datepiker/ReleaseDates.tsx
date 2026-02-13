@@ -4,7 +4,7 @@ import { IoMdCalendar } from "react-icons/io"
 
 import { releaseDateSearch } from "@constants/index"
 import "@components/filters/datepiker/datepiker.css"
-import { useFilterContext } from "@contexts/FilterContext"
+import { useFilterContext } from "@hooks/useFilterContext"
 
 /**
  * displays teh inputs for date and checkboxes for the search input and dates for the from and to

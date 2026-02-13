@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import SortBy from "@sections/movies/SortBy"
 import Filters from "@sections/movies/Filters"
 import WhereToWatch from "@sections/movies/WhereToWatch"
-import { useFilterContext } from "@contexts/FilterContext"
+import { useFilterContext } from "@hooks/useFilterContext"
 
 /**
  * displays all the filters in the movie screen left

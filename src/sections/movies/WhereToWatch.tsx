@@ -1,7 +1,7 @@
 import DropDown from "@components/DropDown"
 import type { ProviderType } from "@utils/types"
 import countries from "@constants/countries.json"
-import { useFilterContext } from "@contexts/FilterContext"
+import { useFilterContext } from "@hooks/useFilterContext"
 import ProviderCard from "@components/filters/ProviderCard"
 import CollapsibleCard from "@components/filters/CollapsibleCard"
 

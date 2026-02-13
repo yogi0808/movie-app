@@ -2,7 +2,7 @@ import classNames from "classnames"
 import { IoMdArrowDropdown } from "react-icons/io"
 import { useEffect, useRef, useState } from "react"
 
-import type { DropDownProps } from "@utils/types"
+import type { DropDownProps, OptionType } from "@utils/types"
 import useHandleClickOutside from "@hooks/useHandleClickOutside"
 
 /**
@@ -28,7 +28,7 @@ const DropDown = ({
   optionKey,
 }: DropDownProps) => {
   const [isActive, setIsActive] = useState<boolean>(false) // for tracking the state of the dropdown is open or close
-  const [options, setOptions] = useState<any[]>(list) // copy of the list data
+  const [options, setOptions] = useState<OptionType<string | boolean>[]>(list) // copy of the list data
 
   const popupRef = useRef<HTMLDivElement | null>(null) // ref for popup menu
   const selectedRef = useRef<HTMLParagraphElement | null>(null) // ref for selected option
@@ -57,7 +57,9 @@ const DropDown = ({
         <IoMdArrowDropdown className="text-xl" />
         {isActive && (
           <div
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent<HTMLDivElement>) =>
+              e.stopPropagation()
+            }
             className="border w-full border-search-border max-w-full absolute left-0 bg-white top-[110%] shadow-card rounded-lg max-h-50 overflow-y-auto z-9"
           >
             {search && (
