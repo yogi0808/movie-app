@@ -190,3 +190,37 @@ export interface FilterContextType {
   releaseDates: ReleaseDatesType;
   selectReleaseDate(key: 'from' | 'to', val: Date | null): void;
 }
+
+export interface InitialStateType {
+  providers: ProviderType[];
+  genres: GenreType[];
+  selectedSortBy: OptionType;
+  selectedCountry: OptionType;
+  selectedProviders: number[];
+  selectedLanguage: OptionType;
+  selectedAdultOpt: OptionType<boolean>;
+  selectedGenres: number[];
+  selectedCertifications: string[];
+  runtime: number[];
+  userVotes: number[];
+  searchAvailable: boolean;
+  releaseDates: ReleaseDatesType;
+}
+
+export type ActionType =
+  | { type: 'setGenres'; val: GenreType[] }
+  | { type: 'setProviders'; val: ProviderType[] }
+  | { type: 'selectSort'; val: string; opt: string }
+  | { type: 'changeRuntime'; val: number[] }
+  | { type: 'changeUserVotes'; val: number[] }
+  | { type: 'selectGenre'; val: number }
+  | { type: 'selectCertification'; val: string }
+  | { type: 'selectProvider'; val: number }
+  | { type: 'selectCountry'; val: string; opt: string }
+  | { type: 'selectLanguage'; val: string; opt: string }
+  | { type: 'selectAdultOpt'; val: boolean; opt: string }
+  | {
+      type: 'selectReleaseDate';
+      key: 'from' | 'to';
+      val: Date | null;
+    };
