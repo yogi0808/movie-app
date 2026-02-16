@@ -12,6 +12,7 @@ export interface MovieType {
   poster_path: string;
   vote_average: number;
   vote_count: number;
+  media_type?: 'tv' | 'movie';
   release_date?: string;
   first_air_date?: string;
   title?: string;

@@ -1,46 +1,38 @@
-# Movie Screen
+for movie `movie/<id>` for tv `tv/<id>`
 
-- left section
-- right section
-- collapsible div
-- box with divider
-- drop down with optional search option
-- checkbox
-- radiobutton
-- filter section
-- providers
-- genres
-- search button with position change based on the button visibility and filter selections
-- range selector
+## movie page
 
-## sort endpoints
+#### menu section
 
-### sorting
+#### hero
 
-- Popularity Descending - `sort_by=popularity.desc`
-- Popularity Ascending - `sort_by=popularity.asc`
-- Rating Descending - `sort_by=vote_average.desc`
-- Rating Ascending - `sort_by=vote_average.asc`
-- Release Date Descending - `sort_by=primary_release_date.desc`
-- Release Date Ascending - `sort_by=primary_release_date.asc`
-- Title (A - Z) - `sort_by=title.desc`
-- Title (Z - A) - `sort_by=title.asc`
+- poster section(left)
+- details section(right)
+- round button with tooltip
+- created by list
+- emoji reaction
 
----
+#### all about movie | tv
 
-- for Countries - `configuration/countries?language=en-US`
-- for languages - `configuration/languages`
-- search for keyword - `search/keyword?query=<Search_Query>&page=1`
-- providers - `watch/providers/movie`
-- genres - `genre/movie/list`
+- cast and review section(left)
+  - title tab component
+  - cast section
+  - cast card
+  - social section(only review don't have discussion api endpoint)
+  - review card
+  - media section
+  - recommendation section
+  - recommendation card
 
----
+- fact section(right)
+  - keywords section
+  - network section
+  - original language
+  - content score dummy
 
-- language - `language=<language_iso>`
-- genres - `with_genres=<genre_number>`
-- certification - `certification=<name_of_certification>`
-- adult content - `include_adult=<true or false>`
-- keyword - `with_keywords=<keywords>`
+### endpoints
 
-- Release Date from - `release_date.gte=<date>`
-- Release Date to - `release_date.lte=<date>`
+- keywords `<movie | tv>/<id>/keyword`
+- cast `<movie | tv>/<id>/credits`
+- images `<movie | tv>/<id>/images`
+- videos `<movie | tv>/<id>/videos`

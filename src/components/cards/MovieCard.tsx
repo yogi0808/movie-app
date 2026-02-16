@@ -5,6 +5,7 @@ import { MoviePopupLinks } from '@constants/index';
 import RatingIndicator from '@components/cards/RatingIndicator';
 import useHandleClickOutside from '@hooks/useHandleClickOutside';
 import type { MoviePopupLinkType, MovieType } from '@utils/types';
+import { Link } from 'react-router';
 
 /**
  * movie card component for displaying movie image, title or name, date, and ratting also show the popup menu based on user action like click on more option.
@@ -22,13 +23,15 @@ const MovieCard = ({ data }: { data: MovieType }) => {
   return (
     <div className="min-w-37.5 relative flex flex-col content-stretch">
       <div className="min-w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card">
-        <img
-          src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
-          className="rounded-lg w-full"
-          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-            e.currentTarget.classList.add('hidden');
-          }}
-        />
+        <Link to={`/details/${data.media_type ? data.media_type : 'movie'}-${data.id}`}>
+          <img
+            src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
+            className="rounded-lg w-full"
+            onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+              e.currentTarget.classList.add('hidden');
+            }}
+          />
+        </Link>
         <button
           className="absolute top-2 right-2 w-6.5 cursor-pointer aspect-square opacity-60"
           onClick={() => setIsPopupActive((prev) => !prev)}
@@ -55,12 +58,12 @@ const MovieCard = ({ data }: { data: MovieType }) => {
       </div>
       <div className="px-2.5 pt-6.5 relative">
         <RatingIndicator voteAverage={data.vote_average} className="absolute -top-4.75 left-2.5" />
-        <a
-          href="#"
+        <Link
+          to={`/details/${data.media_type ? data.media_type : 'movie'}-${data.id}`}
           className="font-bold hover:underline hover:text-highlight leading-5 inline-block transition-all duration-300 ease-out"
         >
           {data.title || data.name}
-        </a>
+        </Link>
         <p className="text-stone-500">
           {formateDate(data.release_date || data.first_air_date || '')}
         </p>
