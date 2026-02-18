@@ -21,7 +21,11 @@ const DetailsScreen = () => {
   }, [id]);
 
   if (!data) {
-    return <h1>Loading...</h1>;
+    return (
+      <section className="min-h-screen flex justify-center items-center">
+        <div className="aspect-square w-10 border-6 border-transparent border-t-accent rounded-full animate-spin ring-6 ring-primary" />
+      </section>
+    );
   }
 
   return (
