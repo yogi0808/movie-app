@@ -12,29 +12,51 @@ import type { RatingIndicatorProps } from '@utils/types';
  *  @param {string} className - names of class for rating div
  * @returns - jsx for the rating indicator
  */
-const RatingIndicator = ({ voteAverage, className }: RatingIndicatorProps) => {
+const RatingIndicator = ({ voteAverage, className, xl }: RatingIndicatorProps) => {
   const { rating, ratingGradient } = getRating(voteAverage || 0);
 
   // creating an class names string based on the prop class names
-  const wrapperClassNames = classNames(
-    'w-9.5 h-9.5 bg-black flex items-center justify-center rounded-full',
+  const wrapperClassNames = classNames('bg-rating flex items-center justify-center rounded-full', {
+    [className]: className,
+    'w-9.5 h-9.5': !xl,
+    'w-17 h-17': xl,
+  });
+
+  const innerDivClassNames = classNames(
+    'bg-rating absolute rounded-full flex items-center justify-center',
     {
-      [className]: className,
+      'w-6.75 h-6.75': !xl,
+      'w-12 h-12': xl,
     },
   );
+
+  const ringClassNames = classNames('bg-green-500 absolute rounded-full', {
+    'w-8 h-8': !xl,
+    'w-14 h-14': xl,
+  });
+
+  const textClassNames = classNames('text-white font-bold', {
+    'leading-3 text-sm': !xl,
+    'text-2xl': xl,
+  });
+
+  const signClassNames = classNames(' text-white self-start', {
+    'text-[6px] leading-6': !xl,
+    'text-xs leading-11': xl,
+  });
 
   return (
     <div className={wrapperClassNames}>
       <Activity mode={voteAverage ? 'visible' : 'hidden'}>
         <div
-          className="w-8 h-8 bg-green-500 absolute rounded-full"
+          className={ringClassNames}
           style={{
             background: ratingGradient,
           }}
         />
-        <div className="w-6.75 h-6.75 bg-black absolute rounded-full flex items-center justify-center">
-          <p className="text-white leading-3 text-sm font-bold">{rating}</p>
-          <span className="text-[6px] leading-6 text-white self-start">%</span>
+        <div className={innerDivClassNames}>
+          <p className={textClassNames}>{rating}</p>
+          <span className={signClassNames}>%</span>
         </div>
       </Activity>
       <Activity mode={!voteAverage ? 'visible' : 'hidden'}>

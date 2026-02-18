@@ -71,3 +71,21 @@ export async function apiFetch(endpoint: string) {
 
   if (res.ok) return res.json();
 }
+
+/**
+ * returns the movie duration in formatted way (Ex. 1h 30m)
+ *
+ * @param runtime - duration of the movie in number
+ * @returns - formatted movie duration string
+ */
+export function formatRuntime(runtime: number): string {
+  if (!runtime || runtime < 0) return '0m';
+
+  const hours = Math.floor(runtime / 60);
+  const minutes = runtime % 60;
+
+  if (hours === 0) return `${minutes}m`;
+  if (minutes === 0) return `${hours}h`;
+
+  return `${hours}h ${minutes}m`;
+}
