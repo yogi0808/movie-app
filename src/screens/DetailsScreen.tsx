@@ -5,6 +5,7 @@ import { apiFetch } from '@utils/utils';
 import Hero from '@sections/details/Hero';
 import RootLayout from '@layouts/RootLayout';
 import type { MovieDetailsType } from '@utils/types';
+import CastList from '@sections/details/CastList';
 
 const DetailsScreen = () => {
   const { id } = useParams();
@@ -13,7 +14,6 @@ const DetailsScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await apiFetch(`${id?.replace('-', '/')}`);
-      console.log(data);
       setData(data);
     };
 
@@ -31,6 +31,7 @@ const DetailsScreen = () => {
   return (
     <RootLayout>
       <Hero data={data} />
+      <CastList idEndpoint={id?.replace('-', '/') || ''} />
     </RootLayout>
   );
 };
