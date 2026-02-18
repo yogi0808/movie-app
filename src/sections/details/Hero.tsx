@@ -23,29 +23,32 @@ const Hero = ({ data }: { data: MovieDetailsType }) => {
       }}
     >
       <div className="bg-gradient4">
-        <div className="px-10 py-7.5 max-w-325 mx-auto flex">
-          <div className="min-w-75 w-75 overflow-hidden rounded-lg">
+        <div className="px-10 py-7.5 max-w-325 mx-auto flex max-md:flex-col">
+          <div className="lg:min-w-75 overflow-hidden rounded-lg">
             <img
               src={`https://media.themoviedb.org/t/p/w600_and_h900_face${data.poster_path}`}
+              className="w-full"
               alt={data.title}
             />
           </div>
-          <div className="pl-10 flex justify-center flex-col">
+          <div className="max-md:pt-10 md:pl-10 flex justify-center flex-col">
             <div className="mb-6">
               <div className="flex gap-2">
-                <h2 className="text-4xl font-bold hover:text-white/70 hover-underline">
+                <h2 className="text-2xl lg:text-4xl font-bold hover:text-white/70 hover-underline">
                   {data.title}
                 </h2>
-                <span className="text-4xl text-white/80">({data.release_date.split('-')[0]})</span>
+                <span className="text-2xl lg:text-4xl text-white/80">
+                  ({data.release_date.split('-')[0]})
+                </span>
               </div>
-              <div className="flex items-center mt-1">
+              <div className="flex items-center mt-1 flex-wrap">
                 <div className="border border-white/60 text-white/60 px-1 w-fit">U/A 16+</div>
                 <p className="ml-1.5">{data.release_date} (IN)</p>
                 <RenderGenres genres={data.genres} />
                 <p className="list-dot">{formatRuntime(data.runtime)}</p>
               </div>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center flex-wrap max-md:gap-2">
               <RatingIndicator voteAverage={data.vote_average} className="" xl />
               <p className="ml-1 font-bold">
                 User <br /> Score
