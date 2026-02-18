@@ -366,3 +366,20 @@ export interface CastType {
   credit_id: string;
   order: number;
 }
+
+export interface AuthDetailsType {
+  name: string;
+  username: string;
+  avatar_path: string | null;
+  rating: number;
+}
+
+export interface ReviewType {
+  author: string;
+  author_details: AuthDetailsType;
+  content: string;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  url: string;
+}

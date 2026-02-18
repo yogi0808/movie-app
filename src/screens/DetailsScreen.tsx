@@ -5,7 +5,7 @@ import { apiFetch } from '@utils/utils';
 import Hero from '@sections/details/Hero';
 import RootLayout from '@layouts/RootLayout';
 import type { MovieDetailsType } from '@utils/types';
-import CastList from '@sections/details/CastList';
+import Social from '@sections/details/Social';
 
 const DetailsScreen = () => {
   const { id } = useParams();
@@ -31,7 +31,7 @@ const DetailsScreen = () => {
   return (
     <RootLayout>
       <Hero data={data} />
-      <CastList idEndpoint={id?.replace('-', '/') || ''} />
+      <Social idEndpoint={id?.replace('-', '/') || ''} />
     </RootLayout>
   );
 };
