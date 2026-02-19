@@ -2,10 +2,12 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 
 import { apiFetch } from '@utils/utils';
-import Hero from '@sections/details/Hero';
 import RootLayout from '@layouts/RootLayout';
 import type { MovieDetailsType } from '@utils/types';
+import Recommendations from '@sections/details/Recommendations';
+import CastList from '@sections/details/CastList';
 import Social from '@sections/details/Social';
+import Media from '@sections/details/Media';
 
 const DetailsScreen = () => {
   const { id } = useParams();
@@ -30,8 +32,11 @@ const DetailsScreen = () => {
 
   return (
     <RootLayout>
-      <Hero data={data} />
+      {/* <Hero data={data} /> */}
+      <CastList idEndpoint={id?.replace('-', '/') || ''} />
       <Social idEndpoint={id?.replace('-', '/') || ''} />
+      <Media idEndpoint={id?.replace('-', '/') || ''} />
+      <Recommendations movieName={data.title} idEndpoint={id?.replace('-', '/') || ''} />
     </RootLayout>
   );
 };
