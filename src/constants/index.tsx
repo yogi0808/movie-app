@@ -1,3 +1,4 @@
+import type { MediaTabType } from '@utils/types';
 import { FaBookmark, FaList } from 'react-icons/fa6';
 import { IoIosStar, IoMdHeart } from 'react-icons/io';
 
@@ -289,3 +290,5 @@ export const releaseDateSearch = [
 ];
 
 export const showMeDummyCheckBox = ['Everything', "Movies I Haven't Seen", 'Movies I Have Seen'];
+
+export const mediaTab: MediaTabType[] = ['backdrops', 'posters'];

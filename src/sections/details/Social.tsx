@@ -1,25 +1,27 @@
 import type { ReviewType } from '@utils/types';
-import { apiFetch, formateDate } from '@utils/utils';
+import { apiFetch, ellipseByWordCount, formateDate } from '@utils/utils';
 import { useEffect, useState } from 'react';
 import { IoPerson } from 'react-icons/io5';
+import { Link } from 'react-router';
 
 const Social = ({ idEndpoint }: { idEndpoint: string }) => {
   const [review, setReview] = useState<ReviewType>();
   const [reviewCount, setReviewCount] = useState<number>(0);
+  const { isOverflowing, ellipseContent } = ellipseByWordCount(review?.content || '', 100);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await apiFetch(`${idEndpoint}/reviews`);
       console.log(data);
       setReviewCount(data.total_results);
-      setReview(data.results[2]);
+      setReview(data.results[0]);
     };
 
     fetchData();
   }, [idEndpoint]);
 
   return (
-    <section className="w-full border-b border-search-border pb-7.5">
+    <section className="w-full border-b border-search-border py-7.5">
       <div className="flex gap-12.5 mb-5">
         <h3 className="text-2xl font-semibold mb-2">Social</h3>
         <div className="flex gap-6 font-semibold text-lg">
@@ -57,7 +59,19 @@ const Social = ({ idEndpoint }: { idEndpoint: string }) => {
                 </div>
               </div>
             </div>
-            <pre className="mt-5 w-full text-wrap line-clamp-5">{review.content}</pre>
+            <pre className="mt-5 w-full text-wrap">
+              {ellipseContent}
+              {isOverflowing ? (
+                <Link
+                  to={review.url}
+                  className="underline underline-offset-3 decoration-underline hover:text-black/60 cursor-pointer"
+                >
+                  read the rest
+                </Link>
+              ) : (
+                ''
+              )}
+            </pre>
           </div>
           <p className="text-lg underline underline-offset-3 mt-5 decoration-underline decoration-2 font-semibold">
             Read All Reviews

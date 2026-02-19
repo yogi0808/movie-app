@@ -89,3 +89,26 @@ export function formatRuntime(runtime: number): string {
 
   return `${hours}h ${minutes}m`;
 }
+
+interface EllipseResult {
+  isOverflowing: boolean;
+  ellipseContent: string;
+}
+
+export function ellipseByWordCount(content: string, wordLimit: number): EllipseResult {
+  if (!content) {
+    return {
+      isOverflowing: false,
+      ellipseContent: '',
+    };
+  }
+
+  const words = content.trim().split(' ');
+
+  const isOverflowing = words.length > wordLimit;
+
+  return {
+    isOverflowing,
+    ellipseContent: isOverflowing ? words.slice(0, wordLimit).concat(['... ']).join(' ') : content,
+  };
+}

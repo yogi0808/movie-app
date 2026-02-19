@@ -383,3 +383,16 @@ export interface ReviewType {
   updated_at: string;
   url: string;
 }
+
+export interface MediaImageType {
+  aspect_ratio: number;
+  height: number;
+  iso_3166_1: string;
+  iso_639_1: string;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+}
+
+export type MediaTabType = 'backdrops' | 'posters';

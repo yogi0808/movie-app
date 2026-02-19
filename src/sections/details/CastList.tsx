@@ -18,7 +18,7 @@ const CastList = ({ idEndpoint }: { idEndpoint: string }) => {
   }, [idEndpoint]);
 
   return (
-    <section className="flex flex-col w-full border-b border-search-border pb-7.5">
+    <section className="flex flex-col w-full border-b border-search-border py-7.5">
       <h3 className="text-2xl font-semibold mb-2">Top Billed Cast</h3>
       <div className="relative">
         <div className="flex overflow-x-scroll gap-3.5 pb-5 relative">
