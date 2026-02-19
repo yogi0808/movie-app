@@ -269,6 +269,7 @@ export interface MovieDetailsType {
   status: string;
   tagline: string;
   title: string;
+  name?: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
@@ -321,7 +322,7 @@ export interface TvDetailsType {
   adult: boolean;
   backdrop_path: string;
   created_by: CreatorType[];
-  episode_run_time: []; // TODO: find Type
+  episode_run_time: number[];
   first_air_date: string;
   genres: GenreType[];
   homepage: string;
@@ -396,3 +397,15 @@ export interface MediaImageType {
 }
 
 export type MediaTabType = 'backdrops' | 'posters';
+
+export interface HeroPropType {
+  poster_path: string;
+  backdrop_path: string;
+  title: string;
+  release_date: string;
+  genres: GenreType[];
+  runtime: number;
+  vote_average: number;
+  overview: string;
+  tagline: string;
+}

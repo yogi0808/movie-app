@@ -22,7 +22,6 @@ const Media = ({ idEndpoint }: { idEndpoint: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await apiFetch(`${idEndpoint}/images`);
-      console.log(data);
       setCount({
         posters: data.posters.length,
         backdrops: data.backdrops.length,

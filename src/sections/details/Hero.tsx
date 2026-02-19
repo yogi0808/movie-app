@@ -4,9 +4,10 @@ import { FaBookmark, FaCircleInfo, FaList, FaPlay } from 'react-icons/fa6';
 import Emoji from '@components/Emoji';
 import { formatRuntime } from '@utils/utils';
 import RenderGenres from '@components/RenderGenres';
-import type { MovieDetailsType } from '@utils/types';
+import type { HeroPropType } from '@utils/types';
 import ButtonWithTooltip from '@components/ButtonWithTooltip';
 import RatingIndicator from '@components/cards/RatingIndicator';
+import { AiOutlineFullscreen } from 'react-icons/ai';
 
 /**
  * displays the hero section in details page with banner and movie information
@@ -14,7 +15,7 @@ import RatingIndicator from '@components/cards/RatingIndicator';
  * @param {object} data - data about the single movie
  * @returns - jsx for the details hero page
  */
-const Hero = ({ data }: { data: MovieDetailsType }) => {
+const Hero = ({ data }: { data: HeroPropType }) => {
   return (
     <section
       className="bg-cover bg-no-repeat bg-position text-white"
@@ -24,12 +25,18 @@ const Hero = ({ data }: { data: MovieDetailsType }) => {
     >
       <div className="bg-gradient4">
         <div className="px-10 py-7.5 max-w-325 mx-auto flex max-md:flex-col">
-          <div className="lg:min-w-75 lg:w-75 overflow-hidden rounded-lg">
+          <div className="lg:min-w-75 lg:w-75 overflow-hidden rounded-lg relative group">
             <img
               src={`https://media.themoviedb.org/t/p/w600_and_h900_face${data.poster_path}`}
               className="w-full"
               alt={data.title}
             />
+            <div className="inset-0 absolute backdrop-blur-lg group-hover:opacity-100 opacity-0 transition-opacity duration-150 ease-linear bg-black/70 flex gap-1 justify-center items-center cursor-pointer">
+              <AiOutlineFullscreen className="text-2xl" />
+              <p className="underline underline-offset-3 decoration-underline text-white/60 text-2xl">
+                Expand
+              </p>
+            </div>
           </div>
           <div className="max-md:pt-10 md:pl-10 flex justify-center flex-col">
             <div className="mb-6">
@@ -45,7 +52,7 @@ const Hero = ({ data }: { data: MovieDetailsType }) => {
                 <div className="border border-white/60 text-white/60 px-1 w-fit">U/A 16+</div>
                 <p className="ml-1.5">{data.release_date} (IN)</p>
                 <RenderGenres genres={data.genres} />
-                <p className="list-dot">{formatRuntime(data.runtime)}</p>
+                {data.runtime < 1 ? '' : <p className="list-dot">{formatRuntime(data.runtime)}</p>}
               </div>
             </div>
             <div className="flex items-center flex-wrap max-md:gap-2">

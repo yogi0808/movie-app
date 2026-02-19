@@ -14,7 +14,8 @@ const RecommendationMovieCard = ({ movie }: { movie: MovieType }) => {
         />
         <div className="absolute bottom-0 left-0 right-0 justify-between items-center bg-white/90 p-2.5 hidden group-hover:flex">
           <div className="flex gap-1 items-center">
-            <FaRegCalendarAlt /> {formateDateForPicker(movie.release_date || '')}
+            <FaRegCalendarAlt />{' '}
+            {formateDateForPicker(movie.release_date || movie.first_air_date || '')}
           </div>
           <div className="flex gap-2 items-center">
             <IoIosStar className="text-sm" />

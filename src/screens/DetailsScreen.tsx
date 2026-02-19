@@ -3,24 +3,26 @@ import { useEffect, useState } from 'react';
 
 import { apiFetch } from '@utils/utils';
 import RootLayout from '@layouts/RootLayout';
-import type { MovieDetailsType } from '@utils/types';
+import type { MovieDetailsType, TvDetailsType } from '@utils/types';
 import Recommendations from '@sections/details/Recommendations';
 import CastList from '@sections/details/CastList';
 import Social from '@sections/details/Social';
 import Media from '@sections/details/Media';
+import Hero from '@sections/details/Hero';
 
 const DetailsScreen = () => {
   const { id } = useParams();
-  const [data, setData] = useState<MovieDetailsType>();
+  const [data, setData] = useState<MovieDetailsType | TvDetailsType>();
+  const idEndpoint = id?.replace('-', '/') || '';
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await apiFetch(`${id?.replace('-', '/')}`);
+      const data = await apiFetch(idEndpoint);
       setData(data);
     };
 
     fetchData();
-  }, [id]);
+  }, [idEndpoint]);
 
   if (!data) {
     return (
@@ -32,11 +34,26 @@ const DetailsScreen = () => {
 
   return (
     <RootLayout>
-      {/* <Hero data={data} /> */}
-      <CastList idEndpoint={id?.replace('-', '/') || ''} />
-      <Social idEndpoint={id?.replace('-', '/') || ''} />
-      <Media idEndpoint={id?.replace('-', '/') || ''} />
-      <Recommendations movieName={data.title} idEndpoint={id?.replace('-', '/') || ''} />
+      <Hero
+        data={{
+          genres: data.genres,
+          tagline: data.tagline,
+          overview: data.overview,
+          poster_path: data.poster_path,
+          vote_average: data.vote_average,
+          backdrop_path: data.backdrop_path,
+          runtime: 'runtime' in data ? data.runtime : 0,
+          title: 'title' in data ? data.title : data.name,
+          release_date: 'release_date' in data ? data.release_date : data.first_air_date,
+        }}
+      />
+      <CastList idEndpoint={idEndpoint} />
+      <Social idEndpoint={idEndpoint} />
+      <Media idEndpoint={idEndpoint} />
+      <Recommendations
+        movieName={'title' in data ? data.title : data.name}
+        idEndpoint={idEndpoint}
+      />
     </RootLayout>
   );
 };

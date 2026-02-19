@@ -13,22 +13,29 @@ const RenderGenres = ({ genres }: { genres: GenreType[] }) => {
         if (idx === genres.length - 1) {
           return (
             <>
-              <p className="inline hover:text-white/70 hover-underline">{item.name}</p>
+              <p key={item.id} className="inline hover:text-white/70 hover-underline">
+                {item.name}
+              </p>
             </>
           );
         } else if (idx === genres.length - 2) {
           return (
             <>
-              <p className="inline hover:text-white/70 hover-underline">{item.name}</p>, and{' '}
-            </>
-          );
-        } else {
-          return (
-            <>
-              <p className="inline hover:text-white/70 hover-underline">{item.name}</p>,{' '}
+              <p key={item.id} className="inline hover:text-white/70 hover-underline">
+                {item.name}
+              </p>
+              , and{' '}
             </>
           );
         }
+        return (
+          <>
+            <p key={item.id} className="inline hover:text-white/70 hover-underline">
+              {item.name}
+            </p>
+            ,{' '}
+          </>
+        );
       })}
     </span>
   );

@@ -12,7 +12,6 @@ const Social = ({ idEndpoint }: { idEndpoint: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await apiFetch(`${idEndpoint}/reviews`);
-      console.log(data);
       setReviewCount(data.total_results);
       setReview(data.results[0]);
     };
