@@ -95,6 +95,13 @@ interface EllipseResult {
   ellipseContent: string;
 }
 
+/**
+ * returns the content with word limit and adds ... for ellipse
+ *
+ * @param {string} content - content to ellipse
+ * @param {number} wordLimit - number of words to show
+ * @returns
+ */
 export function ellipseByWordCount(content: string, wordLimit: number): EllipseResult {
   if (!content) {
     return {

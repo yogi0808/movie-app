@@ -3,6 +3,7 @@ import countries from '@constants/countries.json';
 import languages from '@constants/languages.json';
 import type { ActionType, InitialStateType } from '@utils/types';
 
+// initial state for the filter reducer
 export const FilterInitialState: InitialStateType = {
   providers: [],
   genres: [],
@@ -22,7 +23,14 @@ export const FilterInitialState: InitialStateType = {
   },
 };
 
+/**
+ *
+ * @param {object} state - of the reducer for modifications
+ * @param {object} action - for changing and modifying data on event of string
+ * @returns - updated state of the reducer
+ */
 export function FilterReducer(state: InitialStateType, action: ActionType): InitialStateType {
+  // handling all action type with switch
   switch (action.type) {
     case 'selectSort':
       return {
