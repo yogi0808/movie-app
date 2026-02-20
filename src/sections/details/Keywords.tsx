@@ -7,7 +7,6 @@ const Keywords = ({ idEndpoint }: { idEndpoint: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await apiFetch(`${idEndpoint}/keywords`);
-      console.log(data);
       setKeywords(data.results);
     };
 

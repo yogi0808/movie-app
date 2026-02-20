@@ -92,6 +92,10 @@
   .list-dot {
     @apply before:content-['•'] before:text-lg before:inline-flex before:text-center before:leading-none before:absolute before:top-0.75 before:left-1.75 relative pl-5;
   }
+
+  .calc-width {
+    @apply max-w-[calc(1300px-40px-220px)];
+  }
 }
 
 ::-webkit-scrollbar {

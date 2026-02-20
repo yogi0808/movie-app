@@ -11,6 +11,7 @@ import Media from '@sections/details/Media';
 import Hero from '@sections/details/Hero';
 import Season from '@sections/details/Season';
 import Info from '@sections/details/Info';
+import Section from '@sections/home/Section';
 
 const DetailsScreen = () => {
   const { id } = useParams();
@@ -49,25 +50,29 @@ const DetailsScreen = () => {
           release_date: 'release_date' in data ? data.release_date : data.first_air_date,
         }}
       />
-      <CastList idEndpoint={idEndpoint} />
-      {'seasons' in data ? <Season data={data.seasons[data.seasons.length - 1]} /> : ''}
-      <Social idEndpoint={idEndpoint} />
-      <Media idEndpoint={idEndpoint} />
-      <Recommendations
-        movieName={'title' in data ? data.title : data.name}
-        idEndpoint={idEndpoint}
-      />
-      <Info
-        data={{
-          network: 'networks' in data ? data.networks[0] : null,
-          status: data.status,
-          language: data.original_language,
-          budget: 'budget' in data ? data.budget : null,
-          revenue: 'revenue' in data ? data.revenue : null,
-          type: 'type' in data ? data.type : null,
-        }}
-        idEndpoint={idEndpoint}
-      />
+      <Section className="px-5 md:flex">
+        <div className="md:pr-7.5 calc-width">
+          <CastList idEndpoint={idEndpoint} />
+          {'seasons' in data ? <Season data={data.seasons[data.seasons.length - 1]} /> : ''}
+          <Social idEndpoint={idEndpoint} />
+          <Media idEndpoint={idEndpoint} />
+          <Recommendations
+            movieName={'title' in data ? data.title : data.name}
+            idEndpoint={idEndpoint}
+          />
+        </div>
+        <Info
+          data={{
+            network: 'networks' in data ? data.networks[0] : null,
+            status: data.status,
+            language: data.original_language,
+            budget: 'budget' in data ? data.budget : null,
+            revenue: 'revenue' in data ? data.revenue : null,
+            type: 'type' in data ? data.type : null,
+          }}
+          idEndpoint={idEndpoint}
+        />
+      </Section>
     </RootLayout>
   );
 };

@@ -26,8 +26,8 @@ for movie `movie/<id>` for tv `tv/<id>`
   - recommendation card ✔
   - season section (new) ✔
 
-- fact section(right)
-  - keywords section
+- fact section(right) ✔
+  - keywords section ✔
   - network section
   - original language
   - content score dummy
