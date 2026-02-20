@@ -9,6 +9,7 @@ import CastList from '@sections/details/CastList';
 import Social from '@sections/details/Social';
 import Media from '@sections/details/Media';
 import Hero from '@sections/details/Hero';
+import Season from '@sections/details/Season';
 
 const DetailsScreen = () => {
   const { id } = useParams();
@@ -48,6 +49,7 @@ const DetailsScreen = () => {
         }}
       />
       <CastList idEndpoint={idEndpoint} />
+      {'seasons' in data ? <Season data={data.seasons[data.seasons.length - 1]} /> : ''}
       <Social idEndpoint={idEndpoint} />
       <Media idEndpoint={idEndpoint} />
       <Recommendations

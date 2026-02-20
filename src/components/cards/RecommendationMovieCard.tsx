@@ -7,9 +7,12 @@ import { FaBookmark } from 'react-icons/fa6';
 const RecommendationMovieCard = ({ movie }: { movie: MovieType }) => {
   return (
     <div className="min-w-62.5">
-      <div className="relative cursor-pointer rounded-lg overflow-hidden group">
+      <div className="relative cursor-pointer rounded-lg overflow-hidden group h-35.25 bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat">
         <img
           src={`https://media.themoviedb.org/t/p/w500_and_h282_face${movie.backdrop_path}`}
+          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+            e.currentTarget.classList.add('hidden');
+          }}
           alt={movie.title || movie.name}
         />
         <div className="absolute bottom-0 left-0 right-0 justify-between items-center bg-white/90 p-2.5 hidden group-hover:flex">
