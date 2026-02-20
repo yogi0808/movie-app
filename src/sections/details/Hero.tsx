@@ -20,14 +20,14 @@ const Hero = ({ data }: { data: HeroPropType }) => {
     <section
       className="bg-cover bg-no-repeat bg-position text-white"
       style={{
-        backgroundImage: `url('https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path}')`,
+        backgroundImage: `url('${import.meta.env.VITE_IMAGE_BASE_URL}w1920_and_h800_multi_faces${data.backdrop_path}')`,
       }}
     >
       <div className="bg-gradient4">
         <div className="px-10 py-7.5 max-w-325 mx-auto flex max-md:flex-col">
           <div className="lg:min-w-75 lg:w-75 overflow-hidden rounded-lg relative group">
             <img
-              src={`https://media.themoviedb.org/t/p/w600_and_h900_face${data.poster_path}`}
+              src={`${import.meta.env.VITE_IMAGE_BASE_URL}w600_and_h900_face${data.poster_path}`}
               className="w-full"
               alt={data.title}
             />

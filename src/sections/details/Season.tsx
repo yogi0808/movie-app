@@ -11,7 +11,7 @@ const Season = ({ data }: { data: SeasonType | null }) => {
       <div className="border border-search-border shadow-card rounded-lg flex overflow-hidden">
         <div className="min-w-32.5 border-r border-search-border cursor-pointer">
           <img
-            src={`https://media.themoviedb.org/t/p/w260_and_h390_face${data.poster_path}`}
+            src={`${import.meta.env.VITE_IMAGE_BASE_URL}w260_and_h390_face${data.poster_path}`}
             alt={data.name}
           />
         </div>

@@ -57,7 +57,7 @@ const Media = ({ idEndpoint }: { idEndpoint: string }) => {
                 <img
                   key={idx}
                   className="h-75"
-                  src={`https://media.themoviedb.org/t/p/w440_and_h660_face${item.file_path}`}
+                  src={`${import.meta.env.VITE_IMAGE_BASE_URL}w440_and_h660_face${item.file_path}`}
                   alt={item.file_path}
                 />
               ))
@@ -65,7 +65,7 @@ const Media = ({ idEndpoint }: { idEndpoint: string }) => {
                 <img
                   key={idx}
                   className="h-75"
-                  src={`https://media.themoviedb.org/t/p/w1066_and_h600_face${item.file_path}`}
+                  src={`${import.meta.env.VITE_IMAGE_BASE_URL}w1066_and_h600_face${item.file_path}`}
                   alt={item.file_path}
                 />
               ))}

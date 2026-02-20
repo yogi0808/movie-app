@@ -9,7 +9,7 @@ const RecommendationMovieCard = ({ movie }: { movie: MovieType }) => {
     <div className="min-w-62.5">
       <div className="relative cursor-pointer rounded-lg overflow-hidden group h-35.25 bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat">
         <img
-          src={`https://media.themoviedb.org/t/p/w500_and_h282_face${movie.backdrop_path}`}
+          src={`${import.meta.env.VITE_IMAGE_BASE_URL}w500_and_h282_face${movie.backdrop_path}`}
           onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
             e.currentTarget.classList.add('hidden');
           }}

@@ -28,7 +28,7 @@ const ProviderCard = ({ provider }: { provider: ProviderType }) => {
       className="w-12.5 relative rounded-lg aspect-square overflow-hidden cursor-pointer"
       onClick={() => selectProvider(provider.provider_id)}
     >
-      <img src={`https://media.themoviedb.org/t/p/original${provider.logo_path}`} />
+      <img src={`${import.meta.env.VITE_IMAGE_BASE_URL}original${provider.logo_path}`} />
       <div className={overlayClassNames}>
         <GiCheckMark className="text-white text-3xl" />
       </div>

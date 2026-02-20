@@ -25,7 +25,7 @@ const MovieCard = ({ data }: { data: MovieType }) => {
       <div className="min-w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card">
         <Link to={`/details/${data.media_type ? data.media_type : 'movie'}-${data.id}`}>
           <img
-            src={`https://media.themoviedb.org/t/p/w440_and_h660_face${data.poster_path}`}
+            src={`${import.meta.env.VITE_IMAGE_BASE_URL}w440_and_h660_face${data.poster_path}`}
             className="rounded-lg w-full"
             onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
               e.currentTarget.classList.add('hidden');
