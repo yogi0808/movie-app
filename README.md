@@ -1,28 +1,30 @@
 for movie `movie/<id>` for tv `tv/<id>`
 
-## movie page
+## movie page ✔
 
 #### menu section
 
-#### hero
+#### hero ✔
 
 - poster section(left)
 - details section(right)
-- round button with tooltip
+- round button with tooltip ✔
 - created by list
-- emoji reaction
+- emoji reaction ✔
+- component for genre display (new) ✔
 
 #### all about movie | tv
 
-- cast and review section(left)
+- cast and review section(left) ✔
   - title tab component
-  - cast section
-  - cast card
-  - social section(only review don't have discussion api endpoint)
+  - cast section ✔
+  - cast card ✔
+  - social section(only review don't have discussion api endpoint) ✔
   - review card
-  - media section
-  - recommendation section
-  - recommendation card
+  - media section ✔
+  - recommendation section ✔
+  - recommendation card ✔
+  - season section (new) ✔
 
 - fact section(right)
   - keywords section

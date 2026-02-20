@@ -409,3 +409,8 @@ export interface HeroPropType {
   overview: string;
   tagline: string;
 }
+
+export interface KeywordType {
+  id: number;
+  name: string;
+}

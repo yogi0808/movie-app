@@ -10,6 +10,7 @@ import Social from '@sections/details/Social';
 import Media from '@sections/details/Media';
 import Hero from '@sections/details/Hero';
 import Season from '@sections/details/Season';
+import Info from '@sections/details/Info';
 
 const DetailsScreen = () => {
   const { id } = useParams();
@@ -54,6 +55,17 @@ const DetailsScreen = () => {
       <Media idEndpoint={idEndpoint} />
       <Recommendations
         movieName={'title' in data ? data.title : data.name}
+        idEndpoint={idEndpoint}
+      />
+      <Info
+        data={{
+          network: 'networks' in data ? data.networks[0] : null,
+          status: data.status,
+          language: data.original_language,
+          budget: 'budget' in data ? data.budget : null,
+          revenue: 'revenue' in data ? data.revenue : null,
+          type: 'type' in data ? data.type : null,
+        }}
         idEndpoint={idEndpoint}
       />
     </RootLayout>
