@@ -1,24 +1,17 @@
-import type { NetworkType } from '@utils/types';
+import type { InfoPropType } from '@utils/types';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6';
 import { FiLink } from 'react-icons/fi';
 import Languages from '@constants/languages.json';
 import Keywords from './Keywords';
 
-const Info = ({
-  data,
-  idEndpoint,
-}: {
-  idEndpoint: string;
-  data: {
-    network: NetworkType | null;
-    status: string;
-    language: string;
-    budget: number | null;
-    revenue: number | null;
-    type: string | null;
-  };
-}) => {
-  console.log(data);
+/**
+ * displays the information about the single movie like status network, language, budget, etc...
+ *
+ * @param {object} data - information about the movie to display
+ * @param {string} idEndpoint - link for fetch more data related to the movie
+ * @returns - jsx for the info component
+ */
+const Info = ({ data, idEndpoint }: InfoPropType) => {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex gap-2.5 items-center">

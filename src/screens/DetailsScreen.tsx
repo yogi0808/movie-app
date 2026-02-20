@@ -13,12 +13,20 @@ import Season from '@sections/details/Season';
 import Info from '@sections/details/Info';
 import Section from '@sections/home/Section';
 
+/**
+ * this is a movie details page for single movie in this page we are displaying the single movies data
+ *
+ * @returns - jsx for the movie details screen
+ */
 const DetailsScreen = () => {
-  const { id } = useParams();
-  const [data, setData] = useState<MovieDetailsType | TvDetailsType>();
-  const idEndpoint = id?.replace('-', '/') || '';
+  const { id } = useParams(); // id parameter from the url
+  const [data, setData] = useState<MovieDetailsType | TvDetailsType>(); // data of the single movie
+  const idEndpoint = id?.replace('-', '/') || ''; // making url form the id
 
   useEffect(() => {
+    /**
+     * fetches the data on load about the single movie
+     */
     const fetchData = async () => {
       const data = await apiFetch(idEndpoint);
       setData(data);
@@ -27,6 +35,7 @@ const DetailsScreen = () => {
     fetchData();
   }, [idEndpoint]);
 
+  // showing the loader while fetching the data
   if (!data) {
     return (
       <section className="min-h-screen flex justify-center items-center">

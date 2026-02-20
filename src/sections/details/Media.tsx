@@ -5,21 +5,31 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { MdArrowRightAlt } from 'react-icons/md';
 
+// type for the count tracking
 interface CountType {
   backdrops: number;
   posters: number;
 }
 
+/**
+ * fetches and displays the movie media (posters, backdrops)
+ *
+ * @param {string} idEndpoint - endpoint for fetching the more details about the movie like images
+ * @returns - jsx for the media component
+ */
 const Media = ({ idEndpoint }: { idEndpoint: string }) => {
-  const [activeTab, setActiveTab] = useState<number>(0);
-  const [posters, setPosters] = useState<MediaImageType[]>([]);
-  const [backdrops, setBackdrops] = useState<MediaImageType[]>([]);
+  const [activeTab, setActiveTab] = useState<number>(0); // tracks selected tab
+  const [posters, setPosters] = useState<MediaImageType[]>([]); // list of the posters
+  const [backdrops, setBackdrops] = useState<MediaImageType[]>([]); // list of the backdrops
   const [count, setCount] = useState<CountType>({
     posters: 0,
     backdrops: 0,
-  });
+  }); // tracks the count of the backdrop and poster
 
   useEffect(() => {
+    /**
+     * fetches the media data for single movie on load
+     */
     const fetchData = async () => {
       const data = await apiFetch(`${idEndpoint}/images`);
       setCount({

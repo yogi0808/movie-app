@@ -4,12 +4,21 @@ import { useEffect, useState } from 'react';
 import { IoPerson } from 'react-icons/io5';
 import { Link } from 'react-router';
 
+/**
+ * displays the review of the movie
+ *
+ * @param {string} idEndpoint - endpoint with id to fetch data related movie
+ * @returns - jsx for the reviews
+ */
 const Social = ({ idEndpoint }: { idEndpoint: string }) => {
-  const [review, setReview] = useState<ReviewType>();
-  const [reviewCount, setReviewCount] = useState<number>(0);
-  const { isOverflowing, ellipseContent } = ellipseByWordCount(review?.content || '', 100);
+  const [review, setReview] = useState<ReviewType>(); // review data
+  const [reviewCount, setReviewCount] = useState<number>(0); // tracking the count of the all review
+  const { isOverflowing, ellipseContent } = ellipseByWordCount(review?.content || '', 100); // util function to calculate overflow
 
   useEffect(() => {
+    /**
+     * fetches the reviews related to movie on load
+     */
     const fetchData = async () => {
       const data = await apiFetch(`${idEndpoint}/reviews`);
       setReviewCount(data.total_results);

@@ -414,3 +414,15 @@ export interface KeywordType {
   id: number;
   name: string;
 }
+
+export interface InfoPropType {
+  idEndpoint: string;
+  data: {
+    network: NetworkType | null;
+    status: string;
+    language: string;
+    budget: number | null;
+    revenue: number | null;
+    type: string | null;
+  };
+}

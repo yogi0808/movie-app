@@ -4,6 +4,12 @@ import { formateDateForPicker } from '@utils/utils';
 import { IoIosStar, IoMdHeart } from 'react-icons/io';
 import { FaBookmark } from 'react-icons/fa6';
 
+/**
+ * displays the recommended movie data
+ *
+ * @param {object} movie - data about the single movie
+ * @returns
+ */
 const RecommendationMovieCard = ({ movie }: { movie: MovieType }) => {
   return (
     <div className="min-w-62.5">

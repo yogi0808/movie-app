@@ -1,5 +1,11 @@
 import type { CastType } from '@utils/types';
 
+/**
+ * displays the image, name and rol of the cast for this movie
+ *
+ * @param {object} data - data about the single cast
+ * @returns
+ */
 const CastCard = ({ data }: { data: CastType }) => {
   return (
     <div className="min-w-34.5 w-34.5 overflow-hidden rounded-lg shadow-card" key={data.id}>

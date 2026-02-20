@@ -4,11 +4,20 @@ import { apiFetch } from '@utils/utils';
 import { useEffect, useState } from 'react';
 import { MdArrowRightAlt } from 'react-icons/md';
 
+/**
+ * displays the scrollable cast list of the single movie
+ *
+ * @param {string} idEndpoint - endpoint with movie id and type(tv or movie)
+ * @returns - jsx for the Cast list component
+ */
 const CastList = ({ idEndpoint }: { idEndpoint: string }) => {
-  const [data, setData] = useState<CastType[]>([]);
-  const [count, setCount] = useState<number>(0);
+  const [data, setData] = useState<CastType[]>([]); // list of the cast data
+  const [count, setCount] = useState<number>(0); // count of the total cast
 
   useEffect(() => {
+    /**
+     * fetching data on load and updating the state
+     */
     const fetchData = async () => {
       const data = await apiFetch(`${idEndpoint}/credits`);
       setData(data.cast.slice(0, 9));

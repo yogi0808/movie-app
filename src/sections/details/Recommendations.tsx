@@ -3,10 +3,20 @@ import type { MovieType } from '@utils/types';
 import { apiFetch } from '@utils/utils';
 import { useEffect, useState } from 'react';
 
+/**
+ * fetches and displays the movie list related to single movie
+ *
+ * @param {string} idEndpoint - endpoint with movie id to fetch related moves
+ * @param {string} movieName - name of the movie
+ * @returns - jsx for the related movies
+ */
 const Recommendations = ({ idEndpoint, movieName }: { idEndpoint: string; movieName: string }) => {
-  const [data, setData] = useState<MovieType[]>([]);
+  const [data, setData] = useState<MovieType[]>([]); // list of the recommendations
 
   useEffect(() => {
+    /**
+     * fetches data for related movie to show in related section
+     */
     const fetchData = async () => {
       const data = await apiFetch(`${idEndpoint}/recommendations`);
       setData(data.results);

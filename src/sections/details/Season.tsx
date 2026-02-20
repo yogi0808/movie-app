@@ -3,8 +3,14 @@ import { formateDate } from '@utils/utils';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { IoIosStar } from 'react-icons/io';
 
+/**
+ * displays the last season data like season number, rating, overview etc...
+ *
+ * @param {object} data - data about last season
+ * @returns - jsx for the season component
+ */
 const Season = ({ data }: { data: SeasonType | null }) => {
-  if (!data) return;
+  if (!data) return; // just for safety
   return (
     <section className="flex flex-col w-full border-b border-search-border py-7.5">
       <h3 className="text-2xl font-semibold mb-2">Current Season</h3>
