@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6';
 import { FiLink } from 'react-icons/fi';
 import Languages from '@constants/languages.json';
 import Keywords from './Keywords';
+import DummyContentScore from './DummyContentScore';
 
 /**
  * displays the information about the single movie like status network, language, budget, etc...
@@ -67,6 +68,7 @@ const Info = ({ data, idEndpoint }: InfoPropType) => {
         ''
       )}
       <Keywords idEndpoint={idEndpoint} />
+      <DummyContentScore />
     </div>
   );
 };

@@ -292,3 +292,26 @@ export const releaseDateSearch = [
 export const showMeDummyCheckBox = ['Everything', "Movies I Haven't Seen", 'Movies I Have Seen'];
 
 export const mediaTab: MediaTabType[] = ['backdrops', 'posters'];
+
+export const contributors = [
+  {
+    id: 1,
+    contribution: 114,
+    name: 'MovieMadmatt',
+  },
+  {
+    id: 2,
+    contribution: 70,
+    name: 'raze464',
+  },
+  {
+    id: 3,
+    contribution: 42,
+    name: 'solomono',
+  },
+  {
+    id: 4,
+    contribution: 28,
+    name: 'PajaMAX',
+  },
+];

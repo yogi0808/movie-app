@@ -23,7 +23,7 @@ const Keywords = ({ idEndpoint }: { idEndpoint: string }) => {
   }, [idEndpoint]);
 
   return (
-    <div>
+    <div className="pb-7.5">
       <p className="font-semibold text-lg">Keywords</p>
       <div className="flex gap-x-1.25 gap-y-2.5 flex-wrap">
         {keywords.map((item) => (
