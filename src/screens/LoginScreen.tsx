@@ -1,5 +1,10 @@
 import RootLayout from '@layouts/RootLayout';
 
+/**
+ * login page for user login with username and password
+ *
+ * @returns - jsx for the login page
+ */
 const LoginScreen = () => {
   return (
     <RootLayout>

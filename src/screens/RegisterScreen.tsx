@@ -1,8 +1,14 @@
-import { registerBenefits } from '@constants/index';
-import RootLayout from '@layouts/RootLayout';
-import { FaCheck } from 'react-icons/fa6';
 import { Link } from 'react-router';
+import { FaCheck } from 'react-icons/fa6';
 
+import RootLayout from '@layouts/RootLayout';
+import { registerBenefits } from '@constants/index';
+
+/**
+ * register page for user registration with username, password, and email
+ *
+ * @returns - jsx for register page
+ */
 const RegisterScreen = () => {
   return (
     <RootLayout>
