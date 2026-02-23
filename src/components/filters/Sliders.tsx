@@ -13,44 +13,58 @@ const Sliders = () => {
   const [userScore, setUserScore] = useState<number[]>([0, 10]); // current selected user score state for range slider
   const { userVotes, changeUserVotes, runtime, changeRuntime } = useFilterContext(); // getting selected user votes(array with selected value), runtime(array with selected values), change user votes(function to change selected values) and change runtime(function to change selected values) form the filter context
 
+  const data = [
+    {
+      title: 'User Score',
+      id: 1,
+      min: 0,
+      max: 10,
+      step: 1,
+      value: userScore,
+      mainMarkDivider: 5,
+      onChange: setUserScore,
+      colors: sliderTwoThumbsTrackColors,
+    },
+    {
+      title: 'Minimum User votes',
+      id: 2,
+      min: 0,
+      max: 500,
+      step: 50,
+      mainMarkDivider: 100,
+      value: userVotes,
+      onChange: changeUserVotes,
+      colors: sliderOneThumbsTrackColors,
+    },
+    {
+      title: 'Runtime',
+      id: 3,
+      min: 0,
+      max: 400,
+      step: 15,
+      mainMarkDivider: 120,
+      value: runtime,
+      onChange: changeRuntime,
+      colors: sliderTwoThumbsTrackColors,
+    },
+  ];
+
   return (
     <>
-      <div className="divider-box pb-8!">
-        <h3 className="mb-2.5 font-light">User Score</h3>
-        <CustomRange
-          min={0}
-          max={10}
-          step={1}
-          values={userScore}
-          mainMarkDivider={5}
-          onChange={(val) => setUserScore(val)}
-          colors={sliderTwoThumbsTrackColors}
-        />
-      </div>
-      <div className="divider-box pb-8!">
-        <h3 className="mb-2.5 font-light">Minimum User Votes</h3>
-        <CustomRange
-          min={0}
-          max={500}
-          step={50}
-          mainMarkDivider={100}
-          values={userVotes}
-          onChange={changeUserVotes}
-          colors={sliderOneThumbsTrackColors}
-        />
-      </div>
-      <div className="divider-box pb-8!">
-        <h3 className="mb-2.5 font-light">Runtime</h3>
-        <CustomRange
-          min={0}
-          max={400}
-          step={15}
-          mainMarkDivider={120}
-          values={runtime}
-          onChange={changeRuntime}
-          colors={sliderTwoThumbsTrackColors}
-        />
-      </div>
+      {data.map((item) => (
+        <div key={item.id} className="divider-box pb-8!">
+          <h3 className="mb-2.5 font-light">{item.title}</h3>
+          <CustomRange
+            min={item.min}
+            max={item.max}
+            step={item.step}
+            values={item.value}
+            mainMarkDivider={item.mainMarkDivider}
+            onChange={item.onChange}
+            colors={item.colors}
+          />
+        </div>
+      ))}
     </>
   );
 };
