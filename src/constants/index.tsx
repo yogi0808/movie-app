@@ -315,3 +315,5 @@ export const contributors = [
     name: 'PajaMAX',
   },
 ];
+
+export const emojiList = ['/emoji1.svg', '/emoji2.svg', '/emoji3.svg'];
