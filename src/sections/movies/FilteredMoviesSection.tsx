@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import MovieCard from '@components/cards/MovieCard';
 import { useFilterContext } from '@hooks/useFilterContext';
 import type { MovieType } from '@utils/types';
+import MovieCardSkeleton from '@components/cards/MovieCardSkeleton';
 
 /**
  * displays all the filtered movies on the right side
@@ -53,14 +54,22 @@ const FilteredMoviesSection = () => {
   }, [loadInfinite, setNextPage]);
 
   return (
-    <div className="flex w-full h-fit flex-wrap justify-between gap-7.5 max-w-263">
-      {filteredMovies
-        ? filteredMovies.map((movieData: MovieType) => (
+    <div className="max-w-263">
+      {filteredMovies.length > 0 ? (
+        <div className="flex w-full h-fit flex-wrap justify-between gap-7.5 animate-fade-in">
+          {filteredMovies.map((movieData: MovieType) => (
             <div key={movieData.id} className="shadow-card flex-[1_1_15%] rounded-lg pb-3">
               <MovieCard data={movieData} />
             </div>
-          ))
-        : ''}
+          ))}
+        </div>
+      ) : (
+        <div className="flex w-full h-fit flex-wrap justify-between gap-7.5 animate-breath">
+          {new Array(20).fill('').map((_, idx) => (
+            <MovieCardSkeleton key={idx} />
+          ))}
+        </div>
+      )}
       <p
         className="w-full font-bold h-fit text-white text-center p-2 text-2xl bg-highlight rounded-lg cursor-pointer"
         onClick={() => {
