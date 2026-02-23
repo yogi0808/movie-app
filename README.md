@@ -30,7 +30,7 @@ for movie `movie/<id>` for tv `tv/<id>`
   - keywords section ✔
   - network section
   - original language
-  - content score dummy
+  - content score dummy ✔
 
 ### endpoints
 
@@ -38,3 +38,6 @@ for movie `movie/<id>` for tv `tv/<id>`
 - cast `<movie | tv>/<id>/credits`
 - images `<movie | tv>/<id>/images`
 - videos `<movie | tv>/<id>/videos`
+
+5 component not created
+2 component new created
