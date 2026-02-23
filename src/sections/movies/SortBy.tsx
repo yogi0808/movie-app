@@ -1,6 +1,6 @@
 import { sortOptions } from '@constants/index';
 import DropDown from '@components/DropDown';
-import { useFilterContext } from '@hooks/useFilterContext';
+import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
 import CollapsibleCard from '@components/filters/CollapsibleCard';
 
 /**
@@ -9,7 +9,7 @@ import CollapsibleCard from '@components/filters/CollapsibleCard';
  * @returns - jsx for the sort options
  */
 const SortBy = () => {
-  const { selectedSortBy, selectSortBy } = useFilterContext(); // getting the selected sort options and the function to select the sor options form the filter context
+  const { selectedSortBy, selectSortBy } = useMovieFilterContext(); // getting the selected sort options and the function to select the sor options form the filter context
 
   return (
     <CollapsibleCard title="Sort">

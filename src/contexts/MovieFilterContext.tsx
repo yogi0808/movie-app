@@ -8,14 +8,14 @@ import type {
   ProviderResponseDataType,
 } from '@utils/types';
 
-import { filterContext } from '@hooks/useFilterContext';
-import { FilterInitialState, FilterReducer } from '../reducers/FilterReducer';
+import { movieFilterContext } from '@hooks/useMovieFilterContext';
+import { MovieFilterInitialState, MovieFilterReducer } from '../reducers/MovieFilterReducer';
 
 const FilterContextProvider = ({ children }: PropsWithChildren) => {
   const [filteredMovies, setFilteredMovies] = useState<MovieType[]>([]); // move list of the filtered search
   const [nextPage, setNextPage] = useState<number>(1); // page number for fetch data next time
   const [searchAvailable, setSearchAvailable] = useState<boolean>(false); // is any search options are changed
-  const [state, dispatch] = useReducer(FilterReducer, FilterInitialState);
+  const [state, dispatch] = useReducer(MovieFilterReducer, MovieFilterInitialState);
 
   /**
    * to fetch the moves list based on the search options
@@ -194,7 +194,7 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
   }, [nextPage]);
 
   return (
-    <filterContext.Provider
+    <movieFilterContext.Provider
       value={{
         ...state,
         filteredMovies,
@@ -214,7 +214,7 @@ const FilterContextProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </filterContext.Provider>
+    </movieFilterContext.Provider>
   );
 };
 

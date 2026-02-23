@@ -23,10 +23,10 @@ export const HeaderLinks = [
     id: 2,
     title: 'TV Shows',
     options: [
-      { id: 1, text: 'Popular', link: '#' },
-      { id: 2, text: 'Airing Today', link: '#' },
-      { id: 3, text: 'On TV', link: '#' },
-      { id: 4, text: 'Top Rated', link: '#' },
+      { id: 1, text: 'Popular', link: '/tv' },
+      { id: 2, text: 'Airing Today', link: '/tv' },
+      { id: 3, text: 'On TV', link: '/tv' },
+      { id: 4, text: 'Top Rated', link: '/tv' },
     ],
   },
   {

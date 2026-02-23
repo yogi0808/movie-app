@@ -1,7 +1,7 @@
 import DropDown from '@components/DropDown';
 import type { ProviderType } from '@utils/types';
 import countries from '@constants/countries.json';
-import { useFilterContext } from '@hooks/useFilterContext';
+import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
 import ProviderCard from '@components/filters/ProviderCard';
 import CollapsibleCard from '@components/filters/CollapsibleCard';
 
@@ -11,7 +11,7 @@ import CollapsibleCard from '@components/filters/CollapsibleCard';
  * @returns - jsx for the where to watch
  */
 const WhereToWatch = () => {
-  const { selectedCountry, selectCountry, providers } = useFilterContext(); // getting the selected country, providers list and function to select the country
+  const { selectedCountry, selectCountry, providers } = useMovieFilterContext(); // getting the selected country, providers list and function to select the country
 
   return (
     <CollapsibleCard title="Where To Watch" count={providers.length}>

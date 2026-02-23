@@ -4,7 +4,7 @@ import { IoMdCalendar } from 'react-icons/io';
 
 import { releaseDateSearch } from '@constants/index';
 import '@components/filters/datepiker/datepiker.css';
-import { useFilterContext } from '@hooks/useFilterContext';
+import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
 
 /**
  * displays teh inputs for date and checkboxes for the search input and dates for the from and to
@@ -13,7 +13,7 @@ import { useFilterContext } from '@hooks/useFilterContext';
  */
 const ReleaseDates = () => {
   const [searchAll, setSearchAll] = useState<boolean>(true); // for tracking the all search checkbox to sow search option based on selected state
-  const { releaseDates, selectReleaseDate } = useFilterContext(); // getting selected release dates(object with from and to dates) and select release date(function to select the date) from filter context
+  const { releaseDates, selectReleaseDate } = useMovieFilterContext(); // getting selected release dates(object with from and to dates) and select release date(function to select the date) from filter context
 
   return (
     <div className="divider-box">

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import SortBy from '@sections/movies/SortBy';
 import Filters from '@sections/movies/Filters';
 import WhereToWatch from '@sections/movies/WhereToWatch';
-import { useFilterContext } from '@hooks/useFilterContext';
+import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
 
 /**
  * displays all the filters in the movie screen left
@@ -13,7 +13,7 @@ import { useFilterContext } from '@hooks/useFilterContext';
  */
 const FilterSection = () => {
   const [isSearchFixed, setIsSearchFixed] = useState<boolean>(false); // tacking the search bar fixed or not
-  const { searchAvailable, fetchFilteredMovies } = useFilterContext(); // getting the search available or not and fetch filtered movies function to fetch the movies form the filter context
+  const { searchAvailable, fetchFilteredMovies } = useMovieFilterContext(); // getting the search available or not and fetch filtered movies function to fetch the movies form the filter context
   const searchBtnRef = useRef<HTMLDivElement | null>(null); // ref of the search button
 
   const observerRef = useRef<IntersectionObserver | null>(null); // ref of the intersection observer

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import MovieCard from '@components/cards/MovieCard';
-import { useFilterContext } from '@hooks/useFilterContext';
+import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
 import type { MovieType } from '@utils/types';
 import MovieCardSkeleton from '@components/cards/MovieCardSkeleton';
 
@@ -12,7 +12,7 @@ import MovieCardSkeleton from '@components/cards/MovieCardSkeleton';
  */
 const FilteredMoviesSection = () => {
   const [loadInfinite, setLoadInfinite] = useState<boolean>(false); // tracks if the infinite scroll is active or not
-  const { filteredMovies, setNextPage } = useFilterContext(); // getting the list of the filtered movies and the next page from the filter context
+  const { filteredMovies, setNextPage } = useMovieFilterContext(); // getting the list of the filtered movies and the next page from the filter context
 
   const targetRef = useRef<HTMLDivElement | null>(null); // ref of the bottom div for loading infinitely
   const observerRef = useRef<IntersectionObserver | null>(null); // ref for the observer to survive the re-render

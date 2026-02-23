@@ -1,6 +1,6 @@
 import RootLayout from '@layouts/RootLayout';
 import FilterSection from '@sections/movies/FilterSection';
-import FilterContextProvider from '@contexts/FilterContext';
+import FilterContextProvider from '@contexts/MovieFilterContext';
 import FilteredMoviesSection from '@sections/movies/FilteredMoviesSection';
 
 /**

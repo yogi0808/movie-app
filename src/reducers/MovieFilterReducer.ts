@@ -4,7 +4,7 @@ import languages from '@constants/languages.json';
 import type { ActionType, InitialStateType } from '@utils/types';
 
 // initial state for the filter reducer
-export const FilterInitialState: InitialStateType = {
+export const MovieFilterInitialState: InitialStateType = {
   providers: [],
   genres: [],
   selectedSortBy: sortOptions[0],
@@ -29,7 +29,7 @@ export const FilterInitialState: InitialStateType = {
  * @param {object} action - for changing and modifying data on event of string
  * @returns - updated state of the reducer
  */
-export function FilterReducer(state: InitialStateType, action: ActionType): InitialStateType {
+export function MovieFilterReducer(state: InitialStateType, action: ActionType): InitialStateType {
   // handling all action type with switch
   switch (action.type) {
     case 'selectSort':

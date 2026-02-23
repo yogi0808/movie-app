@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import CustomRange from '@components/filters/CustomRange';
-import { useFilterContext } from '@hooks/useFilterContext';
+import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
 import { sliderOneThumbsTrackColors, sliderTwoThumbsTrackColors } from '@constants/index';
 
 /**
@@ -11,7 +11,7 @@ import { sliderOneThumbsTrackColors, sliderTwoThumbsTrackColors } from '@constan
  */
 const Sliders = () => {
   const [userScore, setUserScore] = useState<number[]>([0, 10]); // current selected user score state for range slider
-  const { userVotes, changeUserVotes, runtime, changeRuntime } = useFilterContext(); // getting selected user votes(array with selected value), runtime(array with selected values), change user votes(function to change selected values) and change runtime(function to change selected values) form the filter context
+  const { userVotes, changeUserVotes, runtime, changeRuntime } = useMovieFilterContext(); // getting selected user votes(array with selected value), runtime(array with selected values), change user votes(function to change selected values) and change runtime(function to change selected values) form the filter context
 
   const data = [
     {

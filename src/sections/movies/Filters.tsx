@@ -2,7 +2,7 @@ import Chip from '@components/Chip';
 import DropDown from '@components/DropDown';
 import languages from '@constants/languages.json';
 import Sliders from '@components/filters/Sliders';
-import { useFilterContext } from '@hooks/useFilterContext';
+import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
 import DummyOptions from '@components/filters/DummyOptions';
 import KeywordSearch from '@components/filters/KeywordSearch';
 import { certifications, includeAdultOptions } from '@constants/index';
@@ -26,7 +26,7 @@ const Filters = () => {
     selectAdultOpt,
     selectedLanguage,
     selectLanguage,
-  } = useFilterContext(); // getting all the selected value for filters from the filter context
+  } = useMovieFilterContext(); // getting all the selected value for filters from the filter context
 
   return (
     <CollapsibleCard title="Filters" open>
