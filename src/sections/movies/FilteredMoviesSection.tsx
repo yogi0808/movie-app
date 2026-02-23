@@ -73,7 +73,7 @@ const FilteredMoviesSection = ({ type }: { type: MediaType }) => {
         </div>
       )}
       <p
-        className="w-full font-bold h-fit text-white text-center p-2 text-2xl bg-highlight rounded-lg cursor-pointer"
+        className="w-full font-bold h-fit text-white text-center p-2 text-2xl bg-highlight rounded-lg cursor-pointer mt-7.5"
         onClick={() => {
           setLoadInfinite(true);
           setNextPage((prev) => (prev === 1 ? 2 : prev));

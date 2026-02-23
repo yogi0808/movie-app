@@ -18,7 +18,7 @@ const Season = ({ data }: { data: SeasonType | null }) => {
     <section className="flex flex-col w-full border-b border-search-border py-7.5">
       <h3 className="text-2xl font-semibold mb-2">Current Season</h3>
       <div className="border border-search-border shadow-card rounded-lg flex overflow-hidden">
-        <div className="min-w-32.5 border-r border-search-border cursor-pointer">
+        <div className="min-w-32.5 w-32.5 border-r border-search-border cursor-pointer">
           <img src={imgUrl} alt={data.name} />
         </div>
         <div className="flex flex-col gap-5 p-5">

@@ -14,6 +14,7 @@ const Social = ({ idEndpoint }: { idEndpoint: string }) => {
   const [review, setReview] = useState<ReviewType>(); // review data
   const [reviewCount, setReviewCount] = useState<number>(0); // tracking the count of the all review
   const { isOverflowing, ellipseContent } = ellipseByWordCount(review?.content || '', 100); // util function to calculate overflow
+  const reviewUrl = `/review/${idEndpoint.replace('/', '-')}-${review?.id}`;
 
   useEffect(() => {
     /**
@@ -71,7 +72,7 @@ const Social = ({ idEndpoint }: { idEndpoint: string }) => {
               {ellipseContent}
               {isOverflowing ? (
                 <Link
-                  to={review.url}
+                  to={reviewUrl}
                   className="underline underline-offset-3 decoration-underline hover:text-black/60 cursor-pointer"
                 >
                   read the rest
