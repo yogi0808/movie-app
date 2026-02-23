@@ -14,6 +14,9 @@ const CastCard = ({ data }: { data: CastType }) => {
           src={`${import.meta.env.VITE_IMAGE_BASE_URL}w276_and_h350_face${data.profile_path}`}
           className="w-full h-full"
           alt={data.name}
+          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+            e.currentTarget.classList.add('hidden');
+          }}
         />
       </div>
       <div className="p-2.5">

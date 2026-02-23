@@ -7,7 +7,7 @@ for movie `movie/<id>` for tv `tv/<id>`
 #### hero ✔
 
 - poster section(left)
-- details section(right)
+- details section(right) ✔
 - round button with tooltip ✔
 - created by list
 - emoji reaction ✔
@@ -39,5 +39,5 @@ for movie `movie/<id>` for tv `tv/<id>`
 - images `<movie | tv>/<id>/images`
 - videos `<movie | tv>/<id>/videos`
 
-5 component not created
+4 component not created
 2 component new created
