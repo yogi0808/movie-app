@@ -4,16 +4,17 @@ import { useEffect, useRef, useState } from 'react';
 import SortBy from '@sections/movies/SortBy';
 import Filters from '@sections/movies/Filters';
 import WhereToWatch from '@sections/movies/WhereToWatch';
-import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
+import { useFilterContext } from '@hooks/useFilterContext';
+import type { MediaType } from '@utils/types';
 
 /**
  * displays all the filters in the movie screen left
  *
  * @returns - jsx for the filter section
  */
-const FilterSection = () => {
+const FilterSection = ({ type }: { type: MediaType }) => {
   const [isSearchFixed, setIsSearchFixed] = useState<boolean>(false); // tacking the search bar fixed or not
-  const { searchAvailable, fetchFilteredMovies } = useMovieFilterContext(); // getting the search available or not and fetch filtered movies function to fetch the movies form the filter context
+  const { searchAvailable, fetchFilteredMovies } = useFilterContext(type); // getting the search available or not and fetch filtered movies function to fetch the movies form the filter context
   const searchBtnRef = useRef<HTMLDivElement | null>(null); // ref of the search button
 
   const observerRef = useRef<IntersectionObserver | null>(null); // ref of the intersection observer
@@ -68,9 +69,9 @@ const FilterSection = () => {
 
   return (
     <div className="sm:min-w-65 sm:w-65 max-sm:w-full flex flex-col gap-3">
-      <SortBy />
-      <WhereToWatch />
-      <Filters />
+      <SortBy type={type} />
+      <WhereToWatch type={type} />
+      <Filters type={type} />
       <div className="w-full">
         <div ref={searchBtnRef}></div>
         <button

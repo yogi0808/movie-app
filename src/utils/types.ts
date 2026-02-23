@@ -426,3 +426,5 @@ export interface InfoPropType {
     type: string | null;
   };
 }
+
+export type MediaType = 'tv' | 'movie';

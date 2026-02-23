@@ -1,6 +1,6 @@
 import RootLayout from '@layouts/RootLayout';
 import FilterSection from '@sections/movies/FilterSection';
-import FilterContextProvider from '@contexts/MovieFilterContext';
+import MovieFilterContextProvider from '@contexts/MovieFilterContext';
 import FilteredMoviesSection from '@sections/movies/FilteredMoviesSection';
 
 /**
@@ -10,17 +10,17 @@ import FilteredMoviesSection from '@sections/movies/FilteredMoviesSection';
  */
 const MoviesScreen = () => {
   return (
-    <FilterContextProvider>
-      <RootLayout>
+    <RootLayout>
+      <MovieFilterContextProvider>
         <section className="max-w-350 mx-auto px-5 md:px-10 py-4 md:py-7.5">
           <h2 className="font-semibold text-2xl mb-5">Popular Movies</h2>
           <div className="w-full flex max-sm:flex-wrap gap-x-7.5">
-            <FilterSection />
-            <FilteredMoviesSection />
+            <FilterSection type="movie" />
+            <FilteredMoviesSection type="movie" />
           </div>
         </section>
-      </RootLayout>
-    </FilterContextProvider>
+      </MovieFilterContextProvider>
+    </RootLayout>
   );
 };
 

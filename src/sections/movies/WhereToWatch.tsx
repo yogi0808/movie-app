@@ -1,7 +1,7 @@
 import DropDown from '@components/DropDown';
-import type { ProviderType } from '@utils/types';
+import type { MediaType, ProviderType } from '@utils/types';
 import countries from '@constants/countries.json';
-import { useMovieFilterContext } from '@hooks/useMovieFilterContext';
+import { useFilterContext } from '@hooks/useFilterContext';
 import ProviderCard from '@components/filters/ProviderCard';
 import CollapsibleCard from '@components/filters/CollapsibleCard';
 
@@ -10,8 +10,8 @@ import CollapsibleCard from '@components/filters/CollapsibleCard';
  *
  * @returns - jsx for the where to watch
  */
-const WhereToWatch = () => {
-  const { selectedCountry, selectCountry, providers } = useMovieFilterContext(); // getting the selected country, providers list and function to select the country
+const WhereToWatch = ({ type }: { type: MediaType }) => {
+  const { selectedCountry, selectCountry, providers } = useFilterContext(type); // getting the selected country, providers list and function to select the country
 
   return (
     <CollapsibleCard title="Where To Watch" count={providers.length}>
@@ -27,7 +27,7 @@ const WhereToWatch = () => {
         />
         <div className="flex flex-wrap gap-x-1.5 gap-y-2.5">
           {providers.map((item: ProviderType) => (
-            <ProviderCard provider={item} key={item.provider_id} />
+            <ProviderCard type={type} provider={item} key={item.provider_id} />
           ))}
         </div>
       </div>

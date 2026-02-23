@@ -11,7 +11,7 @@ import type {
 import { movieFilterContext } from '@hooks/useFilterContext';
 import { MovieFilterInitialState, MovieFilterReducer } from '../reducers/MovieFilterReducer';
 
-const MovieFilterContextProvider = ({ children }: PropsWithChildren) => {
+const TvFilterContextProvider = ({ children }: PropsWithChildren) => {
   const [filteredMovies, setFilteredMovies] = useState<MovieType[]>([]); // move list of the filtered search
   const [nextPage, setNextPage] = useState<number>(1); // page number for fetch data next time
   const [searchAvailable, setSearchAvailable] = useState<boolean>(false); // is any search options are changed
@@ -218,4 +218,4 @@ const MovieFilterContextProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default MovieFilterContextProvider;
+export default TvFilterContextProvider;
