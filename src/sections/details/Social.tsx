@@ -32,11 +32,11 @@ const Social = ({ idEndpoint }: { idEndpoint: string }) => {
     <section className="w-full border-b border-search-border py-7.5">
       <div className="flex gap-12.5 mb-5">
         <h3 className="text-2xl font-semibold mb-2">Social</h3>
-        <div className="flex gap-6 font-semibold text-lg">
-          <h4 className="border-b-4 hover-underline">
+        <div className="flex gap-6 font-semibold text-lg h-fit">
+          <h4 className="border-b-4 hover-underline pb-1">
             Reviews <span className="text-black/60">{reviewCount}</span>
           </h4>
-          <h4 className="hover-underline">Discussions</h4>
+          <h4 className="hover-underline pb-1">Discussions</h4>
         </div>
       </div>
       {!review ? (

@@ -47,9 +47,9 @@ const Media = ({ idEndpoint }: { idEndpoint: string }) => {
     <section className="w-full border-b border-search-border py-7.5">
       <div className="flex gap-12.5 mb-5">
         <h3 className="text-2xl font-semibold mb-2">Media</h3>
-        <div className="flex gap-6 font-semibold text-lg">
+        <div className="flex gap-6 font-semibold text-lg h-fit">
           {mediaTab.map((item, idx) => {
-            const tabClassNames = classNames('hover-underline capitalize', {
+            const tabClassNames = classNames('hover-underline capitalize pb-1', {
               'border-b-4': activeTab === idx,
             });
             return (
