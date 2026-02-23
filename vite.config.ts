@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       '@components': '/src/components/',
       '@constants': '/src/constants/',
+      '@reducers': '/src/reducers/',
       '@contexts': '/src/contexts/',
       '@hooks': '/src/hooks/',
       '@layouts': '/src/layouts/',

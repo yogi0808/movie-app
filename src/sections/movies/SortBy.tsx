@@ -7,6 +7,8 @@ import type { MediaType } from '@utils/types';
 /**
  * displays the sort options in the filter section
  *
+ * @param {string} type - type of the media
+ *
  * @returns - jsx for the sort options
  */
 const SortBy = ({ type }: { type: MediaType }) => {

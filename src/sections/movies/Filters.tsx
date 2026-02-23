@@ -13,6 +13,8 @@ import type { GenreType, MediaType } from '@utils/types';
 /**
  * displays the all filter option in filter section
  *
+ * @param {string} type - type of the media
+ *
  * @returns - jsx for the filters
  */
 const Filters = ({ type }: { type: MediaType }) => {

@@ -8,8 +8,8 @@ import type {
   ProviderResponseDataType,
 } from '@utils/types';
 
-import { movieFilterContext } from '@hooks/useFilterContext';
-import { MovieFilterInitialState, MovieFilterReducer } from '../reducers/MovieFilterReducer';
+import { tvFilterContext } from '@hooks/useFilterContext';
+import { MovieFilterInitialState, MovieFilterReducer } from '@reducers/filterReducer';
 
 const TvFilterContextProvider = ({ children }: PropsWithChildren) => {
   const [filteredMovies, setFilteredMovies] = useState<MovieType[]>([]); // move list of the filtered search
@@ -41,7 +41,7 @@ const TvFilterContextProvider = ({ children }: PropsWithChildren) => {
     if (state.releaseDates.to)
       params.append('release_date.lte', formateDateForPicker(state.releaseDates.to));
 
-    const data: MoviesResponseDataType = await apiFetch(`discover/movie?${params}`);
+    const data: MoviesResponseDataType = await apiFetch(`discover/tv?${params}`);
 
     if (data.page <= 1 || searchAvailable) {
       setFilteredMovies(data.results);
@@ -163,7 +163,7 @@ const TvFilterContextProvider = ({ children }: PropsWithChildren) => {
      */
     const fetchProviders = async () => {
       const data: ProviderResponseDataType = await apiFetch(
-        `watch/providers/movie?watch_region=${state.selectedCountry.value}`,
+        `watch/providers/tv?watch_region=${state.selectedCountry.value}`,
       );
       dispatch({ type: 'setProviders', val: data.results });
     };
@@ -177,7 +177,7 @@ const TvFilterContextProvider = ({ children }: PropsWithChildren) => {
      * for fetching the list of the genres
      */
     const fetchGenres = async () => {
-      const data: GenresResponseDataType = await apiFetch('genre/movie/list');
+      const data: GenresResponseDataType = await apiFetch('genre/tv/list');
       dispatch({ type: 'setGenres', val: data.genres });
     };
 
@@ -194,7 +194,7 @@ const TvFilterContextProvider = ({ children }: PropsWithChildren) => {
   }, [nextPage]);
 
   return (
-    <movieFilterContext.Provider
+    <tvFilterContext.Provider
       value={{
         ...state,
         filteredMovies,
@@ -214,7 +214,7 @@ const TvFilterContextProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </movieFilterContext.Provider>
+    </tvFilterContext.Provider>
   );
 };
 

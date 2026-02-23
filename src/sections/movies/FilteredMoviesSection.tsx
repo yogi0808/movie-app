@@ -8,6 +8,8 @@ import MovieCardSkeleton from '@components/cards/MovieCardSkeleton';
 /**
  * displays all the filtered movies on the right side
  *
+ * @param {string} type - type of the media
+ *
  * @returns - jsx for the filtered movies
  */
 const FilteredMoviesSection = ({ type }: { type: MediaType }) => {
@@ -59,7 +61,7 @@ const FilteredMoviesSection = ({ type }: { type: MediaType }) => {
         <div className="flex w-full h-fit flex-wrap justify-between gap-7.5 animate-fade-in">
           {filteredMovies.map((movieData: MovieType) => (
             <div key={movieData.id} className="shadow-card flex-[1_1_15%] rounded-lg pb-3">
-              <MovieCard data={movieData} />
+              <MovieCard type={type} data={movieData} />
             </div>
           ))}
         </div>

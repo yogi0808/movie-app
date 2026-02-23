@@ -8,6 +8,7 @@ import { useFilterContext } from '@hooks/useFilterContext';
  * displays the image of the provider and give ability to select the provider
  *
  * @param {object} provider - has the value of the single provider
+ * @param {string} type - type of the media
  *
  * @returns - jsx for the provider
  */

@@ -9,7 +9,7 @@ import type {
 } from '@utils/types';
 
 import { movieFilterContext } from '@hooks/useFilterContext';
-import { MovieFilterInitialState, MovieFilterReducer } from '../reducers/MovieFilterReducer';
+import { MovieFilterInitialState, MovieFilterReducer } from '@reducers/filterReducer';
 
 const MovieFilterContextProvider = ({ children }: PropsWithChildren) => {
   const [filteredMovies, setFilteredMovies] = useState<MovieType[]>([]); // move list of the filtered search

@@ -10,6 +10,8 @@ import type { MediaType } from '@utils/types';
 /**
  * displays all the filters in the movie screen left
  *
+ * @param {string} type - type of the media
+ *
  * @returns - jsx for the filter section
  */
 const FilterSection = ({ type }: { type: MediaType }) => {

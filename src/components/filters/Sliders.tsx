@@ -7,6 +7,7 @@ import type { MediaType } from '@utils/types';
 
 /**
  * displays the range sliders for user vote, user score, and runtime
+ * @param {string} type - type of the media
  *
  * @returns - jsx for the sliders
  */

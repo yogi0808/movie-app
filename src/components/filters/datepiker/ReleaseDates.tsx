@@ -10,6 +10,8 @@ import type { MediaType } from '@utils/types';
 /**
  * displays teh inputs for date and checkboxes for the search input and dates for the from and to
  *
+ * @param {string} type - type of the media
+ *
  * @returns - jsx for the release dates
  */
 const ReleaseDates = ({ type }: { type: MediaType }) => {

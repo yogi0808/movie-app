@@ -8,6 +8,8 @@ import CollapsibleCard from '@components/filters/CollapsibleCard';
 /**
  * displays the where to watch options like all providers and country dorp down
  *
+ * @param {string} type - type of the media
+ *
  * @returns - jsx for the where to watch
  */
 const WhereToWatch = ({ type }: { type: MediaType }) => {

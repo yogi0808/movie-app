@@ -4,7 +4,7 @@ import { formateDate } from '@utils/utils';
 import { MoviePopupLinks } from '@constants/index';
 import RatingIndicator from '@components/cards/RatingIndicator';
 import useHandleClickOutside from '@hooks/useHandleClickOutside';
-import type { MoviePopupLinkType, MovieType } from '@utils/types';
+import type { MediaType, MoviePopupLinkType, MovieType } from '@utils/types';
 import { Link } from 'react-router';
 
 /**
@@ -14,7 +14,7 @@ import { Link } from 'react-router';
  *  @param {object} data - movie Data
  * @returns - jsx for the single movie data display
  */
-const MovieCard = ({ data }: { data: MovieType }) => {
+const MovieCard = ({ data, type }: { data: MovieType; type?: MediaType }) => {
   const [isPopupActive, setIsPopupActive] = useState<boolean>(false); // using this state for popup activation and deactivation
   const popupRef = useRef<HTMLDivElement | null>(null); // ref for popup menu
 
@@ -25,7 +25,9 @@ const MovieCard = ({ data }: { data: MovieType }) => {
   return (
     <div className="min-w-37.5 relative flex flex-col content-stretch">
       <div className="min-w-37.5 aspect-2/3 cursor-pointer bg-card bg-[url('/image.svg')] bg-size-[5rem] bg-center bg-no-repeat rounded-lg relative flex justify-center items-center shadow-card">
-        <Link to={`/details/${data.media_type ? data.media_type : 'movie'}-${data.id}`}>
+        <Link
+          to={`/details/${type ? type : data.media_type ? data.media_type : 'movie'}-${data.id}`}
+        >
           <img
             src={imgUrl}
             className="rounded-lg w-full"
