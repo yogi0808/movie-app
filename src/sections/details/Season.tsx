@@ -11,15 +11,15 @@ import { IoIosStar } from 'react-icons/io';
  */
 const Season = ({ data }: { data: SeasonType | null }) => {
   if (!data) return; // just for safety
+
+  const imgUrl = `${import.meta.env.VITE_IMAGE_BASE_URL}w260_and_h390_face${data.poster_path}`;
+
   return (
     <section className="flex flex-col w-full border-b border-search-border py-7.5">
       <h3 className="text-2xl font-semibold mb-2">Current Season</h3>
       <div className="border border-search-border shadow-card rounded-lg flex overflow-hidden">
         <div className="min-w-32.5 border-r border-search-border cursor-pointer">
-          <img
-            src={`${import.meta.env.VITE_IMAGE_BASE_URL}w260_and_h390_face${data.poster_path}`}
-            alt={data.name}
-          />
+          <img src={imgUrl} alt={data.name} />
         </div>
         <div className="flex flex-col gap-5 p-5">
           <div>

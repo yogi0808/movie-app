@@ -23,12 +23,14 @@ const ProviderCard = ({ provider }: { provider: ProviderType }) => {
     },
   );
 
+  const imgUrl = `${import.meta.env.VITE_IMAGE_BASE_URL}original${provider.logo_path}`;
+
   return (
     <button
       className="w-12.5 relative rounded-lg aspect-square overflow-hidden cursor-pointer"
       onClick={() => selectProvider(provider.provider_id)}
     >
-      <img src={`${import.meta.env.VITE_IMAGE_BASE_URL}original${provider.logo_path}`} />
+      <img src={imgUrl} alt={provider.provider_name} />
       <div className={overlayClassNames}>
         <GiCheckMark className="text-white text-3xl" />
       </div>

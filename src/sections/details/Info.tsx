@@ -13,6 +13,10 @@ import DummyContentScore from './DummyContentScore';
  * @returns - jsx for the info component
  */
 const Info = ({ data, idEndpoint }: InfoPropType) => {
+  const networkImgUrl = data.network
+    ? `${import.meta.env.VITE_IMAGE_BASE_URL}h60${data.network.logo_path}`
+    : '';
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex gap-2.5 items-center">
@@ -30,11 +34,7 @@ const Info = ({ data, idEndpoint }: InfoPropType) => {
       {data.network ? (
         <div>
           <p className="font-semibold">Network</p>
-          <img
-            className="max-h-7.5"
-            src={`${import.meta.env.VITE_IMAGE_BASE_URL}h60${data.network.logo_path}`}
-            alt={data.network.name}
-          />
+          <img className="max-h-7.5" src={networkImgUrl} alt={data.network.name} />
         </div>
       ) : (
         ''
