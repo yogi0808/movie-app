@@ -317,3 +317,21 @@ export const contributors = [
 ];
 
 export const emojiList = ['/emoji1.svg', '/emoji2.svg', '/emoji3.svg'];
+
+export const detailHeroBtns = [
+  {
+    id: 1,
+    icon: <FaList className="text-sm" />,
+    toolTip: 'Add to list',
+  },
+  {
+    id: 2,
+    icon: <IoMdHeart className="text-sm" />,
+    toolTip: 'Mark as favorite',
+  },
+  {
+    id: 3,
+    icon: <FaBookmark className="text-sm" />,
+    toolTip: 'Add to your watch list',
+  },
+];

@@ -3,9 +3,9 @@ import RenderGenres from './RenderGenres';
 import { formatRuntime } from '@utils/utils';
 import RatingIndicator from './cards/RatingIndicator';
 import Emoji from './Emoji';
-import { FaBookmark, FaCircleInfo, FaList, FaPlay } from 'react-icons/fa6';
+import { FaCircleInfo, FaPlay } from 'react-icons/fa6';
 import ButtonWithTooltip from './ButtonWithTooltip';
-import { IoMdHeart } from 'react-icons/io';
+import { detailHeroBtns } from '@constants/index';
 
 /**
  * displays the hero section's details with movie information
@@ -45,15 +45,11 @@ const HeroDetails = ({ data }: { data: HeroPropType }) => {
         </button>
       </div>
       <div className="flex gap-5 mt-3">
-        <ButtonWithTooltip tooltipText="Add to list">
-          <FaList className="text-sm" />
-        </ButtonWithTooltip>
-        <ButtonWithTooltip tooltipText="Mark as favorite">
-          <IoMdHeart className="text-sm" />
-        </ButtonWithTooltip>
-        <ButtonWithTooltip tooltipText="Add to your watch list">
-          <FaBookmark className="text-sm" />
-        </ButtonWithTooltip>
+        {detailHeroBtns.map((item) => (
+          <ButtonWithTooltip key={item.id} tooltipText={item.toolTip}>
+            {item.icon}
+          </ButtonWithTooltip>
+        ))}
         <div className="hover:text-white/70 duration-150 ease-linear hover-underline flex gap-2 items-center">
           <FaPlay />
           <span>Play Trailer</span>
