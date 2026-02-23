@@ -5,6 +5,7 @@ import MoviesScreen from '@screens/MoviesScreen';
 import DetailsScreen from '@screens/DetailsScreen';
 import TvScreen from '@screens/TvScreen';
 import ReviewScreen from '@screens/ReviewScreen';
+import LoginScreen from '@screens/LoginScreen';
 
 /**
  * this is a root component of the application hear i created and and setup the routers
@@ -16,6 +17,7 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
         <Route path="/movies" element={<MoviesScreen />} />
         <Route path="/details/:id" element={<DetailsScreen />} />
         <Route path="/review/:reviewId" element={<ReviewScreen />} />
