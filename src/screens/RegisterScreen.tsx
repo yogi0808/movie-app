@@ -1,8 +1,10 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FaCheck } from 'react-icons/fa6';
+import { useState } from 'react';
 
 import RootLayout from '@layouts/RootLayout';
 import { registerBenefits } from '@constants/index';
+import { useAuth } from '@hooks/useAuth';
 
 /**
  * register page for user registration with username, password, and email
@@ -10,6 +12,40 @@ import { registerBenefits } from '@constants/index';
  * @returns - jsx for register page
  */
 const RegisterScreen = () => {
+  const [registerData, setRegisterData] = useState({
+    email: '',
+    password: '',
+    username: '',
+    confirmPassword: '',
+  });
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const { register, error, isLoading } = useAuth();
+  const navigate = useNavigate();
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRegisterData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (registerData.password !== registerData.confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    try {
+      await register({
+        username: registerData.username,
+        email: registerData.email,
+        password: registerData.password,
+      });
+      setSuccessMessage('Registration successful! Please check your email for verification.');
+      setTimeout(() => navigate('/login'), 5000);
+    } catch (err) {
+      console.error('Registration failed', err);
+    }
+  };
+
   return (
     <RootLayout>
       <div className="max-w-325 h-full mx-auto px-5 lg:px-10 py-7.5 flex gap-7.5 max-md:flex-wrap">
@@ -29,28 +65,36 @@ const RegisterScreen = () => {
         <div>
           <div className="flex flex-col gap-4">
             <h1 className="font-semibold text-2xl">Sign up for an account</h1>
+            {error && <p className="text-red-500 font-semibold">{error}</p>}
+            {successMessage && <p className="text-green-500 font-semibold">{successMessage}</p>}
             <p>
               Signing up for an account is free and easy. Fill out the form below to get started.
               JavaScript is required to continue.
             </p>
           </div>
-          <form className="mt-8 flex flex-col gap-4 text-btn-hover">
+          <form className="mt-8 flex flex-col gap-4 text-btn-hover" onSubmit={handleSubmit}>
             <label className="flex flex-col">
               <span>Username</span>
               <input
                 type="text"
                 name="username"
+                value={registerData.username}
+                onChange={handleInput}
                 className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
                 placeholder="Enter your username"
+                required
               />
             </label>
             <label className="flex flex-col">
-              <span>Password (4 characters minimum)</span>
+              <span>Password (6 characters minimum)</span>
               <input
                 type="password"
                 name="password"
+                value={registerData.password}
+                onChange={handleInput}
                 className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
                 placeholder="Enter new password"
+                required
               />
             </label>
             <label className="flex flex-col">
@@ -58,8 +102,11 @@ const RegisterScreen = () => {
               <input
                 type="password"
                 name="confirmPassword"
+                value={registerData.confirmPassword}
+                onChange={handleInput}
                 className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
                 placeholder="Confirm password"
+                required
               />
             </label>
             <label className="flex flex-col">
@@ -67,8 +114,11 @@ const RegisterScreen = () => {
               <input
                 type="email"
                 name="email"
+                value={registerData.email}
+                onChange={handleInput}
                 className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
                 placeholder="Enter your email"
+                required
               />
             </label>
             <p className="mt-3.5">
@@ -78,9 +128,10 @@ const RegisterScreen = () => {
             <div className="flex gap-4 items-center mt-3.5">
               <button
                 type="submit"
-                className="rounded-lg px-3 py-1.5 bg-date-picker cursor-pointer"
+                className="rounded-lg px-3 py-1.5 bg-date-picker cursor-pointer disabled:bg-gray-400"
+                disabled={isLoading}
               >
-                Sign Up
+                {isLoading ? 'Signing up...' : 'Sign Up'}
               </button>
               <Link
                 to="/"

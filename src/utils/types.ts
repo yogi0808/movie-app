@@ -415,6 +415,33 @@ export interface KeywordType {
   name: string;
 }
 
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  role: 'user' | 'admin';
+}
+
+export interface LoginDataType {
+  username: string;
+  password: string;
+}
+
+export interface RegisterDataType {
+  email: string;
+  username: string;
+  password: string;
+}
+
+export interface AuthContextType {
+  user: User | null;
+  isLoading: boolean;
+  login(data: LoginDataType): Promise<void>;
+  register(data: RegisterDataType): Promise<void>;
+  logout(): Promise<void>;
+  error: string | null;
+}
+
 export interface InfoPropType {
   idEndpoint: string;
   data: {

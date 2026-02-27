@@ -10,6 +10,8 @@ import type { HeaderLinkType } from '@utils/types';
 import MobileNav from '@components/header/MobileNav';
 import useHandleClickOutside from '@hooks/useHandleClickOutside';
 import LinkWithOptions from '@components/header/LinkWithOptions';
+import { useAuth } from '@hooks/useAuth';
+import { Link } from 'react-router';
 
 /**
  * header component that displays the logo navigation lins and also hides when user is scrolls down and when user scrolls back up it appears again.
@@ -18,6 +20,7 @@ import LinkWithOptions from '@components/header/LinkWithOptions';
 const Header = () => {
   const { scrollDirection } = useScroll(); // to get the user scroll direction it is custom hook
   const [isMobileNavActive, setIsMobileNavActive] = useState<boolean>(false); // track the open and close status of the mobile navigation popup
+  const { user, logout } = useAuth();
 
   const mobileNavRef = useRef<HTMLDivElement | null>(null); // ref of the mobile navigation popup
 
@@ -55,18 +58,37 @@ const Header = () => {
             </nav>
           </div>
           <div className="flex gap-3.5 lg:gap-7.5 justify-end lg:justify-center items-center h-full max-lg:flex-1">
-            <button className="hidden lg:inline">
-              <MdAdd size={25} className="text-white" />
-            </button>
-            <button className="border border-white py-0.5 px-1 rounded font-semibold text-sm hidden lg:inline">
-              EN
-            </button>
-            <button>
-              <MdNotifications size={20} className="text-white" />
-            </button>
-            <button className="bg-accent text-sm font-semibold h-8 rounded-full aspect-square">
-              Y
-            </button>
+            {user ? (
+              <>
+                <button className="hidden lg:inline">
+                  <MdAdd size={25} className="text-white" />
+                </button>
+                <button className="border border-white py-0.5 px-1 rounded font-semibold text-sm hidden lg:inline">
+                  EN
+                </button>
+                <button>
+                  <MdNotifications size={20} className="text-white" />
+                </button>
+                <button
+                  className="bg-accent text-sm font-semibold h-8 rounded-full aspect-square uppercase cursor-pointer"
+                  onClick={() => {
+                    if (confirm('Are really want to logout.')) logout();
+                  }}
+                  title="Click to Logout"
+                >
+                  {user.username[0]}
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="font-semibold text-sm">
+                  Login
+                </Link>
+                <Link to="/register" className="font-semibold text-sm">
+                  Join TMDB
+                </Link>
+              </>
+            )}
             <button>
               <MdOutlineSearch size={30} className="text-highlight" />
             </button>

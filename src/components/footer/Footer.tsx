@@ -1,6 +1,8 @@
 import Logo from '@components/Logo';
+import { useAuth } from '@hooks/useAuth';
 import { FooterLinks } from '@constants/index';
 import type { FooterLinkItemType, FooterLinkType } from '@utils/types';
+import { Link } from 'react-router';
 
 /**
  * footer component with list links.
@@ -8,6 +10,7 @@ import type { FooterLinkItemType, FooterLinkType } from '@utils/types';
  * @returns - jsx for footer
  */
 const Footer = () => {
+  const { user } = useAuth();
   return (
     <footer className="text-white flex lg:items-center flex-col bg-primary">
       <div className="py-10 lg:py-20 max-lg:px-5 flex gap-10 w-fit flex-wrap max-lg:flex-col">
@@ -15,9 +18,12 @@ const Footer = () => {
           <div className="w-32.5 h-23.5 absolute top-0 right-0 max-lg:hidden">
             <Logo xl />
           </div>
-          <a className="text-btn lg:text-highlight bg-white w-fit wrap-break-word max-w-65 line-clamp-2 text-lg font-bold border-2 border-white rounded-sm px-4 py-2 relative lg:top-35">
-            Hi yogi0808!
-          </a>
+          <Link
+            to={user ? '#' : '/login'}
+            className="text-btn lg:text-highlight bg-white w-fit wrap-break-word max-w-65 line-clamp-2 text-lg font-bold border-2 border-white rounded-sm px-4 py-2 relative lg:top-35"
+          >
+            {user ? `HI ${user.username}!` : 'JOIN THE COMMUNITY'}
+          </Link>
         </div>
         {FooterLinks.map((link: FooterLinkItemType) => (
           <div key={link.id}>
