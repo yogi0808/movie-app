@@ -50,8 +50,16 @@ const RegisterScreen = () => {
         email: registerData.email,
         password: registerData.password,
       });
-      setSuccessMessage('Registration successful! Please check your email for verification.');
-      setTimeout(() => navigate('/login'), 5000);
+      setSuccessMessage(
+        'Registration successful! Please check your email for verification. Redirecting to login...',
+      );
+      setRegisterData({
+        email: '',
+        password: '',
+        username: '',
+        confirmPassword: '',
+      });
+      setTimeout(() => navigate('/login'), 3000);
     } catch (err) {
       console.error('Registration failed', err);
     }

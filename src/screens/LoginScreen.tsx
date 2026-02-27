@@ -32,9 +32,8 @@ const LoginScreen = () => {
     e.preventDefault();
     try {
       await login(formData);
-      if (!error) {
-        navigate('/');
-      }
+      setFormData({ username: '', password: '' });
+      navigate('/');
     } catch (err) {
       console.error('Login failed', err);
     }
