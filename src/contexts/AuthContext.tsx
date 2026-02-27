@@ -51,6 +51,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       } else {
         setError('Login error');
       }
+      throw err;
     } finally {
       setIsLoading(false);
     }
@@ -79,6 +80,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       } else {
         setError('Register error');
       }
+      throw err;
     } finally {
       setIsLoading(false);
     }
@@ -94,6 +96,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       });
     } catch (err) {
       console.error('Logout request failed', err);
+      throw err;
     } finally {
       setUser(null);
       localStorage.removeItem('user');
@@ -101,8 +104,68 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const forgotPassword = async (email: string) => {
+    setError(null);
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${AUTH_URL}forgot-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Request failed');
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Forgot password error');
+      }
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const resetPassword = async (token: string, password: string) => {
+    setError(null);
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${AUTH_URL}reset-password?token=${token}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Reset failed');
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Reset password error');
+      }
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, register, logout, error }}>
+    <AuthContext.Provider
+      value={{ user, isLoading, login, register, logout, forgotPassword, resetPassword, error }}
+    >
       {children}
     </AuthContext.Provider>
   );

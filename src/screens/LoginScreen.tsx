@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import RootLayout from '@layouts/RootLayout';
 import { useAuth } from '@hooks/useAuth';
 
@@ -22,7 +22,9 @@ const LoginScreen = () => {
     e.preventDefault();
     try {
       await login(formData);
-      navigate('/');
+      if (!error) {
+        navigate('/');
+      }
     } catch (err) {
       console.error('Login failed', err);
     }
@@ -38,12 +40,12 @@ const LoginScreen = () => {
             In order to use the editing and rating capabilities of TMDB, as well as get personal
             recommendations you will need to login to your account. If you do not have an account,
             registering for an account is free and simple.{' '}
-            <span
+            <Link
               className="underline underline-offset-3 decoration-underline text-highlight cursor-pointer"
-              onClick={() => navigate('/register')}
+              to="/register"
             >
               Click here
-            </span>{' '}
+            </Link>{' '}
             to get started.
           </p>
           <p>
@@ -87,9 +89,12 @@ const LoginScreen = () => {
             >
               {isLoading ? 'Logging in...' : 'Login'}
             </button>
-            <p className="underline underline-offset-3 decoration-underline text-highlight cursor-pointer">
+            <Link
+              className="underline underline-offset-3 decoration-underline text-highlight cursor-pointer"
+              to="/forgot-password"
+            >
               Reset Password
-            </p>
+            </Link>
           </div>
         </form>
       </div>

@@ -439,6 +439,8 @@ export interface AuthContextType {
   login(data: LoginDataType): Promise<void>;
   register(data: RegisterDataType): Promise<void>;
   logout(): Promise<void>;
+  forgotPassword(email: string): Promise<void>;
+  resetPassword(token: string, password: string): Promise<void>;
   error: string | null;
 }
 

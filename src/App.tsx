@@ -7,6 +7,8 @@ import TvScreen from '@screens/TvScreen';
 import ReviewScreen from '@screens/ReviewScreen';
 import LoginScreen from '@screens/LoginScreen';
 import RegisterScreen from '@screens/RegisterScreen';
+import ForgotPasswordScreen from '@screens/ForgotPasswordScreen';
+import ResetPasswordScreen from '@screens/ResetPasswordScreen';
 
 /**
  * this is a root component of the application hear i created and and setup the routers
@@ -20,6 +22,8 @@ const App: React.FC = () => {
         <Route path="/" element={<HomeScreen />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
+        <Route path="/reset-password" element={<ResetPasswordScreen />} />
         <Route path="/movies" element={<MoviesScreen />} />
         <Route path="/details/:id" element={<DetailsScreen />} />
         <Route path="/review/:reviewId" element={<ReviewScreen />} />
