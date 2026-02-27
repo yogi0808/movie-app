@@ -5,15 +5,21 @@ import { useEffect, useState } from 'react';
 import { GoArrowLeft } from 'react-icons/go';
 import { Link, useParams } from 'react-router';
 
+/**
+ * fetches and displays the review based on id
+ *
+ * @returns - jsx for review screen
+ */
 const ReviewScreen = () => {
-  const { reviewId } = useParams();
-  const [movie, setMovie] = useState<MovieType>();
-  const [reviewData, setReviewData] = useState<ReviewType>();
+  const { reviewId } = useParams(); // review id form params
+  const [movie, setMovie] = useState<MovieType>(); // movie data
+  const [reviewData, setReviewData] = useState<ReviewType>(); // review data
 
-  const idData = reviewId?.split('-') || '';
-  const movieEndpoint = `${idData[0]}/${idData[1]}`;
-  const rId = idData[2];
+  const idData = reviewId?.split('-') || ''; // separating the review id param and getting movie id and type from it
+  const movieEndpoint = `${idData[0]}/${idData[1]}`; // joining movie id and type and making movie endpoint
+  const rId = idData[2]; // review id
 
+  // fetches the movie data and review data on load
   useEffect(() => {
     const fetchData = async () => {
       const reviewData = await apiFetch(`${movieEndpoint}/reviews`);
@@ -27,6 +33,7 @@ const ReviewScreen = () => {
     fetchData();
   }, [movieEndpoint, rId]);
 
+  // poster link
   const posterSrc = `${import.meta.env.VITE_IMAGE_BASE_URL}w600_and_h900_face${movie?.poster_path}`;
 
   // showing the loader while fetching the data

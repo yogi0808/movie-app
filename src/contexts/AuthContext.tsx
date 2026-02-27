@@ -1,16 +1,16 @@
 import type { ReactNode } from 'react';
 import { useState, useEffect } from 'react';
 
-import type { LoginDataType, RegisterDataType, User } from '@utils/types';
+import { authFetch } from '@utils/utils';
 import { AuthContext } from '@hooks/useAuth';
-
-const AUTH_URL = import.meta.env.VITE_AUTH_BASE_URL + 'auth/';
+import type { LoginDataType, RegisterDataType, User } from '@utils/types';
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  // getting user form the localstorage
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -24,18 +24,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(false);
   }, []);
 
+  /**
+   * it does api request to our backend and the loges user in based on username and password
+   *
+   * @param data - data for login
+   */
   const login = async (data: LoginDataType) => {
     setError(null);
     setIsLoading(true);
     try {
-      const response = await fetch(`${AUTH_URL}login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        credentials: 'include',
-      });
+      const response = await authFetch('login', data);
 
       const result = await response.json();
 
@@ -57,18 +55,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  /**
+   * it does api request to our backend and registers new user
+   *
+   * @param data - data for register
+   */
   const register = async (data: RegisterDataType) => {
     setError(null);
     setIsLoading(true);
     try {
-      const response = await fetch(`${AUTH_URL}register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
+      const response = await authFetch('register', data, false);
       const result = await response.json();
 
       if (!response.ok) {
@@ -86,14 +82,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  /**
+   * it does api request to our backend for logout
+   */
   const logout = async () => {
     setError(null);
     setIsLoading(true);
     try {
-      await fetch(`${AUTH_URL}logout`, {
-        method: 'POST',
-        credentials: 'include',
-      });
+      await authFetch('logout');
     } catch (err) {
       console.error('Logout request failed', err);
       throw err;
@@ -104,17 +100,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  /**
+   * does api request to our backend for forgot password
+   *
+   * @param email - email
+   */
   const forgotPassword = async (email: string) => {
     setError(null);
     setIsLoading(true);
     try {
-      const response = await fetch(`${AUTH_URL}forgot-password`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await authFetch('forgot-password', { email }, false);
 
       const result = await response.json();
 
@@ -133,17 +128,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  /**
+   * does api request to our backend for password reset and sets new password
+   *
+   * @param token
+   * @param password
+   */
   const resetPassword = async (token: string, password: string) => {
     setError(null);
     setIsLoading(true);
     try {
-      const response = await fetch(`${AUTH_URL}reset-password?token=${token}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ password }),
-      });
+      const response = await authFetch(`reset-password?token=${token}`, { password }, false);
 
       const result = await response.json();
 

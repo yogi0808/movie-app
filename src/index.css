@@ -96,6 +96,10 @@
   .calc-width {
     @apply max-w-[calc(1300px-40px-220px)];
   }
+
+  .invalid-input {
+    @apply focus:border-red-500 border-red-500 ring-2 ring-red-500 text-red-500;
+  }
 }
 
 ::-webkit-scrollbar {

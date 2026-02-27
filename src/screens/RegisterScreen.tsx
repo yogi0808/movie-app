@@ -17,20 +17,31 @@ const RegisterScreen = () => {
     password: '',
     username: '',
     confirmPassword: '',
-  });
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const { register, error, isLoading } = useAuth();
-  const navigate = useNavigate();
+  }); // register form data
+  const [successMessage, setSuccessMessage] = useState<string | null>(null); // success message
+  const [errorMessage, setErrorMessage] = useState<string>();
+  const { register, error, isLoading } = useAuth(); // auth context
+  const navigate = useNavigate(); // navigation for user redirection
 
+  /**
+   * handles input change and set the state
+   *
+   * @param e - input change event
+   */
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setRegisterData((prev) => ({ ...prev, [name]: value }));
   };
 
+  /**
+   * calls the register function and loges user in
+   *
+   * @param e - form submit event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmPassword) {
-      alert('Passwords do not match');
+      setErrorMessage('Passwords do not match');
       return;
     }
     try {
@@ -65,7 +76,11 @@ const RegisterScreen = () => {
         <div>
           <div className="flex flex-col gap-4">
             <h1 className="font-semibold text-2xl">Sign up for an account</h1>
-            {error && <p className="text-red-500 font-semibold">{error}</p>}
+            {error || errorMessage ? (
+              <p className="text-red-500 font-semibold">{error || errorMessage}</p>
+            ) : (
+              ''
+            )}
             {successMessage && <p className="text-green-500 font-semibold">{successMessage}</p>}
             <p>
               Signing up for an account is free and easy. Fill out the form below to get started.

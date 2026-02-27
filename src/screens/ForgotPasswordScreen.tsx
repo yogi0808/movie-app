@@ -3,11 +3,21 @@ import RootLayout from '@layouts/RootLayout';
 import { useAuth } from '@hooks/useAuth';
 import { Link } from 'react-router';
 
+/**
+ * displays the forgot password form in forgot-password route
+ *
+ * @returns - jsx for forgot password screen
+ */
 const ForgotPasswordScreen = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState<string | null>(null);
-  const { forgotPassword, error, isLoading } = useAuth();
+  const [email, setEmail] = useState(''); //email
+  const [message, setMessage] = useState<string | null>(null); //success message
+  const { forgotPassword, error, isLoading } = useAuth(); // auth context for api request
 
+  /**
+   * handles for submit and calls forgot password function
+   *
+   * @param e - form submit event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {

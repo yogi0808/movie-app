@@ -1,8 +1,9 @@
+import { Link } from 'react-router';
+
 import Logo from '@components/Logo';
 import { useAuth } from '@hooks/useAuth';
 import { FooterLinks } from '@constants/index';
 import type { FooterLinkItemType, FooterLinkType } from '@utils/types';
-import { Link } from 'react-router';
 
 /**
  * footer component with list links.
@@ -10,7 +11,7 @@ import { Link } from 'react-router';
  * @returns - jsx for footer
  */
 const Footer = () => {
-  const { user } = useAuth();
+  const { user } = useAuth(); // auth context for user details
   return (
     <footer className="text-white flex lg:items-center flex-col bg-primary">
       <div className="py-10 lg:py-20 max-lg:px-5 flex gap-10 w-fit flex-wrap max-lg:flex-col">

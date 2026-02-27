@@ -3,23 +3,34 @@ import { useSearchParams, useNavigate } from 'react-router';
 import RootLayout from '@layouts/RootLayout';
 import { useAuth } from '@hooks/useAuth';
 
+/**
+ * displays the form for password reset in reset-password route
+ *
+ * @returns - jsx for reset password screen
+ */
 const ResetPasswordScreen = () => {
-  const [searchParams] = useSearchParams();
-  const token = searchParams.get('token');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [success, setSuccess] = useState(false);
-  const { resetPassword, error, isLoading } = useAuth();
-  const navigate = useNavigate();
+  const [searchParams] = useSearchParams(); // getting search params
+  const token = searchParams.get('token'); // getting token from search params
+  const [password, setPassword] = useState(''); // password
+  const [confirmPassword, setConfirmPassword] = useState(''); // confirm password
+  const [success, setSuccess] = useState(false); // tracking success response
+  const { resetPassword, error, isLoading } = useAuth(); // auth context
+  const navigate = useNavigate(); // navigation for user redirection
+  const [errorMessage, setErrorMessage] = useState<string>();
 
+  /**
+   * calls the  function and loges user in
+   *
+   * @param e - form submit event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert('Passwords do not match');
+      setErrorMessage('Passwords do not match');
       return;
     }
     if (!token) {
-      alert('Token is missing');
+      setErrorMessage('Token is missing');
       return;
     }
 
@@ -32,6 +43,7 @@ const ResetPasswordScreen = () => {
     }
   };
 
+  // display message if token is not available
   if (!token) {
     return (
       <RootLayout>
@@ -48,7 +60,11 @@ const ResetPasswordScreen = () => {
       <div className="max-w-325 h-full mx-auto px-5 lg:px-10 py-7.5">
         <div className="flex flex-col gap-4">
           <h1 className="font-semibold text-2xl">Reset Your Password</h1>
-          {error && <p className="text-red-500 font-semibold">{error}</p>}
+          {error || errorMessage ? (
+            <p className="text-red-500 font-semibold">{error || errorMessage}</p>
+          ) : (
+            ''
+          )}
           {success && (
             <p className="text-green-500 font-semibold">
               Password reset successfully! Redirecting to login...

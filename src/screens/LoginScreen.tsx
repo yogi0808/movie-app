@@ -9,15 +9,25 @@ import { useAuth } from '@hooks/useAuth';
  * @returns - jsx for the login page
  */
 const LoginScreen = () => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
-  const { login, error, isLoading } = useAuth();
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ username: '', password: '' }); // login form data
+  const { login, error, isLoading } = useAuth(); // auth context
+  const navigate = useNavigate(); // navigation to navigate user to home
 
+  /**
+   * handles input change and set the state
+   *
+   * @param e - input change event
+   */
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  /**
+   * calls the login function and loges user in
+   *
+   * @param e - form submit event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {

@@ -1,17 +1,17 @@
+import { Link } from 'react-router';
 import { useRef, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdAdd, MdNotifications, MdOutlineSearch } from 'react-icons/md';
 
 import Logo from '@components/Logo';
 import classNames from 'classnames';
+import { useAuth } from '@hooks/useAuth';
 import useScroll from '@hooks/useScroll';
 import { HeaderLinks } from '@constants/index';
 import type { HeaderLinkType } from '@utils/types';
 import MobileNav from '@components/header/MobileNav';
 import useHandleClickOutside from '@hooks/useHandleClickOutside';
 import LinkWithOptions from '@components/header/LinkWithOptions';
-import { useAuth } from '@hooks/useAuth';
-import { Link } from 'react-router';
 
 /**
  * header component that displays the logo navigation lins and also hides when user is scrolls down and when user scrolls back up it appears again.
@@ -20,7 +20,7 @@ import { Link } from 'react-router';
 const Header = () => {
   const { scrollDirection } = useScroll(); // to get the user scroll direction it is custom hook
   const [isMobileNavActive, setIsMobileNavActive] = useState<boolean>(false); // track the open and close status of the mobile navigation popup
-  const { user, logout } = useAuth();
+  const { user, logout } = useAuth(); // auth context for user details
 
   const mobileNavRef = useRef<HTMLDivElement | null>(null); // ref of the mobile navigation popup
 

@@ -73,6 +73,41 @@ export async function apiFetch(endpoint: string) {
 }
 
 /**
+ * utility function for the auth api request
+ *
+ * @param endpoint - for auth request
+ * @param data - for request body
+ * @param includeCredentials - include credentials or not
+ *
+ * @returns - response of the auth api
+ */
+export async function authFetch(
+  endpoint: string,
+  data?: object,
+  includeCredentials: boolean = true,
+) {
+  const opts: RequestInit = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  };
+
+  if (data) {
+    opts['body'] = JSON.stringify(data);
+  }
+
+  if (includeCredentials) {
+    opts['credentials'] = 'include';
+  }
+
+  const res: Response = await fetch(`${import.meta.env.VITE_AUTH_BASE_URL}auth/${endpoint}`, opts);
+
+  return res;
+}
+
+/**
  * returns the movie duration in formatted way (Ex. 1h 30m)
  *
  * @param runtime - duration of the movie in number
@@ -120,8 +155,27 @@ export function ellipseByWordCount(content: string, wordLimit: number): EllipseR
   };
 }
 
+/**
+ * return's the prefix based on the length and index
+ *
+ * @param index - index of the genre
+ * @param length - length of the genres
+ *
+ * @returns - prefix string
+ */
 export function getGenrePrefix(index: number, length: number) {
   if (index === length - 1) return;
   if (index === length - 2) return ', and ';
   return ', ';
+}
+
+/**
+ * validates the email address
+ *
+ * @param email - email address to validate
+ * @returns - true if email is valid else false
+ */
+export function validateEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }
