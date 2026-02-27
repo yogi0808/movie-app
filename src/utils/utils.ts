@@ -1,5 +1,4 @@
 import { statusColors } from '@constants/index';
-import type { GenreType } from './types';
 type Rating = {
   rating: number;
   ratingGradient: string;
@@ -121,24 +120,8 @@ export function ellipseByWordCount(content: string, wordLimit: number): EllipseR
   };
 }
 
-export function joinGenres(genres: GenreType[]): string {
-  let html: string = '';
-
-  genres.forEach((item, idx) => {
-    if (idx === genres.length - 1) {
-      html += `<p className="inline hover:text-white/70 hover-underline">
-                ${item.name}
-              </p>`;
-    } else if (idx === genres.length - 2) {
-      html += `<p className="inline hover:text-white/70 hover-underline">
-                ${item.name}
-              </p>, and `;
-    } else {
-      html += `<p key={item.id} className="inline hover:text-white/70 hover-underline">
-              ${item.name}
-            </p>, `;
-    }
-  });
-
-  return html;
+export function getGenrePrefix(index: number, length: number) {
+  if (index === length - 1) return;
+  if (index === length - 2) return ', and ';
+  return ', ';
 }
