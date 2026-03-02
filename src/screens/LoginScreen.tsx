@@ -74,9 +74,12 @@ const LoginScreen = () => {
           </p>
           <p>
             If you signed up but didn&apos;t get your verification email,{' '}
-            <span className="underline underline-offset-3 decoration-underline text-highlight">
+            <Link
+              className="underline underline-offset-3 decoration-underline text-highlight cursor-pointer"
+              to="/resend-verification"
+            >
               click here
-            </span>{' '}
+            </Link>{' '}
             to have it resent.
           </p>
         </div>

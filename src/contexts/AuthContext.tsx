@@ -129,6 +129,34 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   /**
+   * does api request to our backend for resending verification email
+   *
+   * @param email - email
+   */
+  const resendVerificationEmail = async (email: string) => {
+    setError(null);
+    setIsLoading(true);
+    try {
+      const response = await authFetch('resend-verification', { email }, false);
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Request failed');
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Resend verification error');
+      }
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  /**
    * does api request to our backend for password reset and sets new password
    *
    * @param token
@@ -159,7 +187,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, isLoading, login, register, logout, forgotPassword, resetPassword, error }}
+      value={{
+        user,
+        isLoading,
+        login,
+        register,
+        logout,
+        forgotPassword,
+        resendVerificationEmail,
+        resetPassword,
+        error,
+      }}
     >
       {children}
     </AuthContext.Provider>

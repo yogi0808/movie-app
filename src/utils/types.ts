@@ -440,6 +440,7 @@ export interface AuthContextType {
   register(data: RegisterDataType): Promise<void>;
   logout(): Promise<void>;
   forgotPassword(email: string): Promise<void>;
+  resendVerificationEmail(email: string): Promise<void>;
   resetPassword(token: string, password: string): Promise<void>;
   error: string | null;
 }
