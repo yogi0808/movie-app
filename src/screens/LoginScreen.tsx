@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import RootLayout from '@layouts/RootLayout';
+
+import Input from '@components/Input';
 import { useAuth } from '@hooks/useAuth';
+import { validators } from '@utils/utils';
+import RootLayout from '@layouts/RootLayout';
 
 /**
  * login page for user login with username and password
@@ -10,8 +13,14 @@ import { useAuth } from '@hooks/useAuth';
  */
 const LoginScreen = () => {
   const [formData, setFormData] = useState({ username: '', password: '' }); // login form data
+  const [touched, setTouched] = useState({ username: false, password: false });
   const { login, error, isLoading } = useAuth(); // auth context
   const navigate = useNavigate(); // navigation to navigate user to home
+
+  const errors = {
+    username: validators.username(formData.username),
+    password: validators.password(formData.password),
+  };
 
   /**
    * handles input change and set the state
@@ -21,6 +30,7 @@ const LoginScreen = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setTouched((prev) => ({ ...prev, [name]: true }));
   };
 
   /**
@@ -30,9 +40,14 @@ const LoginScreen = () => {
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const isDataValid = Object.values(errors).some(Boolean);
+    if (isDataValid) return;
+
     try {
       await login(formData);
       setFormData({ username: '', password: '' });
+      setTouched({ username: false, password: false });
       navigate('/');
     } catch (err) {
       console.error('Login failed', err);
@@ -66,30 +81,28 @@ const LoginScreen = () => {
           </p>
         </div>
         <form className="mt-8 flex flex-col gap-4 text-btn-hover" onSubmit={handleSubmit}>
-          <label className="flex flex-col">
-            <span>Username</span>
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleInputChange}
-              className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
-              placeholder="Enter your username"
-              required
-            />
-          </label>
-          <label className="flex flex-col">
-            <span>Password</span>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
-              placeholder="Enter your password"
-              required
-            />
-          </label>
+          <Input
+            type="text"
+            name="username"
+            label="Username"
+            value={formData.username}
+            onChange={handleInputChange}
+            error={errors.username}
+            touched={touched.username}
+            placeholder="Enter your username"
+            required
+          />
+          <Input
+            type="password"
+            name="password"
+            label="Password"
+            value={formData.password}
+            onChange={handleInputChange}
+            error={errors.password}
+            touched={touched.password}
+            placeholder="Enter your password"
+            required
+          />
           <div className="flex gap-4 items-center mt-3.5">
             <button
               type="submit"

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import RootLayout from '@layouts/RootLayout';
 import { useAuth } from '@hooks/useAuth';
 import { Link } from 'react-router';
+import Input from '@components/Input';
+import { validators } from '@utils/utils';
 
 /**
  * displays the forgot password form in forgot-password route
@@ -12,6 +14,9 @@ const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState(''); //email
   const [message, setMessage] = useState<string | null>(null); //success message
   const { forgotPassword, error, isLoading } = useAuth(); // auth context for api request
+  const [touched, setTouched] = useState(false);
+
+  const inputError = validators.email(email);
 
   /**
    * handles for submit and calls forgot password function
@@ -20,6 +25,9 @@ const ForgotPasswordScreen = () => {
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!inputError) return;
+
     try {
       await forgotPassword(email);
       setMessage('If that email is registered, you will receive a reset link shortly.');
@@ -38,18 +46,20 @@ const ForgotPasswordScreen = () => {
           <p>Please enter your email address and we will send you a link to reset your password.</p>
         </div>
         <form className="mt-8 flex flex-col gap-4 text-btn-hover" onSubmit={handleSubmit}>
-          <label className="flex flex-col">
-            <span>Email</span>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
-              placeholder="Enter your email"
-              required
-            />
-          </label>
+          <Input
+            type="email"
+            name="email"
+            label="Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setTouched(true);
+            }}
+            error={inputError}
+            touched={touched}
+            placeholder="Enter your email"
+            required
+          />
           <div className="flex gap-4 items-center mt-3.5">
             <button
               type="submit"

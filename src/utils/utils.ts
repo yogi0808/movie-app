@@ -179,3 +179,27 @@ export function validateEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
+
+export const validators = {
+  email: (v: string) => {
+    if (!v) return 'Email is required';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Enter a valid email address';
+    return null;
+  },
+  username: (v: string) => {
+    if (!v) return 'Username is required';
+    if (v.length < 3) return 'Username must be at least 3 characters long';
+    if (v.length > 50) return 'Username cannot be exceed 50 characters';
+    return null;
+  },
+  password: (v: string) => {
+    if (!v) return 'Password is required';
+    if (v.length < 6) return 'password must be at least 6 characters long';
+    if (v.length > 100) return 'password cannot be exceed 100 characters';
+    return null;
+  },
+  cPassword: (v: string, pass: string) => {
+    if (v !== pass) return 'Confirm Password does not match';
+    return null;
+  },
+};

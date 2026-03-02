@@ -2,9 +2,11 @@ import { Link, useNavigate } from 'react-router';
 import { FaCheck } from 'react-icons/fa6';
 import { useState } from 'react';
 
+import Input from '@components/Input';
+import { useAuth } from '@hooks/useAuth';
+import { validators } from '@utils/utils';
 import RootLayout from '@layouts/RootLayout';
 import { registerBenefits } from '@constants/index';
-import { useAuth } from '@hooks/useAuth';
 
 /**
  * register page for user registration with username, password, and email
@@ -14,14 +16,26 @@ import { useAuth } from '@hooks/useAuth';
 const RegisterScreen = () => {
   const [registerData, setRegisterData] = useState({
     email: '',
-    password: '',
     username: '',
+    password: '',
     confirmPassword: '',
   }); // register form data
+  const [touched, setTouched] = useState({
+    email: false,
+    password: false,
+    username: false,
+    confirmPassword: false,
+  });
   const [successMessage, setSuccessMessage] = useState<string | null>(null); // success message
-  const [errorMessage, setErrorMessage] = useState<string>();
   const { register, error, isLoading } = useAuth(); // auth context
   const navigate = useNavigate(); // navigation for user redirection
+
+  const errors = {
+    email: validators.email(registerData.email),
+    password: validators.password(registerData.password),
+    username: validators.username(registerData.username),
+    confirmPassword: validators.cPassword(registerData.confirmPassword, registerData.password),
+  };
 
   /**
    * handles input change and set the state
@@ -31,6 +45,7 @@ const RegisterScreen = () => {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setRegisterData((prev) => ({ ...prev, [name]: value }));
+    setTouched((prev) => ({ ...prev, [name]: true }));
   };
 
   /**
@@ -40,10 +55,10 @@ const RegisterScreen = () => {
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (registerData.password !== registerData.confirmPassword) {
-      setErrorMessage('Passwords do not match');
-      return;
-    }
+
+    const isDataValid = Object.values(errors).some(Boolean);
+    if (isDataValid) return;
+
     try {
       await register({
         username: registerData.username,
@@ -53,6 +68,14 @@ const RegisterScreen = () => {
       setSuccessMessage(
         'Registration successful! Please check your email for verification. Redirecting to login...',
       );
+
+      setTouched({
+        email: false,
+        password: false,
+        username: false,
+        confirmPassword: false,
+      });
+
       setRegisterData({
         email: '',
         password: '',
@@ -84,11 +107,7 @@ const RegisterScreen = () => {
         <div>
           <div className="flex flex-col gap-4">
             <h1 className="font-semibold text-2xl">Sign up for an account</h1>
-            {error || errorMessage ? (
-              <p className="text-red-500 font-semibold">{error || errorMessage}</p>
-            ) : (
-              ''
-            )}
+            {error && <p className="text-red-500 font-semibold">{error}</p>}
             {successMessage && <p className="text-green-500 font-semibold">{successMessage}</p>}
             <p>
               Signing up for an account is free and easy. Fill out the form below to get started.
@@ -96,54 +115,50 @@ const RegisterScreen = () => {
             </p>
           </div>
           <form className="mt-8 flex flex-col gap-4 text-btn-hover" onSubmit={handleSubmit}>
-            <label className="flex flex-col">
-              <span>Username</span>
-              <input
-                type="text"
-                name="username"
-                value={registerData.username}
-                onChange={handleInput}
-                className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
-                placeholder="Enter your username"
-                required
-              />
-            </label>
-            <label className="flex flex-col">
-              <span>Password (6 characters minimum)</span>
-              <input
-                type="password"
-                name="password"
-                value={registerData.password}
-                onChange={handleInput}
-                className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
-                placeholder="Enter new password"
-                required
-              />
-            </label>
-            <label className="flex flex-col">
-              <span>Password Confirm</span>
-              <input
-                type="password"
-                name="confirmPassword"
-                value={registerData.confirmPassword}
-                onChange={handleInput}
-                className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
-                placeholder="Confirm password"
-                required
-              />
-            </label>
-            <label className="flex flex-col">
-              <span>Email</span>
-              <input
-                type="email"
-                name="email"
-                value={registerData.email}
-                onChange={handleInput}
-                className="px-3 py-1.5 rounded-lg border border-search-border focus:outline-none focus:border-highlight"
-                placeholder="Enter your email"
-                required
-              />
-            </label>
+            <Input
+              type="text"
+              name="username"
+              label="Username"
+              value={registerData.username}
+              onChange={handleInput}
+              placeholder="Enter your username"
+              error={errors.username}
+              touched={touched.username}
+              required
+            />
+            <Input
+              type="password"
+              name="password"
+              label="Password (6 characters minimum)"
+              value={registerData.password}
+              onChange={handleInput}
+              placeholder="Enter new password"
+              error={errors.password}
+              touched={touched.password}
+              required
+            />
+            <Input
+              type="password"
+              name="confirmPassword"
+              label="Password Confirm"
+              value={registerData.confirmPassword}
+              onChange={handleInput}
+              error={errors.confirmPassword}
+              touched={touched.confirmPassword}
+              placeholder="Confirm password"
+              required
+            />
+            <Input
+              type="email"
+              name="email"
+              label="Email"
+              value={registerData.email}
+              onChange={handleInput}
+              error={errors.email}
+              touched={touched.email}
+              placeholder="Enter your email"
+              required
+            />
             <p className="mt-3.5">
               By clicking the &quot;Sign up&quot; button below, I certify that I have read and agree
               to the TMDB terms of use and privacy policy.
