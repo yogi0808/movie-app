@@ -10,6 +10,7 @@ import RegisterScreen from '@screens/RegisterScreen';
 import ResetPasswordScreen from '@screens/ResetPasswordScreen';
 import ForgotPasswordScreen from '@screens/ForgotPasswordScreen';
 import ResendVerificationScreen from '@screens/ResendVerificationScreen';
+import NotFoundScreen from '@screens/NotFoundScreen';
 
 /**
  * this is a root component of the application hear i created and and setup the routers
@@ -31,6 +32,7 @@ const App: React.FC = () => {
           <Route path="/details/:id" element={<DetailsScreen />} />
           <Route path="/review/:reviewId" element={<ReviewScreen />} />
           <Route path="/tv" element={<TvScreen />} />
+          <Route path="*" element={<NotFoundScreen />} />
         </Routes>
       </BrowserRouter>
     </div>
