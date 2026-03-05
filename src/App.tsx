@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 
-import HomeScreen from '@screens/HomeScreen';
-import MoviesScreen from '@screens/MoviesScreen';
-import DetailsScreen from '@screens/DetailsScreen';
 import TvScreen from '@screens/TvScreen';
-import ReviewScreen from '@screens/ReviewScreen';
+import HomeScreen from '@screens/HomeScreen';
 import LoginScreen from '@screens/LoginScreen';
+import MoviesScreen from '@screens/MoviesScreen';
+import ReviewScreen from '@screens/ReviewScreen';
+import DetailsScreen from '@screens/DetailsScreen';
 import RegisterScreen from '@screens/RegisterScreen';
-import ForgotPasswordScreen from '@screens/ForgotPasswordScreen';
 import ResetPasswordScreen from '@screens/ResetPasswordScreen';
+import ForgotPasswordScreen from '@screens/ForgotPasswordScreen';
 import ResendVerificationScreen from '@screens/ResendVerificationScreen';
 
 /**

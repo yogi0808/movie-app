@@ -1,6 +1,7 @@
-import type { KeywordType } from '@utils/types';
-import { apiFetch } from '@utils/utils';
 import { useEffect, useState } from 'react';
+
+import { apiFetch } from '@utils/utils';
+import type { KeywordType } from '@utils/types';
 
 /**
  * fetches and displays the keywords related to movie

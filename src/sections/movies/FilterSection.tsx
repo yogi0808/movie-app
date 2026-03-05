@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 
 import SortBy from '@sections/movies/SortBy';
+import type { MediaType } from '@utils/types';
 import Filters from '@sections/movies/Filters';
 import WhereToWatch from '@sections/movies/WhereToWatch';
 import { useFilterContext } from '@hooks/useFilterContext';
-import type { MediaType } from '@utils/types';
 
 /**
  * displays all the filters in the movie screen left

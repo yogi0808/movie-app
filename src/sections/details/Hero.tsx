@@ -1,6 +1,7 @@
+import { AiOutlineFullscreen } from 'react-icons/ai';
+
 import type { HeroPropType } from '@utils/types';
 import HeroDetails from '@components/HeroDetails';
-import { AiOutlineFullscreen } from 'react-icons/ai';
 
 /**
  * displays the hero section in details page with banner and movie information

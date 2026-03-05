@@ -1,8 +1,9 @@
-import CastCard from '@components/cards/CastCard';
-import type { CastType } from '@utils/types';
-import { apiFetch } from '@utils/utils';
 import { useEffect, useState } from 'react';
 import { MdArrowRightAlt } from 'react-icons/md';
+
+import { apiFetch } from '@utils/utils';
+import type { CastType } from '@utils/types';
+import CastCard from '@components/cards/CastCard';
 
 /**
  * displays the scrollable cast list of the single movie

@@ -2,13 +2,13 @@ import Chip from '@components/Chip';
 import DropDown from '@components/DropDown';
 import languages from '@constants/languages.json';
 import Sliders from '@components/filters/Sliders';
+import type { GenreType, MediaType } from '@utils/types';
 import { useFilterContext } from '@hooks/useFilterContext';
 import DummyOptions from '@components/filters/DummyOptions';
 import KeywordSearch from '@components/filters/KeywordSearch';
-import { certifications, includeAdultOptions } from '@constants/index';
 import CollapsibleCard from '@components/filters/CollapsibleCard';
 import ReleaseDates from '@components/filters/datepiker/ReleaseDates';
-import type { GenreType, MediaType } from '@utils/types';
+import { certifications, includeAdultOptions } from '@constants/index';
 
 /**
  * displays the all filter option in filter section

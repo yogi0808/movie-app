@@ -1,5 +1,10 @@
 import { contributors } from '@constants/index';
 
+/**
+ * displays the score contents with dummy data
+ *
+ * @returns jsx for the dummy score content component
+ */
 const DummyContentScore = () => {
   return (
     <div className="border-t border-search-border pt-7.5">

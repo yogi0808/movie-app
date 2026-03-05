@@ -1,9 +1,10 @@
-import { mediaTab } from '@constants/index';
-import type { MediaImageType } from '@utils/types';
-import { apiFetch } from '@utils/utils';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { MdArrowRightAlt } from 'react-icons/md';
+
+import { apiFetch } from '@utils/utils';
+import { mediaTab } from '@constants/index';
+import type { MediaImageType } from '@utils/types';
 
 // type for the count tracking
 interface CountType {

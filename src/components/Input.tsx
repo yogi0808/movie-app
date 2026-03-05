@@ -1,17 +1,22 @@
 import classNames from 'classnames';
 
-interface InputPropType {
-  label: string;
-  type: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-  required?: boolean;
-  error: string | null;
-  touched: boolean;
-}
+import type { InputPropType } from '@utils/types';
 
+/**
+ * custom input component with label and error message display
+ *
+ * @param {string} label - input label
+ * @param {string} type - input type
+ * @param {string} name - input name
+ * @param {string} value - input value
+ * @param {function} onChange - input on change event handler
+ * @param {string} placeholder - input placeholder
+ * @param {boolean} required - is required or not
+ * @param {string} error - error if any
+ * @param {boolean} touched - input it touched or not
+ *
+ * @returns -  jsx for the input component
+ */
 const Input = ({
   label,
   type = 'text',
@@ -23,6 +28,7 @@ const Input = ({
   error,
   touched,
 }: InputPropType) => {
+  // dynamic classes changes based on the error state
   const inputClassNames = classNames('px-3 py-1.5 rounded-lg border focus:outline-none', {
     'border-search-border focus:border-highlight': !error || !touched,
     'border-red-500 text-red-500': error && touched,

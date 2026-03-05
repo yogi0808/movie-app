@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { Activity, useRef, useState } from 'react';
 
 import { formateDate } from '@utils/utils';
@@ -5,7 +6,6 @@ import { MoviePopupLinks } from '@constants/index';
 import RatingIndicator from '@components/cards/RatingIndicator';
 import useHandleClickOutside from '@hooks/useHandleClickOutside';
 import type { MediaType, MoviePopupLinkType, MovieType } from '@utils/types';
-import { Link } from 'react-router';
 
 /**
  * movie card component for displaying movie image, title or name, date, and ratting also show the popup menu based on user action like click on more option.

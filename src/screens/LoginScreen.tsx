@@ -13,10 +13,11 @@ import RootLayout from '@layouts/RootLayout';
  */
 const LoginScreen = () => {
   const [formData, setFormData] = useState({ username: '', password: '' }); // login form data
-  const [touched, setTouched] = useState({ username: false, password: false });
+  const [touched, setTouched] = useState({ username: false, password: false }); // traces input is touched or not
   const { login, error, isLoading } = useAuth(); // auth context
   const navigate = useNavigate(); // navigation to navigate user to home
 
+  // input validation errors
   const errors = {
     username: validators.username(formData.username),
     password: validators.password(formData.password),

@@ -1,8 +1,9 @@
-import type { MovieType } from '@utils/types';
-import { FaRegCalendarAlt } from 'react-icons/fa';
-import { formateDateForPicker } from '@utils/utils';
-import { IoIosStar, IoMdHeart } from 'react-icons/io';
 import { FaBookmark } from 'react-icons/fa6';
+import { FaRegCalendarAlt } from 'react-icons/fa';
+import { IoIosStar, IoMdHeart } from 'react-icons/io';
+
+import type { MovieType } from '@utils/types';
+import { formateDateForPicker } from '@utils/utils';
 
 /**
  * displays the recommended movie data

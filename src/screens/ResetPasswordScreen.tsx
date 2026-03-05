@@ -21,12 +21,13 @@ const ResetPasswordScreen = () => {
   const [touched, setTouched] = useState({
     password: false,
     confirmPassword: false,
-  });
+  }); // traces inputs are touched or not
   const [success, setSuccess] = useState(false); // tracking success response
   const { resetPassword, error, isLoading } = useAuth(); // auth context
   const navigate = useNavigate(); // navigation for user redirection
-  const [errorMessage, setErrorMessage] = useState<string>();
+  const [errorMessage, setErrorMessage] = useState<string>(); // error message
 
+  // input validation errors
   const errors = {
     password: validators.password(formData.password),
     confirmPassword: validators.cPassword(formData.confirmPassword, formData.password),

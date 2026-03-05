@@ -1,7 +1,8 @@
-import RecommendationMovieCard from '@components/cards/RecommendationMovieCard';
-import type { MovieType } from '@utils/types';
-import { apiFetch } from '@utils/utils';
 import { useEffect, useState } from 'react';
+
+import { apiFetch } from '@utils/utils';
+import type { MovieType } from '@utils/types';
+import RecommendationMovieCard from '@components/cards/RecommendationMovieCard';
 
 /**
  * fetches and displays the movie list related to single movie

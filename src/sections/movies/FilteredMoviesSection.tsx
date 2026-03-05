@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import MovieCard from '@components/cards/MovieCard';
-import { useFilterContext } from '@hooks/useFilterContext';
 import type { MediaType, MovieType } from '@utils/types';
+import { useFilterContext } from '@hooks/useFilterContext';
 import MovieCardSkeleton from '@components/cards/MovieCardSkeleton';
 
 /**

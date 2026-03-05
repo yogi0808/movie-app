@@ -1,5 +1,6 @@
-import type { ChipProps } from '@utils/types';
 import classNames from 'classnames';
+
+import type { ChipProps } from '@utils/types';
 
 /**
  * display the text in the capsule shape and user can select it

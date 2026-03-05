@@ -6,9 +6,9 @@ import { AuthContext } from '@hooks/useAuth';
 import type { LoginDataType, RegisterDataType, User } from '@utils/types';
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null); // current logged in user data
+  const [isLoading, setIsLoading] = useState<boolean>(true); // loading state while login/logout/register user
+  const [error, setError] = useState<string | null>(null); // error if acres while login/logout/register user
 
   // getting user form the localstorage
   useEffect(() => {

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import RootLayout from '@layouts/RootLayout';
-import { useAuth } from '@hooks/useAuth';
 import { Link } from 'react-router';
+
 import Input from '@components/Input';
+import { useAuth } from '@hooks/useAuth';
 import { validators } from '@utils/utils';
+import RootLayout from '@layouts/RootLayout';
 
 /**
  * displays the resend verification email form in resend-verification route
@@ -14,9 +15,9 @@ const ResendVerificationScreen = () => {
   const [email, setEmail] = useState(''); //email
   const [message, setMessage] = useState<string | null>(null); //success message
   const { resendVerificationEmail, error, isLoading } = useAuth(); // auth context for api request
-  const [touched, setTouched] = useState(false);
+  const [touched, setTouched] = useState(false); // traces input is touched or not
 
-  const inputError = validators.email(email);
+  const inputError = validators.email(email); // input validation error
 
   /**
    * handles for submit and calls resend verification email function

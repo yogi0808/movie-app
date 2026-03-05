@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import { HeaderLinks, mobileHeaderLinks } from '@constants/index';
 import MobileNavLink from '@components/header/MobileNavLink';
+import { HeaderLinks, mobileHeaderLinks } from '@constants/index';
 import type { HeaderLinkType, LinkOptionsType, MobileNavProps } from '@utils/types';
 
 /**

@@ -1,11 +1,12 @@
-import type { HeroPropType } from '@utils/types';
-import RenderGenres from './RenderGenres';
-import { formatRuntime } from '@utils/utils';
-import RatingIndicator from './cards/RatingIndicator';
-import Emoji from './Emoji';
 import { FaCircleInfo, FaPlay } from 'react-icons/fa6';
-import ButtonWithTooltip from './ButtonWithTooltip';
+
+import Emoji from '@components/Emoji';
+import { formatRuntime } from '@utils/utils';
+import type { HeroPropType } from '@utils/types';
 import { detailHeroBtns } from '@constants/index';
+import RenderGenres from '@components/RenderGenres';
+import ButtonWithTooltip from '@components/ButtonWithTooltip';
+import RatingIndicator from '@components/cards/RatingIndicator';
 
 /**
  * displays the hero section's details with movie information

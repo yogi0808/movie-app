@@ -1,7 +1,8 @@
-import type { SeasonType } from '@utils/types';
-import { formateDate } from '@utils/utils';
-import { FaRegCalendarAlt } from 'react-icons/fa';
 import { IoIosStar } from 'react-icons/io';
+import { FaRegCalendarAlt } from 'react-icons/fa';
+
+import { formateDate } from '@utils/utils';
+import type { SeasonType } from '@utils/types';
 
 /**
  * displays the last season data like season number, rating, overview etc...

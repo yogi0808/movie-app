@@ -1,8 +1,8 @@
-import { sortOptions } from '@constants/index';
 import DropDown from '@components/DropDown';
+import type { MediaType } from '@utils/types';
+import { sortOptions } from '@constants/index';
 import { useFilterContext } from '@hooks/useFilterContext';
 import CollapsibleCard from '@components/filters/CollapsibleCard';
-import type { MediaType } from '@utils/types';
 
 /**
  * displays the sort options in the filter section

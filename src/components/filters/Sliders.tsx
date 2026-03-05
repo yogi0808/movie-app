@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
+import type { MediaType } from '@utils/types';
 import CustomRange from '@components/filters/CustomRange';
 import { useFilterContext } from '@hooks/useFilterContext';
 import { sliderOneThumbsTrackColors, sliderTwoThumbsTrackColors } from '@constants/index';
-import type { MediaType } from '@utils/types';
 
 /**
  * displays the range sliders for user vote, user score, and runtime

@@ -458,3 +458,15 @@ export interface InfoPropType {
 }
 
 export type MediaType = 'tv' | 'movie';
+
+export interface InputPropType {
+  label: string;
+  type: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  required?: boolean;
+  error: string | null;
+  touched: boolean;
+}

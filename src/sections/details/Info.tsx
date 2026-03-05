@@ -1,9 +1,10 @@
-import type { InfoPropType } from '@utils/types';
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6';
 import { FiLink } from 'react-icons/fi';
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6';
+
+import type { InfoPropType } from '@utils/types';
 import Languages from '@constants/languages.json';
-import Keywords from './Keywords';
-import DummyContentScore from './DummyContentScore';
+import Keywords from '@sections/details/Keywords';
+import DummyContentScore from '@sections/details/DummyContentScore';
 
 /**
  * displays the information about the single movie like status network, language, budget, etc...

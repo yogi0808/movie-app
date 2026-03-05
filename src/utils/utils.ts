@@ -180,6 +180,7 @@ export function validateEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
+// input validators for auth user input
 export const validators = {
   email: (v: string) => {
     if (!v) return 'Email is required';

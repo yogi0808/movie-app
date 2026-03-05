@@ -1,7 +1,7 @@
-import { includeAdultOptions, sortOptions } from '@constants/index';
 import countries from '@constants/countries.json';
 import languages from '@constants/languages.json';
 import type { ActionType, InitialStateType } from '@utils/types';
+import { includeAdultOptions, sortOptions } from '@constants/index';
 
 // initial state for the filter reducer
 export const MovieFilterInitialState: InitialStateType = {

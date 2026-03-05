@@ -2,16 +2,16 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 
 import { apiFetch } from '@utils/utils';
-import RootLayout from '@layouts/RootLayout';
-import type { MovieDetailsType, TvDetailsType } from '@utils/types';
-import Recommendations from '@sections/details/Recommendations';
-import CastList from '@sections/details/CastList';
-import Social from '@sections/details/Social';
-import Media from '@sections/details/Media';
 import Hero from '@sections/details/Hero';
-import Season from '@sections/details/Season';
 import Info from '@sections/details/Info';
+import Media from '@sections/details/Media';
+import RootLayout from '@layouts/RootLayout';
 import Section from '@sections/home/Section';
+import Season from '@sections/details/Season';
+import Social from '@sections/details/Social';
+import CastList from '@sections/details/CastList';
+import Recommendations from '@sections/details/Recommendations';
+import type { MovieDetailsType, TvDetailsType } from '@utils/types';
 
 /**
  * this is a movie details page for single movie in this page we are displaying the single movies data

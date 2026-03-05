@@ -1,8 +1,9 @@
-import type { ReviewType } from '@utils/types';
-import { apiFetch, ellipseByWordCount, formateDate } from '@utils/utils';
+import { Link } from 'react-router';
 import { useEffect, useState } from 'react';
 import { IoPerson } from 'react-icons/io5';
-import { Link } from 'react-router';
+
+import type { ReviewType } from '@utils/types';
+import { apiFetch, ellipseByWordCount, formateDate } from '@utils/utils';
 
 /**
  * displays the review of the movie

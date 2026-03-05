@@ -1,6 +1,6 @@
-import { Link, useNavigate } from 'react-router';
-import { FaCheck } from 'react-icons/fa6';
 import { useState } from 'react';
+import { FaCheck } from 'react-icons/fa6';
+import { Link, useNavigate } from 'react-router';
 
 import Input from '@components/Input';
 import { useAuth } from '@hooks/useAuth';
@@ -25,11 +25,12 @@ const RegisterScreen = () => {
     password: false,
     username: false,
     confirmPassword: false,
-  });
+  }); // traces input is touched or not
   const [successMessage, setSuccessMessage] = useState<string | null>(null); // success message
   const { register, error, isLoading } = useAuth(); // auth context
   const navigate = useNavigate(); // navigation for user redirection
 
+  // input validation errors
   const errors = {
     email: validators.email(registerData.email),
     password: validators.password(registerData.password),

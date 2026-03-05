@@ -1,9 +1,10 @@
-import RootLayout from '@layouts/RootLayout';
-import type { MovieType, ReviewType } from '@utils/types';
-import { apiFetch, formateDate } from '@utils/utils';
 import { useEffect, useState } from 'react';
 import { GoArrowLeft } from 'react-icons/go';
 import { Link, useParams } from 'react-router';
+
+import RootLayout from '@layouts/RootLayout';
+import { apiFetch, formateDate } from '@utils/utils';
+import type { MovieType, ReviewType } from '@utils/types';
 
 /**
  * fetches and displays the review based on id
