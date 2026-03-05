@@ -18,20 +18,22 @@ import ResendVerificationScreen from '@screens/ResendVerificationScreen';
  */
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={<RegisterScreen />} />
-        <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
-        <Route path="/resend-verification" element={<ResendVerificationScreen />} />
-        <Route path="/reset-password" element={<ResetPasswordScreen />} />
-        <Route path="/movies" element={<MoviesScreen />} />
-        <Route path="/details/:id" element={<DetailsScreen />} />
-        <Route path="/review/:reviewId" element={<ReviewScreen />} />
-        <Route path="/tv" element={<TvScreen />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="bg-wrapper">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
+          <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
+          <Route path="/resend-verification" element={<ResendVerificationScreen />} />
+          <Route path="/reset-password" element={<ResetPasswordScreen />} />
+          <Route path="/movies" element={<MoviesScreen />} />
+          <Route path="/details/:id" element={<DetailsScreen />} />
+          <Route path="/review/:reviewId" element={<ReviewScreen />} />
+          <Route path="/tv" element={<TvScreen />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 

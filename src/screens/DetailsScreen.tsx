@@ -38,7 +38,7 @@ const DetailsScreen = () => {
   // showing the loader while fetching the data
   if (!data) {
     return (
-      <section className="min-h-screen flex justify-center items-center">
+      <section className="min-h-screen flex justify-center items-center bg-white">
         <div className="aspect-square w-10 border-6 border-transparent border-t-accent rounded-full animate-spin ring-6 ring-primary" />
       </section>
     );

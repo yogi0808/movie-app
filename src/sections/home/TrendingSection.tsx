@@ -34,7 +34,7 @@ const TrendingSection = () => {
         onTabChange={changeTab}
       />
       <div className="relative">
-        <img className="absolute left-0 top-35 -z-1 w-full max-lg:hidden" src="line-bg.svg" />
+        <img className="absolute left-0 top-35 w-full max-lg:hidden" src="line-bg.svg" />
 
         {isLoading ? (
           <div className="flex space-x-5 pt-5 overflow-x-auto pb-5.75 scrollbar-hide px-5 lg:px-10 relative animate-breath">

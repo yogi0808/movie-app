@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 
 import type { TabsProps } from '@utils/types';
-import GradientText from '@components/GradientText';
 
 interface HighlighterStyleType {
   left: number;
@@ -40,27 +39,26 @@ const Tabs = ({ data, activeTab, onTabChange }: TabsProps) => {
     <div className="flex border border-primary w-fit rounded-full relative justify-center items-center">
       {data.map((item, idx) => {
         const linkClassNames = classNames(
-          'px-2.75 lg:px-5 max-lg:text-xs/10 max-lg:leading-6 font-semibold py-0.5 cursor-pointer transition-colors ease-out duration-300 text-black',
+          'px-2.75 lg:px-5 max-lg:text-xs/10 max-lg:leading-6 font-semibold py-0.5 cursor-pointer transition-colors ease-out duration-300 relative z-10',
           {
-            'text-transparent!': activeTab === idx,
+            'text-transparent bg-gradient2 bg-clip bg-clip-text': activeTab === idx,
           },
         );
         return (
-          <GradientText key={idx} gradient="bg-gradient2">
-            <p
-              onClick={() => onTabChange(idx)}
-              ref={(el: HTMLParagraphElement) => {
-                tabsRef.current[idx] = el;
-              }}
-              className={linkClassNames}
-            >
-              {item}
-            </p>
-          </GradientText>
+          <p
+            key={idx}
+            onClick={() => onTabChange(idx)}
+            ref={(el: HTMLParagraphElement) => {
+              tabsRef.current[idx] = el;
+            }}
+            className={linkClassNames}
+          >
+            {item}
+          </p>
         );
       })}
       <div
-        className="bg-primary h-full rounded-full w-14 absolute top-0 left-0 transition-all duration-300 ease-out -z-1"
+        className="bg-primary h-full rounded-full w-14 absolute top-0 left-0 transition-all duration-300 ease-out"
         style={{
           left: tabStyle.left,
           width: `${tabStyle.width}px`,

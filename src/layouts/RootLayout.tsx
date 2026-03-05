@@ -12,11 +12,11 @@ import Footer from '@components/footer/Footer';
  */
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
-    <>
+    <main className="bg-white relative z-1 flex flex-col min-h-screen">
       <Header />
-      {children}
+      <div className="flex-1">{children}</div>
       <Footer />
-    </>
+    </main>
   );
 };
 
