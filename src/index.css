@@ -97,8 +97,8 @@
     @apply max-w-[calc(1300px-40px-220px)];
   }
 
-  .bg-wrapper {
-    @apply w-full min-h-screen bg-primary after:fixed after:top-0 after:content-[''] after:block after:bg-[url('/tmdb-bg-logo.svg')] after:bg-no-repeat after:opacity-30 after:bg-size-[20%] after:bg-position-[50%_calc(50%-200px)] after:w-screen after:h-screen;
+  body {
+    @apply w-full min-h-screen bg-primary before:fixed before:top-0 before:content-[''] before:block before:bg-[url('/tmdb-bg-logo.svg')] before:bg-no-repeat before:opacity-30 before:bg-size-[20%] before:bg-position-[50%_calc(50%-200px)] before:w-screen before:h-screen;
   }
 }
 
